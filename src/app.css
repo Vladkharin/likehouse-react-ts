@@ -1125,7 +1125,7 @@ body {
     padding-top: 80px;
     height: 610px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-      url("assets/img/BackGround_firstBlock.jpg") center center/cover no-repeat;
+      url("./assets/img/BackGround_firstBlock.jpg") center center/cover no-repeat;
   }
 
   .firstBlock__header {
