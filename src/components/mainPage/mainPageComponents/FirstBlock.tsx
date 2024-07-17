@@ -26,7 +26,7 @@ export function FirstBlock() {
         </div>
       </div>
       <div className="animation">
-        <img src="./assets/icons/partner.svg?ver=1" alt="partner" className="animation__spin" />
+        <img src="./src/assets/icons/partner.svg?ver=1" alt="partner" className="animation__spin" />
       </div>
     </div>
   );

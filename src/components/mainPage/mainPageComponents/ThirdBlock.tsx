@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { itemsHouse, typeItemsHouse, typeItemHouse } from "../../../houses.ts";
+import { Link } from "react-router-dom";
 
 type typeAdditionalServices = {
   ДатаФормирования: string;
@@ -9,7 +10,10 @@ type typeAdditionalServices = {
 
 type typeChoiceTypeHouse = { type: "all" | "cottage" | "two-storey house" | "bathhouse" };
 
-export function ThirdBlock() {
+type typePropsThirdBlock = {
+  setMainPage: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
   const [additionalServices, setAdditionalServices] = useState<typeAdditionalServices>();
   const [choiceTypeHouse, setChoiceTypeHouse] = useState<typeChoiceTypeHouse>({ type: "all" });
 
@@ -127,7 +131,7 @@ export function ThirdBlock() {
   function ThirdBlockTiles() {
     return (
       <div className="fourthAndThirdBlockTogether__inner" key={1000001}>
-        {getActiveTypeHouses().map((task) => ThirdBlockTile(task))}
+        {getActiveTypeHouses().map((task) => ThirdBlockTile(task, setMainPage))}
       </div>
     );
   }
@@ -170,49 +174,55 @@ export function ThirdBlock() {
   );
 }
 
-function ThirdBlockTile(task: typeItemHouse) {
+function ThirdBlockTile(task: typeItemHouse, setMainPage: React.Dispatch<React.SetStateAction<boolean>>) {
   switch (Object.keys(task).length) {
-    case 10:
-      return modalHouse(task);
+    case 11:
+      return modalHouse(task, setMainPage);
     case 9:
-      return modalBathHouse(task);
+      return modalBathHouse(task, setMainPage);
     case 2:
       return modalTypeHousesOrBathHouses(task);
   }
 }
 
-function modalHouse({ img, alt, size, square, code, coust, mortgage, link }: typeItemHouse) {
+function modalHouse(
+  { img, alt, information, code, coust, mortgage, link }: typeItemHouse,
+  setMainPage: (value: React.SetStateAction<boolean>) => void
+) {
   return (
     <React.Fragment key={code}>
       <div className="fourthAndThirdBlockTogether__tile">
         <img className="fourthAndThirdBlockTogether__tile-img" src={img} alt={alt} />
-        <div className="fourthAndThirdBlockTogether__tile-text">{size}</div>
-        <div className="fourthAndThirdBlockTogether__tile-text">{square}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[0] : false}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[1] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text" id={code}>
           Стоимость: {coust}
         </div>
         <div className="fourthAndThirdBlockTogether__tile-text">В ипотеку: от {mortgage}</div>
-        <a href={link} className="fourthAndThirdBlockTogether__link">
-          <img src="./assets/icons/textSvg.svg" alt="link" />
-        </a>
+        <Link to={`/houses/${link}`} className="fourthAndThirdBlockTogether__link" onClick={() => setMainPage(false)}>
+          <img src="./src/assets/icons/textSvg.svg" alt="link" />
+        </Link>
       </div>
     </React.Fragment>
   );
 }
 
-function modalBathHouse({ img, alt, size, square, code, coust, link }: typeItemHouse) {
+function modalBathHouse(
+  { img, alt, information, code, coust, link }: typeItemHouse,
+  setMainPage: (value: React.SetStateAction<boolean>) => void
+) {
   return (
     <React.Fragment key={code}>
       <div className="fourthAndThirdBlockTogether__tile">
         <img className="fourthAndThirdBlockTogether__tile-img" src={img} alt={alt} />
-        <div className="fourthAndThirdBlockTogether__tile-text">{size}</div>
-        <div className="fourthAndThirdBlockTogether__tile-text">{square}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[0] : false}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[1] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text" id={code}>
           Стоимость: {coust}
         </div>
-        <a href={link} className="fourthAndThirdBlockTogether__link">
-          <img src="./assets/icons/textSvg.svg" alt="link" />
-        </a>
+        <Link to={`/houses/${link}`} className="fourthAndThirdBlockTogether__link" onClick={() => setMainPage(false)}>
+          <img src="./src/assets/icons/textSvg.svg" alt="link" />
+        </Link>
       </div>
     </React.Fragment>
   );

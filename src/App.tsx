@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { PaymentPage } from "./components/paymentPage/paymentPage";
+import { HousePage } from "./components/housePage/HousePage";
 
 function App() {
   const [scroll, setScroll] = useState(0);
@@ -25,8 +26,9 @@ function App() {
     <Router>
       <Header scroll={scroll} setMainPage={setMainPage} mainPage={mainPage} />
       <Routes>
-        <Route path={"/:anchor?"} element={<MainPage />} />
+        <Route path={"/:anchor?"} element={<MainPage setMainPage={setMainPage} />} />
         <Route path={"/payment"} element={<PaymentPage />} />
+        <Route path={"/houses/:houseName?"} element={<HousePage />} />
       </Routes>
       <Footer />
     </Router>

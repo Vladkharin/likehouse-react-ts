@@ -1,10 +1,10 @@
-// import "../../stylePages.css";
-
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export function PaymentPage() {
-  const location = useLocation();
-  console.log(location);
+  useEffect(() => {
+    const y = window.scrollY;
+    window.scrollBy(0, -y);
+  }, []);
   return (
     <>
       <div className="stylePagepayment">
