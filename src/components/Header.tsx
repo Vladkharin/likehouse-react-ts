@@ -40,22 +40,22 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
             </div>
             <div className="nav__icons">
               <a href="https://teleg.run/Like_House_org" className="nav__icon">
-                <img src="assets/icons/TelegramIcon.svg" alt="" />
+                <img src="./icons/TelegramIcon.svg" alt="" />
               </a>
               <a href="https://wa.clck.bar/79251047452" className="nav__icon">
-                <img src="assets/icons/WhatsappIcon.svg" alt="" />
+                <img src="./icons/WhatsappIcon.svg" alt="" />
               </a>
               <a id="phone" href="tel:+74951277452" className="nav__icon">
-                <img src="assets/icons/PhoneIcon.svg" alt="" />
+                <img src="./icons/PhoneIcon.svg" alt="" />
               </a>
               <a href="https://www.youtube.com/@likehouse_org" className="nav__icon">
-                <img src="assets/icons/YouTubeIcon.svg" alt="" />
+                <img src="./icons/YouTubeIcon.svg" alt="" />
               </a>
               <a href="mailto:info@likehouse.org" className="nav__icon">
-                <img src="assets/icons/EmailIcon.svg" alt="" />
+                <img src="./icons/EmailIcon.svg" alt="" />
               </a>
               <a href="https://vk.com/like_house" className="nav__icon">
-                <img src="assets/icons/VKIcon.svg" alt="" />
+                <img src="./icons/VKIcon.svg" alt="" />
               </a>
             </div>
             <div className="nav__item-title">
