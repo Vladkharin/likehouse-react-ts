@@ -25,12 +25,12 @@ export function HousePage() {
           <div className="stylePagefirstBlock__header">Микра 5x7</div>
           <div className="stylePagefirstBlock__wrapper">
             <div className="stylePagefirstBlock__carousel">
-              <img src="./assets/pages/5x7Images/01.jpg" className="stylePagefirstBlock__carousel-item" data-modal="imgs" />
+              <img src="../pages/6x6Images/02.jpg" className="stylePagefirstBlock__carousel-item" data-modal="imgs" />
               <button className="stylePagefirstBlock__carousel-right">
-                <img src="./assets/icons/NextArrow.png" alt="next" />
+                <img src="../icons/NextArrow.png" alt="next" />
               </button>
               <button className="stylePagefirstBlock__carousel-left">
-                <img src="./assets/icons/PrevArrow.png" alt="prev" />
+                <img src="../icons/PrevArrow.png" alt="prev" />
               </button>
               {house ? houseImgs(house) : <div>Загружается</div>}
             </div>
@@ -220,13 +220,15 @@ function houseInformation(house: typeItemHouse) {
 
 function houseImgs(house: typeItemHouse) {
   return (
-    <div className="stylePagefirstBlock__field">
-      {house.imgs
-        ? house.imgs.map((item, index) => {
-            index = 102 + index;
-            return <img key={index} className="firstBlock__field-img active" src={item} alt=""></img>;
-          })
-        : false}
+    <div className="stylePagefirstBlock__wrapper-field">
+      <div className="stylePagefirstBlock__field">
+        {house.imgs
+          ? house.imgs.map((item, index) => {
+              index = 102 + index;
+              return <img key={index} className="stylePagefirstBlock__field-img" src={item} alt=""></img>;
+            })
+          : false}
+      </div>
     </div>
   );
 }

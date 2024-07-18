@@ -13,7 +13,7 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
         <div className="container">
           <div className="nav__wrapper">
             <div className="nav__menu">
-              <img className="menu__Open" src="assets/icons/MenuIcon.svg" alt="MenuIcon" />
+              <img className="menu__Open" src="./icons/MenuIcon.svg" alt="MenuIcon" />
               <div className="nav__links">
                 <Link to={"/about"} className="menu__link">
                   О нас
@@ -85,22 +85,22 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
             </div>
             <div className="stylePagenav__icons">
               <a href="https://teleg.run/Like_House_org" className="stylePagenav__icon">
-                <img src="./assets/icons/TelegramGreyIcon.svg" alt="" />
+                <img src="../icons/TelegramGreyIcon.svg" alt="" />
               </a>
               <a href="https://wa.clck.bar/79251047452" className="stylePagenav__icon">
-                <img src="./assets/icons/WhatsappGreyIcon.svg" alt="" />
+                <img src="../icons/WhatsappGreyIcon.svg" alt="" />
               </a>
               <a id="phone" href="tel:+74951277452" className="stylePagenav__icon">
-                <img src="./assets/icons/PhoneGreyIcon.svg" alt="" />
+                <img src="../icons/PhoneGreyIcon.svg" alt="" />
               </a>
               <a href="https://www.youtube.com/@likehouse_org" className="stylePagenav__icon">
-                <img src="./assets/icons/YouTubeGreyIcon.svg" alt="" />
+                <img src="../icons/YouTubeGreyIcon.svg" alt="" />
               </a>
               <a href="mailto:info@likehouse.org" className="stylePagenav__icon">
-                <img src="./assets/icons/EmailGreyIcon.svg" alt="" />
+                <img src="../icons/EmailGreyIcon.svg" alt="" />
               </a>
               <a href="https://vk.com/like_house" className="stylePagenav__icon">
-                <img src="./assets/icons/VKGreyIcon.svg" alt="" />
+                <img src="../icons/VKGreyIcon.svg" alt="" />
               </a>
             </div>
             <div className="stylePagenav__item-title">

@@ -13,6 +13,8 @@ function App() {
   const [scroll, setScroll] = useState(0);
   const [mainPage, setMainPage] = useState(true);
 
+  console.log(mainPage);
+
   const handleScroll = () => {
     setScroll(window.scrollY);
   };

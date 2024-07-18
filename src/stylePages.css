@@ -430,7 +430,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .stylePagefirstBlock__field {
   display: flex;
   width: 100%;
-  transition: all 0stylePage5s;
+  transition: all 0.5s;
   margin: 0 auto;
 }
 
@@ -439,9 +439,9 @@ input[type="number"]::-webkit-outer-spin-button {
   max-width: 95px;
   max-height: 75px;
   min-width: 95px;
-  transform: scale(0stylePage9);
+  transform: scale(0.9);
   filter: grayscale(1);
-  transition: all 0stylePage3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 

@@ -6,7 +6,7 @@ export function SeventhBlock() {
         <div className="seventhBlock__items">
           <div className="seventhBlock__item">
             <div className="seventhBlock__item-img">
-              <img src="./assets/img/seventhBlockImg.png" alt="img" />
+              <img src="./img/seventhBlockImg.png" alt="img" />
             </div>
             <div className="seventhBlock__item-title">
               <br /> Илья Макачев <br /> <br />
@@ -18,7 +18,7 @@ export function SeventhBlock() {
           </div>
           <div className="seventhBlock__item">
             <div className="seventhBlock__item-img">
-              <img src="./assets/img/seventhBlockSecondImg.png" alt="img" />
+              <img src="./img/seventhBlockSecondImg.png" alt="img" />
             </div>
             <div className="seventhBlock__item-title">
               <br /> Орлов Артём
@@ -31,7 +31,7 @@ export function SeventhBlock() {
           </div>
           <div className="seventhBlock__item">
             <div className="seventhBlock__item-img">
-              <img src="./assets/img/seventhBlockThirdImg.png" alt="img" />
+              <img src="./img/seventhBlockThirdImg.png" alt="img" />
             </div>
             <div className="seventhBlock__item-title">
               <br />
@@ -44,7 +44,7 @@ export function SeventhBlock() {
           </div>
           <div className="seventhBlock__item">
             <div className="seventhBlock__item-img">
-              <img src="./assets/img/seventhBlockFourthImg.png" alt="img" />
+              <img src="./img/seventhBlockFourthImg.png" alt="img" />
             </div>
             <div className="seventhBlock__item-title">
               <br />
@@ -56,7 +56,7 @@ export function SeventhBlock() {
           </div>
           <div className="seventhBlock__item">
             <div className="seventhBlock__item-img">
-              <img src="./assets/img/seventhBlockFifthImg.png" alt="img" />
+              <img src="./img/seventhBlockFifthImg.png" alt="img" />
             </div>
             <div className="seventhBlock__item-title">
               <br />
@@ -69,7 +69,7 @@ export function SeventhBlock() {
           <div className="seventhBlock__scroll">
             <div className="seventhBlock__scroll-text">Листать вбок</div>
             <div className="seventhBlock__scroll-img">
-              <img src="./assets/icons/threeArrow.svg" alt="threeArrow" />
+              <img src="./icons/threeArrow.svg" alt="threeArrow" />
             </div>
           </div>
         </div>

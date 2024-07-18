@@ -52,10 +52,10 @@ export function FourthBlock() {
       <div className="container">
         <div className="fifthBlock__header">Технология</div>
         <div className="fifthBlock__imgs">
-          <img src="./assets/img/fifthBlockFirstimg.png" alt="img" className="fifthBlock__img" />
-          <img src="./assets/img/fifthBlockSecondimg.png" alt="img" className="fifthBlock__img" />
-          <img src="./assets/img/fifthBlockThirdimg.png" alt="img" className="fifthBlock__img" />
-          <img src="./assets/img/fifthBlockFourthimg.webp" alt="img" className="fifthBlock__img" />
+          <img src="./img/fifthBlockFirstimg.png" alt="img" className="fifthBlock__img" />
+          <img src="./img/fifthBlockSecondimg.png" alt="img" className="fifthBlock__img" />
+          <img src="./img/fifthBlockThirdimg.png" alt="img" className="fifthBlock__img" />
+          <img src="./img/fifthBlockFourthimg.webp" alt="img" className="fifthBlock__img" />
         </div>
         {renderItems()}
       </div>
@@ -78,7 +78,7 @@ function createItem(item: typeItem, index: number) {
       <div className="fifthBlock__item">
         <div className="fifthBlock__item-number">{item.value}</div>
         <div className="fifthBlock__item-text">{item.title}</div>
-        <img src="./assets/icons/plus.svg" alt="" className="fifthBlock__item-plus" />
+        <img src="./icons/plus.svg" alt="" className="fifthBlock__item-plus" />
         <div className="fifthBlock__item-subtitle">{item.subtitle}</div>
       </div>
       <div className="line gold"></div>
