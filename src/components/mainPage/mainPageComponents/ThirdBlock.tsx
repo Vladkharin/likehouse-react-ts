@@ -200,7 +200,7 @@ function modalHouse(
         </div>
         <div className="fourthAndThirdBlockTogether__tile-text">В ипотеку: от {mortgage}</div>
         <Link to={`/houses/${link}`} className="fourthAndThirdBlockTogether__link" onClick={() => setMainPage(false)}>
-          <img src="./src/assets/icons/textSvg.svg" alt="link" />
+          <img src="./icons/textSvg.svg" alt="link" />
         </Link>
       </div>
     </React.Fragment>
@@ -221,7 +221,7 @@ function modalBathHouse(
           Стоимость: {coust}
         </div>
         <Link to={`/houses/${link}`} className="fourthAndThirdBlockTogether__link" onClick={() => setMainPage(false)}>
-          <img src="./src/assets/icons/textSvg.svg" alt="link" />
+          <img src="./icons/textSvg.svg" alt="link" />
         </Link>
       </div>
     </React.Fragment>

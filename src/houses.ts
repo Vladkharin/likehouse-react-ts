@@ -18,7 +18,7 @@ export type typeItemsHouse = typeItemHouse[];
 
 export let itemsHouse: typeItemsHouse = [
   {
-    img: "./src/assets/img/Видовой_кадр_01_6x6.jpg",
+    img: "./img/Видовой_кадр_01_6x6.jpg",
     alt: "firstTile",
     information: [
       "Размер: 6x6",
@@ -31,10 +31,10 @@ export let itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: [
-      "./src/assets/pages/6x6Images/01.jpg",
-      "./src/assets/pages/6x6Images/02.jpg",
-      "./src/assets/pages/6x6Images/03.jpg",
-      "./src/assets/pages/6x6Images/04.jpg",
+      "./pages/6x6Images/01.jpg",
+      "./pages/6x6Images/02.jpg",
+      "./pages/6x6Images/03.jpg",
+      "./pages/6x6Images/04.jpg",
     ],
     coust:"0",
     mortgage:"0",
