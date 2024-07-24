@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer__wrapper">
-          <img className="footer__img" src="./icons/logo.webp" alt="logo" />
+          <img className="footer__img" src="../icons/logo.webp" alt="logo" />
           <div className="footer__items">
             <div className="footer__item">
               <div className="footer__item-header">АДРЕС</div>
@@ -43,16 +43,16 @@ export function Footer() {
               <div className="footer__item-header">СОЦ.СЕТИ</div>
               <div className="footer__socials">
                 <a href="https://vk.com/like_house">
-                  <img src="./icons/VKIcon.svg" alt="" className="footer__social" />
+                  <img src="../icons/VKIcon.svg" alt="" className="footer__social" />
                 </a>
                 <a href="https://wa.clck.bar/79251047452">
-                  <img src="./icons/WhatsappIcon.svg" alt="" className="footer__social" />
+                  <img src="../icons/WhatsappIcon.svg" alt="" className="footer__social" />
                 </a>
                 <a href="https://www.youtube.com/@likehouse_org">
-                  <img src="./icons/YouTubeIcon.svg" alt="" className="footer__social" />
+                  <img src="../icons/YouTubeIcon.svg" alt="" className="footer__social" />
                 </a>
                 <a href="https://teleg.run/Like_House_org">
-                  <img src="./icons/TelegramIcon.svg" alt="" className="footer__social" />
+                  <img src="../icons/TelegramIcon.svg" alt="" className="footer__social" />
                 </a>
               </div>
             </div>

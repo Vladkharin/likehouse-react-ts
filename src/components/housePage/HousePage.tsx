@@ -1,28 +1,66 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { itemsHouse, typeItemHouse } from "../../houses.ts";
+import { useLocation } from "react-router-dom";
+import { typeItemHouse, basicConfigurationOfTwoStoreyHouses } from "../../houses.ts";
+
+type typeAdditionalServices = {
+  ДатаФормирования: string;
+  Дома: [];
+};
+
+type typeAdditionalService = {
+  ДомКод: string;
+  ДомНаименование: string;
+  Разделы: {
+    Раздел: string;
+    Код: string;
+    Подразделы: {
+      Подраздел: string;
+      Код: string;
+      Стоимость: number;
+    }[];
+  }[];
+};
+
+interface LocationState {
+  task: typeItemHouse;
+}
 
 export function HousePage() {
-  const [house, setHouse] = useState<typeItemHouse>();
-  const param = useParams();
+  const [additionalService, setAdditionalService] = useState<typeAdditionalService>();
+  const location = useLocation();
+  const { task } = location.state as LocationState;
+  const [house, setHouse] = useState<typeItemHouse>(task);
 
-  console.log(param.houseName);
-  useEffect(() => {
-    const y = window.scrollY;
-    window.scrollBy(0, -y);
+  const fetchAdditionalServices = async () => {
+    const response = await fetch("../src/1c_site.json", { method: "GET" });
+    const data: typeAdditionalServices = await response.json();
 
-    itemsHouse.forEach((item) => {
-      if (item.link === param.houseName) {
-        setHouse(item);
+    // let totalCoust = 0;
+
+    data["Дома"].forEach((item: typeAdditionalService) => {
+      if (item["ДомКод"] == task.code) {
+        setAdditionalService(item);
       }
     });
+  };
+
+  const scrollToTop = () => {
+    const y = window.scrollY;
+    window.scrollBy(0, -y);
+  };
+
+  useEffect(() => {
+    fetchAdditionalServices();
+
+    scrollToTop();
   }, []);
+
   return (
     <React.Fragment>
       <div className="stylePagefirstBlock bath">
         <div className="stylePagecontainer">
-          <div className="stylePagefirstBlock__header">Микра 5x7</div>
+          <div className="stylePagefirstBlock__header">{house ? house["houseName"] : "Загружается!"}</div>
           <div className="stylePagefirstBlock__wrapper">
             <div className="stylePagefirstBlock__carousel">
               <img src="../pages/6x6Images/02.jpg" className="stylePagefirstBlock__carousel-item" data-modal="imgs" />
@@ -41,160 +79,76 @@ export function HousePage() {
       <div className="stylePagesecondBlock">
         <div className="stylePagecontainer">
           <div className="stylePagesecondBlock__header">Базовая комплектация проекта</div>
-          <div className="stylePagesecondBlock__items">
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Фундамент</div>
-              <div className="stylePagesecondBlock__item-key">ЖБ сваи (длинна 3000 мм сечение 150х150 мм)</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Обработка огнебиозащита</div>
-              <div className="stylePagesecondBlock__item-key">Нижний венец дома</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Обвязка</div>
-              <div className="stylePagesecondBlock__item-key">Брус 150х150 мм</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Перекрытие этажа</div>
-              <div className="stylePagesecondBlock__item-key">Доска сечением 45х195 мм (+-5мм) калиброванная камерной сушки</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Перекрытие чердачное</div>
-              <div className="stylePagesecondBlock__item-key">Доска сечением 45х145 мм (+-5мм) калиброванная камерной сушки</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Наружные стены</div>
-              <div className="stylePagesecondBlock__item-key">Доска сечением 45х145 мм (+-5мм) калиброванная камерной сушки</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Внутренние несущие стены</div>
-              <div className="stylePagesecondBlock__item-key">Доска сечением 45х145 мм (+-5мм) калиброванная камерной сушки</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Перегородки</div>
-              <div className="stylePagesecondBlock__item-key">Доска сечением 45х95 мм (+-5мм) калиброванная камерной сушки</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Обрешётка</div>
-              <div className="stylePagesecondBlock__item-key">Доска 25х100/25х150 мм</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Наружная отделка стен</div>
-              <div className="stylePagesecondBlock__item-key">«Имитация бруса» класс AB, 16х136 мм</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Внутренняя отделка стен</div>
-              <div className="stylePagesecondBlock__item-key">«Имитация бруса» класс AB, 16х136 мм</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Полы</div>
-              <div className="stylePagesecondBlock__item-key">Шпунтованная доска толщина 36 мм</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Отделка потолка</div>
-              <div className="stylePagesecondBlock__item-key">«Имитация бруса» класс AB, 16х136 мм</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Материал кровля</div>
-              <div className="stylePagesecondBlock__item-key">Металлочерепица (0,5 мм)</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Стропильная система</div>
-              <div className="stylePagesecondBlock__item-key">Доска сечением 45х145 мм (+-5мм) калиброванная камерной сушки</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Окна</div>
-              <div className="stylePagesecondBlock__item-key">
-                Оконные блоки ПВХ двухкамерные (профиль 70мм) (размеры по проекту) с москитными сетками, отливами, наличниками,
-                тепло сберегающее покрытие
-              </div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Двери межкомнатные</div>
-              <div className="stylePagesecondBlock__item-key">Деревянные филёнчатые, наличники</div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Двери входные</div>
-              <div className="stylePagesecondBlock__item-key">
-                Дверные блоки ПВХ (размеры по проекту), усиленный дверной профиль, двухкамерный стеклопакет (размеры по проекту),
-                наличники
-              </div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Утепление наружных стен</div>
-              <div className="stylePagesecondBlock__item-key">
-                ROCKWOOL КАРКАС БАТТС в 3 слоя (150 мм), с укладкой гидроизоляции и пароизоляции ОНДУТИС
-              </div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Шумоизоляция</div>
-              <div className="stylePagesecondBlock__item-key">
-                ROCKWOOL КАРКАС БАТТС Внутренние несущие стены (150мм) и перегородки (100мм)
-              </div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Утепление пола</div>
-              <div className="stylePagesecondBlock__item-key">
-                ROCKWOOL КАРКАС БАТТС в 4 слоя (200 мм),с укладкой гидроизоляции и пароизоляции ОНДУТИС
-              </div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Утепление чердачного перекрытия</div>
-              <div className="stylePagesecondBlock__item-key">
-                ROCKWOOL КАРКАС БАТТС в 3 слоя (150 мм), с укладкой гидроизоляции и пароизоляции ОНДУТИС
-              </div>
-            </div>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">Высота этажа</div>
-              <div className="stylePagesecondBlock__item-key">2700 мм</div>
-            </div>
-            <div className="stylePageline"></div>
-          </div>
+          {house ? basicConfiguration(house) : false}
+
           <div className="stylePagesecondBlock__header">Дополнительные услуги</div>
-          <div className="stylePagesecondBlock__services"></div>
-        </div>
-      </div>{" "}
-      <div className="stylePagethirdBlock">
-        <div className="stylePagecontainer">
-          <div className="stylePagethirdBlock__header">Видео обзоры</div>
-          <div className="stylePagethirdBlock__items">
-            <div className="stylePagethirdBlock__item">
-              <iframe
-                width="186"
-                height="330"
-                src="https://www.youtube.com/embed/3LRdSvI9eK0?si=KHFOfI24TUCBXmvF"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen></iframe>
-            </div>
-          </div>
+          {additionalService ? additionalServiceItems(additionalService, setHouse, house) : <div>Загружается</div>}
         </div>
       </div>
+      <div className="stylePagecost">
+        СТОИМОСТЬ:<span className="stylePagecost__span">{house.coust}</span> руб.
+      </div>
+      <div id="id" className="stylePagenone">
+        {house.code}
+      </div>
     </React.Fragment>
+  );
+}
+
+function additionalServiceItems(
+  services: typeAdditionalService,
+  setHouse: React.Dispatch<React.SetStateAction<typeItemHouse>>,
+  house: typeItemHouse
+) {
+  const addorSubtractPrice = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    setHouse: React.Dispatch<React.SetStateAction<typeItemHouse>>,
+    house: typeItemHouse
+  ) => {
+    if (event.target instanceof HTMLButtonElement) {
+      if (event.target.classList[1] === "stylePageinactiveBtn") {
+        event.target.classList.remove("stylePageinactiveBtn");
+        event.target.classList.add("stylePageactiveBtn");
+        setHouse({ ...house, coust: (Number(house.coust) + Number(event.target.value)).toString() });
+      } else if (event.target.classList[1] === "stylePageactiveBtn") {
+        event.target.classList.add("stylePageinactiveBtn");
+        event.target.classList.remove("stylePageactiveBtn");
+        setHouse({ ...house, coust: (Number(house.coust) - Number(event.target.value)).toString() });
+      }
+    }
+  };
+  return (
+    <div className="stylePagesecondBlock__services">
+      {services["Разделы"].map((service, index) => {
+        if (service["Раздел"] == "Строительство дома в базовой комплектации") {
+          return;
+        }
+        index = 19192 + index;
+        return (
+          <React.Fragment key={index}>
+            <div className="stylePagesecondBlock__services-header">{service["Раздел"]}</div>
+            {service["Подразделы"].map((section, secondIndex: number) => {
+              secondIndex = 95959 + secondIndex;
+              return (
+                <React.Fragment key={secondIndex}>
+                  <div className="stylePagesecondBlock__service">
+                    <div className="stylePagesecondBlock__service-button" id={section.Код}>
+                      <button
+                        className={`stylePagesecondBlock__service-buttonSelector stylePageinactiveBtn`}
+                        value={section.Стоимость}
+                        onClick={(event) => addorSubtractPrice(event, setHouse, house)}></button>
+                    </div>
+                    <div className="stylePagesecondBlock__service-text">
+                      {section.Подраздел} + {section.Стоимость.toString()} руб.
+                    </div>
+                  </div>
+                </React.Fragment>
+              );
+            })}
+          </React.Fragment>
+        );
+      })}
+    </div>
   );
 }
 
@@ -203,7 +157,7 @@ function houseInformation(house: typeItemHouse) {
     <div className="stylePagefirstBlock__information">
       {house.information
         ? house.information.map((item, index) => {
-            index = 101 + index;
+            index = 10140 + index;
             return (
               <div key={index} className="stylePagefirstBlock__information-text">
                 {item}
@@ -212,7 +166,7 @@ function houseInformation(house: typeItemHouse) {
           })
         : false}
       <div className="stylePagefirstBlock__button">
-        СТОИМОСТЬ: <span>{house.coust}</span> руб.
+        СТОИМОСТЬ: <span>{house.coust} руб.</span>
       </div>
     </div>
   );
@@ -224,11 +178,37 @@ function houseImgs(house: typeItemHouse) {
       <div className="stylePagefirstBlock__field">
         {house.imgs
           ? house.imgs.map((item, index) => {
-              index = 102 + index;
+              index = 10201 + index;
               return <img key={index} className="stylePagefirstBlock__field-img" src={item} alt=""></img>;
             })
           : false}
       </div>
+    </div>
+  );
+}
+
+function basicConfiguration(house: typeItemHouse) {
+  let arrayConf: string[] = [];
+  if (house.type === "two-storey house") {
+    arrayConf = basicConfigurationOfTwoStoreyHouses;
+  }
+
+  return (
+    <div className="stylePagesecondBlock__items">
+      {arrayConf.map((item, index) => {
+        index = 200212 + index;
+        const itemArray = item.split(" ? ");
+        return (
+          <React.Fragment key={index}>
+            <div className="stylePageline"></div>
+            <div className="stylePagesecondBlock__item">
+              <div className="stylePagesecondBlock__item-name">{itemArray[0]}</div>
+              <div className="stylePagesecondBlock__item-key">{itemArray[1]}</div>
+            </div>
+          </React.Fragment>
+        );
+      })}
+      <div className="stylePageline"></div>
     </div>
   );
 }

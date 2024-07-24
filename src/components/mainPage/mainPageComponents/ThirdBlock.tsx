@@ -11,7 +11,7 @@ type typeAdditionalServices = {
 type typeChoiceTypeHouse = { type: "all" | "cottage" | "two-storey house" | "bathhouse" };
 
 type typePropsThirdBlock = {
-  setMainPage: React.Dispatch<React.SetStateAction<boolean>>;
+  setMainPage: React.Dispatch<React.SetStateAction<string>>;
 };
 export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
   const [additionalServices, setAdditionalServices] = useState<typeAdditionalServices>();
@@ -122,8 +122,8 @@ export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
       if (coust == 0) {
         item.coust = "Скоро будут доступны";
       } else {
-        item.mortgage = (coust / 5).toString() + " руб";
-        item.coust = coust.toString() + " руб";
+        item.mortgage = (coust / 5).toString();
+        item.coust = coust.toString();
       }
     });
   }
@@ -174,7 +174,7 @@ export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
   );
 }
 
-function ThirdBlockTile(task: typeItemHouse, setMainPage: React.Dispatch<React.SetStateAction<boolean>>) {
+function ThirdBlockTile(task: typeItemHouse, setMainPage: React.Dispatch<React.SetStateAction<string>>) {
   switch (Object.keys(task).length) {
     case 11:
       return modalHouse(task, setMainPage);
@@ -185,21 +185,22 @@ function ThirdBlockTile(task: typeItemHouse, setMainPage: React.Dispatch<React.S
   }
 }
 
-function modalHouse(
-  { img, alt, information, code, coust, mortgage, link }: typeItemHouse,
-  setMainPage: (value: React.SetStateAction<boolean>) => void
-) {
+function modalHouse(task: typeItemHouse, setMainPage: (value: React.SetStateAction<string>) => void) {
   return (
-    <React.Fragment key={code}>
+    <React.Fragment key={task.code}>
       <div className="fourthAndThirdBlockTogether__tile">
-        <img className="fourthAndThirdBlockTogether__tile-img" src={img} alt={alt} />
-        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[0] : false}</div>
-        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[1] : false}</div>
-        <div className="fourthAndThirdBlockTogether__tile-text" id={code}>
-          Стоимость: {coust}
+        <img className="fourthAndThirdBlockTogether__tile-img" src={task.img} alt={task.alt} />
+        <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[0] : false}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[1] : false}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text" id={task.code}>
+          Стоимость: {task.coust} руб.
         </div>
-        <div className="fourthAndThirdBlockTogether__tile-text">В ипотеку: от {mortgage}</div>
-        <Link to={`/houses/${link}`} className="fourthAndThirdBlockTogether__link" onClick={() => setMainPage(false)}>
+        <div className="fourthAndThirdBlockTogether__tile-text">В ипотеку: от {task.mortgage} руб.</div>
+        <Link
+          to={`/houses/${task.link}`}
+          state={{ task: task }}
+          className="fourthAndThirdBlockTogether__link"
+          onClick={() => setMainPage(`/houses/${task.link}`)}>
           <img src="./icons/textSvg.svg" alt="link" />
         </Link>
       </div>
@@ -207,20 +208,21 @@ function modalHouse(
   );
 }
 
-function modalBathHouse(
-  { img, alt, information, code, coust, link }: typeItemHouse,
-  setMainPage: (value: React.SetStateAction<boolean>) => void
-) {
+function modalBathHouse(task: typeItemHouse, setMainPage: (value: React.SetStateAction<string>) => void) {
   return (
-    <React.Fragment key={code}>
+    <React.Fragment key={task.code}>
       <div className="fourthAndThirdBlockTogether__tile">
-        <img className="fourthAndThirdBlockTogether__tile-img" src={img} alt={alt} />
-        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[0] : false}</div>
-        <div className="fourthAndThirdBlockTogether__tile-text">{information ? information[1] : false}</div>
-        <div className="fourthAndThirdBlockTogether__tile-text" id={code}>
-          Стоимость: {coust}
+        <img className="fourthAndThirdBlockTogether__tile-img" src={task.img} alt={task.alt} />
+        <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[0] : false}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[1] : false}</div>
+        <div className="fourthAndThirdBlockTogether__tile-text" id={task.code}>
+          Стоимость: {task.coust} руб.
         </div>
-        <Link to={`/houses/${link}`} className="fourthAndThirdBlockTogether__link" onClick={() => setMainPage(false)}>
+        <Link
+          to={`/houses/${task.link}`}
+          state={{ task: task }}
+          className="fourthAndThirdBlockTogether__link"
+          onClick={() => setMainPage(`/houses/${task.link}`)}>
           <img src="./icons/textSvg.svg" alt="link" />
         </Link>
       </div>

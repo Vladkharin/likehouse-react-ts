@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 type typeHeaderProps = {
   scroll: number;
-  setMainPage: React.Dispatch<React.SetStateAction<boolean>>;
-  mainPage: boolean;
+  setMainPage: React.Dispatch<React.SetStateAction<string>>;
+  mainPage: string;
 };
 
 export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
-  if (mainPage) {
+  if (mainPage == "/" || mainPage == "/catalog" || mainPage == "/about") {
     return (
       <nav className={`nav ${scroll > 93 ? "changeBgNav" : ""}`}>
         <div className="container">
@@ -15,10 +15,10 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
             <div className="nav__menu">
               <img className="menu__Open" src="./icons/MenuIcon.svg" alt="MenuIcon" />
               <div className="nav__links">
-                <Link to={"/about"} className="menu__link">
+                <Link to={"/about"} className="menu__link" onClick={() => setMainPage("/about")}>
                   О нас
                 </Link>
-                <Link to={"/catalog"} className="menu__link l481">
+                <Link to={"/catalog"} className="menu__link l481" onClick={() => setMainPage("/catalog")}>
                   Каталог
                 </Link>
                 <a href="#tech" className="menu__link">
@@ -30,7 +30,7 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
                 <a href="#feedback" className="menu__link">
                   Отзывы
                 </a>
-                <Link to={"/payment"} className="menu__link" onClick={() => setMainPage(false)}>
+                <Link to={"/payment"} className="menu__link" onClick={() => setMainPage("/payment")}>
                   Оплата
                 </Link>
                 <a href="payment.html#mortgage" className="menu__link">
@@ -79,7 +79,7 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
         <div className="stylePagecontainer">
           <div className="stylePagenav__wrapper">
             <div className="stylePagenav__menu">
-              <Link to={"/"} className="stylePagemenu__linkMainPage" onClick={() => setMainPage(true)}>
+              <Link to={"/"} className="stylePagemenu__linkMainPage" onClick={() => setMainPage("/")}>
                 На главную
               </Link>
             </div>

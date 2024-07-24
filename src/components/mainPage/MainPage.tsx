@@ -9,7 +9,7 @@ import { EightBlock } from "./mainPageComponents/EightBlock";
 import { useEffect } from "react";
 
 type typePropsMainPage = {
-  setMainPage: React.Dispatch<React.SetStateAction<boolean>>;
+  setMainPage: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export function MainPage({ setMainPage }: typePropsMainPage) {

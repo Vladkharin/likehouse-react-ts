@@ -11,15 +11,14 @@ import { HousePage } from "./components/housePage/HousePage";
 
 function App() {
   const [scroll, setScroll] = useState(0);
-  const [mainPage, setMainPage] = useState(true);
-
-  console.log(mainPage);
+  const [mainPage, setMainPage] = useState("/");
 
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
 
   useEffect(() => {
+    setMainPage(window.location.pathname);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
