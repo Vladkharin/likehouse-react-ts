@@ -13,12 +13,6 @@ export function Footer() {
                 <a className="footer__item-linkWithdecoration" href="https://yandex.ru/maps/-/CDaJyP8G">
                   Показать на карте
                 </a>{" "}
-                <br /> <br />
-                Офис: г. Подольск <br />
-                ул. Советская 33/44 <br />
-                <a className="footer__item-linkWithdecoration" href="https://yandex.ru/maps/-/CDaJyP8G">
-                  Показать на карте
-                </a>
               </div>
             </div>
             <div className="footer__item">

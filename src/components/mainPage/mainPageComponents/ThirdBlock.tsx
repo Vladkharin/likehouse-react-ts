@@ -18,7 +18,7 @@ export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
   const [choiceTypeHouse, setChoiceTypeHouse] = useState<typeChoiceTypeHouse>({ type: "all" });
 
   const fetchAdditionalServices = async () => {
-    const response = await fetch("src/1c_site.json", { method: "GET" });
+    const response = await fetch("./1c_site.json", { method: "GET" });
     const data: typeAdditionalServices = await response.json();
     setAdditionalServices(data);
   };

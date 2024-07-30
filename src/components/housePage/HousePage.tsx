@@ -27,13 +27,14 @@ interface LocationState {
 }
 
 export function HousePage() {
-  const [additionalService, setAdditionalService] = useState<typeAdditionalService>();
   const location = useLocation();
   const { task } = location.state as LocationState;
-  const [house, setHouse] = useState<typeItemHouse>(task);
+  const [additionalService, setAdditionalService] = useState<typeAdditionalService>();
+  const [house] = useState<typeItemHouse>(task);
+  const [coustHouse, setCoustHouse] = useState<string | undefined>(house.coust);
 
   const fetchAdditionalServices = async () => {
-    const response = await fetch("../src/1c_site.json", { method: "GET" });
+    const response = await fetch("./../1c_site.json", { method: "GET" });
     const data: typeAdditionalServices = await response.json();
 
     // let totalCoust = 0;
@@ -72,7 +73,7 @@ export function HousePage() {
               </button>
               {house ? houseImgs(house) : <div>Загружается</div>}
             </div>
-            {house ? houseInformation(house) : <div>Загружается</div>}
+            {coustHouse ? houseInformation(house, coustHouse) : <div>Загружается</div>}
           </div>
         </div>
       </div>
@@ -82,11 +83,15 @@ export function HousePage() {
           {house ? basicConfiguration(house) : false}
 
           <div className="stylePagesecondBlock__header">Дополнительные услуги</div>
-          {additionalService ? additionalServiceItems(additionalService, setHouse, house) : <div>Загружается</div>}
+          {additionalService && coustHouse ? (
+            additionalServiceItems(additionalService, setCoustHouse, coustHouse)
+          ) : (
+            <div>Загружается</div>
+          )}
         </div>
       </div>
       <div className="stylePagecost">
-        СТОИМОСТЬ:<span className="stylePagecost__span">{house.coust}</span> руб.
+        СТОИМОСТЬ:<span className="stylePagecost__span">{coustHouse}</span> руб.
       </div>
       <div id="id" className="stylePagenone">
         {house.code}
@@ -97,26 +102,48 @@ export function HousePage() {
 
 function additionalServiceItems(
   services: typeAdditionalService,
-  setHouse: React.Dispatch<React.SetStateAction<typeItemHouse>>,
-  house: typeItemHouse
+  setCoustHouse: React.Dispatch<React.SetStateAction<string | undefined>>,
+  coustHouse: string
 ) {
-  const addorSubtractPrice = (
+  const addorSubtractPriceOnButton = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    setHouse: React.Dispatch<React.SetStateAction<typeItemHouse>>,
-    house: typeItemHouse
+    setCoustHouse: React.Dispatch<React.SetStateAction<string | undefined>>,
+    coustHouse: string
   ) => {
     if (event.target instanceof HTMLButtonElement) {
       if (event.target.classList[1] === "stylePageinactiveBtn") {
         event.target.classList.remove("stylePageinactiveBtn");
         event.target.classList.add("stylePageactiveBtn");
-        setHouse({ ...house, coust: (Number(house.coust) + Number(event.target.value)).toString() });
+        setCoustHouse((Number(coustHouse) - Number(event.target.value)).toString());
       } else if (event.target.classList[1] === "stylePageactiveBtn") {
         event.target.classList.add("stylePageinactiveBtn");
         event.target.classList.remove("stylePageactiveBtn");
-        setHouse({ ...house, coust: (Number(house.coust) - Number(event.target.value)).toString() });
+        setCoustHouse((Number(coustHouse) - Number(event.target.value)).toString());
       }
     }
   };
+
+  const addorSubtractPriceOnDiv = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    setCoustHouse: React.Dispatch<React.SetStateAction<string | undefined>>,
+    coustHouse: string
+  ) => {
+    if (event.target instanceof HTMLDivElement) {
+      const children = event.target.children[0];
+      if (children instanceof HTMLButtonElement) {
+        if (children.classList[1] === "stylePageinactiveBtn") {
+          children.classList.remove("stylePageinactiveBtn");
+          children.classList.add("stylePageactiveBtn");
+          setCoustHouse((Number(coustHouse) + Number(children.value)).toString());
+        } else if (children.classList[1] === "stylePageactiveBtn") {
+          children.classList.add("stylePageinactiveBtn");
+          children.classList.remove("stylePageactiveBtn");
+          setCoustHouse((Number(coustHouse) - Number(children.value)).toString());
+        }
+      }
+    }
+  };
+
   return (
     <div className="stylePagesecondBlock__services">
       {services["Разделы"].map((service, index) => {
@@ -128,15 +155,24 @@ function additionalServiceItems(
           <React.Fragment key={index}>
             <div className="stylePagesecondBlock__services-header">{service["Раздел"]}</div>
             {service["Подразделы"].map((section, secondIndex: number) => {
+              let activeClass = "stylePageinactiveBtn";
               secondIndex = 95959 + secondIndex;
+
+              if (section.Подраздел === "Имитация бруса" || section.Подраздел === "Стены и потолки: имитация бруса") {
+                activeClass = "stylePageactiveBtn";
+              }
+
               return (
                 <React.Fragment key={secondIndex}>
                   <div className="stylePagesecondBlock__service">
-                    <div className="stylePagesecondBlock__service-button" id={section.Код}>
+                    <div
+                      className="stylePagesecondBlock__service-button"
+                      id={section.Код}
+                      onClick={(event) => addorSubtractPriceOnDiv(event, setCoustHouse, coustHouse)}>
                       <button
-                        className={`stylePagesecondBlock__service-buttonSelector stylePageinactiveBtn`}
+                        className={`stylePagesecondBlock__service-buttonSelector ${activeClass}`}
                         value={section.Стоимость}
-                        onClick={(event) => addorSubtractPrice(event, setHouse, house)}></button>
+                        onClick={(event) => addorSubtractPriceOnButton(event, setCoustHouse, coustHouse)}></button>
                     </div>
                     <div className="stylePagesecondBlock__service-text">
                       {section.Подраздел} + {section.Стоимость.toString()} руб.
@@ -152,7 +188,7 @@ function additionalServiceItems(
   );
 }
 
-function houseInformation(house: typeItemHouse) {
+function houseInformation(house: typeItemHouse, coustHouse: string) {
   return (
     <div className="stylePagefirstBlock__information">
       {house.information
@@ -166,7 +202,7 @@ function houseInformation(house: typeItemHouse) {
           })
         : false}
       <div className="stylePagefirstBlock__button">
-        СТОИМОСТЬ: <span>{house.coust} руб.</span>
+        СТОИМОСТЬ: <span>{coustHouse} руб.</span>
       </div>
     </div>
   );
