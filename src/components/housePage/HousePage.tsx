@@ -116,8 +116,6 @@ export function HousePage() {
     scrollToTop();
   }, []);
 
-  console.log(listActiveAdditionalServices);
-
   return (
     <React.Fragment>
       <div className="stylePagefirstBlock bath">
@@ -185,12 +183,13 @@ function additionalServiceItems(
   choiceAdditionalServices: typeChoiceAdditionalServices
 ) {
   function mutuallyExclusive(code: string) {
-    let choiceArray: typeActiveAdditionalService[] = [];
+    // let choiceArray: typeActiveAdditionalService[] = [];
     choiceAdditionalServices["mutually exclusive"][code].forEach((item) => {
       const choiceItem = listActiveAdditionalServices.find((el) => el.code == item);
+      console.log(choiceItem);
 
       if (choiceItem !== undefined) {
-        setListActiveAdditionalServices(listActiveAdditionalServices.filter((item) => item.code != choiceItem.code));
+        setListActiveAdditionalServices(listActiveAdditionalServices.filter((car) => car.code !== choiceItem.code));
       }
     });
   }
@@ -200,10 +199,11 @@ function additionalServiceItems(
     // console.log(choiceAdditionalServices["mutually exclusive"][code]);
     // console.log(choiceAdditionalServices["cant choose without"][code]);
 
-    const array = [];
+    // const array = [];
 
     if (choiceAdditionalServices["mutually exclusive"][code]) {
       mutuallyExclusive(code);
+      console.log(1);
     }
     const object: typeActiveAdditionalService = {
       name: name,
