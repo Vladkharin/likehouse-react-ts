@@ -14,6 +14,12 @@ export type typeItemHouse = {
   houseName?: string
 }
 
+export type typeChoiceAdditionalServices = {
+  "mutually exclusive": {[key: string] : string[]},
+  "cant choose without": {[key: string] : string[]},
+  "cant be removed without": {[key: string] : string[]}
+}
+
 export type typeItemsHouse = typeItemHouse[];
 
 export let basicConfigurationOfTwoStoreyHouses = [
@@ -44,6 +50,41 @@ export let basicConfigurationOfTwoStoreyHouses = [
   'Высота первого этажа ? 2400 мм',
   'Высота второго этажа ? 2400 мм',
 ]
+
+export const choiceAdditionalServices: typeChoiceAdditionalServices = {
+  "mutually exclusive": {
+    "000000102": ["000000101", "000000105", "000000144"],
+    "000000101": ["000000102"],
+    "000000105": ["000000102", "000000144"],
+    "000000144": ["000000102", "000000105"],
+    "000000106": ["000000132"],
+    "000000108": ["000000107"],
+    "000000107": ["000000108"],
+    "000000114": ["000000138"],
+    "000000138": ["000000114", "000000132", "000000131", "000000122"],
+    "000000120": ["000000121"],
+    "000000121": ["000000120"],
+    "000000131": ["000000130", "000000138"],
+    "000000132": ["000000130", "000000138", "000000106"],
+    "000000130": ["000000131"],
+    "000000133": ["000000134", "000000135"],
+    "000000134": ["000000133", "000000135"],
+    "000000135": ["000000134", "000000133"],
+    "000000124": ["000000125"],
+    "000000125": ["000000124"],
+    "000000110": ["000000109"],
+    "000000109": ["000000110"],
+  },
+  "cant choose without": {
+    "000000131": ["000000122"],
+    "000000138": ["000000130"],
+  },
+  "cant be removed without": {
+    "000000130": ["000000138"],
+    "000000122": ["000000131"],
+    "000000101": ["000000144"],
+  },
+};
 
 export let itemsHouse: typeItemsHouse = [
   {
