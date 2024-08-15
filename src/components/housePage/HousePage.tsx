@@ -183,15 +183,15 @@ function additionalServiceItems(
   choiceAdditionalServices: typeChoiceAdditionalServices
 ) {
   function mutuallyExclusive(code: string) {
-    // let choiceArray: typeActiveAdditionalService[] = [];
+    let choiceArray: typeActiveAdditionalService[] = [];
     choiceAdditionalServices["mutually exclusive"][code].forEach((item) => {
       const choiceItem = listActiveAdditionalServices.find((el) => el.code == item);
-      console.log(choiceItem);
 
       if (choiceItem !== undefined) {
-        setListActiveAdditionalServices(listActiveAdditionalServices.filter((car) => car.code !== choiceItem.code));
+        choiceArray.push(choiceItem)
       }
     });
+    return choiceArray
   }
 
   function onBtn(code: string, name: string, count = 1) {
@@ -199,22 +199,35 @@ function additionalServiceItems(
     // console.log(choiceAdditionalServices["mutually exclusive"][code]);
     // console.log(choiceAdditionalServices["cant choose without"][code]);
 
-    // const array = [];
+    let array = [];
 
     if (choiceAdditionalServices["mutually exclusive"][code]) {
-      mutuallyExclusive(code);
-      console.log(1);
+      array.push(...mutuallyExclusive(code));
     }
-    const object: typeActiveAdditionalService = {
+
+    const s = listActiveAdditionalServices.filter(e => !array.includes(e))
+
+      const object: typeActiveAdditionalService = {
       name: name,
       code: code,
       count: count,
     };
-    setListActiveAdditionalServices([...listActiveAdditionalServices, object]);
+
+    s.push(object)
+    setListActiveAdditionalServices([...s]);
   }
 
   function offBtn(code: string) {
-    setListActiveAdditionalServices(listActiveAdditionalServices.filter((item) => item.code != code));
+
+    let endArray = listActiveAdditionalServices.filter((item) => item.code != code)
+    if (listActiveAdditionalServices.filter((item) => item.code == '000000144').length == 1) {
+      endArray.push({
+        code: '000000144',
+        name: 'Имитация бруса',
+        count: 1
+      })
+    }
+    setListActiveAdditionalServices([...endArray]);
   }
 
   const addorSubtractPriceOnButton = (
