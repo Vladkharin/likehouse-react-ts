@@ -1,26 +1,4 @@
-export type typeItemHouse = {
-  img?: string,
-  alt?: string,
-  size?: string,
-  square?: string,
-  coust?: string,
-  mortgage?: string
-  information?: string[]
-  imgs?: string[]
-  type?: string
-  link?: string
-  typeHouse: string,
-  code: string,
-  houseName?: string
-}
-
-export type typeChoiceAdditionalServices = {
-  "mutually exclusive": {[key: string] : string[]},
-  "cant choose without": {[key: string] : string[]},
-  "cant be removed without": {[key: string] : string[]}
-}
-
-export type typeItemsHouse = typeItemHouse[];
+import {typeChoiceAdditionalServices, typeItemsHouse} from "./components/typesAndIntefaces"
 
 export let basicConfigurationOfTwoStoreyHouses = [
   'Фундамент ? ЖБ сваи (длинна 3000 мм сечение 150х150 мм)',

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { itemsHouse, typeItemsHouse, typeItemHouse } from "../../../houses.ts";
+import { itemsHouse } from "../../../houses";
+import { typeItemsHouse, typeItemHouse } from "../../typesAndIntefaces";
 import { Link } from "react-router-dom";
 
 type typeAdditionalServices = {
