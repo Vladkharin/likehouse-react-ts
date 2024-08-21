@@ -15,12 +15,12 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
             <div className="nav__menu">
               <img className="menu__Open" src="./icons/MenuIcon.svg" alt="MenuIcon" />
               <div className="nav__links">
-                <Link to={"/about"} className="menu__link" onClick={() => setMainPage("/about")}>
+                <a href="#about" className="menu__link">
                   О нас
-                </Link>
-                <Link to={"/catalog"} className="menu__link l481" onClick={() => setMainPage("/catalog")}>
+                </a>
+                <a href="#catalog" className="menu__link l481">
                   Каталог
-                </Link>
+                </a>
                 <a href="#tech" className="menu__link">
                   Технология
                 </a>
@@ -33,7 +33,7 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
                 <Link to={"/payment"} className="menu__link" onClick={() => setMainPage("/payment")}>
                   Оплата
                 </Link>
-                <a href="payment.html#mortgage" className="menu__link">
+                <a href={"/payment#mortgage"} className="menu__link">
                   Ипотека
                 </a>
               </div>

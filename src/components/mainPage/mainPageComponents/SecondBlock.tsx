@@ -66,7 +66,7 @@ const secondListItems: list = [
 
 export function SecondBlock() {
   return (
-    <div className="secondBlock">
+    <div id="about" className="secondBlock">
       <div className="container">
         <div className="secondBlock__wrapper">
           <div className="secondBlock__header"> О нас</div>

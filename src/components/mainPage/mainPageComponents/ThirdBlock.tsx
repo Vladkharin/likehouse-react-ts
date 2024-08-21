@@ -138,7 +138,7 @@ export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
   }
 
   return (
-    <div className="fourthAndThirdBlockTogether">
+    <div id="catalog" className="fourthAndThirdBlockTogether">
       <div className="container width">
         <div className="fourthAndThirdBlockTogether__wrapper">
           <div className="fourthAndThirdBlockTogether__header">Каталог</div>

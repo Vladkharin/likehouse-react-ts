@@ -491,6 +491,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .stylePagesecondBlock {
   margin-top: 75px;
+  margin-bottom: 75px;
 }
 
 .stylePagesecondBlock__header {

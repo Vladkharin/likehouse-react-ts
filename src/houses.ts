@@ -32,7 +32,7 @@ export let basicConfigurationOfTwoStoreyHouses = [
 export const choiceAdditionalServices: typeChoiceAdditionalServices = {
   "mutually exclusive": {
     "000000102": ["000000101", "000000105", "000000144"],
-    "000000101": ["000000102"],
+    "000000101": ["000000102", "000000105"],
     "000000105": ["000000102", "000000144"],
     "000000144": ["000000102", "000000105"],
     "000000106": ["000000132"],
@@ -56,6 +56,7 @@ export const choiceAdditionalServices: typeChoiceAdditionalServices = {
   "cant choose without": {
     "000000131": ["000000122"],
     "000000138": ["000000130"],
+    "000000101": ['000000144']
   },
   "cant be removed without": {
     "000000130": ["000000138"],

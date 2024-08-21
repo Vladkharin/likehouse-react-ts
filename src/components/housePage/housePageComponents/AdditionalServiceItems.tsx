@@ -30,18 +30,53 @@ export function AdditionalServiceItems(
       }
     });
 
-    console.log(choiceArray, 1);
+    return choiceArray;
+  }
+
+  function cantChooseWithout(code: string) {
+    let choiceArray: typeActiveAdditionalService[] = [];
+    choiceAdditionalServices["cant choose without"][code].forEach((item) => {
+      services["Разделы"].forEach((car) => {
+        car.Подразделы.forEach((el) => {
+          if (item == el.Код) {
+            choiceArray.push({
+              name: el.Подраздел,
+              code: el.Код,
+              count: 1,
+              coust: el.Стоимость,
+            });
+          }
+        });
+      });
+    });
+
+    return choiceArray;
+  }
+
+  function cantBeRemovedWithout(code: string) {
+    let choiceArray: typeActiveAdditionalService[] = [];
+    choiceAdditionalServices["cant be removed without"][code].forEach((item) => {
+      const choiceItem = listActiveAdditionalServices.find((el) => el.code == item);
+
+      if (choiceItem !== undefined) {
+        choiceArray.push(choiceItem);
+      }
+    });
+
     return choiceArray;
   }
 
   function onBtn(code: string, name: string, coust: number, index = -1, count = 1) {
-    let array = [];
+    let mutuallyExclusiveArray = [];
 
     if (choiceAdditionalServices["mutually exclusive"][code]) {
-      array.push(...mutuallyExclusive(code));
+      mutuallyExclusiveArray.push(...mutuallyExclusive(code));
     }
+    let s = listActiveAdditionalServices.filter((e) => !mutuallyExclusiveArray.includes(e));
 
-    let s = listActiveAdditionalServices.filter((e) => !array.includes(e));
+    if (choiceAdditionalServices["cant choose without"][code]) {
+      s.push(...cantChooseWithout(code));
+    }
 
     if (index != -1) {
       s = s.filter((item) => item.code != code);
@@ -61,7 +96,6 @@ export function AdditionalServiceItems(
     };
 
     s.push(object);
-    console.log(s);
 
     const price = s.reduce((acc, item) => acc + item.coust * item.count, 0);
 
@@ -79,7 +113,6 @@ export function AdditionalServiceItems(
       firstIndex === -1 &&
       choiceAdditionalServices["mutually exclusive"][code].findIndex((item) => item === "000000144") !== -1
     ) {
-      console.log(1);
       endArray.push({
         code: imitationOfTimber.code,
         name: imitationOfTimber.name,
@@ -99,6 +132,12 @@ export function AdditionalServiceItems(
         count: wallsAndCeilings.count,
         coust: wallsAndCeilings.coust,
       });
+    }
+
+    if (choiceAdditionalServices["cant be removed without"][code]) {
+      let cantBeRemovedWithoutArray = [...cantBeRemovedWithout(code)];
+
+      endArray = listActiveAdditionalServices.filter((item) => !cantBeRemovedWithoutArray.includes(item));
     }
 
     if (code === "000000144" || code === "000000132") {
@@ -176,11 +215,8 @@ export function AdditionalServiceItems(
           coust = inputValue.Колодец;
           setStateInput({ Скважина: 0, Колодец: event.target.valueAsNumber });
         }
-        console.log(">0");
         onBtn(code, name, coust, index, event.target.valueAsNumber);
       } else if (event.target.valueAsNumber == 0) {
-        console.log("=0");
-
         setStateInput({ Скважина: 0, Колодец: 0 });
         offBtn(code);
       }

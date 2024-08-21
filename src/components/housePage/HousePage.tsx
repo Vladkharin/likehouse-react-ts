@@ -1,4 +1,5 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -22,8 +23,10 @@ export function HousePage() {
   const [house] = useState<typeItemHouse>(task);
   const [coustHouse, setCoustHouse] = useState<string | undefined>(house.coust);
   const [priceAdditionalServices, setPriceAdditionalServices] = useState<number>(0);
-  const [inputCoust, setInputCoust] = useState<number>(0);
   const [listActiveAdditionalServices, setListActiveAdditionalServices] = useState<typeListActiveAdditionalServices>([]);
+  const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
+  const [activeImg, setActiveImg] = useState<string>(house.imgs ? house.imgs[0] : "");
+  const [stateModal, setStateModal] = useState<boolean>(false);
 
   const [imitationOfTimber, setImitationOfTimber] = useState<typeActiveAdditionalService>({
     name: "",
@@ -93,8 +96,6 @@ export function HousePage() {
                   count: 1,
                   coust: subsection.Стоимость,
                 });
-
-                setInputCoust(inputCoust + subsection.Стоимость);
               }
             });
           }
@@ -115,8 +116,6 @@ export function HousePage() {
                   count: 1,
                   coust: subsection.Стоимость,
                 });
-
-                setInputCoust(inputCoust + subsection.Стоимость);
               }
             });
           }
@@ -143,9 +142,8 @@ export function HousePage() {
     scrollToTop();
   }, []);
 
-  console.log(listActiveAdditionalServices);
+  // console.log(listActiveAdditionalServices);
   // console.log(coustHouse);
-  // console.log(inputCoust);
   // console.log(coustHouse);
   // console.log(priceAdditionalServices);
 
@@ -156,16 +154,25 @@ export function HousePage() {
           <div className="stylePagefirstBlock__header">{house ? house["houseName"] : "Загружается!"}</div>
           <div className="stylePagefirstBlock__wrapper">
             <div className="stylePagefirstBlock__carousel">
-              <img src="../pages/6x6Images/02.jpg" className="stylePagefirstBlock__carousel-item" data-modal="imgs" />
-              <button className="stylePagefirstBlock__carousel-right">
+              <img
+                src={house.imgs ? house.imgs[activeImgIndex] : ""}
+                className="stylePagefirstBlock__carousel-item"
+                data-modal="imgs"
+                onClick={() => setStateModal(true)}
+              />
+              <button
+                className="stylePagefirstBlock__carousel-right"
+                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, setActiveImg, house, "plus") : false)}>
                 <img src="../icons/NextArrow.png" alt="next" />
               </button>
-              <button className="stylePagefirstBlock__carousel-left">
+              <button
+                className="stylePagefirstBlock__carousel-left"
+                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, setActiveImg, house, "minus") : false)}>
                 <img src="../icons/PrevArrow.png" alt="prev" />
               </button>
-              {house ? houseImgs(house) : <div>Загружается</div>}
+              {house ? houseImgs(house, activeImg, activeImgIndex, setStateModal, setActiveImgIndex) : <div>Загружается</div>}
             </div>
-            {coustHouse ? houseInformation(house, coustHouse, inputCoust) : <div>Загружается</div>}
+            {coustHouse ? houseInformation(house, coustHouse, imitationOfTimber, wallsAndCeilings) : <div>Загружается</div>}
           </div>
         </div>
       </div>
@@ -199,11 +206,17 @@ export function HousePage() {
       <div id="id" className="stylePagenone">
         {house.code}
       </div>
+      {modal(stateModal, house, setStateModal, activeImgIndex, setActiveImgIndex)}
     </React.Fragment>
   );
 }
 
-function houseInformation(house: typeItemHouse, coustHouse: string, inputCoust: number) {
+function houseInformation(
+  house: typeItemHouse,
+  coustHouse: string,
+  imitationOfTimber: typeActiveAdditionalService,
+  wallsAndCeilings: typeActiveAdditionalService
+) {
   return (
     <div className="stylePagefirstBlock__information">
       {house.information
@@ -217,25 +230,76 @@ function houseInformation(house: typeItemHouse, coustHouse: string, inputCoust: 
           })
         : false}
       <div className="stylePagefirstBlock__button">
-        СТОИМОСТЬ: <span>{Number(coustHouse) + inputCoust} руб.</span>
+        СТОИМОСТЬ: <span>{Number(coustHouse) + imitationOfTimber.coust + wallsAndCeilings.coust} руб.</span>
       </div>
     </div>
   );
 }
 
-function houseImgs(house: typeItemHouse) {
+function houseImgs(
+  house: typeItemHouse,
+  activeImg: string,
+  activeImgIndex: number,
+  setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
+  setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>
+) {
+  let translate = 0;
+  if (house.imgs && activeImgIndex > 1 && activeImgIndex < house.imgs.length - 1) {
+    translate = -180 * (activeImgIndex - 1);
+  } else if (house.imgs && activeImgIndex == house.imgs.length - 1) {
+    console.log("0000");
+    translate = -180 * (activeImgIndex - 2);
+  }
   return (
     <div className="stylePagefirstBlock__wrapper-field">
-      <div className="stylePagefirstBlock__field">
+      <div className="stylePagefirstBlock__field" style={{ transform: `translateX(${translate}px)` }}>
         {house.imgs
           ? house.imgs.map((item, index) => {
+              let activeClass = "";
+              if (index == activeImgIndex) {
+                activeClass = "stylePageactive";
+              }
+
               index = 10201 + index;
-              return <img key={index} className="stylePagefirstBlock__field-img" src={item} alt=""></img>;
+              return (
+                <img
+                  key={index}
+                  className={`stylePagefirstBlock__field-img ` + activeClass}
+                  src={item}
+                  alt=""
+                  onClick={() => {
+                    setActiveImgIndex(index - 10201);
+                    setStateModal(true);
+                  }}></img>
+              );
             })
           : false}
       </div>
     </div>
   );
+}
+
+function mainSlider(
+  activeImgIndex: number,
+  setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>,
+  setActiveImg: React.Dispatch<React.SetStateAction<string>>,
+  house: typeItemHouse,
+  action: string
+) {
+  let number = 0;
+  if (action == "plus") {
+    number = activeImgIndex + 1;
+  } else {
+    number = activeImgIndex - 1;
+  }
+
+  if (house.imgs && number >= house.imgs.length) {
+    number = 0;
+  } else if (house.imgs && number < 0) {
+    number = house.imgs.length - 1;
+  }
+  setActiveImgIndex(number);
+  setActiveImg(house.imgs ? house.imgs[number] : "");
 }
 
 function basicConfiguration(house: typeItemHouse) {
@@ -260,6 +324,77 @@ function basicConfiguration(house: typeItemHouse) {
         );
       })}
       <div className="stylePageline"></div>
+    </div>
+  );
+}
+
+function modal(
+  stateModal: boolean,
+  house: typeItemHouse,
+  setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
+  activeImgIndex: number,
+  setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>
+) {
+  let activeStyleWrapper = "stylePagenotVisible";
+
+  if (stateModal) {
+    activeStyleWrapper = "";
+  }
+
+  return (
+    <div className={"stylePagemodalMain stylePagebgwhite " + activeStyleWrapper}>
+      <div className="stylePagemodalMain__wrapper">
+        <button className="stylePagemodal__closeBlack" onClick={() => setStateModal(false)}>
+          {" "}
+        </button>
+        {house.imgs
+          ? house.imgs.map((img, index) => {
+              index += 123234432;
+
+              let activeClassSlide = "stylePagenone";
+
+              if (house.imgs && house.imgs[activeImgIndex] == img) {
+                activeClassSlide = "stylePageBlock";
+              }
+              return (
+                <img
+                  key={index}
+                  className={"stylePagemodalMain__img stylePageslider stylePagemodalBig " + activeClassSlide}
+                  src={img}
+                  alt=""
+                />
+              );
+            })
+          : false}
+        <button className="stylePagemodal__right">
+          <img
+            src="../icons/NextArrow.png"
+            alt="next"
+            onClick={() => {
+              let number = activeImgIndex + 1;
+              if (house.imgs && number >= house.imgs.length) {
+                setActiveImgIndex(0);
+              } else {
+                setActiveImgIndex(number);
+              }
+            }}
+          />
+        </button>
+        <button className="stylePagemodal__left">
+          <img
+            src="../icons/PrevArrow.png"
+            alt="prev"
+            onClick={() => {
+              let number = activeImgIndex - 1;
+              if (house.imgs && number < 0) {
+                setActiveImgIndex(house.imgs.length - 1);
+              } else {
+                setActiveImgIndex(number);
+              }
+            }}
+          />
+        </button>
+      </div>
     </div>
   );
 }
