@@ -1,5 +1,4 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -25,7 +24,6 @@ export function HousePage() {
   const [priceAdditionalServices, setPriceAdditionalServices] = useState<number>(0);
   const [listActiveAdditionalServices, setListActiveAdditionalServices] = useState<typeListActiveAdditionalServices>([]);
   const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
-  const [activeImg, setActiveImg] = useState<string>(house.imgs ? house.imgs[0] : "");
   const [stateModal, setStateModal] = useState<boolean>(false);
 
   const [imitationOfTimber, setImitationOfTimber] = useState<typeActiveAdditionalService>({
@@ -162,15 +160,15 @@ export function HousePage() {
               />
               <button
                 className="stylePagefirstBlock__carousel-right"
-                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, setActiveImg, house, "plus") : false)}>
+                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "plus") : false)}>
                 <img src="../icons/NextArrow.png" alt="next" />
               </button>
               <button
                 className="stylePagefirstBlock__carousel-left"
-                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, setActiveImg, house, "minus") : false)}>
+                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "minus") : false)}>
                 <img src="../icons/PrevArrow.png" alt="prev" />
               </button>
-              {house ? houseImgs(house, activeImg, activeImgIndex, setStateModal, setActiveImgIndex) : <div>Загружается</div>}
+              {house ? houseImgs(house, activeImgIndex, setStateModal, setActiveImgIndex) : <div>Загружается</div>}
             </div>
             {coustHouse ? houseInformation(house, coustHouse, imitationOfTimber, wallsAndCeilings) : <div>Загружается</div>}
           </div>
@@ -238,7 +236,6 @@ function houseInformation(
 
 function houseImgs(
   house: typeItemHouse,
-  activeImg: string,
   activeImgIndex: number,
   setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
   setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>
@@ -282,7 +279,6 @@ function houseImgs(
 function mainSlider(
   activeImgIndex: number,
   setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>,
-  setActiveImg: React.Dispatch<React.SetStateAction<string>>,
   house: typeItemHouse,
   action: string
 ) {
@@ -299,7 +295,6 @@ function mainSlider(
     number = house.imgs.length - 1;
   }
   setActiveImgIndex(number);
-  setActiveImg(house.imgs ? house.imgs[number] : "");
 }
 
 function basicConfiguration(house: typeItemHouse) {
@@ -366,33 +361,29 @@ function modal(
               );
             })
           : false}
-        <button className="stylePagemodal__right">
-          <img
-            src="../icons/NextArrow.png"
-            alt="next"
-            onClick={() => {
-              let number = activeImgIndex + 1;
-              if (house.imgs && number >= house.imgs.length) {
-                setActiveImgIndex(0);
-              } else {
-                setActiveImgIndex(number);
-              }
-            }}
-          />
+        <button
+          className="stylePagemodal__right"
+          onClick={() => {
+            let number = activeImgIndex + 1;
+            if (house.imgs && number >= house.imgs.length) {
+              setActiveImgIndex(0);
+            } else {
+              setActiveImgIndex(number);
+            }
+          }}>
+          <img src="../icons/NextArrow.png" alt="next" />
         </button>
-        <button className="stylePagemodal__left">
-          <img
-            src="../icons/PrevArrow.png"
-            alt="prev"
-            onClick={() => {
-              let number = activeImgIndex - 1;
-              if (house.imgs && number < 0) {
-                setActiveImgIndex(house.imgs.length - 1);
-              } else {
-                setActiveImgIndex(number);
-              }
-            }}
-          />
+        <button
+          className="stylePagemodal__left"
+          onClick={() => {
+            let number = activeImgIndex - 1;
+            if (house.imgs && number < 0) {
+              setActiveImgIndex(house.imgs.length - 1);
+            } else {
+              setActiveImgIndex(number);
+            }
+          }}>
+          <img src="../icons/PrevArrow.png" alt="prev" />
         </button>
       </div>
     </div>
