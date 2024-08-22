@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 type typeHeaderProps = {
   scroll: number;
-  setMainPage: React.Dispatch<React.SetStateAction<string>>;
   mainPage: string;
 };
 
-export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
-  if (mainPage == "/" || mainPage == "/catalog" || mainPage == "/about") {
+export function Header({ scroll, mainPage }: typeHeaderProps) {
+  if (useLocation().pathname == mainPage) {
     return (
       <nav className={`nav ${scroll > 93 ? "changeBgNav" : ""}`}>
         <div className="container">
@@ -30,7 +30,7 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
                 <a href="#feedback" className="menu__link">
                   Отзывы
                 </a>
-                <Link to={"/payment"} className="menu__link" onClick={() => setMainPage("/payment")}>
+                <Link to={"/payment"} className="menu__link">
                   Оплата
                 </Link>
                 <a href={"/payment#mortgage"} className="menu__link">
@@ -39,22 +39,22 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
               </div>
             </div>
             <div className="nav__icons">
-              <a href="https://teleg.run/Like_House_org" className="nav__icon">
+              <a target="_blank" href="https://teleg.run/Like_House_org" className="nav__icon">
                 <img src="./icons/TelegramIcon.svg" alt="" />
               </a>
-              <a href="https://wa.clck.bar/79251047452" className="nav__icon">
+              <a target="_blank" href="https://wa.clck.bar/79251047452" className="nav__icon">
                 <img src="./icons/WhatsappIcon.svg" alt="" />
               </a>
               <a id="phone" href="tel:+74951277452" className="nav__icon">
                 <img src="./icons/PhoneIcon.svg" alt="" />
               </a>
-              <a href="https://www.youtube.com/@likehouse_org" className="nav__icon">
+              <a target="_blank" href="https://www.youtube.com/@likehouse_org" className="nav__icon">
                 <img src="./icons/YouTubeIcon.svg" alt="" />
               </a>
               <a href="mailto:info@likehouse.org" className="nav__icon">
                 <img src="./icons/EmailIcon.svg" alt="" />
               </a>
-              <a href="https://vk.com/like_house" className="nav__icon">
+              <a target="_blank" href="https://vk.com/like_house" className="nav__icon">
                 <img src="./icons/VKIcon.svg" alt="" />
               </a>
             </div>
@@ -79,7 +79,7 @@ export function Header({ scroll, setMainPage, mainPage }: typeHeaderProps) {
         <div className="stylePagecontainer">
           <div className="stylePagenav__wrapper">
             <div className="stylePagenav__menu">
-              <Link to={"/"} className="stylePagemenu__linkMainPage" onClick={() => setMainPage("/")}>
+              <Link to={"/"} className="stylePagemenu__linkMainPage">
                 На главную
               </Link>
             </div>

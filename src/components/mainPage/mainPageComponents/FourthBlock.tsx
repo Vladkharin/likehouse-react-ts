@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 type typeItems = typeItem[];
 
@@ -46,19 +46,40 @@ const items: typeItems = [
   },
 ];
 
+const imgs: string[] = [
+  "./img/fifthBlockFirstimg.png",
+  "./img/fifthBlockSecondimg.png",
+  "./img/fifthBlockThirdimg.png",
+  "./img/fifthBlockFourthimg.webp",
+];
+
 export function FourthBlock() {
+  const [stateModal, setStateModal] = useState<boolean>(false);
+  const [activeSlide, setActiveSlide] = useState<number>(0);
   return (
     <div id="tech" className="fifthBlock">
       <div className="container">
         <div className="fifthBlock__header">Технология</div>
         <div className="fifthBlock__imgs">
-          <img src="./img/fifthBlockFirstimg.png" alt="img" className="fifthBlock__img" />
-          <img src="./img/fifthBlockSecondimg.png" alt="img" className="fifthBlock__img" />
-          <img src="./img/fifthBlockThirdimg.png" alt="img" className="fifthBlock__img" />
-          <img src="./img/fifthBlockFourthimg.webp" alt="img" className="fifthBlock__img" />
+          {imgs.map((img, index) => {
+            let key = index + 11111111;
+            return (
+              <img
+                key={key}
+                src={img}
+                alt="img"
+                className="fifthBlock__img"
+                onClick={() => {
+                  setStateModal(true);
+                  setActiveSlide(index);
+                }}
+              />
+            );
+          })}
         </div>
         {renderItems()}
       </div>
+      {modal(stateModal, setStateModal, activeSlide, setActiveSlide)}
     </div>
   );
 }
@@ -83,5 +104,51 @@ function createItem(item: typeItem, index: number) {
       </div>
       <div className="line gold"></div>
     </React.Fragment>
+  );
+}
+
+type typeModal = "hidden" | "visible";
+
+function modal(
+  stateModal: boolean,
+  setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
+  activeSlide: number,
+  setActiveSlide: React.Dispatch<React.SetStateAction<number>>
+) {
+  let activeClass = "none";
+  let activeStyle: typeModal = "hidden";
+  if (stateModal) {
+    activeClass = "";
+    activeStyle = "visible";
+  }
+
+  if (activeSlide > imgs.length - 1) {
+    activeSlide = 0;
+  } else if (activeSlide < 0) {
+    activeSlide = imgs.length - 1;
+  }
+  return (
+    <div className={"modalImgSlider " + activeClass} style={{ visibility: activeStyle }}>
+      <div className="modalImgSlider__field">
+        {imgs.map((img, index) => {
+          let activeClassImg = "none";
+          if (index == activeSlide) {
+            activeClassImg = "";
+          }
+          return (
+            <img key={index + 120011} className={"modalImgSlider__img " + activeClassImg} src={img} alt="fifthBlockFirstimg" />
+          );
+        })}
+      </div>
+      <button className="modalImgSlider__button-right" onClick={() => setActiveSlide(activeSlide + 1)}>
+        <img src="./icons/NextArrow.png" alt="" />
+      </button>
+      <button className="modalImgSlider__button-left" onClick={() => setActiveSlide(activeSlide - 1)}>
+        <img src="./icons/PrevArrow.png" alt="" />
+      </button>
+      <button className="modalImgSlider__close" onClick={() => setStateModal(false)}>
+        {" "}
+      </button>
+    </div>
   );
 }

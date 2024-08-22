@@ -8,11 +8,7 @@ import { SeventhBlock } from "./mainPageComponents/SeventhBlock";
 import { EightBlock } from "./mainPageComponents/EightBlock";
 import { useEffect } from "react";
 
-type typePropsMainPage = {
-  setMainPage: React.Dispatch<React.SetStateAction<string>>;
-};
-
-export function MainPage({ setMainPage }: typePropsMainPage) {
+export function MainPage() {
   useEffect(() => {
     const y = window.scrollY;
     window.scrollBy(0, -y);
@@ -22,7 +18,7 @@ export function MainPage({ setMainPage }: typePropsMainPage) {
     <>
       <FirstBlock />
       <SecondBlock />
-      <ThirdBlock setMainPage={setMainPage} />
+      <ThirdBlock />
       <FourthBlock />
       <FifthBlock />
       <SixthBlock />

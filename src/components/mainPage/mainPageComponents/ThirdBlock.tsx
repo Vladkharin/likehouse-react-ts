@@ -11,10 +11,7 @@ type typeAdditionalServices = {
 
 type typeChoiceTypeHouse = { type: "all" | "cottage" | "two-storey house" | "bathhouse" };
 
-type typePropsThirdBlock = {
-  setMainPage: React.Dispatch<React.SetStateAction<string>>;
-};
-export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
+export function ThirdBlock() {
   const [additionalServices, setAdditionalServices] = useState<typeAdditionalServices>();
   const [choiceTypeHouse, setChoiceTypeHouse] = useState<typeChoiceTypeHouse>({ type: "all" });
 
@@ -132,7 +129,7 @@ export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
   function ThirdBlockTiles() {
     return (
       <div className="fourthAndThirdBlockTogether__inner" key={1000001}>
-        {getActiveTypeHouses().map((task) => ThirdBlockTile(task, setMainPage))}
+        {getActiveTypeHouses().map((task) => ThirdBlockTile(task))}
       </div>
     );
   }
@@ -175,21 +172,21 @@ export function ThirdBlock({ setMainPage }: typePropsThirdBlock) {
   );
 }
 
-function ThirdBlockTile(task: typeItemHouse, setMainPage: React.Dispatch<React.SetStateAction<string>>) {
+function ThirdBlockTile(task: typeItemHouse) {
   switch (Object.keys(task).length) {
     case 11:
-      return modalHouse(task, setMainPage);
+      return modalHouse(task);
     case 9:
-      return modalBathHouse(task, setMainPage);
+      return modalBathHouse(task);
     case 2:
       return modalTypeHousesOrBathHouses(task);
   }
 }
 
-function modalHouse(task: typeItemHouse, setMainPage: (value: React.SetStateAction<string>) => void) {
+function modalHouse(task: typeItemHouse) {
   return (
     <React.Fragment key={task.code}>
-      <div className="fourthAndThirdBlockTogether__tile">
+      <Link to={`/houses/${task.link}`} state={{ task: task }} className="fourthAndThirdBlockTogether__tile">
         <img className="fourthAndThirdBlockTogether__tile-img" src={task.img} alt={task.alt} />
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[0] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[1] : false}</div>
@@ -197,19 +194,15 @@ function modalHouse(task: typeItemHouse, setMainPage: (value: React.SetStateActi
           Стоимость: {task.coust} руб.
         </div>
         <div className="fourthAndThirdBlockTogether__tile-text">В ипотеку: от {task.mortgage} руб.</div>
-        <Link
-          to={`/houses/${task.link}`}
-          state={{ task: task }}
-          className="fourthAndThirdBlockTogether__link"
-          onClick={() => setMainPage(`/houses/${task.link}`)}>
+        <div className="fourthAndThirdBlockTogether__link">
           <img src="./icons/textSvg.svg" alt="link" />
-        </Link>
-      </div>
+        </div>
+      </Link>
     </React.Fragment>
   );
 }
 
-function modalBathHouse(task: typeItemHouse, setMainPage: (value: React.SetStateAction<string>) => void) {
+function modalBathHouse(task: typeItemHouse) {
   return (
     <React.Fragment key={task.code}>
       <div className="fourthAndThirdBlockTogether__tile">
@@ -219,11 +212,7 @@ function modalBathHouse(task: typeItemHouse, setMainPage: (value: React.SetState
         <div className="fourthAndThirdBlockTogether__tile-text" id={task.code}>
           Стоимость: {task.coust} руб.
         </div>
-        <Link
-          to={`/houses/${task.link}`}
-          state={{ task: task }}
-          className="fourthAndThirdBlockTogether__link"
-          onClick={() => setMainPage(`/houses/${task.link}`)}>
+        <Link to={`/houses/${task.link}`} state={{ task: task }} className="fourthAndThirdBlockTogether__link">
           <img src="./icons/textSvg.svg" alt="link" />
         </Link>
       </div>

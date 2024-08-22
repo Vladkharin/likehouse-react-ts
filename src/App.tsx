@@ -11,23 +11,22 @@ import { HousePage } from "./components/housePage/HousePage";
 
 function App() {
   const [scroll, setScroll] = useState(0);
-  const [mainPage, setMainPage] = useState("/");
+  const [mainPage] = useState("/");
 
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
 
   useEffect(() => {
-    setMainPage(window.location.pathname);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <Router>
-      <Header scroll={scroll} setMainPage={setMainPage} mainPage={mainPage} />
+      <Header scroll={scroll} mainPage={mainPage} />
       <Routes>
-        <Route path={"/:anchor?"} element={<MainPage setMainPage={setMainPage} />} />
+        <Route path={"/:anchor?"} element={<MainPage />} />
         <Route path={"/payment"} element={<PaymentPage />} />
         <Route path={"/houses/:houseName?"} element={<HousePage />} />
       </Routes>
