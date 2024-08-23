@@ -55,7 +55,7 @@ export function PaymentPage() {
         <div className="stylePagecontainer">
           <div className="stylePagehelp__header">Поможем с ипотекой</div>
           <div className="stylePagehelp__wrapper">
-            <img src="./assets/pages/8x11Images/01.jpg" alt="" />
+            <img src="./pages/8x11Images/01.jpg" alt="" />
             <div className="stylePagehelp__items">
               <div className="stylePagehelp__item">
                 <span>98%</span> положительных заявок

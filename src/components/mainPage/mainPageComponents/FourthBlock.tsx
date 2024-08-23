@@ -99,7 +99,21 @@ function createItem(item: typeItem, index: number) {
       <div className="fifthBlock__item">
         <div className="fifthBlock__item-number">{item.value}</div>
         <div className="fifthBlock__item-text">{item.title}</div>
-        <img src="./icons/plus.svg" alt="" className="fifthBlock__item-plus" />
+        <img
+          src="./icons/plus.svg"
+          alt=""
+          className="fifthBlock__item-plus"
+          onClick={(event) => {
+            let imgEl = event.nativeEvent.target as HTMLImageElement;
+            if (imgEl.nextElementSibling as HTMLDivElement) {
+              if (imgEl.nextElementSibling?.classList.length == 1) {
+                imgEl.nextElementSibling?.classList.add("openMenu");
+              } else {
+                imgEl.nextElementSibling?.classList.remove("openMenu");
+              }
+            }
+          }}
+        />
         <div className="fifthBlock__item-subtitle">{item.subtitle}</div>
       </div>
       <div className="line gold"></div>

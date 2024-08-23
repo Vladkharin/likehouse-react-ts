@@ -21,7 +21,6 @@ export function FirstBlock() {
     inputPhone: "",
   });
 
-  console.log(inputsError);
   return (
     <div className="firstBlock">
       <div className="container">
@@ -126,6 +125,7 @@ function modal(
               }}></div>
             <div
               className="feedBack__menu-arrow"
+              style={stateContextMenu ? { rotate: "180deg" } : { rotate: "360deg" }}
               onClick={() => {
                 if (stateContextMenu) {
                   setStateContextMenu(false);
@@ -224,8 +224,6 @@ async function postData(
   event.preventDefault();
 
   const form = event.nativeEvent.target as HTMLFormElement;
-
-  // console.log(form.childNodes);
 
   let error = formValidate(form, setInputsError, inputsError, setFetchStatus);
 

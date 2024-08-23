@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 type typeHeaderProps = {
   scroll: number;
@@ -7,13 +8,15 @@ type typeHeaderProps = {
 };
 
 export function Header({ scroll, mainPage }: typeHeaderProps) {
+  const [menuTel, setMenuTel] = useState<boolean>(false);
+
   if (useLocation().pathname == mainPage) {
     return (
       <nav className={`nav ${scroll > 93 ? "changeBgNav" : ""}`}>
         <div className="container">
           <div className="nav__wrapper">
             <div className="nav__menu">
-              <img className="menu__Open" src="./icons/MenuIcon.svg" alt="MenuIcon" />
+              <img className="menu__Open" src="./icons/MenuIcon.svg" alt="MenuIcon" onClick={() => setMenuTel(true)} />
               <div className="nav__links">
                 <a href="#about" className="menu__link">
                   О нас
@@ -71,6 +74,7 @@ export function Header({ scroll, mainPage }: typeHeaderProps) {
             </div>
           </div>
         </div>
+        {menu(menuTel, setMenuTel)}
       </nav>
     );
   } else {
@@ -119,4 +123,47 @@ export function Header({ scroll, mainPage }: typeHeaderProps) {
       </nav>
     );
   }
+}
+
+function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<boolean>>) {
+  let overlayClass = "overlay";
+  let menuClass = "menu";
+  if (menuTel) {
+    overlayClass = "overlay block";
+    menuClass = "menu visible";
+  }
+
+  return (
+    <>
+      <div className={overlayClass} onClick={() => setMenuTel(false)}></div>
+      <div className={menuClass}>
+        <div className="menu__links">
+          <a href="#about" className="menu__link" onClick={() => setMenuTel(false)}>
+            О нас
+          </a>
+          <a href="#catalog" className="menu__link" onClick={() => setMenuTel(false)}>
+            Каталог
+          </a>
+          <a href="#tech" className="menu__link" onClick={() => setMenuTel(false)}>
+            Технология
+          </a>
+          <a href="#dop" className="menu__link" onClick={() => setMenuTel(false)}>
+            Доп. услуги
+          </a>
+          <a href="#feedback" className="menu__link" onClick={() => setMenuTel(false)}>
+            Отзывы
+          </a>
+          <Link to={"/payment"} className="menu__link">
+            Оплата
+          </Link>
+          <a href={"/payment#mortgage"} className="menu__link">
+            Ипотека
+          </a>
+        </div>
+        <button className="menu__Close" onClick={() => setMenuTel(false)}>
+          {" "}
+        </button>
+      </div>
+    </>
+  );
 }

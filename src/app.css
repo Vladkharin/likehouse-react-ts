@@ -524,7 +524,7 @@ body {
 
 .fifthBlock__item-subtitle {
   color: #31373e;
-  transition: max-height ease-in-out 0.3s, opacity ease-in-out 0.3s;
+  transition: max-height ease-in-out 1s, opacity ease-in-out 0.3s;
   overflow: hidden;
   max-height: 0px;
   font-size: 20px;
@@ -1066,6 +1066,11 @@ body {
 
 .changeBgNav {
   background-color: rgb(7, 64, 151);
+}
+
+.openMenu {
+  max-height: 190px;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 360px) {
