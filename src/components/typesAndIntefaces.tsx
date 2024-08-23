@@ -58,3 +58,8 @@ export type typeChoiceAdditionalServices = {
 };
 
 export type typeItemsHouse = typeItemHouse[];
+
+export type typeInputsError = {
+  inputName: string;
+  inputPhone: string;
+};

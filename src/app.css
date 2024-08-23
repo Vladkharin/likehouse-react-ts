@@ -2348,23 +2348,34 @@ body {
   border-radius: 100%;
   position: relative;
 }
-/* .feedBackModal__complete::before{
-  top: 50%;
-  height: 50%;
-  width: 3px;
-  background-color: #336699;
-  content: "";
-  transform: translateX(10px) rotate(-45deg);
-  transform-origin: left bottom;
-} */
 .feedBackModal__complete::after {
-  width: 15px;
-  height: 11px;
+  width: 13px;
+  height: 20px;
   content: "\2713";
   color: #62c584;
   position: absolute;
-  top: 12px;
+  top: 13px;
   left: 18px;
+}
+
+.feedBackModal__failure {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #c41e3a;
+  border-radius: 100%;
+  position: relative;
+}
+
+.feedBackModal__failure::after {
+  width: 13px;
+  height: 20px;
+  content: "\00D7";
+  color: #c41e3a;
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  font-size: 50px;
 }
 
 .feedBackModal__text {

@@ -1,9 +1,27 @@
 import React, { useState } from "react";
 import { arrayNameAndNumber, arrayPositionBG } from "../../../houses";
+import { typeInputsError } from "../../typesAndIntefaces";
+import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
+
+const maskGenerator = createDefaultMaskGenerator("(999) 999-99-99");
+
+const FORM_STATUS_MESSAGE = {
+  loading: "Загрузка...",
+  success: "Спасибо! Скоро мы с вами свяжемся",
+  failure: "Что-то пошло не так...",
+};
 
 export function FirstBlock() {
   const [stateModal, setStateModal] = useState<boolean>(false);
   const [stateContextMenu, setStateContextMenu] = useState<boolean>(false);
+  const [inputPhoneValue, setInputPhoneValue] = useState<string>("");
+  const [fetchStatus, setFetchStatus] = useState<string>("");
+  const [inputsError, setInputsError] = useState<typeInputsError>({
+    inputName: "",
+    inputPhone: "",
+  });
+
+  console.log(inputsError);
   return (
     <div className="firstBlock">
       <div className="container">
@@ -37,7 +55,18 @@ export function FirstBlock() {
         <img src="./icons/partner.svg?ver=1" alt="partner" className="animation__spin" />
       </div>
 
-      {modal(stateModal, setStateModal, stateContextMenu, setStateContextMenu)}
+      {modal(
+        stateModal,
+        setStateModal,
+        stateContextMenu,
+        setStateContextMenu,
+        inputsError,
+        setInputsError,
+        inputPhoneValue,
+        setInputPhoneValue,
+        fetchStatus,
+        setFetchStatus
+      )}
     </div>
   );
 }
@@ -46,7 +75,13 @@ function modal(
   stateModal: boolean,
   setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
   stateContextMenu: boolean,
-  setStateContextMenu: React.Dispatch<React.SetStateAction<boolean>>
+  setStateContextMenu: React.Dispatch<React.SetStateAction<boolean>>,
+  inputsError: typeInputsError,
+  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
+  inputPhoneValue: string,
+  setInputPhoneValue: React.Dispatch<React.SetStateAction<string>>,
+  fetchStatus: string,
+  setFetchStatus: React.Dispatch<React.SetStateAction<string>>
 ) {
   let modalActiveStyle = "none";
   let contextMenuActiveStyle = "none";
@@ -61,9 +96,24 @@ function modal(
     <div className="feedBack" style={{ display: modalActiveStyle }}>
       <div className="feedBack__wrapper">
         <img className="feedBack__mainImg" src="./img/Видовой_кадр_01_9.5x14.jpg?v=1" alt="feedback" />
-        <form action="sendmail.php" className="feedBack__form">
+        <form
+          action="sendmail.php"
+          className="feedBack__form"
+          onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus)}>
           <div className="feedBack__form-header">Оставьте заявку</div>
-          <input className="feedBack__from-inputText _req" name="user_name" type="text" placeholder="Ваше имя" />
+          <input
+            className="feedBack__from-inputText _req"
+            name="user_name"
+            type="text"
+            placeholder="Ваше имя"
+            onChange={() => {
+              setInputsError({
+                inputName: "",
+                inputPhone: "",
+              });
+              setFetchStatus("");
+            }}
+          />
           <div className="feedBack__menu">
             <div
               className="feedBack__menu-flag"
@@ -85,16 +135,28 @@ function modal(
               }}></div>
             <div className="feedBack__menu-number">+7</div>
           </div>
-          <input
+          <MaskedInput
+            maskGenerator={maskGenerator}
             className="feedBack__from-inputPhone _req"
             name="user_phone"
             type="tel"
             placeholder="(999) 999-99-99"
+            value={inputPhoneValue}
+            onChange={() => {
+              setInputPhoneValue;
+              setInputsError({
+                inputName: "",
+                inputPhone: "",
+              });
+              setFetchStatus("");
+            }}
             data-phonemask="+7"
           />
           <button type="submit" className="feedBack__form-submit">
-            <div className="loader none"></div>
-            <div className="feedBack__form-submitText block">Отправить</div>
+            <div className={fetchStatus === "Загрузка..." ? "loader block" : "loader none"}></div>
+            <div className={fetchStatus === "Загрузка..." ? "feedBack__form-submitText none" : "feedBack__form-submitText block"}>
+              Отправить
+            </div>
           </button>
           <div className="feedBack__form-text">Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности</div>
           <div className="feedBack__form-imgs">
@@ -111,24 +173,152 @@ function modal(
             {" "}
             {contextMenu()}
           </div>
-          <div className="error tl17585 notVisible">Обязательное поле</div>
-          <div className="errorBig tl17585">Слишком длиное значение</div>
-          <div className="error tl24085 notVisible">Обязательное поле</div>
-          <div className="errorTel tl24085">Слишком короткое значение</div>
+          <div className={inputsError.inputName == "Обязательное поле" ? "error tl17585 show" : "error tl17585 notVisible"}>
+            Обязательное поле
+          </div>
+          <div
+            className={
+              inputsError.inputName == "Слишком длинное значение" ? "errorBig tl17585 show" : "errorBig tl17585 notVisible"
+            }>
+            Слишком длинное значение
+          </div>
+          <div className={inputsError.inputPhone == "Обязательное поле" ? "error tl24085 show" : "error tl24085 notVisible"}>
+            Обязательное поле
+          </div>
+          <div
+            className={
+              inputsError.inputPhone == "Слишком короткое значение" ? "errorTel tl24085 show" : "errorTel tl24085 notVisible"
+            }>
+            Слишком короткое значение
+          </div>
           <div className="crestik" onClick={() => setStateModal(false)}>
             <img src="./icons/crestik.svg" alt="" />
           </div>
         </form>
-        <div className="feedBackModal none">
+        <div
+          className={
+            fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..."
+              ? "feedBackModal"
+              : "feedBackModal none"
+          }>
           <div className="feedBackModal__wrapper">
-            <img src="./icons/crestikBlack.svg" alt="" className="crestikBlack" />
-            <div className="feedBackModal__complete"></div>
-            <div className="feedBackModal__text">Спасибо! Данные успешно отправлены.</div>
+            <img src="./icons/crestikBlack.svg" alt="" className="crestikBlack" onClick={() => setFetchStatus("")} />
+            <div
+              className={
+                fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"
+              }></div>
+            <div className="feedBackModal__text">{fetchStatus}</div>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+async function postData(
+  event: React.FormEvent<HTMLFormElement>,
+  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
+  inputsError: typeInputsError,
+  setFetchStatus: React.Dispatch<React.SetStateAction<string>>
+) {
+  event.preventDefault();
+
+  const form = event.nativeEvent.target as HTMLFormElement;
+
+  // console.log(form.childNodes);
+
+  let error = formValidate(form, setInputsError, inputsError, setFetchStatus);
+
+  const indexNumber = form.childNodes[2].childNodes[2].textContent;
+  const inputTel = (form.childNodes[3] as HTMLInputElement).value;
+
+  setFetchStatus(FORM_STATUS_MESSAGE.loading);
+
+  if (error === 0) {
+    setFetchStatus("");
+    const formData = new FormData(form);
+
+    const phone = indexNumber + inputTel;
+
+    formData.set("user_phone", phone);
+
+    const response = await fetch("sendmail.php", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.status === 200) {
+      setFetchStatus(FORM_STATUS_MESSAGE.success);
+      form.reset();
+    } else {
+      setFetchStatus(FORM_STATUS_MESSAGE.failure);
+    }
+  } else {
+    setFetchStatus("");
+  }
+}
+
+function formValidate(
+  form: HTMLFormElement,
+  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
+  inputsError: typeInputsError,
+  setFetchStatus: React.Dispatch<React.SetStateAction<string>>
+) {
+  let error = 0;
+
+  let formReq = [form.childNodes[1], form.childNodes[3]];
+
+  formRemoveError(form.childNodes[3] as HTMLInputElement, setInputsError, inputsError);
+  formRemoveError(form.childNodes[1] as HTMLInputElement, setInputsError, inputsError);
+
+  let obj: typeInputsError = {
+    inputName: "",
+    inputPhone: "",
+  };
+
+  for (let index = 0; index < formReq.length; index++) {
+    const input = formReq[index] as HTMLInputElement;
+
+    if (input.name === "user_name") {
+      if (input.value.length > 25) {
+        obj = { ...obj, inputName: "Слишком длинное значение" };
+        error++;
+      }
+
+      if (input.value.trim() === "") {
+        obj = { ...obj, inputName: "Обязательное поле" };
+        error++;
+      }
+    }
+
+    if (input.name === "user_phone") {
+      if (input.value === "") {
+        obj = { ...obj, inputPhone: "Обязательное поле" };
+        error++;
+      }
+
+      if (input.value.length < 15 && input.value.length > 0) {
+        obj = { ...obj, inputPhone: "Слишком короткое значение" };
+        error++;
+      }
+    }
+  }
+  setFetchStatus("");
+  setInputsError(obj);
+
+  return error;
+}
+
+function formRemoveError(
+  input: HTMLInputElement,
+  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
+  inputsError: typeInputsError
+) {
+  if (input.name === "user_phone") {
+    setInputsError({ ...inputsError, inputPhone: "" });
+  } else if (input.name === "user_name") {
+    setInputsError({ ...inputsError, inputName: "" });
+  }
 }
 
 function contextMenu() {
