@@ -107,8 +107,10 @@ function createItem(item: typeItem, index: number) {
             let imgEl = event.nativeEvent.target as HTMLImageElement;
             if (imgEl.nextElementSibling as HTMLDivElement) {
               if (imgEl.nextElementSibling?.classList.length == 1) {
+                imgEl.classList.add("rotate");
                 imgEl.nextElementSibling?.classList.add("openMenu");
               } else {
+                imgEl.classList.remove("rotate");
                 imgEl.nextElementSibling?.classList.remove("openMenu");
               }
             }
