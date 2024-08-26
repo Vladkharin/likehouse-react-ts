@@ -140,11 +140,6 @@ export function HousePage() {
     scrollToTop();
   }, []);
 
-  // console.log(listActiveAdditionalServices);
-  // console.log(coustHouse);
-  // console.log(coustHouse);
-  // console.log(priceAdditionalServices);
-
   return (
     <React.Fragment>
       <div className="stylePagefirstBlock bath">
@@ -215,11 +210,28 @@ function houseInformation(
   imitationOfTimber: typeActiveAdditionalService,
   wallsAndCeilings: typeActiveAdditionalService
 ) {
+  console.log(coustHouse);
   return (
     <div className="stylePagefirstBlock__information">
       {house.information
         ? house.information.map((item, index) => {
             index = 10140 + index;
+            if (item.split(":")[0] === "Размер") {
+              if (house.type != "bathhouse") {
+                item = item.split(":")[0] + " дома: " + item.split(":")[1].split(" ")[1];
+              } else {
+                item = item.split(":")[0] + " бани: " + item.split(":")[1].split(" ")[1];
+              }
+            }
+
+            if (item.split(":")[0] === "Площадь") {
+              if (house.type != "bathhouse") {
+                item = item.split(":")[0] + " дома: " + item.split(":")[1];
+              } else {
+                item = item.split(":")[0] + " бани: " + item.split(":")[1];
+              }
+            }
+
             return (
               <div key={index} className="stylePagefirstBlock__information-text">
                 {item}
@@ -228,7 +240,12 @@ function houseInformation(
           })
         : false}
       <div className="stylePagefirstBlock__button">
-        СТОИМОСТЬ: <span>{Number(coustHouse) + imitationOfTimber.coust + wallsAndCeilings.coust} руб.</span>
+        СТОИМОСТЬ:{" "}
+        <span>
+          {coustHouse === "Cкоро будет"
+            ? coustHouse
+            : Number(coustHouse) + imitationOfTimber.coust + wallsAndCeilings.coust + " руб."}
+        </span>
       </div>
     </div>
   );
