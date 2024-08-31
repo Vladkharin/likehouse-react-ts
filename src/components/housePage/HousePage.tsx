@@ -11,7 +11,13 @@ import {
   typeActiveAdditionalService,
 } from "../typesAndIntefaces.tsx";
 
-import { basicConfigurationOfTwoStoreyHouses, choiceAdditionalServices } from "../../houses.ts";
+import {
+  basicConfigurationOfTwoStoreyHouses,
+  choiceAdditionalServices,
+  basicConfigurationOfCottage,
+  basicConfigurationBathHouse,
+  basicConfigurationArchitectCottageHouse,
+} from "../../houses.ts";
 
 import { AdditionalServiceItems } from "./housePageComponents/AdditionalServiceItems.tsx";
 
@@ -48,6 +54,10 @@ export function HousePage() {
     Колодец: 0,
     Скважина: 0,
   });
+
+  useEffect(() => {
+    document.title = house.houseName as string;
+  }, []);
 
   const fetchAdditionalServices = async () => {
     const response = await fetch("./../1c_site.json", { method: "GET" });
@@ -140,6 +150,30 @@ export function HousePage() {
     scrollToTop();
   }, []);
 
+  function viewAddtionalServicesBlock() {
+    return (
+      <>
+        <div className="stylePagesecondBlock__header">Дополнительные услуги</div>
+        {additionalService && coustHouse ? (
+          AdditionalServiceItems(
+            additionalService,
+            inputValue,
+            stateInput,
+            setStateInput,
+            listActiveAdditionalServices,
+            setListActiveAdditionalServices,
+            choiceAdditionalServices,
+            setPriceAdditionalServices,
+            imitationOfTimber,
+            wallsAndCeilings
+          )
+        ) : (
+          <div>Загружается</div>
+        )}
+      </>
+    );
+  }
+
   return (
     <React.Fragment>
       <div className="stylePagefirstBlock bath">
@@ -165,7 +199,7 @@ export function HousePage() {
               </button>
               {house ? houseImgs(house, activeImgIndex, setStateModal, setActiveImgIndex) : <div>Загружается</div>}
             </div>
-            {coustHouse ? houseInformation(house, coustHouse, imitationOfTimber, wallsAndCeilings) : <div>Загружается</div>}
+            {coustHouse ? houseInformation(house, coustHouse, priceAdditionalServices) : <div>Загружается</div>}
           </div>
         </div>
       </div>
@@ -174,27 +208,14 @@ export function HousePage() {
           <div className="stylePagesecondBlock__header">Базовая комплектация проекта</div>
           {house ? basicConfiguration(house) : false}
 
-          <div className="stylePagesecondBlock__header">Дополнительные услуги</div>
-          {additionalService && coustHouse ? (
-            AdditionalServiceItems(
-              additionalService,
-              inputValue,
-              stateInput,
-              setStateInput,
-              listActiveAdditionalServices,
-              setListActiveAdditionalServices,
-              choiceAdditionalServices,
-              setPriceAdditionalServices,
-              imitationOfTimber,
-              wallsAndCeilings
-            )
-          ) : (
-            <div>Загружается</div>
-          )}
+          {house.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
       <div className="stylePagecost">
-        СТОИМОСТЬ:<span className="stylePagecost__span">{Number(coustHouse) + priceAdditionalServices}</span> руб.
+        СТОИМОСТЬ:
+        <span className="stylePagecost__span">
+          {coustHouse == "Скоро будет" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}
+        </span>
       </div>
       <div id="id" className="stylePagenone">
         {house.code}
@@ -204,13 +225,7 @@ export function HousePage() {
   );
 }
 
-function houseInformation(
-  house: typeItemHouse,
-  coustHouse: string,
-  imitationOfTimber: typeActiveAdditionalService,
-  wallsAndCeilings: typeActiveAdditionalService
-) {
-  console.log(coustHouse);
+function houseInformation(house: typeItemHouse, coustHouse: string, priceAdditionalServices: number) {
   return (
     <div className="stylePagefirstBlock__information">
       {house.information
@@ -241,11 +256,7 @@ function houseInformation(
         : false}
       <div className="stylePagefirstBlock__button">
         СТОИМОСТЬ:{" "}
-        <span>
-          {coustHouse === "Cкоро будет"
-            ? coustHouse
-            : Number(coustHouse) + imitationOfTimber.coust + wallsAndCeilings.coust + " руб."}
-        </span>
+        <span>{coustHouse == "Скоро будет" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}</span>
       </div>
     </div>
   );
@@ -261,7 +272,6 @@ function houseImgs(
   if (house.imgs && activeImgIndex > 1 && activeImgIndex < house.imgs.length - 1) {
     translate = -180 * (activeImgIndex - 1);
   } else if (house.imgs && activeImgIndex == house.imgs.length - 1) {
-    console.log("0000");
     translate = -180 * (activeImgIndex - 2);
   }
   return (
@@ -318,6 +328,14 @@ function basicConfiguration(house: typeItemHouse) {
   let arrayConf: string[] = [];
   if (house.type === "two-storey house") {
     arrayConf = basicConfigurationOfTwoStoreyHouses;
+  } else if (house.type === "cottage") {
+    if (house.typeHouse === "Архитект") {
+      arrayConf = basicConfigurationArchitectCottageHouse;
+    } else {
+      arrayConf = basicConfigurationOfCottage;
+    }
+  } else if (house.type === "bathhouse") {
+    arrayConf = basicConfigurationBathHouse;
   }
 
   return (

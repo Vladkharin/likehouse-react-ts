@@ -11,6 +11,11 @@ const FORM_STATUS_MESSAGE = {
   failure: "Что-то пошло не так...",
 };
 
+type typeTelInputInfo = {
+  backgroundPosition: string;
+  codeCountry: string;
+};
+
 export function FirstBlock() {
   const [stateModal, setStateModal] = useState<boolean>(false);
   const [stateContextMenu, setStateContextMenu] = useState<boolean>(false);
@@ -20,16 +25,37 @@ export function FirstBlock() {
     inputName: "",
     inputPhone: "",
   });
+  const [telInputInfo, setTelInputInfo] = useState({
+    backgroundPosition: "-285px -281px",
+    codeCountry: "+7",
+  });
+
+  console.log(telInputInfo.codeCountry.trim().length);
 
   return (
     <div className="firstBlock">
       <div className="container">
         <div className="firstBlock__wrapper">
-          <div className="firstBlock__header">
-            Лайк <span>Хаус</span>
-          </div>
+          <h1 className="firstBlock__header desc">
+            <p style={{ margin: 0 }}>ЭКСЛЮЗИВНОЕ ПРЕДЛОЖЕНИЕ</p>
+          </h1>
           <div className="line smallLine"></div>
-          <h1 className="firstBlock__title">Строим каркасные дома и бани с ориентированием на честное отношение к клиентам</h1>
+          <div className="firstBlock__texts desc">
+            <p className="firstBlock__text big">ИПОТЕКА НА СТРОИТЕЛЬСТВО БЕЗ ПЕРВОНАЧАЛЬНОГО ВЗНОСА</p>
+            <img src="./assets/icons/эскроу-десктоп.svg" alt="" />
+            <p className="firstBlock__text small">
+              Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте
+            </p>
+          </div>
+          <div className="firstBlock__texts mob">
+            <p className="firstBlock__text small">
+              Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте
+            </p>
+            <p className="firstBlock__text big">ИПОТЕКА НА СТРОИТЕЛЬСТВО БЕЗ ПЕРВОНАЧАЛЬНОГО ВЗНОСА</p>
+            <p className="firstBlock__text small">эксклюзивное предложение для наших клиентов</p>
+            <img src="./icons/эскроу-десктоп.svg" alt="" />
+          </div>
+          <img className="firstBlock__logo" src="./icons/лого.png" alt="logo" />
         </div>
         <div className="firstBlock__buttons">
           <div className="firstBlock__buttonMediaMax940px">
@@ -37,16 +63,15 @@ export function FirstBlock() {
               <button>Позвонить</button>
             </a>
           </div>
-          <div className="firstBlock__buttonMediaMin940px">
-            <button onClick={() => setStateModal(true)}>Бесплатная консультация</button>
-          </div>
+
           <div className="firstBlock__buttonMap">
             <a href="#map">
               <button>Земельные участки</button>
             </a>
           </div>
-          <div className="firstBlock__buttonMap blink">
-            <p>РАБОТАЕМ ЧЕРЕЗ ЭСКРОУ-СЧЁТ</p>
+
+          <div className="firstBlock__buttonMediaMin940px">
+            <button onClick={() => setStateModal(true)}>Узнать условия</button>
           </div>
         </div>
       </div>
@@ -64,7 +89,9 @@ export function FirstBlock() {
         inputPhoneValue,
         setInputPhoneValue,
         fetchStatus,
-        setFetchStatus
+        setFetchStatus,
+        telInputInfo,
+        setTelInputInfo
       )}
     </div>
   );
@@ -80,7 +107,9 @@ function modal(
   inputPhoneValue: string,
   setInputPhoneValue: React.Dispatch<React.SetStateAction<string>>,
   fetchStatus: string,
-  setFetchStatus: React.Dispatch<React.SetStateAction<string>>
+  setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
+  telInputInfo: typeTelInputInfo,
+  setTelInputInfo: React.Dispatch<React.SetStateAction<typeTelInputInfo>>
 ) {
   let modalActiveStyle = "none";
   let contextMenuActiveStyle = "none";
@@ -113,31 +142,26 @@ function modal(
               setFetchStatus("");
             }}
           />
-          <div className="feedBack__menu">
-            <div
-              className="feedBack__menu-flag"
-              onClick={() => {
-                if (stateContextMenu) {
-                  setStateContextMenu(false);
-                } else {
-                  setStateContextMenu(true);
-                }
-              }}></div>
-            <div
-              className="feedBack__menu-arrow"
-              style={stateContextMenu ? { rotate: "180deg" } : { rotate: "360deg" }}
-              onClick={() => {
-                if (stateContextMenu) {
-                  setStateContextMenu(false);
-                } else {
-                  setStateContextMenu(true);
-                }
-              }}></div>
-            <div className="feedBack__menu-number">+7</div>
+          <div
+            className="feedBack__menu"
+            onClick={() => {
+              if (stateContextMenu) {
+                setStateContextMenu(false);
+              } else {
+                setStateContextMenu(true);
+              }
+            }}>
+            <div className="feedBack__menu-flag" style={{ backgroundPosition: telInputInfo.backgroundPosition }}></div>
+            <div className="feedBack__menu-arrow" style={stateContextMenu ? { rotate: "180deg" } : { rotate: "360deg" }}></div>
+            <div className="feedBack__menu-number">{telInputInfo.codeCountry}</div>
           </div>
           <MaskedInput
             maskGenerator={maskGenerator}
             className="feedBack__from-inputPhone _req"
+            style={{
+              paddingLeft:
+                telInputInfo.codeCountry.trim().length > 5 ? "110px" : telInputInfo.codeCountry.trim().length * 10 + 50 + "px",
+            }}
             name="user_phone"
             type="tel"
             placeholder="(999) 999-99-99"
@@ -150,7 +174,7 @@ function modal(
               });
               setFetchStatus("");
             }}
-            data-phonemask="+7"
+            data-phonemask={telInputInfo.codeCountry.trim()}
           />
           <button type="submit" className="feedBack__form-submit">
             <div className={fetchStatus === "Загрузка..." ? "loader block" : "loader none"}></div>
@@ -171,7 +195,7 @@ function modal(
           <img src="./icons/touch.svg" alt="" className="feedBack__form-touch" />
           <div className="feedBack__menu-buttons" style={{ display: contextMenuActiveStyle }}>
             {" "}
-            {contextMenu()}
+            {contextMenu(setTelInputInfo, setStateContextMenu)}
           </div>
           <div className={inputsError.inputName == "Обязательное поле" ? "error tl17585 show" : "error tl17585 notVisible"}>
             Обязательное поле
@@ -319,12 +343,24 @@ function formRemoveError(
   }
 }
 
-function contextMenu() {
+function contextMenu(
+  setTelInputInfo: React.Dispatch<React.SetStateAction<typeTelInputInfo>>,
+  setStateContextMenu: React.Dispatch<React.SetStateAction<boolean>>
+) {
   return (
     <>
       {createArrCountryCatalog().map((item, index) => {
         return (
-          <div key={index + 919923} className="feedBack__menu-button">
+          <div
+            key={index + 919923}
+            className="feedBack__menu-button"
+            onClick={() => {
+              setTelInputInfo({
+                backgroundPosition: item.position,
+                codeCountry: item.number,
+              });
+              setStateContextMenu(false);
+            }}>
             <div className="feedBack__menu-buttonLeft">{item.name}</div>
             <div className="feedBack__menu-buttonRight">
               <div className="feedBack__menu-buttonNumber" data-position={item.position}>

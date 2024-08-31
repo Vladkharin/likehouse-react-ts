@@ -17,10 +17,9 @@ body {
   width: 310px;
 }
 
-.line:first-child {
+.desc {
   display: none;
 }
-
 .nav {
   height: 100px;
   width: 100%;
@@ -39,9 +38,9 @@ body {
 
 .firstBlock {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-    url("../img/BackGround_FirstBlock_320pxMedia.jpg") center center/cover no-repeat;
+    url("./img/BackGround_FirstBlock_320pxMedia.jpg") center center/cover no-repeat;
   width: 100%;
-  height: 790px;
+  height: 850px;
   z-index: 1;
   padding-top: 115px;
   position: relative;
@@ -105,13 +104,13 @@ body {
   font-weight: 400;
   font-style: normal;
   word-spacing: 4.7px;
+  line-height: 1.3;
   text-align: left;
-  line-height: 1.55;
   text-align: center;
 }
 
-.firstBlock__title {
-  margin: 0;
+.firstBlock__texts {
+  margin-top: 100px;
   font-size: 20px;
   font-weight: 400;
   color: #fff;
@@ -119,16 +118,29 @@ body {
   text-align: center;
 }
 
+.firstBlock__texts > img {
+  width: 295px;
+}
+
+.small {
+  font-size: 15px;
+}
+
+.firstBlock__logo {
+  position: absolute;
+}
+
 .firstBlock__buttonMediaMax940px {
-  margin-top: 230px;
+  margin-top: 150px;
   width: 300px;
   height: 70px;
   cursor: pointer;
 }
 
 .firstBlock__buttonMediaMin940px {
+  background-color: orange;
   margin-top: 70px;
-  width: 300px;
+  width: 308px;
   height: 70px;
   display: none;
 }
@@ -137,7 +149,7 @@ body {
   width: 300px;
   height: 70px;
   border: #fff solid 3px;
-  background: rgba(0, 0, 0, 0);
+  background: orange;
   font-family: "FuturaPTWebBold";
   font-size: 20px;
   line-height: 1.55;
@@ -146,52 +158,6 @@ body {
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
-}
-
-.firstBlock__buttonMap p {
-  padding: 0;
-  margin: 0;
-  width: 300px;
-  height: 70px;
-  border: rgb(125, 252, 66) solid 3px;
-  background: rgba(125, 252, 66, 0.5);
-  font-family: "FuturaPTWebBold";
-  font-size: 19px;
-  line-height: 3.5;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  text-align: center;
-}
-
-.blink {
-  animation-name: blinker;
-  animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(1, 0, 0, 1);
-  animation-duration: 2s;
-  -webkit-animation-name: blinker;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
-  -webkit-animation-duration: 2s;
-}
-
-@keyframes blinker {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes blinker {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
 }
 
 .firstBlock__buttonMediaMin940px button {
@@ -224,6 +190,52 @@ body {
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
+}
+
+.blink {
+  animation-name: blinker;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+  animation-duration: 2s;
+  -webkit-animation-name: blinker;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
+  -webkit-animation-duration: 2s;
+}
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.firstBlock__buttonMap p {
+  padding: 0;
+  margin: 0;
+  width: 300px;
+  height: 70px;
+  border: rgb(125, 252, 66) solid 3px;
+  background: rgba(125, 252, 66, 0.5);
+  font-family: "FuturaPTWebBold";
+  font-size: 19px;
+  line-height: 3.5;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
 }
 
 .firstBlock__buttons {
@@ -524,7 +536,7 @@ body {
 
 .fifthBlock__item-subtitle {
   color: #31373e;
-  transition: max-height ease-in-out 1s, opacity ease-in-out 0.3s;
+  transition: max-height ease-in-out 0.3s, opacity ease-in-out 0.3s;
   overflow: hidden;
   max-height: 0px;
   font-size: 20px;
@@ -555,7 +567,7 @@ body {
 
 .sixthBlock {
   height: 1356px;
-  background: url("../img/sixthBlockBG320media.jpg") center center/cover no-repeat;
+  background: url("./img/sixthBlockBG320media.jpg") center center/cover no-repeat;
   padding-top: 90px;
 }
 
@@ -792,6 +804,7 @@ body {
   opacity: 0.25;
   position: absolute;
   left: -7px;
+  background: url("./img/logo.webp");
 }
 
 .footer__items {
@@ -1064,15 +1077,6 @@ body {
   height: 100%;
 }
 
-.changeBgNav {
-  background-color: rgb(7, 64, 151);
-}
-
-.openMenu {
-  max-height: 190px;
-  margin-bottom: 20px;
-}
-
 @media (min-width: 360px) {
   .width {
     width: 350px;
@@ -1164,6 +1168,19 @@ body {
     line-height: 25px;
   }
 
+  .firstBlock__logo {
+    left: 90px;
+  }
+
+  .small {
+    font-size: 20px;
+  }
+
+  .big {
+    font-size: 29px;
+    font-weight: bold;
+  }
+
   .l320 {
     display: none;
   }
@@ -1174,9 +1191,9 @@ body {
 
   .firstBlock {
     padding-top: 80px;
-    height: 610px;
+    height: 750px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-      url("../img/BackGround_firstBlock.jpg") center center/cover no-repeat;
+      url("./img/BackGround_firstBlock.jpg") center center/cover no-repeat;
   }
 
   .firstBlock__header {
@@ -1261,7 +1278,7 @@ body {
     margin-bottom: 20px;
   }
 
-  .fourthAndThirdBlockTogether__tile div img {
+  .fourthAndThirdBlockTogether__link > img {
     width: 150px;
   }
 
@@ -1340,7 +1357,7 @@ body {
   .sixthBlock {
     height: 1033px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-      url("../img/sixthBlockBG481media.jpg") center center/cover no-repeat;
+      url("./img/sixthBlockBG481media.jpg") center center/cover no-repeat;
   }
 
   .sixthBlock__headerMin481 {
@@ -1414,7 +1431,7 @@ body {
 }
 
 @media (min-width: 640px) {
-  .fourthAndThirdBlockTogether__tile div img {
+  .fourthAndThirdBlockTogether__link > img {
     width: 200px;
   }
 
@@ -1460,20 +1477,21 @@ body {
   }
 
   .firstBlock {
-    height: 660px;
+    height: 710px;
   }
 
   .firstBlock__wrapper {
     flex-direction: row;
-    height: 250px;
+    height: 100%;
     justify-content: space-between;
   }
 
   .firstBlock__header {
-    text-align: start;
+    text-align: end;
     position: relative;
-    width: 330px;
-    font-size: 120px;
+    width: 266px;
+    font-size: 30px;
+    margin-top: 82px;
   }
 
   .firstBlock__header span {
@@ -1484,15 +1502,52 @@ body {
     top: 100px;
   }
 
-  .firstBlock__title {
-    margin-top: 90px;
-    text-align: start;
-    width: 321px;
-    font-size: 22px;
-    font-style: normal;
+  .firstBlock__texts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 82px;
     font-weight: 400;
-    line-height: 28px;
     padding-left: 30px;
+    gap: 20px;
+  }
+
+  .firstBlock__texts > img {
+    width: 390px;
+  }
+
+  .firstBlock__text {
+    text-align: start;
+    line-height: 1.3;
+    font-style: normal;
+    margin: 0;
+  }
+
+  .firstBlock__logo {
+    position: absolute;
+    left: 195px;
+    width: 230px;
+  }
+  .big {
+    width: 480px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .firstBlock__buttonMediaMax940px {
+    margin: 0;
+  }
+
+  .firstBlock__buttons {
+    margin-top: 30px;
+  }
+
+  .small {
+    font-size: 20px;
+    width: 395px;
+    line-height: 1.1;
+    text-align: center;
   }
 
   .secondBlock {
@@ -1528,6 +1583,10 @@ body {
 
   .line {
     width: 620px;
+  }
+
+  .line:first-child {
+    display: none;
   }
 
   .line:last-child {
@@ -1586,6 +1645,10 @@ body {
     margin-top: 40px;
     height: 500px;
   }
+
+  .desc {
+    display: none;
+  }
 }
 
 @media (min-width: 960px) {
@@ -1603,20 +1666,39 @@ body {
   }
 
   .smallLine {
-    margin-top: 105px;
+    position: absolute;
+    left: 275px;
+    margin-top: 100px;
     display: block;
-    width: 310px;
-    height: 2px;
+    width: 175px;
+    height: 3px;
     opacity: 1;
   }
 
+  .firstBlock__texts {
+    align-items: start;
+    width: 510px;
+  }
+
+  .firstBlock__logo {
+    top: 170px;
+  }
+
+  .big {
+    text-align: start;
+  }
+
+  .small {
+    text-align: start;
+  }
   .firstBlock {
     height: 570px;
   }
 
   .firstBlock__buttons {
-    margin-top: 70px;
+    margin-top: 60px;
     flex-direction: row;
+    gap: 160px;
   }
 
   .firstBlock__buttonMediaMin940px {
@@ -1681,7 +1763,7 @@ body {
 
   .sixthBlock {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-      url("../img/sixthBlockBG650media.jpg") center center/cover no-repeat;
+      url("./img/sixthBlockBG650media.jpg") center center/cover no-repeat;
     height: 690px;
     position: relative;
   }
@@ -1811,7 +1893,7 @@ body {
     cursor: pointer;
   }
   .feedBack__menu-flag {
-    background: url("../img/flags5.png");
+    background: url("./img/flags5.png");
     background-position: -285px -281px;
     width: 18px;
     height: 18px;
@@ -1922,7 +2004,7 @@ body {
   }
 
   .img {
-    background: url("../img/flags5.png");
+    background: url("./img/flags5.png");
     width: 18px;
     height: 13px;
     margin-top: 3px;
@@ -1940,6 +2022,14 @@ body {
     width: 40px;
     height: 40px;
   }
+
+  .desc {
+    display: flex;
+  }
+
+  .mob {
+    display: none;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -1947,8 +2037,41 @@ body {
     width: 1160px;
   }
 
+  .firstBlock__header {
+    text-align: end;
+    position: relative;
+    width: 266px;
+    font-size: 37px;
+    margin-top: 82px;
+  }
+
+  .firstBlock__texts {
+    width: 580px;
+  }
+
+  .firstBlock__logo {
+    position: absolute;
+    left: 150px;
+    top: 205px;
+    width: 270px;
+  }
+  .big {
+    width: 559px;
+    font-size: 37px;
+  }
+
+  .small {
+    font-size: 30px;
+    width: 395px;
+    line-height: 1.1;
+  }
+
+  .firstBlock__texts > img {
+    width: 439px;
+  }
+
   .firstBlock__buttons {
-    margin-top: 210px;
+    gap: 300px;
   }
 
   .firstBlock__buttonMediaMin940px {
@@ -1985,9 +2108,13 @@ body {
   }
 
   .smallLine {
-    width: 505px;
+    width: 300px;
     position: absolute;
-    left: 309px;
+    left: 285px;
+    margin-top: 105px;
+    display: block;
+    height: 3px;
+    opacity: 1;
   }
 
   .secondBlock__secondList {
@@ -2353,34 +2480,23 @@ body {
   border-radius: 100%;
   position: relative;
 }
+/* .feedBackModal__complete::before{
+  top: 50%;
+  height: 50%;
+  width: 3px;
+  background-color: #336699;
+  content: "";
+  transform: translateX(10px) rotate(-45deg);
+  transform-origin: left bottom;
+} */
 .feedBackModal__complete::after {
-  width: 13px;
-  height: 20px;
+  width: 15px;
+  height: 11px;
   content: "\2713";
   color: #62c584;
   position: absolute;
-  top: 13px;
+  top: 12px;
   left: 18px;
-}
-
-.feedBackModal__failure {
-  margin: 0 auto;
-  width: 50px;
-  height: 50px;
-  border: 1px solid #c41e3a;
-  border-radius: 100%;
-  position: relative;
-}
-
-.feedBackModal__failure::after {
-  width: 13px;
-  height: 20px;
-  content: "\00D7";
-  color: #c41e3a;
-  position: absolute;
-  top: -8px;
-  left: 12px;
-  font-size: 50px;
 }
 
 .feedBackModal__text {

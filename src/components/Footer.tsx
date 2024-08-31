@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer__wrapper">
-          <img className="footer__img" src="../icons/logo.webp" alt="logo" />
+          <div className="footer__img" />
           <div className="footer__items">
             <div className="footer__item">
               <div className="footer__item-header">АДРЕС</div>

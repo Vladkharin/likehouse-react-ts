@@ -38,8 +38,6 @@ export type typeListActiveAdditionalServices = typeActiveAdditionalService[];
 export type typeItemHouse = {
   img?: string;
   alt?: string;
-  size?: string;
-  square?: string;
   coust?: string;
   mortgage?: string;
   information?: string[];

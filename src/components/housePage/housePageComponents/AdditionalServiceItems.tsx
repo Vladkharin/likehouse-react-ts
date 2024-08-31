@@ -33,7 +33,7 @@ export function AdditionalServiceItems(
     return choiceArray;
   }
 
-  function cantChooseWithout(code: string) {
+  function cantChooseWithout(code: string): typeActiveAdditionalService[] {
     let choiceArray: typeActiveAdditionalService[] = [];
     choiceAdditionalServices["cant choose without"][code].forEach((item) => {
       services["Разделы"].forEach((car) => {
@@ -68,14 +68,25 @@ export function AdditionalServiceItems(
 
   function onBtn(code: string, name: string, coust: number, index = -1, count = 1) {
     let mutuallyExclusiveArray = [];
+    let cantChooseWithoutArray: typeActiveAdditionalService[] = [];
 
     if (choiceAdditionalServices["mutually exclusive"][code]) {
+      console.log(mutuallyExclusive(code));
       mutuallyExclusiveArray.push(...mutuallyExclusive(code));
     }
+
     let s = listActiveAdditionalServices.filter((e) => !mutuallyExclusiveArray.includes(e));
 
+    console.log(s);
+
     if (choiceAdditionalServices["cant choose without"][code]) {
-      s.push(...cantChooseWithout(code));
+      [...cantChooseWithout(code)].forEach((item) => {
+        if (listActiveAdditionalServices.findIndex((el) => el.code == item.code) == -1) {
+          cantChooseWithoutArray.push(item);
+        }
+      });
+
+      s.push(...cantChooseWithoutArray);
     }
 
     if (index != -1) {
@@ -107,7 +118,6 @@ export function AdditionalServiceItems(
     let endArray = listActiveAdditionalServices.filter((item) => item.code != code);
     let firstIndex = listActiveAdditionalServices.findIndex((item) => item.code == "000000144");
     let secondIndex = listActiveAdditionalServices.findIndex((item) => item.code == "000000132");
-
     if (
       typeof choiceAdditionalServices["mutually exclusive"][code] !== "undefined" &&
       firstIndex === -1 &&
@@ -227,6 +237,10 @@ export function AdditionalServiceItems(
     <div className="stylePagesecondBlock__services">
       {services["Разделы"].map((service, index) => {
         if (service["Раздел"] == "Строительство дома в базовой комплектации") {
+          return;
+        }
+
+        if (service["Раздел"] == "Несортированно (технический раздел)") {
           return;
         }
 

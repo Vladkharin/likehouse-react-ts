@@ -12,6 +12,7 @@ export function MainPage() {
   useEffect(() => {
     const y = window.scrollY;
     window.scrollBy(0, -y);
+    document.title = "Каркасные дома | Like House";
   }, []);
 
   return (
