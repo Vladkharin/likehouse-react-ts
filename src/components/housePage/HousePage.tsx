@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
   typeItemHouse,
-  LocationState,
   typeAdditionalService,
   typeInputValue,
   typeListActiveAdditionalServices,
@@ -12,21 +11,23 @@ import {
 } from "../typesAndIntefaces.tsx";
 
 import {
-  basicConfigurationOfTwoStoreyHouses,
   choiceAdditionalServices,
+  basicConfigurationOfTwoStoreyHouses,
   basicConfigurationOfCottage,
   basicConfigurationBathHouse,
   basicConfigurationArchitectCottageHouse,
+  basicConfigurationCloverCottageHouse,
+  itemsHouse,
 } from "../../houses.ts";
 
 import { AdditionalServiceItems } from "./housePageComponents/AdditionalServiceItems.tsx";
 
 export function HousePage() {
   const location = useLocation();
-  const { task } = location.state as LocationState;
+
   const [additionalService, setAdditionalService] = useState<typeAdditionalService>();
-  const [house] = useState<typeItemHouse>(task);
-  const [coustHouse, setCoustHouse] = useState<string | undefined>(house.coust);
+  const [house, setHouse] = useState<typeItemHouse>();
+  const [coustHouse, setCoustHouse] = useState<string | undefined>(house?.coust);
   const [priceAdditionalServices, setPriceAdditionalServices] = useState<number>(0);
   const [listActiveAdditionalServices, setListActiveAdditionalServices] = useState<typeListActiveAdditionalServices>([]);
   const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
@@ -55,16 +56,22 @@ export function HousePage() {
     Скважина: 0,
   });
 
-  useEffect(() => {
-    document.title = house.houseName as string;
-  }, []);
+  const getHouse = () => {
+    const pathName = location.pathname.split("/")[2];
+    const house = itemsHouse.filter((item) => item.link === pathName)[0];
+    setHouse(house);
+
+    return house;
+  };
 
   const fetchAdditionalServices = async () => {
+    const house = getHouse();
+
     const response = await fetch("./../1c_site.json", { method: "GET" });
     const data: typeAdditionalServices = await response.json();
 
     data["Дома"].forEach((item: typeAdditionalService) => {
-      if (item["ДомКод"] == task.code) {
+      if (item["ДомКод"] == house?.code) {
         setAdditionalService(item);
         let array: typeActiveAdditionalService[] = [];
 
@@ -127,10 +134,13 @@ export function HousePage() {
               }
             });
           }
+
+          if (section["Раздел"] === "Строительство дома в базовой комплектации") {
+            setCoustHouse(section["Подразделы"][0].Стоимость.toString());
+          }
         });
 
         if (house.coust) {
-          setCoustHouse((+house.coust - array.reduce((acc, currentValue) => acc + currentValue.coust, 0)).toString());
           setPriceAdditionalServices(array.reduce((acc, currnetValue) => acc + currnetValue.coust, 0));
         }
 
@@ -149,6 +159,10 @@ export function HousePage() {
 
     scrollToTop();
   }, []);
+
+  useEffect(() => {
+    document.title = house?.houseName as string;
+  });
 
   function viewAddtionalServicesBlock() {
     return (
@@ -182,7 +196,7 @@ export function HousePage() {
           <div className="stylePagefirstBlock__wrapper">
             <div className="stylePagefirstBlock__carousel">
               <img
-                src={house.imgs ? house.imgs[activeImgIndex] : ""}
+                src={house?.imgs ? house.imgs[activeImgIndex] : ""}
                 className="stylePagefirstBlock__carousel-item"
                 data-modal="imgs"
                 onClick={() => setStateModal(true)}
@@ -199,7 +213,7 @@ export function HousePage() {
               </button>
               {house ? houseImgs(house, activeImgIndex, setStateModal, setActiveImgIndex) : <div>Загружается</div>}
             </div>
-            {coustHouse ? houseInformation(house, coustHouse, priceAdditionalServices) : <div>Загружается</div>}
+            {coustHouse && house ? houseInformation(house, coustHouse, priceAdditionalServices) : <div>Загружается</div>}
           </div>
         </div>
       </div>
@@ -208,19 +222,19 @@ export function HousePage() {
           <div className="stylePagesecondBlock__header">Базовая комплектация проекта</div>
           {house ? basicConfiguration(house) : false}
 
-          {house.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
+          {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
-          {coustHouse == "Скоро будет" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}
+          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}
         </span>
       </div>
       <div id="id" className="stylePagenone">
-        {house.code}
+        {house?.code}
       </div>
-      {modal(stateModal, house, setStateModal, activeImgIndex, setActiveImgIndex)}
+      {house ? modal(stateModal, house, setStateModal, activeImgIndex, setActiveImgIndex) : false}
     </React.Fragment>
   );
 }
@@ -256,7 +270,9 @@ function houseInformation(house: typeItemHouse, coustHouse: string, priceAdditio
         : false}
       <div className="stylePagefirstBlock__button">
         СТОИМОСТЬ:{" "}
-        <span>{coustHouse == "Скоро будет" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}</span>
+        <span>
+          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}
+        </span>
       </div>
     </div>
   );
@@ -326,16 +342,32 @@ function mainSlider(
 
 function basicConfiguration(house: typeItemHouse) {
   let arrayConf: string[] = [];
-  if (house.type === "two-storey house") {
-    arrayConf = basicConfigurationOfTwoStoreyHouses;
-  } else if (house.type === "cottage") {
-    if (house.typeHouse === "Архитект") {
-      arrayConf = basicConfigurationArchitectCottageHouse;
-    } else {
-      arrayConf = basicConfigurationOfCottage;
-    }
-  } else if (house.type === "bathhouse") {
-    arrayConf = basicConfigurationBathHouse;
+  switch (house.type) {
+    case "two-storey house":
+      if (
+        house.typeHouse === "Клевер" ||
+        house.typeHouse === "Шварц" ||
+        house.typeHouse === "Эркерия" ||
+        house.typeHouse === "Классик"
+      ) {
+        arrayConf = basicConfigurationCloverCottageHouse;
+      } else {
+        arrayConf = basicConfigurationOfTwoStoreyHouses;
+      }
+      break;
+    case "cottage":
+      switch (house.typeHouse) {
+        case "Архитект":
+          arrayConf = basicConfigurationArchitectCottageHouse;
+          break;
+        default:
+          arrayConf = basicConfigurationOfCottage;
+          break;
+      }
+      break;
+    case "bathhouse":
+      arrayConf = basicConfigurationBathHouse;
+      break;
   }
 
   return (

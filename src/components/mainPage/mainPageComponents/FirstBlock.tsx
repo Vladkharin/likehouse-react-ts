@@ -30,8 +30,6 @@ export function FirstBlock() {
     codeCountry: "+7",
   });
 
-  console.log(telInputInfo.codeCountry.trim().length);
-
   return (
     <div className="firstBlock">
       <div className="container">

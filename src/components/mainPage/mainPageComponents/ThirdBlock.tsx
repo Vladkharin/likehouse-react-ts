@@ -118,7 +118,7 @@ export function ThirdBlock() {
       });
 
       if (coust == 0) {
-        item.coust = "Скоро будет";
+        item.coust = "Скоро будет доступна";
       } else {
         item.mortgage = (coust / 5).toString();
         item.coust = coust.toString();
@@ -205,12 +205,12 @@ function modalHouse(task: typeItemHouse) {
 function modalBathHouse(task: typeItemHouse) {
   return (
     <React.Fragment key={task.code}>
-      <Link to={`/houses/${task.link}`} state={{ task: task }} className="fourthAndThirdBlockTogether__tile">
+      <Link to={`/houses/${task.link}`} target="_blank" state={{ task: task }} className="fourthAndThirdBlockTogether__tile">
         <img className="fourthAndThirdBlockTogether__tile-img" src={task.img} alt={task.alt} />
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[0] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[1] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text" id={task.code}>
-          Стоимость: {task.coust === "Скоро будет" ? "Скоро будет" : task.coust + " руб."}
+          Стоимость: {task.coust === "Скоро будет доступна" ? "Скоро будет доступна" : task.coust + " руб."}
         </div>
         <div className="fourthAndThirdBlockTogether__link">
           <img src="./icons/textSvg.svg" alt="link" />

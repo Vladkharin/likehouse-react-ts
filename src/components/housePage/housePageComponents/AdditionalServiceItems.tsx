@@ -71,13 +71,10 @@ export function AdditionalServiceItems(
     let cantChooseWithoutArray: typeActiveAdditionalService[] = [];
 
     if (choiceAdditionalServices["mutually exclusive"][code]) {
-      console.log(mutuallyExclusive(code));
       mutuallyExclusiveArray.push(...mutuallyExclusive(code));
     }
 
     let s = listActiveAdditionalServices.filter((e) => !mutuallyExclusiveArray.includes(e));
-
-    console.log(s);
 
     if (choiceAdditionalServices["cant choose without"][code]) {
       [...cantChooseWithout(code)].forEach((item) => {

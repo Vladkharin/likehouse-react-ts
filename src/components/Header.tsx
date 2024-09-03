@@ -12,7 +12,7 @@ export function Header({ scroll, mainPage }: typeHeaderProps) {
 
   if (useLocation().pathname == mainPage) {
     return (
-      <nav className={`nav ${scroll > 93 ? "changeBgNav" : ""}`}>
+      <nav className={`nav${scroll > 93 ? " changeBgNav" : ""}`}>
         <div className="container">
           <div className="nav__wrapper">
             <div className="nav__menu">

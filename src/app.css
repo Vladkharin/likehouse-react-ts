@@ -29,6 +29,10 @@ body {
   transition: all 0.4s cubic-bezier(0, 0, 0.8, 1);
 }
 
+.changeBgNav {
+  background-color: rgb(7, 64, 151);
+}
+
 .nav__wrapper {
   display: flex;
   justify-content: space-between;
@@ -38,7 +42,7 @@ body {
 
 .firstBlock {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-    url("./img/BackGround_FirstBlock_320pxMedia.jpg") center center/cover no-repeat;
+    url("../img/BackGround_FirstBlock_320pxMedia.jpg") center center/cover no-repeat;
   width: 100%;
   height: 850px;
   z-index: 1;
@@ -545,6 +549,11 @@ body {
   line-height: 31px;
 }
 
+.openMenu {
+  max-height: 190px;
+  margin-bottom: 20px;
+}
+
 .fifthBlock__item-plus {
   width: 24px;
   height: 24px;
@@ -567,7 +576,7 @@ body {
 
 .sixthBlock {
   height: 1356px;
-  background: url("./img/sixthBlockBG320media.jpg") center center/cover no-repeat;
+  background: url("../img/sixthBlockBG320media.jpg") center center/cover no-repeat;
   padding-top: 90px;
 }
 
@@ -804,7 +813,7 @@ body {
   opacity: 0.25;
   position: absolute;
   left: -7px;
-  background: url("./img/logo.webp");
+  background: url("../img/logo.webp");
 }
 
 .footer__items {
@@ -1193,7 +1202,7 @@ body {
     padding-top: 80px;
     height: 750px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-      url("./img/BackGround_firstBlock.jpg") center center/cover no-repeat;
+      url("../img/BackGround_firstBlock.jpg") center center/cover no-repeat;
   }
 
   .firstBlock__header {
@@ -1357,7 +1366,7 @@ body {
   .sixthBlock {
     height: 1033px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-      url("./img/sixthBlockBG481media.jpg") center center/cover no-repeat;
+      url("../img/sixthBlockBG481media.jpg") center center/cover no-repeat;
   }
 
   .sixthBlock__headerMin481 {
@@ -1763,7 +1772,7 @@ body {
 
   .sixthBlock {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-      url("./img/sixthBlockBG650media.jpg") center center/cover no-repeat;
+      url("../img/sixthBlockBG650media.jpg") center center/cover no-repeat;
     height: 690px;
     position: relative;
   }
@@ -1886,14 +1895,14 @@ body {
     background: rgba(0, 0, 0, 0);
     position: absolute;
     top: 193px;
-    right: 270px;
+    right: 300px;
     display: flex;
     align-items: center;
     column-gap: 6px;
     cursor: pointer;
   }
   .feedBack__menu-flag {
-    background: url("./img/flags5.png");
+    background: url("../img/flags5.png");
     background-position: -285px -281px;
     width: 18px;
     height: 18px;
@@ -2004,7 +2013,7 @@ body {
   }
 
   .img {
-    background: url("./img/flags5.png");
+    background: url("../img/flags5.png");
     width: 18px;
     height: 13px;
     margin-top: 3px;
