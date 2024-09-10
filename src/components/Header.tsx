@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
 
 type typeHeaderProps = {
   scroll: number;
   mainPage: string;
+  setBodyStyle: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export function Header({ scroll, mainPage }: typeHeaderProps) {
+export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
   const [menuTel, setMenuTel] = useState<boolean>(false);
 
   if (useLocation().pathname == mainPage) {
@@ -16,7 +17,15 @@ export function Header({ scroll, mainPage }: typeHeaderProps) {
         <div className="container">
           <div className="nav__wrapper">
             <div className="nav__menu">
-              <img className="menu__Open" src="./icons/MenuIcon.svg" alt="MenuIcon" onClick={() => setMenuTel(true)} />
+              <img
+                className="menu__Open"
+                src="./icons/MenuIcon.svg"
+                alt="MenuIcon"
+                onClick={() => {
+                  setMenuTel(true);
+                  setBodyStyle("hidden");
+                }}
+              />
               <div className="nav__links">
                 <a href="#about" className="menu__link">
                   О нас
@@ -74,7 +83,7 @@ export function Header({ scroll, mainPage }: typeHeaderProps) {
             </div>
           </div>
         </div>
-        {menu(menuTel, setMenuTel)}
+        {menu(menuTel, setMenuTel, setBodyStyle)}
       </nav>
     );
   } else {
@@ -125,7 +134,11 @@ export function Header({ scroll, mainPage }: typeHeaderProps) {
   }
 }
 
-function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<boolean>>) {
+function menu(
+  menuTel: boolean,
+  setMenuTel: React.Dispatch<React.SetStateAction<boolean>>,
+  setBodyStyle: React.Dispatch<React.SetStateAction<string>>
+) {
   let overlayClass = "overlay";
   let menuClass = "menu";
   if (menuTel) {
@@ -138,19 +151,49 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
       <div className={overlayClass} onClick={() => setMenuTel(false)}></div>
       <div className={menuClass}>
         <div className="menu__links">
-          <a href="#about" className="menu__link" onClick={() => setMenuTel(false)}>
+          <a
+            href="#about"
+            className="menu__link"
+            onClick={() => {
+              setMenuTel(false);
+              setBodyStyle("");
+            }}>
             О нас
           </a>
-          <a href="#catalog" className="menu__link" onClick={() => setMenuTel(false)}>
+          <a
+            href="#catalog"
+            className="menu__link"
+            onClick={() => {
+              setMenuTel(false);
+              setBodyStyle("");
+            }}>
             Каталог
           </a>
-          <a href="#tech" className="menu__link" onClick={() => setMenuTel(false)}>
+          <a
+            href="#tech"
+            className="menu__link"
+            onClick={() => {
+              setMenuTel(false);
+              setBodyStyle("");
+            }}>
             Технология
           </a>
-          <a href="#dop" className="menu__link" onClick={() => setMenuTel(false)}>
+          <a
+            href="#dop"
+            className="menu__link"
+            onClick={() => {
+              setMenuTel(false);
+              setBodyStyle("");
+            }}>
             Доп. услуги
           </a>
-          <a href="#feedback" className="menu__link" onClick={() => setMenuTel(false)}>
+          <a
+            href="#feedback"
+            className="menu__link"
+            onClick={() => {
+              setMenuTel(false);
+              setBodyStyle("");
+            }}>
             Отзывы
           </a>
           <Link to={"/payment"} className="menu__link">
@@ -160,7 +203,12 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
             Ипотека
           </a>
         </div>
-        <button className="menu__Close" onClick={() => setMenuTel(false)}>
+        <button
+          className="menu__Close"
+          onClick={() => {
+            setMenuTel(false);
+            setBodyStyle("");
+          }}>
           {" "}
         </button>
       </div>

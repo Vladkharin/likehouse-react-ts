@@ -867,6 +867,7 @@ input[type="number"]::-webkit-outer-spin-button {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+  position: relative;
 }
 
 .stylePageorderModal__wrapper > form > button {

@@ -43,3 +43,5 @@ if (!$mail->send()) {
 } else {
 	return true;
 }
+
+?>

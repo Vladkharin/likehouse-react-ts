@@ -2281,12 +2281,6 @@ body {
   display: flex;
 }
 
-.visible {
-  left: 0;
-  opacity: 1;
-  visibility: visible;
-}
-
 .block {
   display: block;
 }
@@ -2347,6 +2341,17 @@ body {
   border-bottom-color: transparent;
   border-bottom-color: #fff;
 }
+.errorBig::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -12px;
+  left: 15%;
+  border: 6px solid transparent;
+  border-bottom-color: transparent;
+  border-bottom-color: #fff;
+}
 .errorTel::after {
   content: "";
   position: absolute;
@@ -2360,11 +2365,11 @@ body {
 }
 
 .tl17585 {
-  top: 175px;
+  top: 145px;
   left: 85px;
 }
 .tl24085 {
-  top: 240px;
+  top: 250px;
   left: 85px;
 }
 
@@ -2457,6 +2462,11 @@ body {
   position: absolute;
 }
 
+.smallFeedBackModal {
+  height: 500px;
+  width: 800px;
+}
+
 .feedBackModal__wrapper {
   background-color: #fff;
   padding: 40px 40px 50px;
@@ -2489,15 +2499,7 @@ body {
   border-radius: 100%;
   position: relative;
 }
-/* .feedBackModal__complete::before{
-  top: 50%;
-  height: 50%;
-  width: 3px;
-  background-color: #336699;
-  content: "";
-  transform: translateX(10px) rotate(-45deg);
-  transform-origin: left bottom;
-} */
+
 .feedBackModal__complete::after {
   width: 15px;
   height: 11px;
@@ -2508,7 +2510,32 @@ body {
   left: 18px;
 }
 
+.feedBackModal__failure {
+  margin: 0 auto;
+  width: 50px;
+  height: 50px;
+  border: 1px solid red;
+  border-radius: 100%;
+  position: relative;
+}
+
+.feedBackModal__failure::after {
+  width: 15px;
+  height: 11px;
+  content: "\2715";
+  color: red;
+  position: absolute;
+  top: 12px;
+  left: 18px;
+}
+
 .feedBackModal__text {
   padding-top: 20px;
   font-family: "FuturaPTWebLight";
+}
+
+.visible {
+  left: 50px;
+  opacity: 1;
+  visibility: visible;
 }

@@ -16,7 +16,11 @@ type typeTelInputInfo = {
   codeCountry: string;
 };
 
-export function FirstBlock() {
+type Props = {
+  setBodyStyle: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function FirstBlock({ setBodyStyle }: Props) {
   const [stateModal, setStateModal] = useState<boolean>(false);
   const [stateContextMenu, setStateContextMenu] = useState<boolean>(false);
   const [inputPhoneValue, setInputPhoneValue] = useState<string>("");
@@ -29,6 +33,12 @@ export function FirstBlock() {
     backgroundPosition: "-285px -281px",
     codeCountry: "+7",
   });
+
+  if (stateModal) {
+    setBodyStyle("hidden");
+  } else {
+    setBodyStyle("");
+  }
 
   return (
     <div className="firstBlock">
@@ -128,7 +138,7 @@ function modal(
           onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus)}>
           <div className="feedBack__form-header">Оставьте заявку</div>
           <input
-            className="feedBack__from-inputText _req"
+            className={inputsError.inputName != "" ? "feedBack__from-inputText _req _error" : "feedBack__from-inputText _req"}
             name="user_name"
             type="text"
             placeholder="Ваше имя"
@@ -155,7 +165,7 @@ function modal(
           </div>
           <MaskedInput
             maskGenerator={maskGenerator}
-            className="feedBack__from-inputPhone _req"
+            className={inputsError.inputPhone != "" ? "feedBack__from-inputPhone _req _error" : "feedBack__from-inputPhone _req"}
             style={{
               paddingLeft:
                 telInputInfo.codeCountry.trim().length > 5 ? "110px" : telInputInfo.codeCountry.trim().length * 10 + 50 + "px",

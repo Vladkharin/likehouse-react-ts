@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { SetStateAction, useState } from "react";
 
 type typeItems = typeItem[];
 
@@ -53,7 +53,11 @@ const imgs: string[] = [
   "./img/fifthBlockFourthimg.webp",
 ];
 
-export function FourthBlock() {
+type MainPageProps = {
+  setBodyStyle: React.Dispatch<SetStateAction<string>>;
+};
+
+export function FourthBlock({ setBodyStyle }: MainPageProps) {
   const [stateModal, setStateModal] = useState<boolean>(false);
   const [activeSlide, setActiveSlide] = useState<number>(0);
   return (
@@ -71,6 +75,7 @@ export function FourthBlock() {
                 className="fifthBlock__img"
                 onClick={() => {
                   setStateModal(true);
+                  setBodyStyle("hidden");
                   setActiveSlide(index);
                 }}
               />
@@ -79,7 +84,7 @@ export function FourthBlock() {
         </div>
         {renderItems()}
       </div>
-      {modal(stateModal, setStateModal, activeSlide, setActiveSlide)}
+      {modal(stateModal, setStateModal, activeSlide, setActiveSlide, setBodyStyle)}
     </div>
   );
 }
@@ -129,7 +134,8 @@ function modal(
   stateModal: boolean,
   setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
   activeSlide: number,
-  setActiveSlide: React.Dispatch<React.SetStateAction<number>>
+  setActiveSlide: React.Dispatch<React.SetStateAction<number>>,
+  setBodyStyle: React.Dispatch<React.SetStateAction<string>>
 ) {
   let activeClass = "none";
   let activeStyle: typeModal = "hidden";
@@ -162,7 +168,12 @@ function modal(
       <button className="modalImgSlider__button-left" onClick={() => setActiveSlide(activeSlide - 1)}>
         <img src="./icons/PrevArrow.png" alt="" />
       </button>
-      <button className="modalImgSlider__close" onClick={() => setStateModal(false)}>
+      <button
+        className="modalImgSlider__close"
+        onClick={() => {
+          setStateModal(false);
+          setBodyStyle("");
+        }}>
         {" "}
       </button>
     </div>
