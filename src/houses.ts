@@ -1,6 +1,15 @@
 import {typeChoiceAdditionalServices, typeItemsHouse} from "./components/typesAndIntefaces"
 
-export let basicConfigurationOfTwoStoreyHouses = [
+export function defineDomain (host: string) {
+  const array: string[] = host.split('.')
+  if(array[array.length - 1] == 'by'){
+    return 'by'
+  } else {
+    return "org";
+  }
+}
+
+export const basicConfigurationOfTwoStoreyHouses = [
   'Фундамент ? ЖБ сваи (длинна 3000 мм сечение 150х150 мм)',
   'Обработка огнебиозащита ? Нижний венец дома',
   'Обвязка ? Брус 150х150 мм',
@@ -29,7 +38,7 @@ export let basicConfigurationOfTwoStoreyHouses = [
   'Высота второго этажа ? 2400 мм',
 ]
 
-export let basicConfigurationOfCottage = [
+export const basicConfigurationOfCottage = [
   
 'Фундамент ? ЖБ сваи (длинна 3000 мм сечение 150х150 мм)',
 'Обработка огнебиозащита ? Нижний венец дома',
@@ -58,7 +67,7 @@ export let basicConfigurationOfCottage = [
 "Высота этажа ? 2700 мм"
 ]
 
-export let basicConfigurationBathHouse = [
+export const basicConfigurationBathHouse = [
 "Фундамент ? ЖБ сваи (длинна 3000 мм сечение 150х150 мм)",
 "Обработка огнебиозащита ? нижний венец дома",
 "Обвязка ? брус 150х150 мм",
@@ -89,7 +98,7 @@ export let basicConfigurationBathHouse = [
 "Снегозадержатели ? не предусмотрено",
 ]
 
-export let basicConfigurationCloverCottageHouse = [
+export const basicConfigurationCloverCottageHouse = [
   
 'Фундамент ? ЖБ сваи (длинна 3000 мм сечение 150х150 мм)',
 'Обработка огнебиозащита ? Нижний венец дома',
@@ -120,7 +129,7 @@ export let basicConfigurationCloverCottageHouse = [
 'Высота второго этажа ? 2600 мм',
 ]
 
-export let basicConfigurationArchitectCottageHouse = [
+export const basicConfigurationArchitectCottageHouse = [
   
 'Фундамент ? ЖБ сваи (длинна 3000 мм сечение 150х150 мм)',
 'Обработка огнебиозащита ? Нижний венец дома',
@@ -186,7 +195,7 @@ export const choiceAdditionalServices: typeChoiceAdditionalServices = {
   },
 };
 
-export let itemsHouse: typeItemsHouse = [
+export const itemsHouse: typeItemsHouse = [
   {
     img: "./img/Видовой_кадр_01_6x6.jpg",
     alt: "firstTile",

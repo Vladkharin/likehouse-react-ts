@@ -73,7 +73,7 @@ export function HousePage() {
     data["Дома"].forEach((item: typeAdditionalService) => {
       if (item["ДомКод"] == house?.code) {
         setAdditionalService(item);
-        let array: typeActiveAdditionalService[] = [];
+        const array: typeActiveAdditionalService[] = [];
 
         item["Разделы"].forEach((section) => {
           if (section["Код"] === "000000008") {
@@ -431,7 +431,7 @@ function modal(
         <button
           className="stylePagemodal__right"
           onClick={() => {
-            let number = activeImgIndex + 1;
+            const number = activeImgIndex + 1;
             if (house.imgs && number >= house.imgs.length) {
               setActiveImgIndex(0);
             } else {
@@ -443,7 +443,7 @@ function modal(
         <button
           className="stylePagemodal__left"
           onClick={() => {
-            let number = activeImgIndex - 1;
+            const number = activeImgIndex - 1;
             if (house.imgs && number < 0) {
               setActiveImgIndex(house.imgs.length - 1);
             } else {

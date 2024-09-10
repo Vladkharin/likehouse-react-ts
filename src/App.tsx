@@ -17,6 +17,7 @@ function App() {
     setScroll(window.scrollY);
   };
 
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
