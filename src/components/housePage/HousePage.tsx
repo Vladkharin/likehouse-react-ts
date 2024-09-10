@@ -20,12 +20,11 @@ import {
   basicConfigurationArchitectCottageHouse,
   basicConfigurationCloverCottageHouse,
   itemsHouse,
+  defineDomain,
 } from "../../houses.ts";
 import { typeInputsError } from "../typesAndIntefaces";
 
 import { AdditionalServiceItems } from "./housePageComponents/AdditionalServiceItems.tsx";
-
-// import "dotenv/config";
 
 const FORM_STATUS_MESSAGE = {
   loading: "Загрузка...",
@@ -35,7 +34,7 @@ const FORM_STATUS_MESSAGE = {
 
 const maskGenerator = createDefaultMaskGenerator("+7 999 999 99 99");
 export function HousePage() {
-  const location = useLocation();
+  const locationPage = useLocation();
 
   const [additionalService, setAdditionalService] = useState<typeAdditionalService>();
   const [house, setHouse] = useState<typeItemHouse>();
@@ -76,17 +75,19 @@ export function HousePage() {
   });
 
   const getHouse = () => {
-    const pathName = location.pathname.split("/")[2];
+    const pathName = locationPage.pathname.split("/")[2];
     const house = itemsHouse.filter((item) => item.link === pathName)[0];
     setHouse(house);
 
     return house;
   };
+  const domain: string = defineDomain(location.hostname);
+  const fetchUrl: string = domain == "org" ? "./../1c_site.json" : "./../1c_bel_site.json";
 
-  const fetchAdditionalServices = async () => {
+  const fetchAdditionalServices = async (fetchUrl: string) => {
     const house = getHouse();
 
-    const response = await fetch("./../1c_site.json", { method: "GET" });
+    const response = await fetch(fetchUrl, { method: "GET" });
     const data: typeAdditionalServices = await response.json();
 
     data["Дома"].forEach((item: typeAdditionalService) => {
@@ -164,6 +165,8 @@ export function HousePage() {
         }
 
         setListActiveAdditionalServices([...array]);
+      } else {
+        setCoustHouse("Скоро будет доступна");
       }
     });
   };
@@ -174,13 +177,14 @@ export function HousePage() {
   };
 
   useEffect(() => {
-    fetchAdditionalServices();
+    fetchAdditionalServices(fetchUrl);
 
     scrollToTop();
-  }, []);
+  }, [fetchUrl]);
 
   useEffect(() => {
     document.title = house?.houseName as string;
+    console.log(document.head);
   });
 
   function viewAddtionalServicesBlock() {
@@ -207,6 +211,8 @@ export function HousePage() {
     );
   }
 
+  console.log(coustHouse);
+
   return (
     <React.Fragment>
       <div className="stylePagefirstBlock bath">
@@ -222,12 +228,14 @@ export function HousePage() {
               />
               <button
                 className="stylePagefirstBlock__carousel-right"
-                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "plus") : false)}>
+                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "plus") : false)}
+              >
                 <img src="../icons/NextArrow.png" alt="next" />
               </button>
               <button
                 className="stylePagefirstBlock__carousel-left"
-                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "minus") : false)}>
+                onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "minus") : false)}
+              >
                 <img src="../icons/PrevArrow.png" alt="prev" />
               </button>
               {house ? houseImgs(house, activeImgIndex, setStateModalImg, setActiveImgIndex) : <div>Загружается</div>}
@@ -244,9 +252,9 @@ export function HousePage() {
           {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
-      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
+      {/* <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
-      </button>
+      </button> */}
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
@@ -304,7 +312,7 @@ async function postData(
   setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
   inputsError: typeInputsError,
   setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
-  listActiveAdditionalServices: typeListActiveAdditionalServices,
+  listActiveAdditionalServices: typeListActiveAdditionalServices
 ) {
   event.preventDefault();
 
@@ -433,9 +441,8 @@ function modalForm(
           className="stylePageorderModal__form"
           action="sendorder.php"
           method="post"
-          onSubmit={(event) =>
-            postData(event, setInputsError, inputsError, setFetchStatus, listActiveAdditionalServices)
-          }>
+          onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus, listActiveAdditionalServices)}
+        >
           <label>
             <div>Получить предложение</div>
           </label>
@@ -472,7 +479,8 @@ function modalForm(
               inputsError.inputName == "Обязательное поле" || inputsError.inputName == "Слишком длинное значение"
                 ? "errorBig tl17585 show"
                 : "errorBig tl17585 notVisible"
-            }>
+            }
+          >
             {inputsError.inputName}
           </div>
           <div
@@ -482,7 +490,8 @@ function modalForm(
               inputsError.inputPhone == "Обязательное поле"
                 ? "errorBig tl24085 show"
                 : "errorBig tl24085 notVisible"
-            }>
+            }
+          >
             {inputsError.inputPhone}
           </div>
         </form>
@@ -510,13 +519,11 @@ function modalForm(
           fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..."
             ? "feedBackModal smallFeedBackModal"
             : "feedBackModal smallFeedBackModal none"
-        }>
+        }
+      >
         <div className="feedBackModal__wrapper">
           <img src="../icons/crestikBlack.svg" alt="" className="crestikBlack" onClick={() => setFetchStatus("")} />
-          <div
-            className={
-              fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"
-            }></div>
+          <div className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"}></div>
           <div className="feedBackModal__text">{fetchStatus}</div>
         </div>
       </div>
@@ -555,9 +562,7 @@ function houseInformation(house: typeItemHouse, coustHouse: string, priceAdditio
         : false}
       <div className="stylePagefirstBlock__button">
         СТОИМОСТЬ:{" "}
-        <span>
-          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}
-        </span>
+        <span>{coustHouse == "Скоро будет доступна" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}</span>
       </div>
     </div>
   );
@@ -595,7 +600,8 @@ function houseImgs(
                   onClick={() => {
                     setActiveImgIndex(index - 10201);
                     setStateModalImg(true);
-                  }}></img>
+                  }}
+                ></img>
               );
             })
           : false}
@@ -629,12 +635,7 @@ function basicConfiguration(house: typeItemHouse) {
   let arrayConf: string[] = [];
   switch (house.type) {
     case "two-storey house":
-      if (
-        house.typeHouse === "Клевер" ||
-        house.typeHouse === "Шварц" ||
-        house.typeHouse === "Эркерия" ||
-        house.typeHouse === "Классик"
-      ) {
+      if (house.typeHouse === "Клевер" || house.typeHouse === "Шварц" || house.typeHouse === "Эркерия" || house.typeHouse === "Классик") {
         arrayConf = basicConfigurationCloverCottageHouse;
       } else {
         arrayConf = basicConfigurationOfTwoStoreyHouses;
@@ -722,7 +723,8 @@ function modalImg(
             } else {
               setActiveImgIndex(number);
             }
-          }}>
+          }}
+        >
           <img src="../icons/NextArrow.png" alt="next" />
         </button>
         <button
@@ -734,7 +736,8 @@ function modalImg(
             } else {
               setActiveImgIndex(number);
             }
-          }}>
+          }}
+        >
           <img src="../icons/PrevArrow.png" alt="prev" />
         </button>
       </div>

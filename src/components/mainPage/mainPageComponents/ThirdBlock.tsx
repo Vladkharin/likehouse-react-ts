@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { itemsHouse } from "../../../houses";
+import { defineDomain, itemsHouse } from "../../../houses";
 import { typeItemsHouse, typeItemHouse } from "../../typesAndIntefaces";
 import { Link } from "react-router-dom";
 
@@ -15,15 +15,18 @@ export function ThirdBlock() {
   const [additionalServices, setAdditionalServices] = useState<typeAdditionalServices>();
   const [choiceTypeHouse, setChoiceTypeHouse] = useState<typeChoiceTypeHouse>({ type: "all" });
 
-  const fetchAdditionalServices = async () => {
-    const response = await fetch("./1c_site.json", { method: "GET" });
+  const domain: string = defineDomain(location.hostname);
+  const fetchUrl = domain == "org" ? "./1c_site.json" : "./1c_bel_site.json";
+
+  const fetchAdditionalServices = async (fetchUrl: string) => {
+    const response = await fetch(fetchUrl, { method: "GET" });
     const data: typeAdditionalServices = await response.json();
     setAdditionalServices(data);
   };
 
   useEffect(() => {
-    fetchAdditionalServices();
-  }, []);
+    fetchAdditionalServices(fetchUrl);
+  }, [fetchUrl]);
 
   function findHouseTypes(houses: typeItemsHouse): string[] {
     const typesHouseArray: string[] = [];
@@ -129,7 +132,7 @@ export function ThirdBlock() {
   function ThirdBlockTiles() {
     return (
       <div className="fourthAndThirdBlockTogether__inner" key={1000001}>
-        {getActiveTypeHouses().map((task) => ThirdBlockTile(task))}
+        {getActiveTypeHouses().map((task) => ThirdBlockTile(task, domain))}
       </div>
     );
   }
@@ -143,25 +146,31 @@ export function ThirdBlock() {
             <button
               className={`fourthAndThirdBlockTogether__text ${choiceTypeHouse.type === "all" ? "changesBg" : ""}`}
               data-modal="all"
-              onClick={() => setChoiceTypeHouse({ type: "all" })}>
+              onClick={() => setChoiceTypeHouse({ type: "all" })}
+            >
               Весь каталог
             </button>
             <button
               className={`fourthAndThirdBlockTogether__text ${choiceTypeHouse.type === "cottage" ? "changesBg" : ""}`}
               data-modal="cottage"
-              onClick={() => setChoiceTypeHouse({ type: "cottage" })}>
+              onClick={() => setChoiceTypeHouse({ type: "cottage" })}
+            >
               1 этаж. дома
             </button>
             <button
-              className={`fourthAndThirdBlockTogether__text ${choiceTypeHouse.type === "two-storey house" ? "changesBg" : ""}`}
+              className={`fourthAndThirdBlockTogether__text ${
+                choiceTypeHouse.type === "two-storey house" ? "changesBg" : ""
+              }`}
               data-modal="two-storey house"
-              onClick={() => setChoiceTypeHouse({ type: "two-storey house" })}>
+              onClick={() => setChoiceTypeHouse({ type: "two-storey house" })}
+            >
               2 этаж. дома
             </button>
             <button
               className={`fourthAndThirdBlockTogether__text ${choiceTypeHouse.type === "bathhouse" ? "changesBg" : ""}`}
               data-modal="bathhouse"
-              onClick={() => setChoiceTypeHouse({ type: "bathhouse" })}>
+              onClick={() => setChoiceTypeHouse({ type: "bathhouse" })}
+            >
               Бани
             </button>
           </div>
@@ -172,10 +181,10 @@ export function ThirdBlock() {
   );
 }
 
-function ThirdBlockTile(task: typeItemHouse) {
+function ThirdBlockTile(task: typeItemHouse, domain: string) {
   switch (Object.keys(task).length) {
     case 11:
-      return modalHouse(task);
+      return modalHouse(task, domain);
     case 10:
       return modalBathHouse(task);
     case 2:
@@ -183,7 +192,7 @@ function ThirdBlockTile(task: typeItemHouse) {
   }
 }
 
-function modalHouse(task: typeItemHouse) {
+function modalHouse(task: typeItemHouse, domain: string) {
   return (
     <React.Fragment key={task.code}>
       <Link to={`/houses/${task.link}`} state={{ task: task }} className="fourthAndThirdBlockTogether__tile">
@@ -193,7 +202,13 @@ function modalHouse(task: typeItemHouse) {
         <div className="fourthAndThirdBlockTogether__tile-text" id={task.code}>
           Стоимость: {task.coust} руб.
         </div>
-        <div className="fourthAndThirdBlockTogether__tile-text">В ипотеку: от {task.mortgage} руб.</div>
+        <div
+          className={
+            domain == "org" ? "fourthAndThirdBlockTogether__tile-text" : "fourthAndThirdBlockTogether__tile-text none"
+          }
+        >
+          В ипотеку: от {task.mortgage} руб.
+        </div>
         <div className="fourthAndThirdBlockTogether__link">
           <img src="./icons/textSvg.svg" alt="link" />
         </div>
@@ -205,7 +220,12 @@ function modalHouse(task: typeItemHouse) {
 function modalBathHouse(task: typeItemHouse) {
   return (
     <React.Fragment key={task.code}>
-      <Link to={`/houses/${task.link}`} target="_blank" state={{ task: task }} className="fourthAndThirdBlockTogether__tile">
+      <Link
+        to={`/houses/${task.link}`}
+        target="_blank"
+        state={{ task: task }}
+        className="fourthAndThirdBlockTogether__tile"
+      >
         <img className="fourthAndThirdBlockTogether__tile-img" src={task.img} alt={task.alt} />
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[0] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[1] : false}</div>

@@ -1,4 +1,7 @@
+import { defineDomain } from "../../../houses";
+
 export function FifthBlock() {
+  const domain: string = defineDomain(location.hostname);
   return (
     <div id="dop" className="sixthBlock">
       <div className="container">
@@ -27,15 +30,23 @@ export function FifthBlock() {
               <div className="sixthBlock__item-text">ОТОПЛЕНИЕ</div>
             </div>
           </div>
-          <div className="sixthBlock__title">Оплата</div>
-          <div className="sixthBlock__text">НАЛИЧНЫЕ, БЕЗНАЛИЧНЫЙ СПОСОБ ОПЛАТЫ, МАТЕРИНСКИЙ КАПИТАЛ</div>
-          <a className="sixthBlock__button" href="payment.html">
-            <div className="sixthBlock__button">
-              <button className="sixthBlock__button">Подробнее</button>
-            </div>
-          </a>
+          {domain == "org" ? payment() : ""}
         </div>
       </div>
     </div>
   );
+
+  function payment() {
+    return (
+      <>
+        <div className="sixthBlock__title">Оплата</div>
+        <div className="sixthBlock__text">НАЛИЧНЫЕ, БЕЗНАЛИЧНЫЙ СПОСОБ ОПЛАТЫ, МАТЕРИНСКИЙ КАПИТАЛ</div>
+        <a className="sixthBlock__button" href="payment.html">
+          <div className="sixthBlock__button">
+            <button className="sixthBlock__button">Подробнее</button>
+          </div>
+        </a>
+      </>
+    );
+  }
 }

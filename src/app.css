@@ -38,6 +38,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-top: 10px;
+  height: 91px;
 }
 
 .firstBlock {
@@ -48,6 +49,23 @@ body {
   z-index: 1;
   padding-top: 115px;
   position: relative;
+}
+
+.firstByBlock {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+    url("../img/BackGround_FirstBlock_320pxMedia.jpg") center center/cover no-repeat;
+  width: 100%;
+  height: 630px;
+  z-index: 1;
+  padding-top: 115px;
+  position: relative;
+}
+
+.lineBy {
+  width: 300px;
+  height: 1px;
+  background-color: #fff;
+  opacity: 0.25;
 }
 
 .nav__menu {
@@ -102,6 +120,12 @@ body {
   position: relative;
 }
 
+.firstBlockBy__wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .firstBlock__header {
   color: #fff;
   font-size: 70px;
@@ -112,6 +136,121 @@ body {
   text-align: left;
   text-align: center;
 }
+
+.firstBlockBy__header {
+  color: #fff;
+  font-size: 70px;
+  font-weight: 400;
+  font-style: normal;
+  word-spacing: 4.7px;
+  text-align: left;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.firstBlockBy__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.firstBlockBy__buttonMediaMax940px {
+  margin-top: 230px;
+  width: 300px;
+  height: 70px;
+  cursor: pointer;
+}
+
+.firstBlockBy__buttonMediaMin940px {
+  margin-top: 70px;
+  width: 300px;
+  height: 70px;
+  display: none;
+}
+
+.firstBlockBy__buttonMediaMax940px a button {
+  width: 300px;
+  height: 70px;
+  border: #fff solid 3px;
+  background: rgba(0, 0, 0, 0);
+  font-family: "FuturaPTWebBold";
+  font-size: 20px;
+  line-height: 1.55;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.firstBlockBy__buttonMediaMin940px button {
+  width: 308px;
+  height: 70px;
+  border: #fff solid 3px;
+  background: rgba(0, 0, 0, 0);
+}
+
+.firstBlockBy__buttonMediaMax940px a {
+  font-family: "FuturaPTWebBold";
+  font-size: 20px;
+  line-height: 1.55;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.smallLineBy {
+  display: none;
+}
+
+.firstBlockBy__buttonMediaMin940px button {
+  font-family: "FuturaPTWebBold";
+  font-size: 20px;
+  line-height: 1.55;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.firstBlockBy__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.firstBlockBy__buttonMap > a {
+  font-family: "FuturaPTWebBold";
+  font-size: 20px;
+  line-height: 1.55;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.firstBlockBy__buttonMap > a > button {
+  width: 300px;
+  height: 70px;
+  border: #fff solid 3px;
+  background: rgba(0, 0, 0, 0);
+  font-family: "FuturaPTWebBold";
+  font-size: 20px;
+  line-height: 1.55;
+  font-weight: 500;
+  font-style: normal;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 .firstBlock__texts {
   margin-top: 100px;
@@ -1205,11 +1344,26 @@ body {
       url("../img/BackGround_firstBlock.jpg") center center/cover no-repeat;
   }
 
+  .firstByBlock {
+    padding-top: 80px;
+    height: 450px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+      url("../img/BackGround_firstBlock.jpg") center center/cover no-repeat;
+  } 
+
   .firstBlock__header {
     font-size: 100px;
   }
 
+  .firstBlockBy__header {
+    font-size: 100px;
+    
+  }
+
   .firstBlock__buttonMediaMax940px {
+    margin-top: 70px;
+  }
+  .firstBlockBy__buttonMediaMax940px {
     margin-top: 70px;
   }
 
@@ -1489,9 +1643,19 @@ body {
     height: 710px;
   }
 
+  .firstByBlock {
+    height: 510px;
+  }
+
   .firstBlock__wrapper {
     flex-direction: row;
     height: 100%;
+    justify-content: space-between;
+  }
+
+  .firstBlockBy__wrapper {
+    flex-direction: row;
+    height: 250px;
     justify-content: space-between;
   }
 
@@ -1501,6 +1665,32 @@ body {
     width: 266px;
     font-size: 30px;
     margin-top: 82px;
+  }
+
+  .firstBlockBy__header {
+    text-align: start;
+    position: relative;
+    width: 330px;
+    font-size: 120px;
+  }
+
+  .firstBlockBy__title {
+    margin-top: 90px;
+    text-align: start;
+    width: 321px;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    padding-left: 30px;
+  }
+
+  .firstBlockBy__header span {
+    text-align: end;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 100px;
   }
 
   .firstBlock__header span {
@@ -1682,6 +1872,32 @@ body {
     width: 175px;
     height: 3px;
     opacity: 1;
+  }
+
+  .firstBlockBy__header span {
+    width: 98%;
+  }
+
+  .smallLineBy {
+    margin-top: 105px;
+    display: block;
+    width: 310px;
+    height: 2px;
+    opacity: 1;
+  }
+
+  .firstBlockBy__buttonMediaMin940px {
+    display: block;
+    margin-top: 0;
+  }
+
+  .firstBlockBy__buttonMediaMax940px {
+    display: none;
+  }
+
+  .firstBlockBy__buttons {
+    margin-top: 70px;
+    flex-direction: row;
   }
 
   .firstBlock__texts {
@@ -2052,6 +2268,20 @@ body {
     width: 266px;
     font-size: 37px;
     margin-top: 82px;
+  }
+
+  .firstByBlock {
+    height: 680px;
+  }
+
+  .firstBlockBy__buttons {
+    margin-top: 210px;
+  }
+
+  .smallLineBy {
+    width: 505px;
+    position: absolute;
+    left: 309px;
   }
 
   .firstBlock__texts {
