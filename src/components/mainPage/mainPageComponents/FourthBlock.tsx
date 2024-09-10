@@ -66,7 +66,7 @@ export function FourthBlock({ setBodyStyle }: MainPageProps) {
         <div className="fifthBlock__header">Технология</div>
         <div className="fifthBlock__imgs">
           {imgs.map((img, index) => {
-            let key = index + 11111111;
+            const key = index + 11111111;
             return (
               <img
                 key={key}
@@ -109,7 +109,7 @@ function createItem(item: typeItem, index: number) {
           alt=""
           className="fifthBlock__item-plus"
           onClick={(event) => {
-            let imgEl = event.nativeEvent.target as HTMLImageElement;
+            const imgEl = event.nativeEvent.target as HTMLImageElement;
             if (imgEl.nextElementSibling as HTMLDivElement) {
               if (imgEl.nextElementSibling?.classList.length == 1) {
                 imgEl.classList.add("rotate");

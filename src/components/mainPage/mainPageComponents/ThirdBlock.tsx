@@ -26,7 +26,7 @@ export function ThirdBlock() {
   }, []);
 
   function findHouseTypes(houses: typeItemsHouse): string[] {
-    let typesHouseArray: string[] = [];
+    const typesHouseArray: string[] = [];
 
     houses.forEach((item) => {
       if (typesHouseArray.indexOf(item.typeHouse) == -1) {

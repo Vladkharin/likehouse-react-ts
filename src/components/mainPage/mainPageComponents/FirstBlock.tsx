@@ -257,7 +257,7 @@ async function postData(
 
   const form = event.nativeEvent.target as HTMLFormElement;
 
-  let error = formValidate(form, setInputsError, inputsError, setFetchStatus);
+  const error = formValidate(form, setInputsError, inputsError, setFetchStatus);
 
   const indexNumber = form.childNodes[2].childNodes[2].textContent;
   const inputTel = (form.childNodes[3] as HTMLInputElement).value;
@@ -296,7 +296,7 @@ function formValidate(
 ) {
   let error = 0;
 
-  let formReq = [form.childNodes[1], form.childNodes[3]];
+  const formReq = [form.childNodes[1], form.childNodes[3]];
 
   formRemoveError(form.childNodes[3] as HTMLInputElement, setInputsError, inputsError);
   formRemoveError(form.childNodes[1] as HTMLInputElement, setInputsError, inputsError);
@@ -390,7 +390,7 @@ function createArrCountryCatalog() {
     const indexPosition = arrayPositionBG.indexOf(arrayNameAndNumber[i]);
 
     if (indexPosition != -1) {
-      let task = {
+      const task = {
         name: arrayNameAndNumber[i + 1],
         number: arrayNameAndNumber[i + 2],
         position: `${arrayPositionBG[indexPosition + 1]} ${arrayPositionBG[indexPosition + 2]}`,

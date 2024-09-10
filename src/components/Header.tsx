@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { defineDomain } from "../houses";
 
 type typeHeaderProps = {
   scroll: number;
@@ -50,7 +51,7 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
             {domain == "org" ? menuTelehoneRu() : menuTelephoneBy()}
           </div>
         </div>
-        {menu(menuTel, setMenuTel)}
+        {menu(menuTel, setMenuTel, setBodyStyle, domain)}
       </nav>
     );
   } else {
@@ -72,7 +73,12 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
   }
 }
 
-function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<boolean>>) {
+function menu(
+  menuTel: boolean,
+  setMenuTel: React.Dispatch<React.SetStateAction<boolean>>,
+  setBodyStyle: React.Dispatch<React.SetStateAction<string>>,
+  domain: string
+) {
   let overlayClass = "overlay";
   let menuClass = "menu";
   if (menuTel) {
@@ -91,7 +97,8 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
-            }}>
+            }}
+          >
             О нас
           </a>
           <a
@@ -100,7 +107,8 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
-            }}>
+            }}
+          >
             Каталог
           </a>
           <a
@@ -109,7 +117,8 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
-            }}>
+            }}
+          >
             Технология
           </a>
           <a
@@ -118,7 +127,8 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
-            }}>
+            }}
+          >
             Доп. услуги
           </a>
           <a
@@ -127,7 +137,8 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
-            }}>
+            }}
+          >
             Отзывы
           </a>
           {domain == "org" ? menuLinkRu() : ""}
@@ -137,7 +148,8 @@ function menu(menuTel: boolean, setMenuTel: React.Dispatch<React.SetStateAction<
           onClick={() => {
             setMenuTel(false);
             setBodyStyle("");
-          }}>
+          }}
+        >
           {" "}
         </button>
       </div>
@@ -170,7 +182,10 @@ function menuGreyIconsRu() {
       <a id="phone" href="tel:+74951277452" className="stylePagenav__icon">
         <img src="../icons/PhoneGreyIcon.svg" alt="" />
       </a>
-      <a href="https://www.youtube.com/@likehouse_org" className="stylePagenav__icon">
+      <a
+        href="https://www.youtube.com/@likehouse_org"
+        className="stylePagenav__icon"
+      >
         <img src="../icons/YouTubeGreyIcon.svg" alt="" />
       </a>
       <a href="mailto:info@likehouse.org" className="stylePagenav__icon">
@@ -186,16 +201,28 @@ function menuGreyIconsRu() {
 function menuIconsRu() {
   return (
     <div className="nav__icons">
-      <a target="_blank" href="https://teleg.run/Like_House_org" className="nav__icon">
+      <a
+        target="_blank"
+        href="https://teleg.run/Like_House_org"
+        className="nav__icon"
+      >
         <img src="./icons/TelegramIcon.svg" alt="" />
       </a>
-      <a target="_blank" href="https://wa.clck.bar/79251047452" className="nav__icon">
+      <a
+        target="_blank"
+        href="https://wa.clck.bar/79251047452"
+        className="nav__icon"
+      >
         <img src="./icons/WhatsappIcon.svg" alt="" />
       </a>
       <a id="phone" href="tel:+74951277452" className="nav__icon">
         <img src="./icons/PhoneIcon.svg" alt="" />
       </a>
-      <a target="_blank" href="https://www.youtube.com/@likehouse_org" className="nav__icon">
+      <a
+        target="_blank"
+        href="https://www.youtube.com/@likehouse_org"
+        className="nav__icon"
+      >
         <img src="./icons/YouTubeIcon.svg" alt="" />
       </a>
       <a href="mailto:info@likehouse.org" className="nav__icon">
@@ -215,7 +242,10 @@ function menuTelehoneRu() {
         +7 (925) 104-74-52
       </a>{" "}
       <br />
-      <a className="nav__item-linkWithOutdecoration margin" href="tel:+74951277452">
+      <a
+        className="nav__item-linkWithOutdecoration margin"
+        href="tel:+74951277452"
+      >
         +7 (495) 127-74-52
       </a>{" "}
       <br />

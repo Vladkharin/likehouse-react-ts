@@ -21,7 +21,7 @@ export function AdditionalServiceItems(
   wallsAndCeilings: typeActiveAdditionalService
 ) {
   function mutuallyExclusive(code: string) {
-    let choiceArray: typeActiveAdditionalService[] = [];
+    const choiceArray: typeActiveAdditionalService[] = [];
     choiceAdditionalServices["mutually exclusive"][code].forEach((item) => {
       const choiceItem = listActiveAdditionalServices.find((el) => el.code == item);
 
@@ -34,7 +34,7 @@ export function AdditionalServiceItems(
   }
 
   function cantChooseWithout(code: string): typeActiveAdditionalService[] {
-    let choiceArray: typeActiveAdditionalService[] = [];
+    const choiceArray: typeActiveAdditionalService[] = [];
     choiceAdditionalServices["cant choose without"][code].forEach((item) => {
       services["Разделы"].forEach((car) => {
         car.Подразделы.forEach((el) => {
@@ -54,7 +54,7 @@ export function AdditionalServiceItems(
   }
 
   function cantBeRemovedWithout(code: string) {
-    let choiceArray: typeActiveAdditionalService[] = [];
+    const choiceArray: typeActiveAdditionalService[] = [];
     choiceAdditionalServices["cant be removed without"][code].forEach((item) => {
       const choiceItem = listActiveAdditionalServices.find((el) => el.code == item);
 
@@ -67,8 +67,8 @@ export function AdditionalServiceItems(
   }
 
   function onBtn(code: string, name: string, coust: number, index = -1, count = 1) {
-    let mutuallyExclusiveArray = [];
-    let cantChooseWithoutArray: typeActiveAdditionalService[] = [];
+    const mutuallyExclusiveArray: typeActiveAdditionalService[] = [];
+    const cantChooseWithoutArray: typeActiveAdditionalService[] = [];
 
     if (choiceAdditionalServices["mutually exclusive"][code]) {
       mutuallyExclusiveArray.push(...mutuallyExclusive(code));
@@ -113,8 +113,8 @@ export function AdditionalServiceItems(
 
   function offBtn(code: string) {
     let endArray = listActiveAdditionalServices.filter((item) => item.code != code);
-    let firstIndex = listActiveAdditionalServices.findIndex((item) => item.code == "000000144");
-    let secondIndex = listActiveAdditionalServices.findIndex((item) => item.code == "000000132");
+    const firstIndex = listActiveAdditionalServices.findIndex((item) => item.code == "000000144");
+    const secondIndex = listActiveAdditionalServices.findIndex((item) => item.code == "000000132");
     if (
       typeof choiceAdditionalServices["mutually exclusive"][code] !== "undefined" &&
       firstIndex === -1 &&
@@ -142,7 +142,7 @@ export function AdditionalServiceItems(
     }
 
     if (choiceAdditionalServices["cant be removed without"][code]) {
-      let cantBeRemovedWithoutArray = [...cantBeRemovedWithout(code)];
+      const cantBeRemovedWithoutArray = [...cantBeRemovedWithout(code)];
 
       endArray = listActiveAdditionalServices.filter((item) => !cantBeRemovedWithoutArray.includes(item));
     }
@@ -150,7 +150,7 @@ export function AdditionalServiceItems(
     if (code === "000000144" || code === "000000132") {
       return;
     }
-    let arr = endArray.filter((item) => item.code !== code);
+    const arr = endArray.filter((item) => item.code !== code);
 
     setPriceAdditionalServices(arr.reduce((acc, item) => acc + item.coust * item.count, 0));
     setListActiveAdditionalServices(arr.filter((item) => item.count != 0));

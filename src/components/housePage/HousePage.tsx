@@ -305,7 +305,6 @@ async function postData(
   inputsError: typeInputsError,
   setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
   listActiveAdditionalServices: typeListActiveAdditionalServices,
-  setInputPhoneValue: React.Dispatch<React.SetStateAction<string>>
 ) {
   event.preventDefault();
 
@@ -313,7 +312,7 @@ async function postData(
 
   const inputTel = (form.childNodes[2].childNodes[2] as HTMLInputElement).value;
 
-  let error = await formValidate(form, setInputsError, inputsError, setFetchStatus, inputTel);
+  const error = await formValidate(form, setInputsError, inputsError, setFetchStatus, inputTel);
 
   setFetchStatus(FORM_STATUS_MESSAGE.loading);
 
@@ -353,7 +352,7 @@ async function formValidate(
 ) {
   let error = 0;
 
-  let formReq = [form.childNodes[1].childNodes[2], form.childNodes[2].childNodes[2]];
+  const formReq = [form.childNodes[1].childNodes[2], form.childNodes[2].childNodes[2]];
 
   formRemoveError(form.childNodes[1].childNodes[2] as HTMLInputElement, setInputsError, inputsError);
   formRemoveError(form.childNodes[2].childNodes[2] as HTMLInputElement, setInputsError, inputsError);
@@ -435,7 +434,7 @@ function modalForm(
           action="sendorder.php"
           method="post"
           onSubmit={(event) =>
-            postData(event, setInputsError, inputsError, setFetchStatus, listActiveAdditionalServices, setInputPhoneValue)
+            postData(event, setInputsError, inputsError, setFetchStatus, listActiveAdditionalServices)
           }>
           <label>
             <div>Получить предложение</div>
