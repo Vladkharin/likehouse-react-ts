@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { arrayNameAndNumber, arrayPositionBG, defineDomain } from "../../../houses";
+import { arrayNameAndNumber, arrayPositionBG } from "../../../houses";
 import { typeInputsError } from "../../typesAndIntefaces";
 import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
 
@@ -34,8 +34,6 @@ export function FirstBlock({ setBodyStyle }: Props) {
     codeCountry: "+7",
   });
 
-  const domain: string = defineDomain(location.hostname);
-
   if (stateModal) {
     setBodyStyle("hidden");
   } else {
@@ -43,9 +41,9 @@ export function FirstBlock({ setBodyStyle }: Props) {
   }
 
   return (
-    <div className={domain == "org" ? "firstBlock" : "firstByBlock"}>
-      <div className="container">{domain == "org" ? firstBlockRu(setStateModal) : firstBlockBy(setStateModal)}</div>
-      <div className={domain == "org" ? "animation" : "none"}>
+    <div className={"firstBlock"}>
+      <div className="container">{firstBlockRu(setStateModal)}</div>
+      <div className={"animation"}>
         <img src="./icons/partner.svg?ver=1" alt="partner" className="animation__spin" />
       </div>
 
@@ -101,9 +99,7 @@ function modal(
         >
           <div className="feedBack__form-header">Оставьте заявку</div>
           <input
-            className={
-              inputsError.inputName != "" ? "feedBack__from-inputText _req _error" : "feedBack__from-inputText _req"
-            }
+            className={inputsError.inputName != "" ? "feedBack__from-inputText _req _error" : "feedBack__from-inputText _req"}
             name="user_name"
             type="text"
             placeholder="Ваше имя"
@@ -126,22 +122,14 @@ function modal(
             }}
           >
             <div className="feedBack__menu-flag" style={{ backgroundPosition: telInputInfo.backgroundPosition }}></div>
-            <div
-              className="feedBack__menu-arrow"
-              style={stateContextMenu ? { rotate: "180deg" } : { rotate: "360deg" }}
-            ></div>
+            <div className="feedBack__menu-arrow" style={stateContextMenu ? { rotate: "180deg" } : { rotate: "360deg" }}></div>
             <div className="feedBack__menu-number">{telInputInfo.codeCountry}</div>
           </div>
           <MaskedInput
             maskGenerator={maskGenerator}
-            className={
-              inputsError.inputPhone != "" ? "feedBack__from-inputPhone _req _error" : "feedBack__from-inputPhone _req"
-            }
+            className={inputsError.inputPhone != "" ? "feedBack__from-inputPhone _req _error" : "feedBack__from-inputPhone _req"}
             style={{
-              paddingLeft:
-                telInputInfo.codeCountry.trim().length > 5
-                  ? "110px"
-                  : telInputInfo.codeCountry.trim().length * 10 + 50 + "px",
+              paddingLeft: telInputInfo.codeCountry.trim().length > 5 ? "110px" : telInputInfo.codeCountry.trim().length * 10 + 50 + "px",
             }}
             name="user_phone"
             type="tel"
@@ -159,11 +147,7 @@ function modal(
           />
           <button type="submit" className="feedBack__form-submit">
             <div className={fetchStatus === "Загрузка..." ? "loader block" : "loader none"}></div>
-            <div
-              className={
-                fetchStatus === "Загрузка..." ? "feedBack__form-submitText none" : "feedBack__form-submitText block"
-              }
-            >
+            <div className={fetchStatus === "Загрузка..." ? "feedBack__form-submitText none" : "feedBack__form-submitText block"}>
               Отправить
             </div>
           </button>
@@ -182,34 +166,16 @@ function modal(
             {" "}
             {contextMenu(setTelInputInfo, setStateContextMenu)}
           </div>
-          <div
-            className={inputsError.inputName == "Обязательное поле" ? "error tl17585 show" : "error tl17585 notVisible"}
-          >
+          <div className={inputsError.inputName == "Обязательное поле" ? "error tl17585 show" : "error tl17585 notVisible"}>
             Обязательное поле
           </div>
-          <div
-            className={
-              inputsError.inputName == "Слишком длинное значение"
-                ? "errorBig tl17585 show"
-                : "errorBig tl17585 notVisible"
-            }
-          >
+          <div className={inputsError.inputName == "Слишком длинное значение" ? "errorBig tl17585 show" : "errorBig tl17585 notVisible"}>
             Слишком длинное значение
           </div>
-          <div
-            className={
-              inputsError.inputPhone == "Обязательное поле" ? "error tl24085 show" : "error tl24085 notVisible"
-            }
-          >
+          <div className={inputsError.inputPhone == "Обязательное поле" ? "error tl24085 show" : "error tl24085 notVisible"}>
             Обязательное поле
           </div>
-          <div
-            className={
-              inputsError.inputPhone == "Слишком короткое значение"
-                ? "errorTel tl24085 show"
-                : "errorTel tl24085 notVisible"
-            }
-          >
+          <div className={inputsError.inputPhone == "Слишком короткое значение" ? "errorTel tl24085 show" : "errorTel tl24085 notVisible"}>
             Слишком короткое значение
           </div>
           <div className="crestik" onClick={() => setStateModal(false)}>
@@ -226,11 +192,7 @@ function modal(
           <div className="feedBackModal__wrapper">
             <img src="./icons/crestikBlack.svg" alt="" className="crestikBlack" onClick={() => setFetchStatus("")} />
             <div
-              className={
-                fetchStatus === "Спасибо! Скоро мы с вами свяжемся"
-                  ? "feedBackModal__complete"
-                  : "feedBackModal__failure"
-              }
+              className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"}
             ></div>
             <div className="feedBackModal__text">{fetchStatus}</div>
           </div>
@@ -407,15 +369,11 @@ function firstBlockRu(setStateModal: React.Dispatch<React.SetStateAction<boolean
         <div className="line smallLine"></div>
         <div className="firstBlock__texts desc">
           <p className="firstBlock__text big">ИПОТЕКА НА СТРОИТЕЛЬСТВО БЕЗ ПЕРВОНАЧАЛЬНОГО ВЗНОСА</p>
-          <img src="./assets/icons/эскроу-десктоп.svg" alt="" />
-          <p className="firstBlock__text small">
-            Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте
-          </p>
+          <img src="./icons/эскроу-десктоп.svg" alt="" />
+          <p className="firstBlock__text small">Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте</p>
         </div>
         <div className="firstBlock__texts mob">
-          <p className="firstBlock__text small">
-            Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте
-          </p>
+          <p className="firstBlock__text small">Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте</p>
           <p className="firstBlock__text big">ИПОТЕКА НА СТРОИТЕЛЬСТВО БЕЗ ПЕРВОНАЧАЛЬНОГО ВЗНОСА</p>
           <p className="firstBlock__text small">эксклюзивное предложение для наших клиентов</p>
           <img src="./icons/эскроу-десктоп.svg" alt="" />
@@ -437,32 +395,6 @@ function firstBlockRu(setStateModal: React.Dispatch<React.SetStateAction<boolean
 
         <div className="firstBlock__buttonMediaMin940px">
           <button onClick={() => setStateModal(true)}>Узнать условия</button>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function firstBlockBy(setStateModal: React.Dispatch<React.SetStateAction<boolean>>) {
-  return (
-    <>
-      <div className="firstBlockBy__wrapper">
-        <div className="firstBlockBy__header">
-          Лайк <span>Хаус</span>
-        </div>
-        <div className="lineBy smallLineBy"></div>
-        <h1 className="firstBlockBy__title">
-          Строим каркасные дома и бани с ориентированием на честное отношение к клиентам
-        </h1>
-      </div>
-      <div className="firstBlockBy__buttons">
-        <div className="firstBlockBy__buttonMediaMax940px">
-          <a href="tel:+375333623505">
-            <button>Позвонить</button>
-          </a>
-        </div>
-        <div className="firstBlockBy__buttonMediaMin940px">
-          <button onClick={() => setStateModal(true)}>Бесплатная консультация</button>
         </div>
       </div>
     </>

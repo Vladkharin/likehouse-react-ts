@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { defineDomain } from "../houses";
 
 type typeHeaderProps = {
   scroll: number;
@@ -11,7 +10,6 @@ type typeHeaderProps = {
 
 export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
   const [menuTel, setMenuTel] = useState<boolean>(false);
-  const domain: string = defineDomain(location.hostname);
 
   if (useLocation().pathname == mainPage) {
     return (
@@ -44,14 +42,14 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
                 <a href="#feedback" className="menu__link">
                   Отзывы
                 </a>
-                {domain == "org" ? menuLinkRu() : ""}
+                {menuLinkRu()}
               </div>
             </div>
-            {domain == "org" ? menuIconsRu() : menuIconsBy()}
-            {domain == "org" ? menuTelehoneRu() : menuTelephoneBy()}
+            {menuIconsRu()}
+            {menuTelehoneRu()}
           </div>
         </div>
-        {menu(menuTel, setMenuTel, setBodyStyle, domain)}
+        {menu(menuTel, setMenuTel, setBodyStyle)}
       </nav>
     );
   } else {
@@ -64,8 +62,8 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
                 На главную
               </Link>
             </div>
-            {domain == "org" ? menuGreyIconsRu() : menuGreyIconsBy()}
-            {domain == "org" ? menuTelehoneRu() : menuTelephoneBy()}
+            {menuGreyIconsRu()}
+            {menuTelehoneRu()}
           </div>
         </div>
       </nav>
@@ -76,8 +74,7 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
 function menu(
   menuTel: boolean,
   setMenuTel: React.Dispatch<React.SetStateAction<boolean>>,
-  setBodyStyle: React.Dispatch<React.SetStateAction<string>>,
-  domain: string
+  setBodyStyle: React.Dispatch<React.SetStateAction<string>>
 ) {
   let overlayClass = "overlay";
   let menuClass = "menu";
@@ -141,7 +138,7 @@ function menu(
           >
             Отзывы
           </a>
-          {domain == "org" ? menuLinkRu() : ""}
+          {menuLinkRu()}
         </div>
         <button
           className="menu__Close"
@@ -220,32 +217,6 @@ function menuIconsRu() {
   );
 }
 
-function menuIconsBy() {
-  return (
-    <div className="nav__icons">
-      <a href="https://www.youtube.com/@likehouse_org" className="nav__icon">
-        <img src="./icons/YouTubeIcon.svg" alt="" />
-      </a>
-      <a href="mailto:info@likehouse.org" className="nav__icon">
-        <img src="./icons/EmailIcon.svg" alt="" />
-      </a>
-    </div>
-  );
-}
-
-function menuGreyIconsBy() {
-  return (
-    <div className="nav__icons">
-      <a href="https://www.youtube.com/@likehouse_org" className="nav__icon">
-        <img src="../icons/YouTubeGreyIcon.svg" alt="" />
-      </a>
-      <a href="mailto:info@likehouse.org" className="nav__icon">
-        <img src="../icons/EmailGreyIcon.svg" alt="" />
-      </a>
-    </div>
-  );
-}
-
 function menuTelehoneRu() {
   return (
     <div className="nav__item-title">
@@ -258,17 +229,6 @@ function menuTelehoneRu() {
       </a>{" "}
       <br />
       <span>(WhatsApp)</span>
-    </div>
-  );
-}
-
-function menuTelephoneBy() {
-  return (
-    <div className="nav__item-title">
-      <a className="nav__item-linkWithOutdecoration" href="tel:+375333623505">
-        +375 33 362-35-05
-      </a>
-      <br />
     </div>
   );
 }

@@ -1,16 +1,5 @@
 import { typeChoiceAdditionalServices, typeItemsHouse } from "./components/typesAndIntefaces";
 
-export function defineDomain(host: string) {
-  const array: string[] = host.split(".");
-  if (array[array.length - 1] == "by") {
-    return "org";
-
-  } else {
-    return "by";
-
-  }
-}
-
 export const basicConfigurationOfTwoStoreyHouses = [
   "Фундамент ? ЖБ сваи (длинна 3000 мм сечение 150х150 мм)",
   "Обработка огнебиозащита ? Нижний венец дома",
@@ -530,7 +519,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 29.44 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: ["../pages/8x10Images/01.jpg", "../pages/8x10Images/02.jpg", "../pages/8x10Images/03.jpg"],
+    imgs: ["../pages/8х10_2BedroomsImages/01.jpg", "../pages/8х10_2BedroomsImages/02.jpg", "../pages/8х10_2BedroomsImages/03.jpg"],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -894,7 +883,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/5x6BathImage/03.jpg",
       "../pages/5x6BathImage/04.jpg",
     ],
-    coust: "СТОИМОСТЬ: Скоро будет доступна",
+    coust: "Скоро будет доступна",
     type: "bathhouse",
     link: "bath-5x6",
     typeHouse: "Бани",
@@ -914,7 +903,7 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: ["../pages/8x7BathImage/01.jpg", "../pages/8x7BathImage/02.jpg"],
-    coust: "СТОИМОСТЬ: Скоро будет доступна",
+    coust: "Скоро будет доступна",
     type: "bathhouse",
     link: "bath-8x7",
     typeHouse: "Бани",

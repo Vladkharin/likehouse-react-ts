@@ -1,7 +1,4 @@
-import { defineDomain } from "../houses";
-
 export function Footer() {
-  const domain: string = defineDomain(location.hostname);
   return (
     <footer className="footer">
       <div className="container">
@@ -10,15 +7,15 @@ export function Footer() {
           <div className="footer__items">
             <div className="footer__item">
               <div className="footer__item-header">АДРЕС</div>
-              {domain == "org" ? footerAddressRu() : footerAddressBy()}
+              {footerAddressRu()}
             </div>
             <div className="footer__item">
               <div className="footer__item-header">КОНТАКТЫ</div>
-              {domain == "org" ? footerContactsRu() : footerContactsBy()}
+              {footerContactsRu()}
             </div>
             <div className="footer__socialItem">
               <div className="footer__item-header">СОЦ.СЕТИ</div>
-              {domain == "org" ? footerSocialRu() : footerSocialBy()}
+              {footerSocialRu()}
             </div>
           </div>
         </div>
@@ -34,19 +31,6 @@ export function Footer() {
         <a target="_blank" className="footer__item-linkWithdecoration" href="https://yandex.ru/maps/-/CDaJyP8G">
           Показать на карте
         </a>{" "}
-      </div>
-    );
-  }
-
-  function footerAddressBy() {
-    return (
-      <div className="footer__item-title">
-        Офис: г. Мозырь <br />
-        ул. Якуба Коласа, д. 1, каб. 21 <br />
-        <a className="footer__item-linkWithdecoration" href="https://yandex.ru/maps/-/CDWtBGMS">
-          Показать на карте
-        </a>{" "}
-        <br /> <br />
       </div>
     );
   }
@@ -71,21 +55,6 @@ export function Footer() {
     );
   }
 
-  function footerContactsBy() {
-    return (
-      <div className="footer__item-title">
-        <a className="footer__item-linkWithOutdecoration" href="mailto:info@likehouse.org">
-          INFO@LIKEHOUSE.ORG
-        </a>{" "}
-        <br />
-        <a className="footer__item-linkWithOutdecoration" href="tel:+375333623505">
-          +375 33 362-35-05
-        </a>{" "}
-        <br />
-      </div>
-    );
-  }
-
   function footerSocialRu() {
     return (
       <div className="footer__socials">
@@ -100,19 +69,6 @@ export function Footer() {
         </a>
         <a target="_blank" href="https://teleg.run/Like_House_org">
           <img src="../icons/TelegramIcon.svg" alt="" className="footer__social" />
-        </a>
-      </div>
-    );
-  }
-
-  function footerSocialBy() {
-    return (
-      <div className="footer__socials">
-        <a href="mailto:info@likehouse.org">
-          <img src="../icons/EmailIcon.svg" alt="" className="footer__social" />
-        </a>
-        <a href="https://www.youtube.com/@likehouse_org">
-          <img src="../icons/YouTubeIcon.svg" alt="" className="footer__social" />
         </a>
       </div>
     );
