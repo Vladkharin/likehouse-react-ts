@@ -189,7 +189,26 @@ function ThirdBlockTile(task: typeItemHouse) {
   }
 }
 
+function stringConversion(task: string) {
+  const array: string[] = [];
+
+  task?.split("").forEach((item, index) => {
+    if (task?.length - index == 7) {
+      item = item + " ";
+    } else if (task?.length - index == 4) {
+      item = item + " ";
+    }
+    array.push(item);
+  });
+
+  return array.join("");
+}
+
 function modalHouse(task: typeItemHouse) {
+  if (!task.coust || !task.mortgage) {
+    return;
+  }
+
   return (
     <React.Fragment key={task.code}>
       <Link to={`/houses/${task.link}`} state={{ task: task }} className="fourthAndThirdBlockTogether__tile">
@@ -197,9 +216,9 @@ function modalHouse(task: typeItemHouse) {
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[0] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text">{task.information ? task.information[1] : false}</div>
         <div className="fourthAndThirdBlockTogether__tile-text" id={task.code}>
-          Стоимость: {task.coust} руб.
+          Стоимость: {stringConversion(task.coust)} руб.
         </div>
-        <div className={"fourthAndThirdBlockTogether__tile-text"}>В ипотеку: от {task.mortgage} руб.</div>
+        <div className={"fourthAndThirdBlockTogether__tile-text"}>В ипотеку: от {stringConversion(task.mortgage)} руб.</div>
         <div className="fourthAndThirdBlockTogether__link">
           <img src="./icons/textSvg.svg" alt="link" />
         </div>

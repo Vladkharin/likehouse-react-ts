@@ -76,7 +76,6 @@ export function HousePage() {
   const getHouse = () => {
     const pathName = locationPage.pathname.split("/")[2];
     const house = itemsHouse.filter((item) => item.link === pathName)[0];
-    console.log(house.coust);
     setCoustHouse(house.coust);
     setHouse(house);
 
@@ -182,7 +181,6 @@ export function HousePage() {
 
   useEffect(() => {
     document.title = house?.houseName as string;
-    console.log(document.head);
   });
 
   function viewAddtionalServicesBlock() {
@@ -208,8 +206,6 @@ export function HousePage() {
       </>
     );
   }
-
-  console.log(coustHouse);
 
   return (
     <React.Fragment>
