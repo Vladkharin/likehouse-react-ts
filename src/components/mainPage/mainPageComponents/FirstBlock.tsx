@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { arrayNameAndNumber, arrayPositionBG } from "../../../houses";
 import { typeInputsError } from "../../typesAndIntefaces";
 import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
+import { sendEmail } from "../../../API/routes";
 
 const maskGenerator = createDefaultMaskGenerator("(999) 999-99-99");
 
@@ -227,10 +228,7 @@ async function postData(
 
     formData.set("user_phone", phone);
 
-    const response = await fetch("sendmail.php", {
-      method: "POST",
-      body: formData,
-    });
+    const response = await sendEmail(formData);
 
     if (response.status === 200) {
       setFetchStatus(FORM_STATUS_MESSAGE.success);

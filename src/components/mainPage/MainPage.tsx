@@ -17,7 +17,14 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
     const y = window.scrollY;
     window.scrollBy(0, -y);
     document.title = "Каркасные дома | Like House";
+    console.log(getIpUSER());
   }, []);
+
+  const getIpUSER = async () => {
+    const response = await fetch("https://api.ipify.org?format=json");
+
+    return response.json();
+  };
 
   return (
     <>
