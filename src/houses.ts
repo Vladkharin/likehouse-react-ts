@@ -648,6 +648,8 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/7x10Images/02.jpg",
       "../pages/7x10Images/03.jpg",
       "../pages/7x10Images/04.jpg",
+      "../pages/7x10Images/05.jpg",
+      "../pages/7x10Images/06.jpg",
     ],
     coust: "0",
     mortgage: "0",

@@ -224,13 +224,21 @@ async function postData(
     setFetchStatus("");
     const formData = new FormData(form);
 
-    const phone = indexNumber + inputTel;
+    const user_name = formData.get("user_name") as string;
 
-    formData.set("user_phone", phone);
+    console.log(user_name);
+    console.log(inputTel);
+    console.log(indexNumber);
 
-    const response = await sendEmail(formData);
+    const object = {
+      first_name: user_name,
+      telephoneCode: indexNumber,
+      telephone: inputTel,
+    };
 
-    if (response.status === 200) {
+    const response = await sendEmail(JSON.stringify(object));
+
+    if (response.success) {
       setFetchStatus(FORM_STATUS_MESSAGE.success);
       form.reset();
     } else {

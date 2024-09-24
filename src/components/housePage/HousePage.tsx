@@ -24,6 +24,7 @@ import {
 import { typeInputsError } from "../typesAndIntefaces";
 
 import { AdditionalServiceItems } from "./housePageComponents/AdditionalServiceItems.tsx";
+import { sendOrder } from "../../API/routes.ts";
 
 const FORM_STATUS_MESSAGE = {
   loading: "Загрузка...",
@@ -246,9 +247,9 @@ export function HousePage() {
           {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
-      {/* <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
+      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
-      </button> */}
+      </button>
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
@@ -306,7 +307,9 @@ async function postData(
   setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
   inputsError: typeInputsError,
   setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
-  listActiveAdditionalServices: typeListActiveAdditionalServices
+  listActiveAdditionalServices: typeListActiveAdditionalServices,
+  coustHouse: string,
+  priceAdditionalServices: number
 ) {
   event.preventDefault();
 
@@ -322,18 +325,21 @@ async function postData(
     setFetchStatus("");
     const formData = new FormData(form);
 
-    const phone = inputTel;
+    console.log(formData);
 
-    formData.set("choice", JSON.stringify(listActiveAdditionalServices));
+    const userName = formData.get("user_name");
 
-    formData.set("user_phone", phone);
+    const jsonObject = {
+      name: userName,
+      phone: inputTel,
+      basicEquipment: Number(coustHouse),
+      services: listActiveAdditionalServices,
+      totalCoust: Number(coustHouse) + priceAdditionalServices,
+    };
 
-    const response = await fetch("sendorder.php", {
-      method: "POST",
-      body: formData,
-    });
+    const response = await sendOrder(JSON.stringify(jsonObject));
 
-    if (response.status === 200) {
+    if (response.success) {
       setFetchStatus(FORM_STATUS_MESSAGE.success);
       form.reset();
     } else {
@@ -435,7 +441,9 @@ function modalForm(
           className="stylePageorderModal__form"
           action="sendorder.php"
           method="post"
-          onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus, listActiveAdditionalServices)}
+          onSubmit={(event) =>
+            postData(event, setInputsError, inputsError, setFetchStatus, listActiveAdditionalServices, coustHouse, priceAdditionalServices)
+          }
         >
           <label>
             <div>Получить предложение</div>

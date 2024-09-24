@@ -1,21 +1,30 @@
-const API_URL = 'http://likehouse-back/api'
+const API_URL = 'http://likehouse-back.ru/api'
 
-const f = async (method: string, data: object, url: string) =>  {
+const f = async (method: string, data: string, url: string) =>  {
 
     const options = {
         method,
+        body: data,
         headers: {
             'Accept-Control-Allow-Origin' : '*',
-        },
-        body: JSON.stringify(data)
+            'Content-Type': 'application/json'
+        }
     }
 
     const response = await fetch(API_URL + url, options)
 
-    return response.json()
+    try {
+        return response.json()
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
-export async function sendEmail(data: object) {
+export async function sendEmail(data: string) {
     return await f('POST', data, '/sendemail')
+}
+
+export async function sendOrder(data: string) {
+    return await f('POST', data, '/sendorder')
 }
