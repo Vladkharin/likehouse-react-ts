@@ -247,9 +247,9 @@ export function HousePage() {
           {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
-      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
+      {/* <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
-      </button>
+      </button> */}
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
