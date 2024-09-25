@@ -389,7 +389,7 @@ function firstBlockRu(setStateModal: React.Dispatch<React.SetStateAction<boolean
           <p className="firstBlock__text small">эксклюзивное предложение для наших клиентов</p>
           <img src="./icons/эскроу-десктоп.svg" alt="" />
         </div>
-        <img className="firstBlock__logo" src="./icons/лого.png" alt="logo" />
+        <img className="firstBlock__logo" src="./icons/лого.svg" alt="logo" />
       </div>
       <div className="firstBlock__buttons">
         <div className="firstBlock__buttonMediaMax940px">
