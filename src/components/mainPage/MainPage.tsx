@@ -4,7 +4,7 @@ import { ThirdBlock } from "./mainPageComponents/ThirdBlock";
 import { FourthBlock } from "./mainPageComponents/FourthBlock";
 import { FifthBlock } from "./mainPageComponents/FifthBlock";
 import { SixthBlock } from "./mainPageComponents/SixthBlock";
-import { SeventhBlock } from "./mainPageComponents/SeventhBlock";
+// import { SeventhBlock } from "./mainPageComponents/SeventhBlock";
 import { EightBlock } from "./mainPageComponents/EightBlock";
 import React, { SetStateAction, useEffect } from "react";
 
@@ -34,7 +34,7 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
       <FourthBlock setBodyStyle={setBodyStyle} />
       <FifthBlock />
       <SixthBlock />
-      <SeventhBlock />
+      {/* <SeventhBlock /> */}
       <EightBlock />
     </>
   );

@@ -180,6 +180,10 @@ body {
   font-size: 15px;
 }
 
+.secondBlock__form > form > button:active {
+  background-color: #D57500;
+}
+
 .secondBlock__form > form > p {
   text-align: center;
   width: 250px;
