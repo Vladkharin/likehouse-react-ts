@@ -271,7 +271,8 @@ export function HousePage() {
             setFetchStatus,
             inputPhoneValue,
             setInputPhoneValue,
-            fetchStatus
+            fetchStatus,
+            house
           )
         : false}
       {house ? modalImg(stateModalImg, house, setStateModalImg, activeImgIndex, setActiveImgIndex) : false}
@@ -309,7 +310,8 @@ async function postData(
   setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
   listActiveAdditionalServices: typeListActiveAdditionalServices,
   coustHouse: string,
-  priceAdditionalServices: number
+  priceAdditionalServices: number,
+  house: typeItemHouse
 ) {
   event.preventDefault();
 
@@ -330,6 +332,8 @@ async function postData(
     const userName = formData.get("user_name");
 
     const jsonObject = {
+      houseName: house.houseName,
+      houseCode: house.code,
       name: userName,
       phone: inputTel,
       basicEquipment: Number(coustHouse),
@@ -432,7 +436,8 @@ function modalForm(
   setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
   inputPhoneValue: string,
   setInputPhoneValue: React.Dispatch<React.SetStateAction<string>>,
-  fetchStatus: string
+  fetchStatus: string,
+  house: typeItemHouse
 ) {
   return (
     <div className={stateModalForm ? "stylePageorderModal stylePagevisible" : "stylePageorderModal notVisible"}>
@@ -442,7 +447,16 @@ function modalForm(
           action="sendorder.php"
           method="post"
           onSubmit={(event) =>
-            postData(event, setInputsError, inputsError, setFetchStatus, listActiveAdditionalServices, coustHouse, priceAdditionalServices)
+            postData(
+              event,
+              setInputsError,
+              inputsError,
+              setFetchStatus,
+              listActiveAdditionalServices,
+              coustHouse,
+              priceAdditionalServices,
+              house
+            )
           }
         >
           <label>
