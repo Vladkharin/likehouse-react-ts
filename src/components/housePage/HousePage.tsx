@@ -247,9 +247,9 @@ export function HousePage() {
           {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
-      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
+      {/* <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
-      </button>
+      </button> */}
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
@@ -280,28 +280,29 @@ export function HousePage() {
   );
 }
 
-// async function checkingTheNumberForWhatsApp(inputTel: string) {
-//   const body = {
-//     phoneNumber: inputTel.slice(1).split(" ").join(""),
-//   };
+async function checkingTheNumberForWhatsApp(inputTel: string) {
+  const body = {
+    phoneNumber: inputTel.slice(1).split(" ").join(""),
+  };
 
-//   const url =
-//     import.meta.env.VITE_API_URL +
-//     "/waInstance" +
-//     import.meta.env.VITE_ID_INSTANCE +
-//     "/checkWhatsapp/" +
-//     import.meta.env.VITE_API_TOKEN_INSTANCE;
+  const url =
+    import.meta.env.VITE_API_URL +
+    "/waInstance" +
+    import.meta.env.VITE_ID_INSTANCE +
+    "/checkWhatsapp/" +
+    import.meta.env.VITE_API_TOKEN_INSTANCE;
 
-//   const responseFetchPhone = await fetch(url, {
-//     method: "POST",
-//     body: JSON.stringify(body),
-//     headers: { "Content-Type": "application/json" },
-//   });
+  console.log(url);
+  const responseFetchPhone = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+  });
 
-//   const data = await responseFetchPhone.json();
+  const data = await responseFetchPhone.json();
 
-//   return data;
-// }
+  return data;
+}
 
 async function postData(
   event: React.FormEvent<HTMLFormElement>,
@@ -319,7 +320,7 @@ async function postData(
 
   const inputTel = (form.childNodes[2].childNodes[2] as HTMLInputElement).value;
 
-  const error = await formValidate(form, setInputsError, inputsError, setFetchStatus);
+  const error = await formValidate(form, setInputsError, inputsError, setFetchStatus, inputTel);
 
   setFetchStatus(FORM_STATUS_MESSAGE.loading);
 
@@ -341,6 +342,8 @@ async function postData(
       totalCoust: Number(coustHouse) + priceAdditionalServices,
     };
 
+    // console.log(jsonObject);
+
     const response = await sendOrder(JSON.stringify(jsonObject));
 
     if (response.success) {
@@ -359,7 +362,8 @@ async function formValidate(
   form: HTMLFormElement,
   setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
   inputsError: typeInputsError,
-  setFetchStatus: React.Dispatch<React.SetStateAction<string>>
+  setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
+  inputTel: string
 ) {
   let error = 0;
 
@@ -368,17 +372,16 @@ async function formValidate(
   formRemoveError(form.childNodes[1].childNodes[2] as HTMLInputElement, setInputsError, inputsError);
   formRemoveError(form.childNodes[2].childNodes[2] as HTMLInputElement, setInputsError, inputsError);
 
-  // const errorChecking = await checkingTheNumberForWhatsApp(inputTel);
+  const errorChecking = await checkingTheNumberForWhatsApp(inputTel);
 
-  // if (!errorChecking.existsWhatsapp) {
-  //   error++;
-  // }
+  if (!errorChecking.existsWhatsapp) {
+    error++;
+  }
 
   let obj: typeInputsError = {
     inputName: "",
-    inputPhone: "",
+    inputPhone: errorChecking.existsWhatsapp ? "" : "Такого номера в Whatsapp нету",
   };
-  // errorChecking.existsWhatsapp ? "" : "Такого номера в Whatsapp нету"
   for (let index = 0; index < formReq.length; index++) {
     const input = formReq[index] as HTMLInputElement;
 

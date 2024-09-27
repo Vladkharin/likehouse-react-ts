@@ -6,7 +6,6 @@ const f = async (method: string, data: string, url: string) =>  {
         method,
         body: data,
         headers: {
-            'Accept-Control-Allow-Origin' : '*',
             'Content-Type': 'application/json'
         }
     }
