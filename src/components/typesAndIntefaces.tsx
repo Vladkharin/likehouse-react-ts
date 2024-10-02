@@ -47,6 +47,7 @@ export type typeItemHouse = {
   typeHouse: string;
   code: string;
   houseName?: string;
+  // videos?: string[];
 };
 
 export type typeChoiceAdditionalServices = {

@@ -247,9 +247,10 @@ export function HousePage() {
           {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
-      {/* <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
+      {videos()}
+      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
-      </button> */}
+      </button>
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
@@ -355,6 +356,7 @@ async function postData(
     }
   } else {
     setFetchStatus("");
+    form.reset();
   }
 }
 
@@ -446,7 +448,6 @@ function modalForm(
       <div className="stylePageorderModal__wrapper">
         <form
           className="stylePageorderModal__form"
-          action="sendorder.php"
           method="post"
           onSubmit={(event) =>
             postData(
@@ -465,13 +466,26 @@ function modalForm(
             <div>Получить предложение</div>
           </label>
           <label>
-            <p>Введите имя</p> <input type="text" name="user_name" className="_req" />
+            <p>Введите имя</p>{" "}
+            <input
+              type="text"
+              name="user_name"
+              className={inputsError.inputName != "" ? "_req _error" : "_req"}
+              onChange={() => {
+                setInputPhoneValue;
+                setInputsError({
+                  inputName: "",
+                  inputPhone: "",
+                });
+                setFetchStatus("");
+              }}
+            />
           </label>
           <label>
             <p>Введите номер WhatsApp</p>{" "}
             <MaskedInput
               maskGenerator={maskGenerator}
-              className="_req"
+              className={inputsError.inputPhone != "" ? "_req _error" : "_req"}
               style={{
                 paddingLeft: "70px",
               }}
@@ -760,5 +774,32 @@ function modalImg(
         </button>
       </div>
     </div>
+  );
+}
+
+function videos() {
+  return (
+    <section className="videos">
+      <div className="container">
+        <div className="videos__wrapper">
+          <iframe
+            width="720"
+            height="405"
+            src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
+            frameBorder="0"
+            allow="clipboard-write; autoplay"
+            allowFullScreen
+          ></iframe>
+          <iframe
+            width="720"
+            height="405"
+            src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
+            frameBorder="0"
+            allow="clipboard-write; autoplay"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -202,6 +202,9 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/6x6Images/03.jpg",
       "../pages/6x6Images/04.jpg",
     ],
+    // videos : [
+    //   'https://rutube.ru/video/c23df0ed513e0079029041b48c6300af/'
+    // ],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",

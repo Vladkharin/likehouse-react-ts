@@ -61,6 +61,17 @@ body {
   position: relative;
 }
 
+.videos {
+  margin: 20px 0;
+}
+
+.videos__wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
 
 .error,
 .errorBig {
@@ -2113,6 +2124,7 @@ body {
     width: 940px;
   }
 
+
   .nav__icons {
     width: 70%;
     column-gap: 15px;
@@ -2529,7 +2541,7 @@ body {
     position: absolute;
     width: 40px;
     height: 40px;
-    top: -60px;
+    top: -40px;
     right: 0;
     cursor: pointer;
   }

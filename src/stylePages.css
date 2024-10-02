@@ -106,7 +106,7 @@
   width: 100%;
   height: 41px;
   position: fixed;
-  bottom: 41px;
+  bottom: 42px;
   background-color: #074097;
   border: none;
   font-size: 14px;
@@ -115,6 +115,125 @@
   text-align: center;
   text-decoration: none;
   margin: 0;
+  z-index: 3;
+}
+
+.feedBackModal__wrapper {
+  width: 280px;
+  top: 37%;
+  left: 6.1%;
+}
+
+.stylePageorderModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  top: 0;
+}
+
+.stylePageorderModal__wrapper {
+  display: flex;
+  width:300px;
+  height: 500px;
+  background-color: white;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.stylePageorders{
+  display: none;
+}
+
+  
+.stylePageorderModal__wrapper > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  position: relative;
+}
+
+.stylePageorderModal__wrapper > form > button {
+  width: 280px;
+  background-color: orange;
+  height: 70px;
+  border: 2px solid #000;
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.stylePageorderModal__wrapper > form > button:active {
+  background-color: #D57500;
+}
+
+.stylePageorderModal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  z-index: 1;
+}
+
+.stylePageorderModal__close::before,
+.stylePageorderModal__close::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+}
+
+.stylePageorderModal__close::before {
+  transform: rotate(45deg);
+}
+
+.stylePageorderModal__close::after {
+  transform: rotate(-45deg);
+}
+
+.stylePageorderModal__wrapper > form > label > p {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.stylePageorderModal__wrapper > form > label > div {
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.stylePageorderModal__wrapper > form > label > input {
+  width: 280px;
+  height: 50px;
+  border: 1px solid #000;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 20px;
+}
+
+.tl17585 {
+  top: 180px;
+  left: 50px;
+}
+
+.tl24085 {
+  top: 280px;
+  left: 50px;
 }
 
 body {
@@ -841,127 +960,7 @@ input[type="number"]::-webkit-outer-spin-button {
   overflow: hidden;
   top: 0;
 }
-.stylePageorderModal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  overflow: hidden;
-  top: 0;
-}
-.stylePageorderModal__wrapper {
-  display: flex;
-  width: 800px;
-  height: 500px;
-  background-color: white;
-  border-radius: 5px;
-}
 
-.stylePageorderModal__wrapper > form {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-  position: relative;
-}
-
-.stylePageorderModal__wrapper > form > button {
-  width: 300px;
-  height: 70px;
-  border: 2px solid #000;
-  font-size: 16px;
-  font-weight: 400;
-  background-color: #ffffff;
-  margin-top: 20px;
-  cursor: pointer;
-}
-.stylePageorderModal__wrapper > form > label > p {
-  font-size: 22px;
-  margin-bottom: 0;
-}
-
-.stylePageorderModal__wrapper > form > label > div {
-  font-size: 34px;
-  font-weight: bold;
-}
-
-.stylePageorderModal__wrapper > form > label > input {
-  width: 300px;
-  height: 50px;
-  border: 1px solid #000;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 0 20px;
-}
-
-.stylePageorders {
-  width: 50%;
-  margin: 50px 0;
-}
-
-.stylePageorderWrapper {
-  overflow: hidden;
-  overflow-y: scroll;
-  height: 260px;
-}
-
-.stylePageorders > p {
-  font-size: 34px;
-  font-weight: 400;
-  color: rgb(0, 0, 0);
-  line-height: 1.55;
-  text-decoration: none;
-  text-align: center;
-  margin-top: 0;
-}
-
-.stylePageorderItem {
-  font-size: 19px;
-  font-weight: 400;
-  color: rgb(0, 0, 0);
-  line-height: 1.55;
-  text-decoration: none;
-}
-
-.stylePageorderModal__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0);
-  border: none;
-  z-index: 1;
-}
-
-.stylePageorderModal__close::before,
-.stylePageorderModal__close::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #fff;
-}
-
-.stylePageorderModal__close::before {
-  transform: rotate(45deg);
-}
-
-.stylePageorderModal__close::after {
-  transform: rotate(-45deg);
-}
-
-.stylePagetotal {
-  margin-top: 30px;
-}
 .stylePagemodal__wrapper {
   display: flex;
   justify-content: center;
@@ -1143,6 +1142,28 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 451px;
   }
 
+  .feedBackModal__wrapper{
+    left: 21.1%;
+  }
+
+  .stylePageorderModal__wrapper{
+    width: 400px;
+  }
+
+  .stylePageorderModal__wrapper > form {
+    width: 340px;
+  }
+
+  .tl17585 {
+    top: 140px;
+    left: 90px;
+  }
+
+  .tl24085 {
+    top: 240px;
+    left: 90px;
+  }
+
   .stylePagehelp img {
     display: none;
   }
@@ -1224,6 +1245,10 @@ input[type="number"]::-webkit-outer-spin-button {
 @media (min-width: 640px) {
   .stylePagecontainer {
     width: 620px;
+  }
+
+  .feedBackModal__wrapper{
+    left: 28.1%;
   }
 
   .stylePagesecondBlockMenu__text {
@@ -1346,6 +1371,134 @@ input[type="number"]::-webkit-outer-spin-button {
 @media (min-width: 960px) {
   .stylePagecontainer {
     width: 940px;
+  }
+
+  .feedBackModal__wrapper{
+    width: 320px;
+  }
+
+  .stylePageorderModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    top: 0;
+  }
+  .stylePageorderModal__wrapper {
+    display: flex;
+    width: 800px;
+    height: 500px;
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .stylePageorderModal__wrapper > form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+  }
+  
+  .stylePageorderModal__wrapper > form > button {
+    width: 300px;
+    height: 70px;
+    border: 2px solid #000;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: orange;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .stylePageorderModal__wrapper > form > label > p {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+  
+  .stylePageorderModal__wrapper > form > label > div {
+    font-size: 34px;
+    font-weight: bold;
+  }
+  
+  .stylePageorderModal__wrapper > form > label > input {
+    width: 300px;
+    height: 50px;
+    border: 1px solid #000;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 20px;
+  }
+  
+  .stylePageorders {
+    width: 50%;
+    margin: 50px 0;
+    display: block;
+  }
+  
+  .stylePageorderWrapper {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 260px;
+  }
+  
+  .stylePageorders > p {
+    font-size: 34px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    line-height: 1.55;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  .stylePageorderItem {
+    font-size: 19px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    line-height: 1.55;
+    text-decoration: none;
+  }
+  
+  .stylePageorderModal__close {
+    position: absolute;
+    top:-30px;
+    right: -25px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    z-index: 1;
+  }
+  
+  .stylePageorderModal__close::before,
+  .stylePageorderModal__close::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+  }
+  
+  .stylePageorderModal__close::before {
+    transform: rotate(45deg);
+  }
+  
+  .stylePageorderModal__close::after {
+    transform: rotate(-45deg);
+  }
+  
+  .stylePagetotal {
+    margin-top: 30px;
   }
 
   .stylePagemodal__right {
@@ -1529,6 +1682,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .stylePagefirstBlock__information {
     margin-top: 0;
+    width: 300px;
   }
 
   .stylePagefirstBlock__button {
