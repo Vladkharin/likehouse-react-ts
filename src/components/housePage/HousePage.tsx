@@ -33,6 +33,7 @@ const FORM_STATUS_MESSAGE = {
 };
 
 const maskGenerator = createDefaultMaskGenerator("+7 999 999 99 99");
+
 export function HousePage() {
   const locationPage = useLocation();
 
