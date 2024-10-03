@@ -18,7 +18,7 @@ type listItem = {
   uniqueId: number;
 };
 
-const slides = ["./img/firstSlide.jpg", "./img/secondSlide.jpg", "./img/thirdSlide.jpg"];
+const slides = ["./img/firstSlide.jpg", "./img/secondSlide.jpg", "./img/thirdSlide.jpg", "./img/fourthSlide.jpg"];
 
 const firstListItems: list = [
   {
@@ -265,6 +265,8 @@ async function postData(
       choice = "Рассрочка";
     } else if (slide == 2) {
       choice == "Субсидированная";
+    } else if (slide == 3) {
+      choice == "Социальная";
     }
 
     formData.set("choice", choice);

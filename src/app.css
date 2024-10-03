@@ -209,7 +209,7 @@ body {
 .secondBlock__field {
   transition: opacity 0.6s linear, transform 0.6s;
 
-  width: 900px;
+  width: 1200px;
   display: flex;
   overflow: hidden;
 }
@@ -1526,7 +1526,7 @@ body {
   }
 
   .secondBlock__field{
-    width: 1380px;
+    width: 1840px;
   }
 
   .secondBlock__sliderButtons{
@@ -1905,7 +1905,7 @@ body {
   }
 
   .secondBlock__field{
-    width: 1860px;
+    width: 2480px;
   }
 
   .firstBlock {
@@ -2246,7 +2246,7 @@ body {
   .secondBlock__field {
     transition: opacity 0.6s linear, transform 0.6s;
     display: flex;
-    width: 1560px;
+    width: 2080px;
   }
 
   .secondBlock__slides {
@@ -2896,7 +2896,7 @@ body {
   .secondBlock__field {
     transition: opacity 0.6s linear, transform 0.6s;
     display: flex;
-    width: 1950px;
+    width: 2600px;
   }
   
   .secondBlock__sliderButtons > button > img {
