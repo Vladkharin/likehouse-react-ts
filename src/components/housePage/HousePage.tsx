@@ -33,6 +33,7 @@ const FORM_STATUS_MESSAGE = {
 };
 
 const maskGenerator = createDefaultMaskGenerator("+7 999 999 99 99");
+
 export function HousePage() {
   const locationPage = useLocation();
 
@@ -247,10 +248,10 @@ export function HousePage() {
           {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
         </div>
       </div>
-      {videos()}
+      {/* {videos()}
       <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
-      </button>
+      </button> */}
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
@@ -777,29 +778,29 @@ function modalImg(
   );
 }
 
-function videos() {
-  return (
-    <section className="videos">
-      <div className="container">
-        <div className="videos__wrapper">
-          <iframe
-            width="720"
-            height="405"
-            src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
-            frameBorder="0"
-            allow="clipboard-write; autoplay"
-            allowFullScreen
-          ></iframe>
-          <iframe
-            width="720"
-            height="405"
-            src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
-            frameBorder="0"
-            allow="clipboard-write; autoplay"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </div>
-    </section>
-  );
-}
+// function videos() {
+//   return (
+//     <section className="videos">
+//       <div className="container">
+//         <div className="videos__wrapper">
+//           <iframe
+//             width="720"
+//             height="405"
+//             src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
+//             frameBorder="0"
+//             allow="clipboard-write; autoplay"
+//             allowFullScreen
+//           ></iframe>
+//           <iframe
+//             width="720"
+//             height="405"
+//             src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
+//             frameBorder="0"
+//             allow="clipboard-write; autoplay"
+//             allowFullScreen
+//           ></iframe>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
