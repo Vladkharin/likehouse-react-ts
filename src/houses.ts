@@ -870,7 +870,7 @@ export const itemsHouse: typeItemsHouse = [
     houseName: "Мансардия 7x7",
   },
   {
-    img: "./img/Видовой_кадр_01_5x6_bathhouse.jpg",
+    img: "./img/Видовой_кадр_02_5x6_bathhouse.jpg",
     alt: "twentyFourthTile",
     information: [
       "Размер: 5x6",
@@ -883,16 +883,15 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: [
-      "../pages/5x6BathImage/01.jpg",
-      "../pages/5x6BathImage/02.jpg",
-      "../pages/5x6BathImage/03.jpg",
-      "../pages/5x6BathImage/04.jpg",
+      "../pages/5x6BathImage/07.jpg",
+      "../pages/5x6BathImage/05.jpg",
+      "../pages/5x6BathImage/06.jpg",
     ],
     coust: "Скоро будет доступна",
     type: "bathhouse",
     link: "bath-5x6",
     typeHouse: "Бани",
-    code: "000000096",
+    code: "000000050",
     houseName: "Баня 5х6",
   },
   {

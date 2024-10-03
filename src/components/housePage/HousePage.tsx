@@ -185,6 +185,9 @@ export function HousePage() {
   });
 
   function viewAddtionalServicesBlock() {
+    if (!additionalService && coustHouse) {
+      return;
+    }
     return (
       <>
         <div className="stylePagesecondBlock__header">Дополнительные услуги</div>
@@ -202,7 +205,7 @@ export function HousePage() {
             wallsAndCeilings
           )
         ) : (
-          <div>Загружается</div>
+          <div>Пока не добавили</div>
         )}
       </>
     );
@@ -244,13 +247,13 @@ export function HousePage() {
           <div className="stylePagesecondBlock__header">Базовая комплектация проекта</div>
           {house ? basicConfiguration(house) : false}
 
-          {house?.type != "bathhouse" ? viewAddtionalServicesBlock() : ""}
+          {viewAddtionalServicesBlock()}
         </div>
       </div>
-      {videos()}
+      {/* {videos()}
       <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
-      </button>
+      </button> */}
       <div className="stylePagecost">
         СТОИМОСТЬ:
         <span className="stylePagecost__span">
@@ -777,29 +780,29 @@ function modalImg(
   );
 }
 
-function videos() {
-  return (
-    <section className="videos">
-      <div className="container">
-        <div className="videos__wrapper">
-          <iframe
-            width="720"
-            height="405"
-            src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
-            frameBorder="0"
-            allow="clipboard-write; autoplay"
-            allowFullScreen
-          ></iframe>
-          <iframe
-            width="720"
-            height="405"
-            src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
-            frameBorder="0"
-            allow="clipboard-write; autoplay"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </div>
-    </section>
-  );
-}
+// function videos() {
+//   return (
+//     <section className="videos">
+//       <div className="container">
+//         <div className="videos__wrapper">
+//           <iframe
+//             width="720"
+//             height="405"
+//             src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
+//             frameBorder="0"
+//             allow="clipboard-write; autoplay"
+//             allowFullScreen
+//           ></iframe>
+//           <iframe
+//             width="720"
+//             height="405"
+//             src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
+//             frameBorder="0"
+//             allow="clipboard-write; autoplay"
+//             allowFullScreen
+//           ></iframe>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
