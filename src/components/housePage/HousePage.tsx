@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -25,6 +25,7 @@ import { typeInputsError } from "../typesAndIntefaces";
 
 import { AdditionalServiceItems } from "./housePageComponents/AdditionalServiceItems.tsx";
 import { sendOrder } from "../../API/routes.ts";
+import { VideoComponent } from "./housePageComponents/VideoComponent/VideoComponent.tsx";
 
 const FORM_STATUS_MESSAGE = {
   loading: "Загрузка...",
@@ -38,7 +39,7 @@ export function HousePage() {
   const locationPage = useLocation();
 
   const [additionalService, setAdditionalService] = useState<typeAdditionalService>();
-  const [house, setHouse] = useState<typeItemHouse>();
+  const [house, setHouse] = useState<typeItemHouse | undefined>();
   const [coustHouse, setCoustHouse] = useState<string | undefined>(house?.coust);
   const [priceAdditionalServices, setPriceAdditionalServices] = useState<number>(0);
   const [listActiveAdditionalServices, setListActiveAdditionalServices] = useState<typeListActiveAdditionalServices>([]);
@@ -74,6 +75,11 @@ export function HousePage() {
     Колодец: 0,
     Скважина: 0,
   });
+
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [startPositionInfoButton, setStartPositionInfoButton] = useState(0);
+  const myRef = useRef<HTMLElement>(null);
+  const heightFromTopVideosBlock = myRef.current?.getBoundingClientRect().y;
 
   const getHouse = () => {
     const pathName = locationPage.pathname.split("/")[2];
@@ -183,6 +189,13 @@ export function HousePage() {
 
   useEffect(() => {
     document.title = house?.houseName as string;
+    setScreenWidth(window.innerWidth);
+
+    if (screenWidth > 959) {
+      setStartPositionInfoButton(45);
+    } else if (screenWidth > 320 && screenWidth < 960) {
+      setStartPositionInfoButton(0);
+    }
   });
 
   function viewAddtionalServicesBlock() {
@@ -208,6 +221,20 @@ export function HousePage() {
         ) : (
           <div>Пока не добавили</div>
         )}
+      </>
+    );
+  }
+
+  function VideoButton() {
+    return (
+      <>
+        <button
+          className="stylePagelinkVideos"
+          onClick={() => (heightFromTopVideosBlock ? window.scroll(0, heightFromTopVideosBlock - 101) : false)}
+          style={{ bottom: house?.videos?.length != 0 ? `${0 + startPositionInfoButton}px` : "0px" }}
+        >
+          Посмотреть видео
+        </button>
       </>
     );
   }
@@ -251,16 +278,25 @@ export function HousePage() {
           {viewAddtionalServicesBlock()}
         </div>
       </div>
-      {/* {videos()}
-      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
-        Получить коммерческое предложение
-      </button> */}
-      <div className="stylePagecost">
-        СТОИМОСТЬ:
+      {house?.videos?.length != 0 ? VideoComponent(myRef, house) : ""}
+
+      <div
+        className="stylePagecost"
+        style={{ bottom: house?.videos?.length != 0 ? `${90 + startPositionInfoButton}px` : `${45 + startPositionInfoButton}px` }}
+      >
+        СТОИМОСТЬ
         <span className="stylePagecost__span">
-          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}
+          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
         </span>
       </div>
+      <button
+        className="stylePageorder"
+        style={{ bottom: house?.videos?.length != 0 ? `${45 + startPositionInfoButton}px` : `${startPositionInfoButton - 0}px ` }}
+        onClick={() => setStateModalForm(true)}
+      >
+        Получить коммерческое предложение
+      </button>
+      {house?.videos?.length != 0 ? VideoButton() : ""}
       <div id="id" className="stylePagenone">
         {house?.code}
       </div>
@@ -297,7 +333,6 @@ async function checkingTheNumberForWhatsApp(inputTel: string) {
     "/checkWhatsapp/" +
     import.meta.env.VITE_API_TOKEN_INSTANCE;
 
-  console.log(url);
   const responseFetchPhone = await fetch(url, {
     method: "POST",
     body: JSON.stringify(body),
@@ -307,6 +342,23 @@ async function checkingTheNumberForWhatsApp(inputTel: string) {
   const data = await responseFetchPhone.json();
 
   return data;
+}
+
+function stringConversion(task: string | undefined, priceAdditionalServices: number) {
+  const array: string[] = [];
+
+  const coust = (Number(task) + priceAdditionalServices).toString();
+
+  coust.split("").forEach((item, index) => {
+    if (coust.length - index == 7) {
+      item = item + " ";
+    } else if (coust.length - index == 4) {
+      item = item + " ";
+    }
+    array.push(item);
+  });
+
+  return array.join("");
 }
 
 async function postData(
@@ -333,8 +385,6 @@ async function postData(
     setFetchStatus("");
     const formData = new FormData(form);
 
-    console.log(formData);
-
     const userName = formData.get("user_name");
 
     const jsonObject = {
@@ -346,8 +396,6 @@ async function postData(
       services: listActiveAdditionalServices,
       totalCoust: Number(coustHouse) + priceAdditionalServices,
     };
-
-    // console.log(jsonObject);
 
     const response = await sendOrder(JSON.stringify(jsonObject));
 
@@ -544,11 +592,9 @@ function modalForm(
               );
             })}
           </div>
-          <p className="stylePagetotal">{"Итого: " + (Number(coustHouse) + priceAdditionalServices) + " руб."}</p>
+          <p className="stylePagetotal">{"Итого: " + `${stringConversion(coustHouse, priceAdditionalServices)} руб.`}</p>
         </div>
-        <button className="stylePageorderModal__close" onClick={() => setStateModalForm(false)}>
-          {" "}
-        </button>
+        <button className="stylePageorderModal__close" onClick={() => setStateModalForm(false)} />
       </div>
       <div
         className={
@@ -597,8 +643,10 @@ function houseInformation(house: typeItemHouse, coustHouse: string, priceAdditio
           })
         : false}
       <div className="stylePagefirstBlock__button">
-        СТОИМОСТЬ:{" "}
-        <span>{coustHouse == "Скоро будет доступна" ? "Скоро будет" : Number(coustHouse) + priceAdditionalServices + " руб."}</span>
+        СТОИМОСТЬ
+        <span>
+          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
+        </span>
       </div>
     </div>
   );
@@ -780,30 +828,3 @@ function modalImg(
     </div>
   );
 }
-
-// function videos() {
-//   return (
-//     <section className="videos">
-//       <div className="container">
-//         <div className="videos__wrapper">
-//           <iframe
-//             width="720"
-//             height="405"
-//             src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
-//             frameBorder="0"
-//             allow="clipboard-write; autoplay"
-//             allowFullScreen
-//           ></iframe>
-//           <iframe
-//             width="720"
-//             height="405"
-//             src="https://rutube.ru/play/embed/c23df0ed513e0079029041b48c6300af/"
-//             frameBorder="0"
-//             allow="clipboard-write; autoplay"
-//             allowFullScreen
-//           ></iframe>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }

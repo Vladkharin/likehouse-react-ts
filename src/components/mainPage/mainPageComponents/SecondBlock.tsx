@@ -264,9 +264,10 @@ async function postData(
     } else if (slide == 1) {
       choice = "Рассрочка";
     } else if (slide == 2) {
-      choice == "Субсидированная";
+      console.log("asda");
+      choice = "Субсидированная";
     } else if (slide == 3) {
-      choice == "Социальная";
+      choice = "Социальная";
     }
 
     formData.set("choice", choice);

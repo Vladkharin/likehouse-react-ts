@@ -201,9 +201,12 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/6x6Images/03.jpg",
       "../pages/6x6Images/04.jpg",
     ],
-    // videos : [
-    //   'https://rutube.ru/video/c23df0ed513e0079029041b48c6300af/'
-    // ],
+    videos : [
+      {
+        id: '456239458',
+        oid: '209572384'
+      }
+    ],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -231,6 +234,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/7x7Images/03.jpg",
       "../pages/7x7Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -258,6 +262,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/7x7WithBoilerRoomImages/03.jpg",
       "../pages/7x7WithBoilerRoomImages/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -285,6 +290,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/6x7Images/03.jpg",
       "../pages/6x7Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -312,6 +318,12 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8x11Images/02.jpg",
       "../pages/8x11Images/03.jpg",
       "../pages/8x11Images/04.jpg",
+    ],
+    videos: [
+      {
+        id: '456239457',
+        oid: '209572384'
+      }
     ],
     coust: "0",
     mortgage: "0",
@@ -341,6 +353,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8x11.8Images/03.jpg",
       "../pages/8x11.8Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -370,6 +383,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/7.5x10Images/03.jpg",
       "../pages/7.5x10Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -399,6 +413,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8.5х11Images/03.jpg",
       "../pages/8.5х11Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -428,6 +443,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/9.5x10Images/03.jpg",
       "../pages/9.5x10Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -457,6 +473,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/9.5x12Images/03.jpg",
       "../pages/9.5x12Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -478,6 +495,7 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: ["../pages/10x10Images/01.jpg", "../pages/10x10Images/02.jpg", "../pages/10x10Images/03.jpg"],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -500,6 +518,21 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: ["../pages/8x10Images/01.jpg", "../pages/8x10Images/02.jpg", "../pages/8x10Images/03.jpg"],
+    videos: [
+      {
+        id: '456239429',
+        oid: '209572384'
+      },
+      {
+        id: '456239455',
+        oid: '209572384'
+      },
+      {
+        id: '456239461',
+        oid: '209572384'
+      },
+       
+    ],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -522,6 +555,12 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: ["../pages/8х10_2BedroomsImages/01.jpg", "../pages/8х10_2BedroomsImages/02.jpg", "../pages/8х10_2BedroomsImages/03.jpg"],
+    videos: [
+      {
+        id: '456239451',
+        oid: '209572384'
+      }
+    ],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -544,6 +583,12 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: ["../pages/8x12Images/01.jpg", "../pages/8x12Images/02.jpg", "../pages/8x12Images/03.jpg"],
+    videos: [
+      {
+        id: '456239450',
+        oid: '209572384'
+      }
+    ],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -570,6 +615,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8x13_countryImages/02.jpg",
       "../pages/8x13_countryImages/03.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -596,6 +642,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8x13_country_2Images/02.jpg",
       "../pages/8x13_country_2Images/03.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -624,6 +671,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/7x8Images/03.jpg",
       "../pages/7x8Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -653,6 +701,12 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/7x10Images/05.jpg",
       "../pages/7x10Images/06.jpg",
     ],
+    videos: [
+      {
+        id: '456239454',
+        oid: '209572384'
+      }
+    ],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -680,6 +734,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8x8Images/03.jpg",
       "../pages/8x8Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -708,6 +763,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8x9Images/03.jpg",
       "../pages/8x9Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -734,6 +790,12 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/9.5x14Images/02.jpg",
       "../pages/9.5x14Images/03.jpg",
       "../pages/9.5x14Images/04.jpg",
+    ],
+    videos: [
+      {
+        id: '456239456',
+        oid: '209572384'
+      }
     ],
     coust: "0",
     mortgage: "0",
@@ -762,6 +824,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/9.5x13Images/03.jpg",
       "../pages/9.5x13Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -789,6 +852,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/8.5x12Images/03.jpg",
       "../pages/8.5x12Images/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -811,6 +875,7 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 30 дней",
     ],
     imgs: ["../pages/7x8CottageImages/01.jpg", "../pages/7x8CottageImages/02.jpg", "../pages/7x8CottageImages/03.jpg"],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -833,6 +898,7 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 30 дней",
     ],
     imgs: ["../pages/5x7Images/01.jpg", "../pages/5x7Images/02.jpg", "../pages/5x7Images/03.jpg"],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "cottage",
@@ -860,6 +926,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/7x7_atticImages/03.jpg",
       "../pages/7x7_atticImages/04.jpg",
     ],
+    videos: [],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
@@ -886,6 +953,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/5x6BathImage/05.jpg",
       "../pages/5x6BathImage/06.jpg",
     ],
+    videos: [],
     coust: "Скоро будет доступна",
     type: "bathhouse",
     link: "bath-5x6",
@@ -906,6 +974,7 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: ["../pages/8x7BathImage/01.jpg", "../pages/8x7BathImage/02.jpg"],
+    videos: [],
     coust: "Скоро будет доступна",
     type: "bathhouse",
     link: "bath-8x7",

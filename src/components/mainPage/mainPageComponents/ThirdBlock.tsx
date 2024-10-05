@@ -180,9 +180,9 @@ export function ThirdBlock() {
 
 function ThirdBlockTile(task: typeItemHouse) {
   switch (Object.keys(task).length) {
-    case 11:
+    case 12:
       return modalHouse(task);
-    case 10:
+    case 11:
       return modalBathHouse(task);
     case 2:
       return modalTypeHousesOrBathHouses(task);
