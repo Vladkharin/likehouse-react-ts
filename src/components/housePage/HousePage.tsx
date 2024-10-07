@@ -47,6 +47,8 @@ export function HousePage() {
   const [stateModalImg, setStateModalImg] = useState<boolean>(false);
   const [stateModalForm, setStateModalForm] = useState<boolean>(false);
   const [fetchStatus, setFetchStatus] = useState<string>("");
+  const [stateButton, setStateButton] = useState<boolean>(false);
+  const [positionY, setPositionY] = useState<number>(0);
   const [inputsError, setInputsError] = useState<typeInputsError>({
     inputName: "",
     inputPhone: "",
@@ -79,7 +81,7 @@ export function HousePage() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [startPositionInfoButton, setStartPositionInfoButton] = useState(0);
   const myRef = useRef<HTMLElement>(null);
-  const heightFromTopVideosBlock = myRef.current?.getBoundingClientRect().y;
+  const [heightFromTopVideosBlock, setHeightFromTopVideosBlock] = useState<number>(0);
 
   const getHouse = () => {
     const pathName = locationPage.pathname.split("/")[2];
@@ -191,10 +193,20 @@ export function HousePage() {
     document.title = house?.houseName as string;
     setScreenWidth(window.innerWidth);
 
+    if (myRef.current) {
+      setHeightFromTopVideosBlock(myRef.current.getBoundingClientRect().y);
+    }
+
     if (screenWidth > 959) {
       setStartPositionInfoButton(45);
     } else if (screenWidth > 320 && screenWidth < 960) {
       setStartPositionInfoButton(0);
+    }
+
+    if (!stateButton) {
+      setPositionY(window.scrollY + heightFromTopVideosBlock - 101);
+    } else {
+      setPositionY(0);
     }
   });
 
@@ -230,10 +242,13 @@ export function HousePage() {
       <>
         <button
           className="stylePagelinkVideos"
-          onClick={() => (heightFromTopVideosBlock ? window.scroll(0, heightFromTopVideosBlock - 101) : false)}
+          onClick={() => {
+            heightFromTopVideosBlock ? window.scroll(0, positionY) : false;
+            stateButton ? setStateButton(false) : setStateButton(true);
+          }}
           style={{ bottom: house?.videos?.length != 0 ? `${0 + startPositionInfoButton}px` : "0px" }}
         >
-          Посмотреть видео
+          {stateButton ? "На вверх" : "Посмотреть видео"}
         </button>
       </>
     );
