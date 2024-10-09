@@ -2606,7 +2606,7 @@ body {
 
   .firstBlock__logo {
     position: absolute;
-    left: 150px;
+    left: 0px;
     top: 205px;
     width: 270px;
   }
