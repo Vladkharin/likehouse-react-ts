@@ -33,6 +33,13 @@
   border: 1px solid red;
 }
 
+.stylePagefirstblock__btnWrapper {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .stylePagefeedBackModal {
   background-color: #fff;
   padding: 40px 40px 50px;
@@ -593,12 +600,12 @@ input[type="number"]::-webkit-outer-spin-button {
   border-style: solid;
   color: #31373e;
   font-size: 20px;
-  line-height: 2;
+  text-align: center;
+  line-height: 20px;
   font-weight: 400;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
 }
 
 .stylePagefirstBlock__information-text {
@@ -1153,6 +1160,19 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 180px;
 }
 
+.blue {
+  background-color: #074097;
+  color: white;
+  border: none;
+}
+
+.orange {
+  background-color: orange;
+  color: white;
+  border: none;
+
+}
+
 @media (min-width: 481px) {
   .stylePagecontainer {
     width: 451px;
@@ -1372,14 +1392,14 @@ input[type="number"]::-webkit-outer-spin-button {
   .stylePagecost {
     width: 270px;
     height: 42px;
-    bottom: 110px;
+    bottom: 65px;
     right: 0px;
   }
 
   .stylePageorder {
     width: 270px;
     height: 42px;
-    bottom: 65px;
+    bottom: 20px;
     right: 0px;
   }
 
@@ -1395,6 +1415,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .stylePagecontainer {
     width: 940px;
   }
+
 
   .feedBackModal__wrapper{
     width: 320px;
@@ -1709,7 +1730,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   .stylePagefirstBlock__button {
-    margin-top: 40px;
+    margin-top: 0px;
   }
 
   .stylePagefirstBlock {

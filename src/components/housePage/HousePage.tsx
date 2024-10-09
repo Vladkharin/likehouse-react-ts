@@ -47,7 +47,6 @@ export function HousePage() {
   const [stateModalImg, setStateModalImg] = useState<boolean>(false);
   const [stateModalForm, setStateModalForm] = useState<boolean>(false);
   const [fetchStatus, setFetchStatus] = useState<string>("");
-  const [stateButton, setStateButton] = useState<boolean>(false);
   const [positionY, setPositionY] = useState<number>(0);
   const [inputsError, setInputsError] = useState<typeInputsError>({
     inputName: "",
@@ -78,8 +77,6 @@ export function HousePage() {
     Скважина: 0,
   });
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [startPositionInfoButton, setStartPositionInfoButton] = useState(0);
   const myRef = useRef<HTMLElement>(null);
   const [heightFromTopVideosBlock, setHeightFromTopVideosBlock] = useState<number>(0);
 
@@ -191,23 +188,12 @@ export function HousePage() {
 
   useEffect(() => {
     document.title = house?.houseName as string;
-    setScreenWidth(window.innerWidth);
 
     if (myRef.current) {
       setHeightFromTopVideosBlock(myRef.current.getBoundingClientRect().y);
     }
 
-    if (screenWidth > 959) {
-      setStartPositionInfoButton(45);
-    } else if (screenWidth > 320 && screenWidth < 960) {
-      setStartPositionInfoButton(0);
-    }
-
-    if (!stateButton) {
-      setPositionY(window.scrollY + heightFromTopVideosBlock - 101);
-    } else {
-      setPositionY(0);
-    }
+    setPositionY(window.scrollY + heightFromTopVideosBlock - 101);
   });
 
   function viewAddtionalServicesBlock() {
@@ -233,23 +219,6 @@ export function HousePage() {
         ) : (
           <div>Пока не добавили</div>
         )}
-      </>
-    );
-  }
-
-  function VideoButton() {
-    return (
-      <>
-        <button
-          className="stylePagelinkVideos"
-          onClick={() => {
-            heightFromTopVideosBlock ? window.scroll(0, positionY) : false;
-            stateButton ? setStateButton(false) : setStateButton(true);
-          }}
-          style={{ bottom: house?.videos?.length != 0 ? `${0 + startPositionInfoButton}px` : "0px" }}
-        >
-          {stateButton ? "На вверх" : "Посмотреть видео"}
-        </button>
       </>
     );
   }
@@ -281,7 +250,11 @@ export function HousePage() {
               </button>
               {house ? houseImgs(house, activeImgIndex, setStateModalImg, setActiveImgIndex) : <div>Загружается</div>}
             </div>
-            {coustHouse && house ? houseInformation(house, coustHouse, priceAdditionalServices) : <div>Загружается</div>}
+            {coustHouse && house ? (
+              houseInformation(house, coustHouse, priceAdditionalServices, heightFromTopVideosBlock, positionY, setStateModalForm)
+            ) : (
+              <div>Загружается</div>
+            )}
           </div>
         </div>
       </div>
@@ -295,23 +268,15 @@ export function HousePage() {
       </div>
       {house?.videos?.length != 0 ? VideoComponent(myRef, house) : ""}
 
-      <div
-        className="stylePagecost"
-        style={{ bottom: house?.videos?.length != 0 ? `${90 + startPositionInfoButton}px` : `${45 + startPositionInfoButton}px` }}
-      >
-        СТОИМОСТЬ
+      <div className="stylePagecost">
+        Стоимость
         <span className="stylePagecost__span">
           {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
         </span>
       </div>
-      <button
-        className="stylePageorder"
-        style={{ bottom: house?.videos?.length != 0 ? `${45 + startPositionInfoButton}px` : `${startPositionInfoButton - 0}px ` }}
-        onClick={() => setStateModalForm(true)}
-      >
+      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
       </button>
-      {house?.videos?.length != 0 ? VideoButton() : ""}
       <div id="id" className="stylePagenone">
         {house?.code}
       </div>
@@ -628,7 +593,14 @@ function modalForm(
   );
 }
 
-function houseInformation(house: typeItemHouse, coustHouse: string, priceAdditionalServices: number) {
+function houseInformation(
+  house: typeItemHouse,
+  coustHouse: string,
+  priceAdditionalServices: number,
+  heightFromTopVideosBlock: number,
+  positionY: number,
+  setStateModalForm: React.Dispatch<React.SetStateAction<boolean>>
+) {
   return (
     <div className="stylePagefirstBlock__information">
       {house.information
@@ -657,11 +629,24 @@ function houseInformation(house: typeItemHouse, coustHouse: string, priceAdditio
             );
           })
         : false}
-      <div className="stylePagefirstBlock__button">
-        СТОИМОСТЬ
-        <span>
-          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
-        </span>
+      <div className="stylePagefirstblock__btnWrapper">
+        <div className="stylePagefirstBlock__button">
+          Стоимость
+          <span>
+            {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
+          </span>
+        </div>
+        <div
+          className="stylePagefirstBlock__button blue"
+          onClick={() => {
+            heightFromTopVideosBlock ? window.scroll(0, positionY) : false;
+          }}
+        >
+          Посмотреть видео
+        </div>
+        <div className="stylePagefirstBlock__button orange" onClick={() => setStateModalForm(true)}>
+          Получить коммерческое предложение
+        </div>
       </div>
     </div>
   );
