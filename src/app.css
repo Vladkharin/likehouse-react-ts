@@ -188,7 +188,13 @@ body {
   background-color: orange;
   border: none;
   color: white;
-  font-size: 15px;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "FuturaPTWebBold";
 }
 
 .secondBlock__form > form > button:active {
@@ -804,6 +810,7 @@ body {
   padding-top: 14px;
   padding-bottom: 14px;
   cursor: pointer;
+  font-family: 'FuturaPTWebBold';
 }
 
 .fourthAndThirdBlockTogether__link {
@@ -1042,6 +1049,8 @@ body {
   margin-top: 25px;
   width: 300px;
   height: 70px;
+  font-size: 20px;
+  font-family: 'FuturaPTWebBold';
 }
 .sixthBlock__button button {
   width: 300px;
@@ -2450,6 +2459,8 @@ body {
     background-color: #ffffff;
     margin-top: 20px;
     cursor: pointer;
+    font-family: 'FuturaPTWebBold';
+    font-size: 20px;
   }
 
   .feedBack__form-text {
@@ -2941,8 +2952,6 @@ body {
     background-color: orange;
     height: 70px;
     border: none;
-    color: white;
-    font-size: 15px;
   }
   
   .secondBlock__form > form > p {
