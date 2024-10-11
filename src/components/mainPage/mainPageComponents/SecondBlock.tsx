@@ -117,7 +117,6 @@ function slider(
   setFetchStatus: React.Dispatch<React.SetStateAction<string>>
 ) {
   const pageWidth = document.documentElement.scrollWidth;
-  console.log(pageWidth);
 
   let accumulator = 0;
 
@@ -264,7 +263,6 @@ async function postData(
     } else if (slide == 1) {
       choice = "Рассрочка";
     } else if (slide == 2) {
-      console.log("asda");
       choice = "Субсидированная";
     } else if (slide == 3) {
       choice = "Социальная";

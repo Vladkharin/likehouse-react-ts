@@ -289,62 +289,8 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 304px;
 }
 
-.stylePagenav {
-  font-family: "FuturaPTWebLight";
-  height: 101px;
-  width: 100%;
-  position: fixed;
-  z-index: 2;
-  background-color: #fff;
-  border-bottom: 1px solid #31373e;
-  transition: all 0stylePage4s cubic-bezier(0, 0, 0stylePage8, 1);
-}
-
-.stylePagenav__wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-}
-
-.stylePagenav__menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 30px;
-  cursor: pointer;
-}
-
-.stylePagemenu__linkMainPage {
-  font-size: 18px;
-  font-weight: 300;
-  text-decoration: none;
-  color: #31373e;
-}
-
 .stylePagenav__links {
   display: none;
-}
-
-.stylePagenav__icons {
-  width: 50%;
-  display: flex;
-  justify-content: right;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  row-gap: 10px;
-}
-
-.stylePagenav__icon {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
-
-.stylePagenav__icon img {
-  width: 35px;
-  height: 35px;
 }
 
 .stylePagenav__item-title {
@@ -1225,13 +1171,6 @@ input[type="number"]::-webkit-outer-spin-button {
     align-items: center;
   }
 
-  .stylePagenav__wrapper {
-    height: 101px;
-  }
-  .stylePagenav__icons {
-    width: 70%;
-  }
-
   .stylePagefirstBlock__wrapper {
     display: flex;
     flex-direction: column;
@@ -1320,9 +1259,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .stylePagenav__item-title {
     display: block;
   }
-  .stylePagenav__icons {
-    width: 50%;
-  }
+
 
   .stylePagefirstBlock__carousel-item {
     width: 620px;
@@ -1664,16 +1601,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
   #phone {
     display: none;
-  }
-
-  .stylePagenav__icon {
-    width: 45px;
-    height: 45px;
-  }
-
-  .stylePagenav__icon img {
-    width: 45px;
-    height: 45px;
   }
 
   .stylePagenav__item-title {

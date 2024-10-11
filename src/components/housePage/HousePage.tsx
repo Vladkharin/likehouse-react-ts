@@ -274,7 +274,7 @@ export function HousePage() {
           {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
         </span>
       </div>
-      <button className="stylePageorder" onClick={() => setStateModalForm(true)}>
+      <button className="stylePageorder" style={{ display: "none" }} onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
       </button>
       <div id="id" className="stylePagenone">
@@ -637,14 +637,15 @@ function houseInformation(
           </span>
         </div>
         <div
-          className="stylePagefirstBlock__button blue"
+          className={`stylePagefirstBlock__button blue`}
+          style={{ display: house.videos?.length != 0 ? "" : "none" }}
           onClick={() => {
             heightFromTopVideosBlock ? window.scroll(0, positionY) : false;
           }}
         >
           Посмотреть видео
         </div>
-        <div className="stylePagefirstBlock__button orange" onClick={() => setStateModalForm(true)}>
+        <div className="stylePagefirstBlock__button orange" style={{ display: "none" }} onClick={() => setStateModalForm(true)}>
           Получить коммерческое предложение
         </div>
       </div>

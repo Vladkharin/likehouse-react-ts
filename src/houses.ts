@@ -954,7 +954,7 @@ export const itemsHouse: typeItemsHouse = [
       "../pages/5x6BathImage/06.jpg",
     ],
     videos: [],
-    coust: "Скоро будет доступна",
+    coust: "0",
     type: "bathhouse",
     link: "bath-5x6",
     typeHouse: "Бани",

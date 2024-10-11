@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import styles from "./Header.module.css";
 
 type typeHeaderProps = {
   scroll: number;
@@ -13,12 +14,12 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
 
   if (useLocation().pathname == mainPage) {
     return (
-      <nav className={`nav${scroll > 93 ? " changeBgNav" : ""}`}>
+      <nav className={`${styles.nav} ${scroll > 93 ? styles.nav_blue : ""}`}>
         <div className="container">
-          <div className="nav__wrapper">
-            <div className="nav__menu">
+          <div className={styles.wrapper}>
+            <div className={styles.menu}>
               <img
-                className="menu__Open"
+                className={styles.burger}
                 src="./icons/MenuIcon.svg"
                 alt="MenuIcon"
                 onClick={() => {
@@ -26,44 +27,43 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
                   setBodyStyle("hidden");
                 }}
               />
-              <div className="nav__links">
-                <a href="#about" className="menu__link">
+              <div className={styles.links}>
+                <a href="#about" className={styles.link}>
                   О нас
                 </a>
-                <a href="#catalog" className="menu__link l481">
+                <a href="#catalog" className={styles.link}>
                   Каталог
                 </a>
-                <a href="#tech" className="menu__link">
+                <a href="#tech" className={styles.link}>
                   Технология
                 </a>
-                <a href="#dop" className="menu__link">
+                <a href="#dop" className={styles.link}>
                   Доп. услуги
                 </a>
-                <a href="#feedback" className="menu__link">
+                <a href="#feedback" className={styles.link}>
                   Отзывы
                 </a>
-                {menuLinkRu()}
+                {MenuLinkRu()}
               </div>
             </div>
-            {menuIconsRu()}
-            {menuTelehoneRu()}
+            {MenuIconsRu()}
+            {MenuTelehoneRu()}
           </div>
         </div>
-        {menu(menuTel, setMenuTel, setBodyStyle)}
+        {Menu(menuTel, setMenuTel, setBodyStyle)}
       </nav>
     );
   } else {
     return (
-      <nav className="stylePagenav">
+      <nav className={styles.page_nav}>
         <div className="stylePagecontainer">
-          <div className="stylePagenav__wrapper">
-            <div className="stylePagenav__menu">
-              <Link to={"/"} className="stylePagemenu__linkMainPage">
+          <div className={styles.page_wrapper}>
+            <div className={styles.page_menu}>
+              <Link to={"/"} className={styles.page_link_to_main_page}>
                 На главную
               </Link>
             </div>
-            {menuGreyIconsRu()}
-            {menuTelehoneRu()}
+            {MenuGreyIconsRu()}
           </div>
         </div>
       </nav>
@@ -71,7 +71,7 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
   }
 }
 
-function menu(
+function Menu(
   menuTel: boolean,
   setMenuTel: React.Dispatch<React.SetStateAction<boolean>>,
   setBodyStyle: React.Dispatch<React.SetStateAction<string>>
@@ -87,10 +87,10 @@ function menu(
     <>
       <div className={overlayClass} onClick={() => setMenuTel(false)}></div>
       <div className={menuClass}>
-        <div className="menu__links">
+        <div className={styles.menu_links}>
           <a
             href="#about"
-            className="menu__link"
+            className={styles.link}
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
@@ -100,7 +100,7 @@ function menu(
           </a>
           <a
             href="#catalog"
-            className="menu__link"
+            className={styles.link}
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
@@ -110,7 +110,7 @@ function menu(
           </a>
           <a
             href="#tech"
-            className="menu__link"
+            className={styles.link}
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
@@ -120,7 +120,7 @@ function menu(
           </a>
           <a
             href="#dop"
-            className="menu__link"
+            className={styles.link}
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
@@ -130,7 +130,7 @@ function menu(
           </a>
           <a
             href="#feedback"
-            className="menu__link"
+            className={styles.link}
             onClick={() => {
               setMenuTel(false);
               setBodyStyle("");
@@ -138,10 +138,10 @@ function menu(
           >
             Отзывы
           </a>
-          {menuLinkRu()}
+          {MenuLinkRu()}
         </div>
         <button
-          className="menu__Close"
+          className={styles.close_button}
           onClick={() => {
             setMenuTel(false);
             setBodyStyle("");
@@ -154,77 +154,77 @@ function menu(
   );
 }
 
-function menuLinkRu() {
+function MenuLinkRu() {
   return (
     <>
-      <Link to={"/payment"} className="menu__link">
+      <Link to={"/payment"} className={styles.link}>
         Оплата
       </Link>
-      <a href={"/payment#mortgage"} className="menu__link">
+      <a href={"/payment#mortgage"} className={styles.link}>
         Ипотека
       </a>
     </>
   );
 }
 
-function menuGreyIconsRu() {
+function MenuGreyIconsRu() {
   return (
-    <div className="stylePagenav__icons">
-      <a href="https://teleg.run/Like_House_org" className="stylePagenav__icon">
+    <div className={styles.page_icons}>
+      <a href="https://teleg.run/Like_House_org" className={styles.page_icon}>
         <img src="../icons/TelegramGreyIcon.svg" alt="" />
       </a>
-      <a href="https://wa.clck.bar/79251047452" className="stylePagenav__icon">
+      <a href="https://wa.clck.bar/79251047452" className={styles.page_icon}>
         <img src="../icons/WhatsappGreyIcon.svg" alt="" />
       </a>
-      <a id="phone" href="tel:+74951277452" className="stylePagenav__icon">
+      <a id="phone" href="tel:+74951277452" className={`${styles.page_icon} ${styles.phone}`}>
         <img src="../icons/PhoneGreyIcon.svg" alt="" />
       </a>
-      <a href="https://www.youtube.com/@likehouse_org" className="stylePagenav__icon">
+      <a href="https://www.youtube.com/@likehouse_org" className={styles.page_icon}>
         <img src="../icons/YouTubeGreyIcon.svg" alt="" />
       </a>
-      <a href="mailto:info@likehouse.org" className="stylePagenav__icon">
+      <a href="mailto:info@likehouse.org" className={styles.page_icon}>
         <img src="../icons/EmailGreyIcon.svg" alt="" />
       </a>
-      <a href="https://vk.com/like_house" className="stylePagenav__icon">
+      <a href="https://vk.com/like_house" className={styles.page_icon}>
         <img src="../icons/VKGreyIcon.svg" alt="" />
       </a>
     </div>
   );
 }
 
-function menuIconsRu() {
+function MenuIconsRu() {
   return (
-    <div className="nav__icons">
-      <a target="_blank" href="https://teleg.run/Like_House_org" className="nav__icon">
+    <div className={styles.icons}>
+      <a target="_blank" href="https://teleg.run/Like_House_org" className={styles.icon}>
         <img src="./icons/TelegramIcon.svg" alt="" />
       </a>
-      <a target="_blank" href="https://wa.clck.bar/79251047452" className="nav__icon">
+      <a target="_blank" href="https://wa.clck.bar/79251047452" className={styles.icon}>
         <img src="./icons/WhatsappIcon.svg" alt="" />
       </a>
-      <a id="phone" href="tel:+74951277452" className="nav__icon">
+      <a id="phone" href="tel:+74951277452" className={`${styles.icon} ${styles.phone}`}>
         <img src="./icons/PhoneIcon.svg" alt="" />
       </a>
-      <a target="_blank" href="https://www.youtube.com/@likehouse_org" className="nav__icon">
+      <a target="_blank" href="https://www.youtube.com/@likehouse_org" className={styles.icon}>
         <img src="./icons/YouTubeIcon.svg" alt="" />
       </a>
-      <a href="mailto:info@likehouse.org" className="nav__icon">
+      <a href="mailto:info@likehouse.org" className={styles.icon}>
         <img src="./icons/EmailIcon.svg" alt="" />
       </a>
-      <a target="_blank" href="https://vk.com/like_house" className="nav__icon">
+      <a target="_blank" href="https://vk.com/like_house" className={styles.icon}>
         <img src="./icons/VKIcon.svg" alt="" />
       </a>
     </div>
   );
 }
 
-function menuTelehoneRu() {
+function MenuTelehoneRu() {
   return (
-    <div className="nav__item-title">
-      <a className="nav__item-linkWithOutdecoration" href="tel:+79251047452">
+    <div className={styles.item_title}>
+      <a className={styles.item_link} href="tel:+79251047452">
         +7 (925) 104-74-52
       </a>{" "}
       <br />
-      <a className="nav__item-linkWithOutdecoration margin" href="tel:+74951277452">
+      <a className={styles.item_link} href="tel:+74951277452">
         +7 (495) 127-74-52
       </a>{" "}
       <br />

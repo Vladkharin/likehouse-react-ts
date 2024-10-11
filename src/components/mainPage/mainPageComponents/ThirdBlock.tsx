@@ -122,7 +122,9 @@ export function ThirdBlock() {
       if (coust == 0) {
         item.coust = "Скоро будет доступна";
       } else {
-        item.mortgage = (coust / 5).toString();
+        if (item.type != "bathhouse") {
+          item.mortgage = (coust / 5).toString();
+        }
         item.coust = coust.toString();
       }
     });
@@ -191,6 +193,14 @@ function ThirdBlockTile(task: typeItemHouse) {
 
 function stringConversion(task: string) {
   const array: string[] = [];
+
+  // const number = Number(task) - Number(task) * 0.15;
+
+  // task = number.toString();
+
+  // const round = (number: number, accumulator: number) => Math.round(number / accumulator) * accumulator;
+
+  // task = round(number, 1000).toString();
 
   task?.split("").forEach((item, index) => {
     if (task?.length - index == 7) {

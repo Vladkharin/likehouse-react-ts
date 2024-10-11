@@ -20,26 +20,6 @@ body {
 .desc {
   display: none;
 }
-.nav {
-  height: 100px;
-  width: 100%;
-  position: fixed;
-  z-index: 2;
-  background-color: rgba(255, 255, 255, 0);
-  transition: all 0.4s cubic-bezier(0, 0, 0.8, 1);
-}
-
-.changeBgNav {
-  background-color: rgb(7, 64, 151);
-}
-
-.nav__wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-  height: 91px;
-}
 
 .firstBlock {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
@@ -78,7 +58,7 @@ body {
   position: absolute;
   top: 0;
   color: red;
-  background-color: #fff;
+  background-color: fff;
   padding: 8px 10px;
   border-radius: 2px;
   z-index: 1;
@@ -325,9 +305,7 @@ body {
   cursor: pointer;
 }
 
-.nav__links {
-  display: none;
-}
+
 
 .lineMenu {
   background-color: #fff;
@@ -336,25 +314,11 @@ body {
   height: 2px;
 }
 
-.nav__icons {
-  width: 50%;
-  display: flex;
-  justify-content: right;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  row-gap: 10px;
-}
 
-.nav__icon {
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
 
-.nav__icon img {
-  width: 35px;
-  height: 35px;
-}
+
+
+
 
 .l481 {
   display: none;
@@ -1186,91 +1150,6 @@ body {
   margin-top: 20px;
 }
 
-.footer {
-  background-color: #000000;
-  padding: 60px 0;
-}
-
-.footer__wrapper {
-  display: flex;
-  column-gap: 72px;
-  position: relative;
-}
-
-.footer__img {
-  width: 50px;
-  height: 50px;
-  opacity: 0.25;
-  position: absolute;
-  left: -7px;
-  background: url("../img/logo.webp");
-}
-
-.footer__items {
-  display: flex;
-  flex-direction: column;
-  padding-left: 123px;
-}
-
-.footer__item {
-  margin-bottom: 30px;
-}
-
-.footer__item-linkWithdecoration {
-  border-bottom: 1px solid rgb(255, 255, 255);
-  font-size: 18px;
-  font-family: "FuturaPTWebLight";
-  color: #fff;
-  box-shadow: none;
-  text-decoration: none;
-}
-
-.footer__item-header {
-  color: #ffffff;
-  font-size: 18px;
-  font-family: "FuturaPTWebLight";
-  line-height: 1.7;
-  font-weight: 400;
-  opacity: 0.5;
-}
-
-.footer__item-title {
-  color: #ffffff;
-  font-size: 18px;
-  line-height: 1.55;
-  font-family: "FuturaPTWebLight";
-  font-weight: 300;
-  margin-top: 10px;
-}
-
-.footer__item-linkWithOutdecoration {
-  color: #fff;
-  border-bottom: none;
-  box-shadow: none;
-  font-family: "FuturaPTWebLight";
-  text-decoration: none;
-}
-
-.footer__item-title span {
-  font-family: "FuturaPTWebLight";
-  font-weight: 300;
-  font-size: 16px;
-}
-
-.footer__socials {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 20px;
-  row-gap: 20px;
-  width: 110px;
-}
-
-.footer__social {
-  height: 45px;
-  width: 45px;
-}
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
@@ -1302,43 +1181,6 @@ body {
   row-gap: 15px;
 }
 
-.menu__link {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 300;
-  text-decoration: none;
-  font-family: "FuturaPTWebLight";
-}
-
-.menu__Close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0);
-  border: none;
-}
-
-.menu__Close::before,
-.menu__Close::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #fff;
-}
-
-.menu__Close::before {
-  transform: rotate(45deg);
-}
-
-.menu__Close::after {
-  transform: rotate(-45deg);
-}
 .modalImgSlider__close {
   position: absolute;
   top: 20px;
@@ -1455,9 +1297,6 @@ body {
   display: flex;
 }
 
-.nav__item-title {
-  display: none;
-}
 
 .none {
   display: none;
@@ -1541,35 +1380,12 @@ body {
   .secondBlock__sliderButtons{
     right: 0;
   }
-  #phone {
-    display: none;
-  }
+
 
   .nav {
     height: 93px;
   }
 
-  .nav__item-title {
-    display: block;
-  }
-
-  .nav__item-title {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 300;
-  }
-
-  .nav__item-linkWithOutdecoration {
-    color: #fff;
-    border-bottom: none;
-    box-shadow: none;
-    text-decoration: none;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
-    font-family: "FuturaPTWebLight";
-  }
 
   /* .margin{
     margin-top: 27px;
@@ -1820,11 +1636,6 @@ body {
     display: block;
   }
 
-  .footer__wrapper {
-    display: flex;
-    column-gap: 120px;
-  }
-
   .modalImgSlider__field img {
     width: 481px;
     height: 481px;
@@ -1832,9 +1643,6 @@ body {
 
   .marginBot {
     margin-top: 85px;
-  }
-  .footer__items {
-    padding-left: 280px;
   }
 
   .map__header {
@@ -1885,20 +1693,6 @@ body {
 
   .fourthAndThirdBlockTogether__tile-text {
     font-size: 20px;
-  }
-
-  .nav__icons {
-    width: 60%;
-  }
-
-  .nav__icon img {
-    width: 45px;
-    height: 45px;
-  }
-
-  .nav__icon {
-    width: 45px;
-    height: 45px;
   }
 
   .container {
@@ -2074,33 +1868,6 @@ body {
     width: 300px;
   }
 
-  .footer__items {
-    flex-direction: row;
-    column-gap: 55px;
-    position: relative;
-    padding-left: 220px;
-  }
-
-  .footer__item {
-    padding-top: 20px;
-  }
-
-  .footer {
-    column-gap: 150px;
-    height: 465px;
-  }
-
-  .footer__wrapper {
-    height: 360px;
-  }
-
-  .footer__socialItem {
-    position: absolute;
-    right: 60px;
-    bottom: 20px;
-    padding-top: 20px;
-  }
-
   .modalImgSlider__field img {
     width: 640px;
     height: 640px;
@@ -2134,10 +1901,7 @@ body {
   }
 
 
-  .nav__icons {
-    width: 70%;
-    column-gap: 15px;
-  }
+
 
   .line {
     width: 360px;
@@ -2333,13 +2097,6 @@ body {
     align-self: center;
   }
 
-  .footer__socialItem {
-    position: static;
-  }
-
-  .footer__items {
-    column-gap: 148px;
-  }
   .fifthBlock__imgs {
     column-gap: 20px;
   }
@@ -2652,13 +2409,9 @@ body {
     width: 260px;
   }
 
-  .nav__links {
-    display: block;
-  }
+  
 
-  .nav__icons {
-    width: 25%;
-  }
+
 
   .menu__Open {
     display: none;
@@ -2747,28 +2500,10 @@ body {
     justify-content: center;
   }
 
-  .nav__links {
-    display: flex;
-    column-gap: 36px;
-  }
-
-  .footer__socials {
-    flex-wrap: nowrap;
-  }
-
-  .footer__wrapper {
-    display: flex;
-    justify-content: center;
-    column-gap: 150px;
-    padding-left: 160px;
-  }
+  
 
   .secondBlock {
     height: 1600px;
-  }
-
-  .footer__items {
-    padding-left: 0;
   }
 
   .eightBlock__header {
@@ -3193,20 +2928,7 @@ body {
 }
 
 .visible {
-  left: 50px;
+  left: 0px;
   opacity: 1;
   visibility: visible;
 }
-
-
-
-/* @keyframes slider {
-  0%{
-    opacity: 0;
-  }
-
-  100%{
-    opacity: 1;
-  }
-  
-} */
