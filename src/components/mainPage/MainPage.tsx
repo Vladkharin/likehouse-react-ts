@@ -1,4 +1,4 @@
-import { FirstBlock } from "./mainPageComponents/FirstBlock";
+import { Information } from "./mainPageComponents/information/Information";
 import { SecondBlock } from "./mainPageComponents/SecondBlock";
 import { ThirdBlock } from "./mainPageComponents/ThirdBlock";
 import { FourthBlock } from "./mainPageComponents/FourthBlock";
@@ -28,7 +28,7 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
 
   return (
     <>
-      <FirstBlock setBodyStyle={setBodyStyle} />
+      <Information setBodyStyle={setBodyStyle} />
       <SecondBlock />
       <ThirdBlock />
       <FourthBlock setBodyStyle={setBodyStyle} />

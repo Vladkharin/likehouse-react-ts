@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import { arrayNameAndNumber, arrayPositionBG } from "../../../houses";
-import { typeInputsError } from "../../typesAndIntefaces";
 import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
-// import { sendEmail } from "../../../API/routes";
+import { arrayNameAndNumber, arrayPositionBG } from "../../../../../houses";
+import { typeInputsError } from "../../../../typesAndIntefaces";
+import { sendEmail } from "../../../../../API/routes";
 
 const maskGenerator = createDefaultMaskGenerator("(999) 999-99-99");
+
+type typeTelInputInfo = {
+  backgroundPosition: string;
+  codeCountry: string;
+};
 
 const FORM_STATUS_MESSAGE = {
   loading: "Загрузка...",
@@ -12,61 +16,7 @@ const FORM_STATUS_MESSAGE = {
   failure: "Что-то пошло не так...",
 };
 
-type typeTelInputInfo = {
-  backgroundPosition: string;
-  codeCountry: string;
-};
-
-type Props = {
-  setBodyStyle: React.Dispatch<React.SetStateAction<string>>;
-};
-
-export function FirstBlock({ setBodyStyle }: Props) {
-  const [stateModal, setStateModal] = useState<boolean>(false);
-  const [stateContextMenu, setStateContextMenu] = useState<boolean>(false);
-  const [inputPhoneValue, setInputPhoneValue] = useState<string>("");
-  const [fetchStatus, setFetchStatus] = useState<string>("");
-  const [inputsError, setInputsError] = useState<typeInputsError>({
-    inputName: "",
-    inputPhone: "",
-  });
-  const [telInputInfo, setTelInputInfo] = useState({
-    backgroundPosition: "-285px -281px",
-    codeCountry: "+7",
-  });
-
-  if (stateModal) {
-    setBodyStyle("hidden");
-  } else {
-    setBodyStyle("");
-  }
-
-  return (
-    <div className={"firstBlock"}>
-      <div className="container">{firstBlockRu(setStateModal)}</div>
-      <div className={"animation"}>
-        <img src="./icons/partner.svg?ver=1" alt="partner" className="animation__spin" />
-      </div>
-
-      {modal(
-        stateModal,
-        setStateModal,
-        stateContextMenu,
-        setStateContextMenu,
-        inputsError,
-        setInputsError,
-        inputPhoneValue,
-        setInputPhoneValue,
-        fetchStatus,
-        setFetchStatus,
-        telInputInfo,
-        setTelInputInfo
-      )}
-    </div>
-  );
-}
-
-function modal(
+export function FormModal(
   stateModal: boolean,
   setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
   stateContextMenu: boolean,
@@ -89,6 +39,7 @@ function modal(
   if (stateContextMenu) {
     contextMenuActiveStyle = "flex";
   }
+
   return (
     <div className="feedBack" style={{ display: modalActiveStyle }}>
       <div className="feedBack__wrapper">
@@ -228,22 +179,17 @@ async function postData(
 
     formData.set("user_phone", phone);
 
-    const response = await fetch("sendmail.php", {
-      method: "POST",
-      body: formData,
-    });
+    const user_name = formData.get("user_name") as string;
 
-    // const user_name = formData.get("user_name") as string;
+    const object = {
+      first_name: user_name,
+      telephoneCode: indexNumber,
+      telephone: inputTel,
+    };
 
-    // const object = {
-    //   first_name: user_name,
-    //   telephoneCode: indexNumber,
-    //   telephone: inputTel,
-    // };
+    const response = await sendEmail(JSON.stringify(object));
 
-    // const response = await sendEmail(JSON.stringify(object));
-
-    if (response.status === 200) {
+    if (response.success) {
       setFetchStatus(FORM_STATUS_MESSAGE.success);
       form.reset();
     } else {
@@ -368,46 +314,4 @@ function createArrCountryCatalog() {
   }
 
   return countryCatalog;
-}
-
-function firstBlockRu(setStateModal: React.Dispatch<React.SetStateAction<boolean>>) {
-  return (
-    <>
-      <div className="firstBlock__wrapper">
-        <h1 className="firstBlock__header desc">
-          <p style={{ margin: 0 }}>ЭКСЛЮЗИВНОЕ ПРЕДЛОЖЕНИЕ</p>
-        </h1>
-        <div className="line smallLine"></div>
-        <div className="firstBlock__texts desc">
-          <p className="firstBlock__text big">ИПОТЕКА НА СТРОИТЕЛЬСТВО БЕЗ ПЕРВОНАЧАЛЬНОГО ВЗНОСА</p>
-          <img src="./icons/эскроу-десктоп.svg" alt="" />
-          <p className="firstBlock__text small">Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте</p>
-        </div>
-        <div className="firstBlock__texts mob">
-          <p className="firstBlock__text small">Честно строим каркасные дома и бани для жизни круглый год по цене как на сайте</p>
-          <p className="firstBlock__text big">ИПОТЕКА НА СТРОИТЕЛЬСТВО БЕЗ ПЕРВОНАЧАЛЬНОГО ВЗНОСА</p>
-          <p className="firstBlock__text small">эксклюзивное предложение для наших клиентов</p>
-          <img src="./icons/эскроу-десктоп.svg" alt="" />
-        </div>
-        <img className="firstBlock__logo" src="./icons/лого.svg" alt="logo" />
-      </div>
-      <div className="firstBlock__buttons">
-        <div className="firstBlock__buttonMediaMax940px">
-          <a href="tel:+74951277452">
-            <button>Позвонить</button>
-          </a>
-        </div>
-
-        <div className="firstBlock__buttonMap">
-          <a href="#map">
-            <button>Земельные участки</button>
-          </a>
-        </div>
-
-        <div className="firstBlock__buttonMediaMin940px">
-          <button onClick={() => setStateModal(true)}>Узнать условия</button>
-        </div>
-      </div>
-    </>
-  );
 }

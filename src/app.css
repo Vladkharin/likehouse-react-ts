@@ -58,7 +58,7 @@ body {
   position: absolute;
   top: 0;
   color: red;
-  background-color: fff;
+  background-color: #fff;
   padding: 8px 10px;
   border-radius: 2px;
   z-index: 1;
@@ -2758,11 +2758,11 @@ body {
 
 
 .tl17585 {
-  top: 145px;
+  top: 160px;
   left: 85px;
 }
 .tl24085 {
-  top: 250px;
+  top: 230px;
   left: 85px;
 }
 
