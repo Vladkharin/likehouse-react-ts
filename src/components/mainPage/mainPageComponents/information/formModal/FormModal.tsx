@@ -1,4 +1,5 @@
 import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
+import styles from "./Form.module.css";
 import { arrayNameAndNumber, arrayPositionBG } from "../../../../../houses";
 import { typeInputsError } from "../../../../typesAndIntefaces";
 import { sendEmail } from "../../../../../API/routes";
@@ -30,28 +31,14 @@ export function FormModal(
   telInputInfo: typeTelInputInfo,
   setTelInputInfo: React.Dispatch<React.SetStateAction<typeTelInputInfo>>
 ) {
-  let modalActiveStyle = "none";
-  let contextMenuActiveStyle = "none";
-  if (stateModal) {
-    modalActiveStyle = "flex";
-  }
-
-  if (stateContextMenu) {
-    contextMenuActiveStyle = "flex";
-  }
-
   return (
-    <div className="feedBack" style={{ display: modalActiveStyle }}>
-      <div className="feedBack__wrapper">
-        <img className="feedBack__mainImg" src="./img/Видовой_кадр_01_9.5x14.jpg?v=1" alt="feedback" />
-        <form
-          action="sendmail.php"
-          className="feedBack__form"
-          onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus)}
-        >
-          <div className="feedBack__form-header">Оставьте заявку</div>
+    <div className={styles.feedBack} style={{ display: stateModal ? "flex" : "none" }}>
+      <div className={styles.wrapper}>
+        <img className={styles.main_img} src="./img/Видовой_кадр_01_9.5x14.jpg?v=1" alt="feedback" />
+        <form className={styles.form} onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus)}>
+          <div className={styles.header}>Оставьте заявку</div>
           <input
-            className={inputsError.inputName != "" ? "feedBack__from-inputText _req _error" : "feedBack__from-inputText _req"}
+            className={`${styles.text_input} ${styles.required} ${inputsError.inputName != "" ? styles.error : ""}`}
             name="user_name"
             type="text"
             placeholder="Ваше имя"
@@ -64,7 +51,7 @@ export function FormModal(
             }}
           />
           <div
-            className="feedBack__menu"
+            className={styles.menu}
             onClick={() => {
               if (stateContextMenu) {
                 setStateContextMenu(false);
@@ -73,13 +60,13 @@ export function FormModal(
               }
             }}
           >
-            <div className="feedBack__menu-flag" style={{ backgroundPosition: telInputInfo.backgroundPosition }}></div>
-            <div className="feedBack__menu-arrow" style={stateContextMenu ? { rotate: "180deg" } : { rotate: "360deg" }}></div>
-            <div className="feedBack__menu-number">{telInputInfo.codeCountry}</div>
+            <div className={styles.flag} style={{ backgroundPosition: telInputInfo.backgroundPosition }}></div>
+            <div className={styles.arrow} style={stateContextMenu ? { rotate: "180deg" } : { rotate: "360deg" }}></div>
+            <div className={styles.telephone_code}>{telInputInfo.codeCountry}</div>
           </div>
           <MaskedInput
             maskGenerator={maskGenerator}
-            className={inputsError.inputPhone != "" ? "feedBack__from-inputPhone _req _error" : "feedBack__from-inputPhone _req"}
+            className={`${styles.phone_input} ${styles.required} ${inputsError.inputName != "" ? styles.error : ""}`}
             style={{
               paddingLeft: telInputInfo.codeCountry.trim().length > 5 ? "110px" : telInputInfo.codeCountry.trim().length * 10 + 50 + "px",
             }}
@@ -114,7 +101,7 @@ export function FormModal(
           </div>
 
           <img src="./icons/touch.svg" alt="" className="feedBack__form-touch" />
-          <div className="feedBack__menu-buttons" style={{ display: contextMenuActiveStyle }}>
+          <div className="feedBack__menu-buttons" style={{ display: stateContextMenu ? "flex" : "none" }}>
             {" "}
             {contextMenu(setTelInputInfo, setStateContextMenu)}
           </div>
@@ -172,7 +159,6 @@ async function postData(
   setFetchStatus(FORM_STATUS_MESSAGE.loading);
 
   if (error === 0) {
-    setFetchStatus("");
     const formData = new FormData(form);
 
     const phone = indexNumber + inputTel;
@@ -189,6 +175,7 @@ async function postData(
 
     const response = await sendEmail(JSON.stringify(object));
 
+    console.log(response);
     if (response.success) {
       setFetchStatus(FORM_STATUS_MESSAGE.success);
       form.reset();

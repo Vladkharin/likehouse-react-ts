@@ -2111,102 +2111,6 @@ body {
     height: 926px;
   }
 
-  .feedBack {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    position: fixed;
-    top: 0;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .feedBack__wrapper {
-    width: 940px;
-    height: 470px;
-    margin: 0 auto;
-    display: flex;
-  }
-
-  .feedBack__mainImg {
-    width: 470px;
-    height: 470px;
-  }
-
-  .feedBack__form-header {
-    color: #31373e;
-    font-size: 40px;
-    line-height: 1.55;
-    font-weight: 400;
-  }
-  .feedBack__form {
-    width: 470px;
-    height: 470px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 0 20px 0;
-    position: relative;
-  }
-  .feedBack__from-inputText {
-    width: 300px;
-    height: 50px;
-    border: 1px solid #000;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 0 20px;
-    margin-top: 20px;
-  }
-
-  .feedBack__from-inputPhone {
-    width: 300px;
-    height: 50px;
-    border: 1px solid #000;
-    font-size: 16px;
-    font-weight: 400;
-    padding-left: 100px;
-    padding-right: 20px;
-    margin-top: 20px;
-  }
-
-  .feedBack__menu {
-    width: 70px;
-    height: 48px;
-    background: rgba(0, 0, 0, 0);
-    position: absolute;
-    top: 193px;
-    right: 300px;
-    display: flex;
-    align-items: center;
-    column-gap: 6px;
-    cursor: pointer;
-  }
-  .feedBack__menu-flag {
-    background: url("../img/flags5.png");
-    background-position: -285px -281px;
-    width: 18px;
-    height: 18px;
-    margin-top: 5px;
-  }
-
-  .feedBack__menu-arrow {
-    border-style: solid;
-    border-width: 5px 4px 0;
-    border-color: #9a9a9a transparent transparent;
-  }
-  .feedBack__menu-number {
-    font-size: 16px;
-    font-weight: 400;
-    display: flex;
-    justify-content: end;
-    min-width: 10px;
-    max-width: 60px;
-  }
-
   .feedBack__form-submit {
     width: 300px;
     height: 70px;
@@ -2749,14 +2653,6 @@ body {
   color: #ffffff;
 }
 
-._req:focus {
-  border: 1px solid #000;
-}
-._req._error {
-  border: 1px solid red;
-}
-
-
 .tl17585 {
   top: 160px;
   left: 85px;
@@ -2899,8 +2795,8 @@ body {
   content: "\2713";
   color: #62c584;
   position: absolute;
-  top: 12px;
-  left: 18px;
+  top: 14px;
+  left: 16px;
 }
 
 .feedBackModal__failure {

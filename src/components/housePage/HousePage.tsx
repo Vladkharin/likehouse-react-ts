@@ -184,7 +184,7 @@ export function HousePage() {
     fetchAdditionalServices(fetchUrl);
 
     scrollToTop();
-  }, [fetchUrl]);
+  }, []);
 
   useEffect(() => {
     document.title = house?.houseName as string;
@@ -194,7 +194,7 @@ export function HousePage() {
     }
 
     setPositionY(window.scrollY + heightFromTopVideosBlock - 101);
-  });
+  }, []);
 
   function viewAddtionalServicesBlock() {
     if (!additionalService && coustHouse) {
