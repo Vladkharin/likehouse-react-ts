@@ -3,6 +3,7 @@ import styles from "./Form.module.css";
 import { arrayNameAndNumber, arrayPositionBG } from "../../../../../houses";
 import { typeInputsError } from "../../../../typesAndIntefaces";
 import { sendEmail } from "../../../../../API/routes";
+import React, { useEffect, useState } from "react";
 
 const maskGenerator = createDefaultMaskGenerator("(999) 999-99-99");
 
@@ -20,19 +21,30 @@ const FORM_STATUS_MESSAGE = {
 export function FormModal(
   stateModal: boolean,
   setStateModal: React.Dispatch<React.SetStateAction<boolean>>,
-  stateContextMenu: boolean,
-  setStateContextMenu: React.Dispatch<React.SetStateAction<boolean>>,
-  inputsError: typeInputsError,
-  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
-  inputPhoneValue: string,
-  setInputPhoneValue: React.Dispatch<React.SetStateAction<string>>,
-  fetchStatus: string,
-  setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
-  telInputInfo: typeTelInputInfo,
-  setTelInputInfo: React.Dispatch<React.SetStateAction<typeTelInputInfo>>
+  setBodyStyle: React.Dispatch<React.SetStateAction<string>>
 ) {
+  const [stateContextMenu, setStateContextMenu] = useState<boolean>(false);
+  const [inputPhoneValue, setInputPhoneValue] = useState<string>("");
+  const [fetchStatus, setFetchStatus] = useState<string>("");
+  const [inputsError, setInputsError] = useState<typeInputsError>({
+    inputName: "",
+    inputPhone: "",
+  });
+  const [telInputInfo, setTelInputInfo] = useState({
+    backgroundPosition: "-285px -281px",
+    codeCountry: "+7",
+  });
+
+  useEffect(() => {
+    if (stateModal) {
+      setBodyStyle("hidden");
+    } else {
+      setBodyStyle("");
+    }
+  });
+
   return (
-    <div className={styles.feedBack} style={{ display: stateModal ? "flex" : "none" }}>
+    <div className={`${styles.feedBack} ${stateModal ? styles.flex : styles.none}`}>
       <div className={styles.wrapper}>
         <img className={styles.main_img} src="./img/Видовой_кадр_01_9.5x14.jpg?v=1" alt="feedback" />
         <form className={styles.form} onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus)}>
@@ -84,37 +96,51 @@ export function FormModal(
             }}
             data-phonemask={telInputInfo.codeCountry.trim()}
           />
-          <button type="submit" className="feedBack__form-submit">
-            <div className={fetchStatus === "Загрузка..." ? "loader block" : "loader none"}></div>
-            <div className={fetchStatus === "Загрузка..." ? "feedBack__form-submitText none" : "feedBack__form-submitText block"}>
-              Отправить
-            </div>
+          <button type="submit" className={styles.btn_submit}>
+            <div className={fetchStatus === "Загрузка..." ? `${styles.loader} ${styles.block}` : `${styles.loader} ${styles.none}`}></div>
+            <div className={fetchStatus === "Загрузка..." ? styles.none : styles.block}>Отправить</div>
           </button>
-          <div className="feedBack__form-text">Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности</div>
-          <div className="feedBack__form-imgs">
+          <div className={styles.privacy_policy}>Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности</div>
+          <div className={styles.imgs}>
             <a href="https://vk.com/like_house">
-              <img src="./icons/Tilda_Icons_26snw_vk.svg" alt="" className="feedBack__form-img" />
+              <img src="./icons/Tilda_Icons_26snw_vk.svg" alt="" className={styles.img} />
             </a>
             <a href="https://wa.clck.bar/79251047452">
-              <img src="./icons/Tilda_Icons_26snw_wh.svg" alt="" className="feedBack__form-img" />
+              <img src="./icons/Tilda_Icons_26snw_wh.svg" alt="" className={styles.img} />
             </a>
           </div>
 
-          <img src="./icons/touch.svg" alt="" className="feedBack__form-touch" />
-          <div className="feedBack__menu-buttons" style={{ display: stateContextMenu ? "flex" : "none" }}>
+          <img src="./icons/touch.svg" alt="" className={styles.touch} />
+          <div className={styles.buttons} style={{ display: stateContextMenu ? "flex" : "none" }}>
             {" "}
             {contextMenu(setTelInputInfo, setStateContextMenu)}
           </div>
-          <div className={inputsError.inputName == "Обязательное поле" ? "error tl17585 show" : "error tl17585 notVisible"}>
+          <div
+            className={`${styles.error_text} ${styles.position_error_first_input} ${
+              inputsError.inputName == "Обязательное поле" ? styles.block : styles.none
+            }`}
+          >
             Обязательное поле
           </div>
-          <div className={inputsError.inputName == "Слишком длинное значение" ? "errorBig tl17585 show" : "errorBig tl17585 notVisible"}>
+          <div
+            className={`${styles.error_text} ${styles.position_error_first_input} ${
+              inputsError.inputName == "Слишком длинное значение" ? styles.block : styles.none
+            }`}
+          >
             Слишком длинное значение
           </div>
-          <div className={inputsError.inputPhone == "Обязательное поле" ? "error tl24085 show" : "error tl24085 notVisible"}>
+          <div
+            className={`${styles.error_text} ${styles.position_error_second_input} ${
+              inputsError.inputPhone == "Обязательное поле" ? styles.block : styles.none
+            }`}
+          >
             Обязательное поле
           </div>
-          <div className={inputsError.inputPhone == "Слишком короткое значение" ? "errorTel tl24085 show" : "errorTel tl24085 notVisible"}>
+          <div
+            className={`${styles.error_text} ${styles.position_error_second_input} ${
+              inputsError.inputPhone == "Слишком короткое значение" ? styles.block : styles.none
+            }`}
+          >
             Слишком короткое значение
           </div>
           <div className="crestik" onClick={() => setStateModal(false)}>
@@ -122,18 +148,14 @@ export function FormModal(
           </div>
         </form>
         <div
-          className={
-            fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..."
-              ? "feedBackModal"
-              : "feedBackModal none"
-          }
+          className={`${styles.modal} ${
+            fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..." ? "" : styles.none
+          }`}
         >
-          <div className="feedBackModal__wrapper">
-            <img src="./icons/crestikBlack.svg" alt="" className="crestikBlack" onClick={() => setFetchStatus("")} />
-            <div
-              className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"}
-            ></div>
-            <div className="feedBackModal__text">{fetchStatus}</div>
+          <div className={styles.modal_wrapper}>
+            <img src="./icons/crestikBlack.svg" alt="" className={styles.modal_btn_close} onClick={() => setFetchStatus("")} />
+            <div className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? styles.complete : styles.failure}></div>
+            <div className={styles.modal_text}>{fetchStatus}</div>
           </div>
         </div>
       </div>
@@ -260,7 +282,7 @@ function contextMenu(
         return (
           <div
             key={index + 919923}
-            className="feedBack__menu-button"
+            className={styles.menu_button}
             onClick={() => {
               setTelInputInfo({
                 backgroundPosition: item.position,
@@ -269,11 +291,9 @@ function contextMenu(
               setStateContextMenu(false);
             }}
           >
-            <div className="feedBack__menu-buttonLeft">{item.name}</div>
-            <div className="feedBack__menu-buttonRight">
-              <div className="feedBack__menu-buttonNumber" data-position={item.position}>
-                {item.number}
-              </div>
+            <div className={styles.country_name}>{item.name}</div>
+            <div className={styles.country_code_and_flag}>
+              <div data-position={item.position}>{item.number}</div>
               <div className="img" style={{ backgroundPosition: item.position }}></div>
             </div>
           </div>

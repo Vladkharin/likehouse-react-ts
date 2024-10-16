@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { typeInputsError } from "../../../typesAndIntefaces";
+import React, { useState } from "react";
 import { FormModal } from "./formModal/FormModal";
 
 type Props = {
@@ -8,48 +7,17 @@ type Props = {
 
 export function Information({ setBodyStyle }: Props) {
   const [stateModal, setStateModal] = useState<boolean>(false);
-  const [stateContextMenu, setStateContextMenu] = useState<boolean>(false);
-  const [inputPhoneValue, setInputPhoneValue] = useState<string>("");
-  const [fetchStatus, setFetchStatus] = useState<string>("");
-  const [inputsError, setInputsError] = useState<typeInputsError>({
-    inputName: "",
-    inputPhone: "",
-  });
-  const [telInputInfo, setTelInputInfo] = useState({
-    backgroundPosition: "-285px -281px",
-    codeCountry: "+7",
-  });
-
-  useEffect(() => {
-    if (stateModal) {
-      setBodyStyle("hidden");
-    } else {
-      setBodyStyle("");
-    }
-  });
 
   return (
-    <div className={"firstBlock"}>
-      <div className="container">{firstBlockRu(setStateModal)}</div>
-      <div className={"animation"}>
-        <img src="./icons/partner.svg?ver=1" alt="partner" className="animation__spin" />
+    <>
+      <div className={"firstBlock"}>
+        <div className="container">{firstBlockRu(setStateModal)}</div>
+        <div className={"animation"}>
+          <img src="./icons/partner.svg?ver=1" alt="partner" className="animation__spin" />
+        </div>
       </div>
-
-      {FormModal(
-        stateModal,
-        setStateModal,
-        stateContextMenu,
-        setStateContextMenu,
-        inputsError,
-        setInputsError,
-        inputPhoneValue,
-        setInputPhoneValue,
-        fetchStatus,
-        setFetchStatus,
-        telInputInfo,
-        setTelInputInfo
-      )}
-    </div>
+      {FormModal(stateModal, setStateModal, setBodyStyle)}
+    </>
   );
 }
 
