@@ -187,6 +187,7 @@ export function HousePage() {
   }, []);
 
   useEffect(() => {
+    console.log(house?.houseName);
     document.title = house?.houseName as string;
 
     if (myRef.current) {
@@ -194,7 +195,7 @@ export function HousePage() {
     }
 
     setPositionY(window.scrollY + heightFromTopVideosBlock - 101);
-  }, []);
+  });
 
   function viewAddtionalServicesBlock() {
     if (!additionalService && coustHouse) {
@@ -271,7 +272,7 @@ export function HousePage() {
       <div className="stylePagecost">
         Стоимость
         <span className="stylePagecost__span">
-          {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
+          {coustHouse == "Скоро будет доступна" ? ": Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
         </span>
       </div>
       <button className="stylePageorder" style={{ display: "none" }} onClick={() => setStateModalForm(true)}>
@@ -633,7 +634,7 @@ function houseInformation(
         <div className="stylePagefirstBlock__button">
           Стоимость
           <span>
-            {coustHouse == "Скоро будет доступна" ? "Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
+            {coustHouse == "Скоро будет доступна" ? ": Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
           </span>
         </div>
         <div

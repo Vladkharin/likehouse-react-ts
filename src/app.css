@@ -21,16 +21,6 @@ body {
   display: none;
 }
 
-.firstBlock {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-    url("../img/BackGround_FirstBlock_320pxMedia.jpg") center center/cover no-repeat;
-  width: 100%;
-  height: 850px;
-  z-index: 1;
-  padding-top: 115px;
-  position: relative;
-}
-
 .firstByBlock {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
     url("../img/BackGround_FirstBlock_320pxMedia.jpg") center center/cover no-repeat;
@@ -45,14 +35,12 @@ body {
   margin: 20px 0;
 }
 
-.videos__wrapper{
+.videos__wrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
 }
-
-
 
 .errorTel {
   position: absolute;
@@ -91,7 +79,7 @@ body {
   border-bottom-color: #fff;
 }
 
-.secondBlock__slider{
+.secondBlock__slider {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -100,29 +88,12 @@ body {
   margin-bottom: 60px;
 }
 
-.secondBlock__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  height: 350px;
-  gap: 30px;
-  padding: 15px;
-  width: 300px;
 
-}
 
 .secondBlock__formHeader {
   font-size: 27px;
 }
 
-.secondBlock__form > form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  position: relative;
-}
 
 .tl15585 {
   top: 40px;
@@ -130,38 +101,6 @@ body {
 
 .tl23085 {
   top: 100px;
-}
-
-.secondBlock__form > form > input {
-  width: 280px;
-  height: 40px;
-  font-size: 15px;
-  padding: 15px;
-}
-
-.secondBlock__form > form > button {
-  width: 280px;
-  height: 50px;
-  background-color: orange;
-  border: none;
-  color: white;
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: 500;
-  font-style: normal;
-  text-decoration: none;
-  cursor: pointer;
-  font-family: "FuturaPTWebBold";
-}
-
-.secondBlock__form > form > button:active {
-  background-color: #D57500;
-}
-
-.secondBlock__form > form > p {
-  text-align: center;
-  width: 250px;
-  margin: 0;
 }
 
 .secondBlock__slides {
@@ -229,7 +168,6 @@ body {
   transition: all 0.3s;
 }
 
-  
 .secondBlock__sliderButtons > button {
   width: 50px;
   height: 47px;
@@ -282,8 +220,6 @@ body {
   cursor: pointer;
 }
 
-
-
 .lineMenu {
   background-color: #fff;
   height: 2px;
@@ -291,39 +227,17 @@ body {
   height: 2px;
 }
 
-
-
-
-
-
-
 .l481 {
   display: none;
 }
 .l320 {
   display: block;
 }
-.firstBlock__wrapper {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
 
 .firstBlockBy__wrapper {
   display: flex;
   flex-direction: column;
   position: relative;
-}
-
-.firstBlock__header {
-  color: #fff;
-  font-size: 70px;
-  font-weight: 400;
-  font-style: normal;
-  word-spacing: 4.7px;
-  line-height: 1.3;
-  text-align: left;
-  text-align: center;
 }
 
 .firstBlockBy__header {
@@ -440,88 +354,17 @@ body {
   cursor: pointer;
 }
 
-
-.firstBlock__texts {
-  margin-top: 100px;
-  font-size: 20px;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.25;
-  text-align: center;
-}
-
-.firstBlock__texts > img {
-  width: 295px;
-}
-
-.small {
-  font-size: 15px;
-}
-
-.firstBlock__logo {
-  position: absolute;
-}
-
-.firstBlock__buttonMediaMax940px {
-  margin-top: 150px;
+.line {
   width: 300px;
-  height: 70px;
-  cursor: pointer;
+  height: 1px;
+  background-color: #fff;
+  opacity: .25;
 }
 
-.firstBlock__buttonMediaMin940px {
-  background-color: orange;
-  margin-top: 70px;
-  width: 308px;
-  height: 70px;
-  display: none;
-}
 
-.firstBlock__buttonMediaMax940px a button {
-  width: 300px;
-  height: 70px;
-  border: #fff solid 3px;
-  background: orange;
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
 
-.firstBlock__buttonMediaMin940px button {
-  width: 308px;
-  height: 70px;
-  border: #fff solid 3px;
-  background: rgba(0, 0, 0, 0);
-}
-
-.firstBlock__buttonMediaMax940px a {
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
 .smallLine {
   display: none;
-}
-
-.firstBlock__buttonMediaMin940px button {
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .blink {
@@ -553,77 +396,7 @@ body {
   }
 }
 
-.firstBlock__buttonMap p {
-  padding: 0;
-  margin: 0;
-  width: 300px;
-  height: 70px;
-  border: rgb(125, 252, 66) solid 3px;
-  background: rgba(125, 252, 66, 0.5);
-  font-family: "FuturaPTWebBold";
-  font-size: 19px;
-  line-height: 3.5;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  text-align: center;
-}
 
-.firstBlock__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
-
-.firstBlock__buttonMap > a {
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.firstBlock__buttonMap > a > button {
-  width: 300px;
-  height: 70px;
-  border: #fff solid 3px;
-  background: rgba(0, 0, 0, 0);
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-@keyframes spin {
-  0% {
-    transform: translateX(0px);
-    animation-timing-function: linear;
-  }
-  100% {
-    transform: translateX(-551px);
-  }
-}
-
-.animation__spin {
-  animation: spin 20s linear 0s infinite;
-}
-
-.animation {
-  overflow: hidden;
-  width: 100%;
-  height: 70px;
-  position: absolute;
-  bottom: -30px;
-}
 
 .secondBlock {
   height: 2550px;
@@ -718,13 +491,6 @@ body {
   margin-right: 20px;
 }
 
-.line {
-  width: 300px;
-  height: 1px;
-  background-color: #fff;
-  opacity: 0.25;
-}
-
 .fourthAndThirdBlockTogether__header {
   color: #31373e;
   font-size: 54px;
@@ -751,7 +517,7 @@ body {
   padding-top: 14px;
   padding-bottom: 14px;
   cursor: pointer;
-  font-family: 'FuturaPTWebBold';
+  font-family: "FuturaPTWebBold";
 }
 
 .fourthAndThirdBlockTogether__link {
@@ -991,7 +757,7 @@ body {
   width: 300px;
   height: 70px;
   font-size: 20px;
-  font-family: 'FuturaPTWebBold';
+  font-family: "FuturaPTWebBold";
 }
 .sixthBlock__button button {
   width: 300px;
@@ -1274,7 +1040,6 @@ body {
   display: flex;
 }
 
-
 .none {
   display: none;
 }
@@ -1293,6 +1058,10 @@ body {
 }
 
 @media (min-width: 360px) {
+  .line {
+    width: 460px;
+  }
+
   .width {
     width: 350px;
   }
@@ -1350,19 +1119,17 @@ body {
     width: 460px;
   }
 
-  .secondBlock__field{
+  .secondBlock__field {
     width: 1840px;
   }
 
-  .secondBlock__sliderButtons{
+  .secondBlock__sliderButtons {
     right: 0;
   }
-
 
   .nav {
     height: 93px;
   }
-
 
   /* .margin{
     margin-top: 27px;
@@ -1375,19 +1142,6 @@ body {
     line-height: 25px;
   }
 
-  .firstBlock__logo {
-    left: 90px;
-  }
-
-  .small {
-    font-size: 20px;
-  }
-
-  .big {
-    font-size: 29px;
-    font-weight: bold;
-  }
-
   .l320 {
     display: none;
   }
@@ -1396,32 +1150,17 @@ body {
     display: block;
   }
 
-  .firstBlock {
-    padding-top: 80px;
-    height: 750px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-      url("../img/BackGround_firstBlock.jpg") center center/cover no-repeat;
-  }
-
   .firstByBlock {
     padding-top: 80px;
     height: 450px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
       url("../img/BackGround_firstBlock.jpg") center center/cover no-repeat;
-  } 
-
-  .firstBlock__header {
-    font-size: 100px;
   }
 
   .firstBlockBy__header {
     font-size: 100px;
-    
   }
 
-  .firstBlock__buttonMediaMax940px {
-    margin-top: 70px;
-  }
   .firstBlockBy__buttonMediaMax940px {
     margin-top: 70px;
   }
@@ -1564,10 +1303,6 @@ body {
     padding: 30px 0;
   }
 
-  .line {
-    width: 460px;
-  }
-
   .fifthBlock__item-number {
     display: block;
     color: rgb(226, 154, 1);
@@ -1645,6 +1380,11 @@ body {
 }
 
 @media (min-width: 640px) {
+
+  .line {
+    width: 620px;
+  }
+
   .fourthAndThirdBlockTogether__link > img {
     width: 200px;
   }
@@ -1680,40 +1420,22 @@ body {
     width: 620px;
   }
 
-  .secondBlock__slide{
+  .secondBlock__slide {
     width: 620px;
   }
 
-  .secondBlock__field{
+  .secondBlock__field {
     width: 2480px;
-  }
-
-  .firstBlock {
-    height: 710px;
   }
 
   .firstByBlock {
     height: 510px;
   }
 
-  .firstBlock__wrapper {
-    flex-direction: row;
-    height: 100%;
-    justify-content: space-between;
-  }
-
   .firstBlockBy__wrapper {
     flex-direction: row;
     height: 250px;
     justify-content: space-between;
-  }
-
-  .firstBlock__header {
-    text-align: end;
-    position: relative;
-    width: 266px;
-    font-size: 30px;
-    margin-top: 82px;
   }
 
   .firstBlockBy__header {
@@ -1750,54 +1472,6 @@ body {
     top: 100px;
   }
 
-  .firstBlock__texts {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 82px;
-    font-weight: 400;
-    padding-left: 30px;
-    gap: 20px;
-  }
-
-  .firstBlock__texts > img {
-    width: 390px;
-  }
-
-  .firstBlock__text {
-    text-align: start;
-    line-height: 1.3;
-    font-style: normal;
-    margin: 0;
-  }
-
-  .firstBlock__logo {
-    position: absolute;
-    left: 195px;
-    width: 230px;
-  }
-  .big {
-    width: 480px;
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .firstBlock__buttonMediaMax940px {
-    margin: 0;
-  }
-
-  .firstBlock__buttons {
-    margin-top: 30px;
-  }
-
-  .small {
-    font-size: 20px;
-    width: 395px;
-    line-height: 1.1;
-    text-align: center;
-  }
-
   .secondBlock {
     height: 2500px;
   }
@@ -1826,10 +1500,6 @@ body {
   }
 
   .fifthBlock__item {
-    width: 620px;
-  }
-
-  .line {
     width: 620px;
   }
 
@@ -1877,9 +1547,6 @@ body {
     width: 940px;
   }
 
-
-
-
   .line {
     width: 360px;
   }
@@ -1894,71 +1561,9 @@ body {
     opacity: 1;
   }
 
-  .firstBlockBy__header span {
-    width: 98%;
-  }
 
-  .smallLineBy {
-    margin-top: 105px;
-    display: block;
-    width: 310px;
-    height: 2px;
-    opacity: 1;
-  }
-
-  .firstBlockBy__buttonMediaMin940px {
-    display: block;
-    margin-top: 0;
-  }
-
-  .firstBlockBy__buttonMediaMax940px {
-    display: none;
-  }
-
-  .firstBlockBy__buttons {
-    margin-top: 70px;
-    flex-direction: row;
-  }
-
-  .firstBlock__texts {
-    align-items: start;
-    width: 510px;
-  }
-
-  .firstBlock__logo {
-    top: 170px;
-  }
-
-  .big {
-    text-align: start;
-  }
-
-  .small {
-    text-align: start;
-  }
-  .firstBlock {
-    height: 570px;
-  }
-
-  .firstBlock__buttons {
-    margin-top: 60px;
-    flex-direction: row;
-    gap: 160px;
-  }
-
-  .firstBlock__buttonMediaMin940px {
-    margin-top: 0;
-  }
   .secondBlock__secondListItem {
     width: 380px;
-  }
-
-  .firstBlock__buttonMediaMax940px {
-    display: none;
-  }
-
-  .firstBlock__buttonMediaMin940px {
-    display: block;
   }
 
   .firstBlock__header span {
@@ -1984,11 +1589,11 @@ body {
     right: 20px;
   }
 
-  .secondBlock__slider{
+  .secondBlock__slider {
     flex-direction: row;
   }
 
-  .secondBlock__slide{
+  .secondBlock__slide {
     width: 100%;
     height: 350px;
   }
@@ -2003,12 +1608,6 @@ body {
     width: 520px;
     height: 350px;
     overflow: hidden;
-  }
-
-  .secondBlock__form{
-    width: 350px;
-    height: 350px;
-    background-color: white;
   }
 
   .secondBlock__sliderButtons {
@@ -2120,13 +1719,12 @@ body {
     width: 350px;
   }
 
-  .secondFeedBack__wrapper{
+  .secondFeedBack__wrapper {
     left: 7%;
   }
 }
 
 @media (min-width: 1200px) {
-
   .secondBlock__secondList {
     position: absolute;
     top: 20px;
@@ -2134,14 +1732,6 @@ body {
   }
   .container {
     width: 1160px;
-  }
-
-  .firstBlock__header {
-    text-align: end;
-    position: relative;
-    width: 266px;
-    font-size: 37px;
-    margin-top: 82px;
   }
 
   .firstByBlock {
@@ -2158,39 +1748,6 @@ body {
     left: 309px;
   }
 
-  .firstBlock__texts {
-    width: 580px;
-  }
-
-  .firstBlock__logo {
-    position: absolute;
-    left: 0px;
-    top: 205px;
-    width: 270px;
-  }
-  .big {
-    width: 559px;
-    font-size: 37px;
-  }
-
-  .small {
-    font-size: 30px;
-    width: 395px;
-    line-height: 1.1;
-  }
-
-  .firstBlock__texts > img {
-    width: 439px;
-  }
-
-  .firstBlock__buttons {
-    gap: 300px;
-  }
-
-  .firstBlock__buttonMediaMin940px {
-    margin-top: 0;
-  }
-
   .sixthBlock__button {
     right: 0;
     bottom: 0;
@@ -2199,10 +1756,6 @@ body {
     width: 260px;
   }
 
-  
-
-
-
   .menu__Open {
     display: none;
   }
@@ -2210,10 +1763,6 @@ body {
   .menu__links {
     flex-direction: row;
     column-gap: 30px;
-  }
-
-  .firstBlock {
-    height: 760px;
   }
 
   .smallLine {
@@ -2290,8 +1839,6 @@ body {
     justify-content: center;
   }
 
-  
-
   .secondBlock {
     height: 1600px;
   }
@@ -2358,36 +1905,32 @@ body {
     height: 720px;
   }
 
-  .secondBlock__slide{
+  .secondBlock__slide {
     width: 100%;
     height: 440px;
   }
-  
-  .secondBlock__slider{
+
+  .secondBlock__slider {
     display: flex;
     gap: 30px;
     position: relative;
   }
-  
-  .secondBlock__form {
-    width: 450px;
-    height: 440px;
-    background-color: white
-  }
-  
+
+
+
   .secondBlock__slides {
     width: 650px;
     height: 440px;
     overflow: hidden;
   }
-  
+
   .secondBlock__sliderButtons {
     position: absolute;
     bottom: 0px;
     right: -20px;
     display: flex;
   }
-  
+
   .secondBlock__sliderButtons_leftLineUp {
     width: 20px;
     height: 2px;
@@ -2428,64 +1971,30 @@ body {
     transform: rotate(-45deg);
     transition: all 0.3s;
   }
-  
+
   .secondBlock__field {
     transition: opacity 0.6s linear, transform 0.6s;
     display: flex;
     width: 2600px;
   }
-  
+
   .secondBlock__sliderButtons > button > img {
     width: 100%;
   }
-  
+
   .secondBlock__sliderButtons > button {
     width: 50px;
     height: 47px;
     position: relative;
     border: none;
   }
-  
-  .secondBlock__form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 0;
-    gap: 30px;
-  }
-  
-  .secondBlock__form > form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .secondBlock__formHeader{
+
+
+
+  .secondBlock__formHeader {
     font-size: 30px;
   }
-  
-  .secondBlock__form > form > input{
-    width: 300px;
-    height: 50px;
-    padding: 15px;
-    font-size: 15px;
-  }
-  
-  .secondBlock__form > form > button {
-    width: 300px;
-    background-color: orange;
-    height: 70px;
-    border: none;
-  }
-  
-  .secondBlock__form > form > p {
-    text-align: center;
-    margin: 0;
-    font-size: 17px;
-    width: 270px;
-  }
-  
+
   .secondFeedBack__modal {
     padding: 40px 40px 50px;
     box-sizing: border-box;
@@ -2499,7 +2008,7 @@ body {
     position: absolute;
     top: 0;
   }
-  
+
   .secondFeedBack__wrapper {
     background-color: #fff;
     padding: 40px 40px 50px;
@@ -2562,10 +2071,6 @@ body {
   height: 500px;
   width: 800px;
 }
-
-
-
-
 
 .visible {
   left: 0px;
