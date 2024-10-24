@@ -2,8 +2,8 @@ import { Information } from "./mainPageComponents/information/Information";
 import { About } from "./mainPageComponents/about/About";
 import { Catalog } from "./mainPageComponents/catalog/Catalog";
 import { Technology } from "./mainPageComponents/technology/Technology";
-import { FifthBlock } from "./mainPageComponents/FifthBlock";
-import { SixthBlock } from "./mainPageComponents/SixthBlock";
+import { AdditionalServices } from "./mainPageComponents/additionalServices/AdditionalServices";
+import { Map } from "./mainPageComponents/map/Map";
 // import { SeventhBlock } from "./mainPageComponents/SeventhBlock";
 import { EightBlock } from "./mainPageComponents/EightBlock";
 import React, { SetStateAction, useEffect } from "react";
@@ -25,8 +25,8 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
       <About />
       <Catalog />
       <Technology />
-      <FifthBlock />
-      <SixthBlock />
+      <AdditionalServices />
+      <Map />
       {/* <SeventhBlock /> */}
       <EightBlock />
     </>

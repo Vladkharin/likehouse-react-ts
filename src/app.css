@@ -117,126 +117,6 @@ body {
   display: block;
 }
 
-.firstBlockBy__wrapper {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.firstBlockBy__header {
-  color: #fff;
-  font-size: 70px;
-  font-weight: 400;
-  font-style: normal;
-  word-spacing: 4.7px;
-  text-align: left;
-  line-height: 1.55;
-  text-align: center;
-}
-
-.firstBlockBy__title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.25;
-  text-align: center;
-}
-
-.firstBlockBy__buttonMediaMax940px {
-  margin-top: 230px;
-  width: 300px;
-  height: 70px;
-  cursor: pointer;
-}
-
-.firstBlockBy__buttonMediaMin940px {
-  margin-top: 70px;
-  width: 300px;
-  height: 70px;
-  display: none;
-}
-
-.firstBlockBy__buttonMediaMax940px a button {
-  width: 300px;
-  height: 70px;
-  border: #fff solid 3px;
-  background: rgba(0, 0, 0, 0);
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.firstBlockBy__buttonMediaMin940px button {
-  width: 308px;
-  height: 70px;
-  border: #fff solid 3px;
-  background: rgba(0, 0, 0, 0);
-}
-
-.firstBlockBy__buttonMediaMax940px a {
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-.smallLineBy {
-  display: none;
-}
-
-.firstBlockBy__buttonMediaMin940px button {
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.firstBlockBy__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
-
-.firstBlockBy__buttonMap > a {
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.firstBlockBy__buttonMap > a > button {
-  width: 300px;
-  height: 70px;
-  border: #fff solid 3px;
-  background: rgba(0, 0, 0, 0);
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .blink {
   animation-name: blinker;
   animation-iteration-count: infinite;
@@ -270,131 +150,6 @@ body {
   height: 230px;
 }
 
-.sixthBlock {
-  height: 1356px;
-  background: url("../img/sixthBlockBG320media.jpg") center center/cover no-repeat;
-  padding-top: 90px;
-}
-
-.sixthBlock__headerMax481 {
-  color: #ffffff;
-  font-size: 54px;
-  line-height: 1.2;
-  font-weight: 400;
-}
-
-.sixthBlock__headerMin481 {
-  display: none;
-  color: #ffffff;
-  font-size: 54px;
-  line-height: 1.2;
-  font-weight: 400;
-}
-
-.sixthBlock__items {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-}
-
-.sixthBlock__items {
-  margin-top: 30px;
-}
-
-.sixthBlock__item {
-  width: 300px;
-  height: 155px;
-  border: 1px solid rgba(256, 256, 256, 0.4);
-  position: relative;
-}
-
-.sixthBlock__mediaMax481px {
-  width: 45px;
-  height: 45px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  opacity: 0.7;
-}
-
-.sixthBlock__mediaMin481px {
-  width: 45px;
-  height: 45px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  opacity: 0.7;
-  display: none;
-}
-
-.sixthBlock__item-text {
-  color: #e29a01;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 400;
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-}
-
-.sixthBlock__title {
-  color: #ffffff;
-  font-size: 54px;
-  line-height: 1.55;
-  font-weight: 400;
-  margin-top: 130px;
-}
-
-.sixthBlock__text {
-  color: #ffffff;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 400;
-}
-
-.sixthBlock__button {
-  margin: 0 auto;
-  margin-top: 25px;
-  width: 300px;
-  height: 70px;
-  font-size: 20px;
-  font-family: "FuturaPTWebBold";
-}
-.sixthBlock__button button {
-  width: 300px;
-  height: 70px;
-  border: #fff solid 3px;
-  background: rgba(0, 0, 0, 0);
-}
-
-.sixthBlock__button {
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 500;
-  font-style: normal;
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.map {
-  padding: 90px 0 0 0;
-  background-color: #f7f7f7;
-}
-
-.map__header {
-  color: #31373e;
-  font-size: 54px;
-  line-height: 1.15;
-  font-weight: 400;
-}
-
-.map > .container > iframe {
-  width: 100%;
-  margin-top: 40px;
-  height: 500px;
-}
 .seventhBlock {
   height: 735px;
   padding-top: 80px;
@@ -603,58 +358,8 @@ body {
     display: none;
   }
 
-  .sixthBlock {
-    height: 1033px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-      url("../img/sixthBlockBG481media.jpg") center center/cover no-repeat;
-  }
-
-  .sixthBlock__headerMin481 {
-    display: block;
-  }
-
-  .sixthBlock__headerMax481 {
-    display: none;
-  }
-
-  .sixthBlock__items {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 20px;
-  }
-
-  .sixthBlock__item {
-    width: 220px;
-    height: 155px;
-  }
-
-  .sixthBlock__item-text {
-    color: #ffffff;
-  }
-
-  .sixthBlock__mediaMax481px {
-    display: none;
-  }
-
-  .sixthBlock__mediaMin481px {
-    display: block;
-  }
-
   .marginBot {
     margin-top: 85px;
-  }
-
-  .map__header {
-    color: #31373e;
-    font-size: 54px;
-    line-height: 1.15;
-    font-weight: 400;
-  }
-
-  .map > .container > iframe {
-    width: 100%;
-    margin-top: 40px;
-    height: 500px;
   }
 
   .bathtile {
@@ -719,24 +424,6 @@ body {
     display: none;
   }
 
-  .sixthBlock__item {
-    width: 300px;
-  }
-
-  .map__header {
-    color: #31373e;
-    font-size: 54px;
-    line-height: 1.15;
-    font-weight: 400;
-    padding-right: 10px;
-  }
-
-  .map > .container > iframe {
-    width: 100%;
-    margin-top: 40px;
-    height: 500px;
-  }
-
   .desc {
     display: none;
   }
@@ -749,32 +436,6 @@ body {
 
   .firstBlock__header span {
     width: 98%;
-  }
-
-  .sixthBlock {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
-      url("../img/sixthBlockBG650media.jpg") center center/cover no-repeat;
-    height: 690px;
-    position: relative;
-  }
-
-  .sixthBlock__items {
-    column-gap: 20px;
-  }
-
-  .sixthBlock__item {
-    width: 220px;
-  }
-
-  .sixthBlock__button {
-    position: absolute;
-    right: 4px;
-    bottom: 35px;
-    width: 220px;
-  }
-  .sixthBlock__button button {
-    width: 220px;
-    font-family: "FuturaPTWebBold";
   }
 
   .eightBlock__wrapper {
@@ -835,14 +496,6 @@ body {
     left: 309px;
   }
 
-  .sixthBlock__button {
-    right: 0;
-    bottom: 0;
-  }
-  .sixthBlock__button button {
-    width: 260px;
-  }
-
   .menu__Open {
     display: none;
   }
@@ -850,15 +503,6 @@ body {
   .menu__links {
     flex-direction: row;
     column-gap: 30px;
-  }
-
-  .sixthBlock__item {
-    width: 260px;
-    padding: 31px 20px;
-  }
-
-  .sixthBlock__wrapper {
-    position: absolute;
   }
 
   .sixthBlock__items {
@@ -875,23 +519,8 @@ body {
     font-size: 74px;
   }
 
-  .sixthBlock__headerMin481 {
-    font-size: 74px;
-  }
-
   .firstBlock__header span {
     width: 95%;
-  }
-
-  .map__header {
-    color: #31373e;
-    font-size: 74px;
-    line-height: 1.15;
-    font-weight: 400;
-  }
-
-  .map > .container > iframe {
-    height: 720px;
   }
 }
 
