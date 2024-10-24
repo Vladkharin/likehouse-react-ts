@@ -24,7 +24,7 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
       <Information setBodyStyle={setBodyStyle} />
       <About />
       <Catalog />
-      <Technology setBodyStyle={setBodyStyle} />
+      <Technology />
       <FifthBlock />
       <SixthBlock />
       {/* <SeventhBlock /> */}
