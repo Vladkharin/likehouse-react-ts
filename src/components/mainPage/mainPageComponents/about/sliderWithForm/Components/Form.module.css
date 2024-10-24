@@ -108,6 +108,27 @@
     font-size: 27px;
 }
 
+@-webkit-keyframes load3 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes load3 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
 .loader {
     overflow: hidden;
     font-size: 10px;
@@ -142,7 +163,7 @@
 }
 
 .loader:after {
-    background: white;
+    background: orange;
     width: 75%;
     height: 75%;
     border-radius: 50%;

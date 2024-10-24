@@ -49,7 +49,7 @@ export function Form({ slide }: { slide: number }) {
           }}
         />
         <button type="submit">
-          <div className={fetchStatus === "Загрузка..." ? `${styles.loader} ${styles.block}` : ` ${styles.loader}${styles.none}`}></div>
+          <div className={fetchStatus === "Загрузка..." ? `${styles.loader} ${styles.block}` : ` ${styles.loader} ${styles.none}`}></div>
           <div className={fetchStatus === "Загрузка..." ? styles.none : styles.block}>Оставить заявку</div>
         </button>
         <p>Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности</p>
@@ -114,7 +114,6 @@ async function postData(
   setFetchStatus(FORM_STATUS_MESSAGE.loading);
 
   if (error === 0) {
-    setFetchStatus("");
     const formData = new FormData(form);
 
     let choice = "";

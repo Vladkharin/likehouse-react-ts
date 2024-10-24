@@ -1,14 +1,29 @@
-const API_URL = 'http://likehouse-back.ru/api'
+let API_URL = 'http://likehouse-back.ru/api'
+
+type OPTIONS = {
+    method: string,
+    headers: {
+        'Content-Type': string
+    },
+    body? : string
+}
 
 const f = async (method: string, data: string, url: string) =>  {
 
-    const options = {
+    const options: OPTIONS = {
         method,
-        body: data,
         headers: {
             'Content-Type': 'application/json'
         }
     }
+
+    API_URL = ''
+
+    if (data != '') {
+        options.body = data as string
+        API_URL = 'http://likehouse-back.ru/api'
+    }
+
 
     const response = await fetch(API_URL + url, options)
 
@@ -29,4 +44,8 @@ export async function sendOrder(data: string) {
 
 export async function sendShare(data: string) {
     return await f('POST', data, '/sendshare')
+}
+
+export async function getAdditionalServices() {
+    return await f('GET', '', './1c_site.json')
 }

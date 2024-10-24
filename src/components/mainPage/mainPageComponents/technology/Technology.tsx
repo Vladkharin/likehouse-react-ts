@@ -57,7 +57,7 @@ type MainPageProps = {
   setBodyStyle: React.Dispatch<SetStateAction<string>>;
 };
 
-export function FourthBlock({ setBodyStyle }: MainPageProps) {
+export function Technology({ setBodyStyle }: MainPageProps) {
   const [stateModal, setStateModal] = useState<boolean>(false);
   const [activeSlide, setActiveSlide] = useState<number>(0);
   return (

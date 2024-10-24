@@ -1,7 +1,7 @@
 import { Information } from "./mainPageComponents/information/Information";
 import { About } from "./mainPageComponents/about/About";
-import { ThirdBlock } from "./mainPageComponents/ThirdBlock";
-import { FourthBlock } from "./mainPageComponents/FourthBlock";
+import { Catalog } from "./mainPageComponents/catalog/Catalog";
+import { Technology } from "./mainPageComponents/technology/Technology";
 import { FifthBlock } from "./mainPageComponents/FifthBlock";
 import { SixthBlock } from "./mainPageComponents/SixthBlock";
 // import { SeventhBlock } from "./mainPageComponents/SeventhBlock";
@@ -23,8 +23,8 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
     <>
       <Information setBodyStyle={setBodyStyle} />
       <About />
-      <ThirdBlock />
-      <FourthBlock setBodyStyle={setBodyStyle} />
+      <Catalog />
+      <Technology setBodyStyle={setBodyStyle} />
       <FifthBlock />
       <SixthBlock />
       {/* <SeventhBlock /> */}
