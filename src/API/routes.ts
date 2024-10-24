@@ -19,11 +19,14 @@ const f = async (method: string, data: string, url: string) =>  {
     }
 }
 
-
 export async function sendEmail(data: string) {
     return await f('POST', data, '/sendemail')
 }
 
 export async function sendOrder(data: string) {
     return await f('POST', data, '/sendorder')
+}
+
+export async function sendShare(data: string) {
+    return await f('POST', data, '/sendshare')
 }

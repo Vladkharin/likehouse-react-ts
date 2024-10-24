@@ -1,5 +1,6 @@
 import { SLIDES } from "../../data";
 import React from "react";
+import styles from "./Slider.module.css";
 
 export function Slider({ slide, setSlide }: { slide: number; setSlide: React.Dispatch<React.SetStateAction<number>> }) {
   const pageWidth = document.documentElement.scrollWidth;
@@ -21,31 +22,31 @@ export function Slider({ slide, setSlide }: { slide: number; setSlide: React.Dis
 
   return (
     <>
-      <div className="secondBlock__slides">
-        <div className="secondBlock__field" style={{ transform: `translateX(${number}px)` }}>
+      <div className={styles.slides}>
+        <div className={styles.field} style={{ transform: `translateX(${number}px)` }}>
           {SLIDES.map((item, index) => {
-            return <img key={index} className={"secondBlock__slide"} src={item} alt="" />;
+            return <img key={index} className={styles.slide} src={item} alt="" />;
           })}
         </div>
       </div>
-      <div className="secondBlock__sliderButtons">
+      <div className={styles.buttons}>
         <button onClick={() => setSlide(slide - 1)} disabled={slide == 0 ? true : false}>
           <div
-            className="secondBlock__sliderButtons_leftLineUp"
+            className={styles.button_left_line_up}
             style={slide == 0 ? { top: "50%", left: "50%", transform: "translate(-50%, -50%)" } : {}}
           ></div>
           <div
-            className="secondBlock__sliderButtons_leftLineDown"
+            className={styles.button_left_line_down}
             style={slide == 0 ? { top: "50%", left: "50%", transform: "translate(-50%, -50%)" } : {}}
           ></div>
         </button>
         <button onClick={() => setSlide(slide + 1)} disabled={slide == SLIDES.length - 1 ? true : false}>
           <div
-            className="secondBlock__sliderButtons_rightLineDown"
+            className={styles.button_right_line_up}
             style={slide == SLIDES.length - 1 ? { top: "50%", left: "50%", transform: "translate(-50%, -50%)" } : {}}
           ></div>
           <div
-            className="secondBlock__sliderButtons_rightLineUp"
+            className={styles.button_right_line_down}
             style={slide == SLIDES.length - 1 ? { top: "50%", left: "50%", transform: "translate(-50%, -50%)" } : {}}
           ></div>
         </button>

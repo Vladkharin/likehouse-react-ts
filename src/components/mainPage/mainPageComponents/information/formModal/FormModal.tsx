@@ -78,7 +78,7 @@ export function FormModal(
           </div>
           <MaskedInput
             maskGenerator={maskGenerator}
-            className={`${styles.phone_input} ${styles.required} ${inputsError.inputName != "" ? styles.error : ""}`}
+            className={`${styles.phone_input} ${styles.required} ${inputsError.inputPhone != "" ? styles.error : ""}`}
             style={{
               paddingLeft: telInputInfo.codeCountry.trim().length > 5 ? "110px" : telInputInfo.codeCountry.trim().length * 10 + 50 + "px",
             }}
@@ -143,7 +143,7 @@ export function FormModal(
           >
             Слишком короткое значение
           </div>
-          <div className="crestik" onClick={() => setStateModal(false)}>
+          <div className={styles.form_btn_close} onClick={() => setStateModal(false)}>
             <img src="./icons/crestik.svg" alt="" />
           </div>
         </form>

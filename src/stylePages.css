@@ -7,6 +7,10 @@
   left: 85px;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .stylePagetl24085 {
   top: 240px;
   left: 85px;

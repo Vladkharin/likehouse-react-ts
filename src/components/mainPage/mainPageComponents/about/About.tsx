@@ -1,15 +1,16 @@
 import React from "react";
 import { INFORMATION, ADVANTAGES, listItem } from "./data";
 import { SliderWithForm } from "./sliderWithForm/SliderWithForm";
+import styles from "./About.module.css";
 
 export function About() {
   return (
-    <div id="about" className="secondBlock">
+    <div id="about" className={styles.about}>
       <div className="container">
         <SliderWithForm />
-        <div className="secondBlock__wrapper">
-          <div className="secondBlock__header"> О нас</div>
-          <div className="secondBlock__title">
+        <div className={styles.wrapper}>
+          <div className={styles.header}> О нас</div>
+          <div className={styles.title}>
             Лайк Хаус — это строительная компания, которая создавалась с ориентированием на честное отношение к клиентам, это подтверждают
             наши многочисленные отзывы и хорошая репутация.
             <span>МЫ ЧЕСТНО ПОСТРОИМ ВАМ НАДЕЖНЫЙ ДОМ, ПО ЦЕНЕ УКАЗАННОЙ НА САЙТЕ</span>
@@ -27,9 +28,9 @@ export function About() {
 function SecondBlockFirstItem(item: listItem): JSX.Element {
   return (
     <React.Fragment key={item.uniqueId}>
-      <div className="secondBlock__item">
-        <div className="secondBlock__item-number">{item.value}</div>
-        <div className="secondBlock__item-title">{item.text}</div>
+      <div className={styles.first_list_item}>
+        <div className={styles.first_list_item_number}>{item.value}</div>
+        <div className={styles.first_list_item_title}>{item.text}</div>
       </div>
     </React.Fragment>
   );
@@ -38,10 +39,10 @@ function SecondBlockFirstItem(item: listItem): JSX.Element {
 function SecondBlockSecondItem(item: listItem): JSX.Element {
   return (
     <React.Fragment key={item.uniqueId}>
-      <div className="line"></div>
-      <div className="secondBlock__secondListItem">
-        <div className="secondBlock__secondItem-number">{item.value}</div>
-        <div className="secondBlock__item-title2">{item.text}</div>
+      <div className={styles.line}></div>
+      <div className={styles.second_list_item}>
+        <div className={styles.second_list_item_number}>{item.value}</div>
+        <div className={styles.second_list_item_title}>{item.text}</div>
       </div>
     </React.Fragment>
   );
@@ -50,10 +51,10 @@ function SecondBlockSecondItem(item: listItem): JSX.Element {
 function SecondBlockLists(): JSX.Element {
   return (
     <>
-      <div className="secondBlock__list" key={999}>
+      <div className={styles.first_list} key={999}>
         {ADVANTAGES.map((item: listItem) => SecondBlockFirstItem(item))}
       </div>
-      <div className="secondBlock__secondList" key={998}>
+      <div className={styles.second_list} key={998}>
         {INFORMATION.map((item: listItem) => SecondBlockSecondItem(item))}
       </div>
     </>

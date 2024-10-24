@@ -79,20 +79,6 @@ body {
   border-bottom-color: #fff;
 }
 
-.secondBlock__slider {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  align-items: center;
-  position: relative;
-  margin-bottom: 60px;
-}
-
-
-
-.secondBlock__formHeader {
-  font-size: 27px;
-}
 
 
 .tl15585 {
@@ -103,106 +89,10 @@ body {
   top: 100px;
 }
 
-.secondBlock__slides {
-  width: 300px;
-  overflow: hidden;
-}
 
-.secondBlock__field {
-  transition: opacity 0.6s linear, transform 0.6s;
 
-  width: 1200px;
-  display: flex;
-  overflow: hidden;
-}
 
-.secondBlock__slide {
-  width: 300px;
-}
 
-.secondBlock__sliderButtons {
-  position: absolute;
-  bottom: -50px;
-  right: 5px;
-  display: flex;
-}
-
-.secondBlock__sliderButtons_leftLineUp {
-  width: 20px;
-  height: 2px;
-  background-color: black;
-  position: absolute;
-  top: 35%;
-  left: 30%;
-  transition: all 0.3s;
-  transform: rotate(-45deg);
-}
-.secondBlock__sliderButtons_leftLineDown {
-  width: 20px;
-  height: 2px;
-  background-color: black;
-  position: absolute;
-  top: 63%;
-  left: 30%;
-  transform: rotate(45deg);
-  transition: all 0.3s;
-}
-.secondBlock__sliderButtons_rightLineUp {
-  width: 20px;
-  height: 2px;
-  background-color: black;
-  position: absolute;
-  top: 35%;
-  left: 30%;
-  transition: all 0.3s;
-  transform: rotate(45deg);
-}
-.secondBlock__sliderButtons_rightLineDown {
-  width: 20px;
-  height: 2px;
-  background-color: black;
-  position: absolute;
-  top: 63%;
-  left: 30%;
-  transform: rotate(-45deg);
-  transition: all 0.3s;
-}
-
-.secondBlock__sliderButtons > button {
-  width: 50px;
-  height: 47px;
-  position: relative;
-  border: none;
-}
-
-.secondFeedBack__modal {
-  padding: 40px 40px 50px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  text-align: center;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.6);
-  cursor: default;
-  width: 300px;
-  height: 350px;
-  position: absolute;
-  top: 0;
-}
-
-.secondFeedBack__wrapper {
-  background-color: #fff;
-  padding: 40px 40px 50px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  text-align: center;
-  position: relative;
-  cursor: default;
-  width: 300px;
-  height: 185px;
-  position: absolute;
-  top: 30%;
-  left: 0%;
-}
 
 .lineBy {
   width: 300px;
@@ -398,98 +288,7 @@ body {
 
 
 
-.secondBlock {
-  height: 2550px;
-  background-color: #084097;
-  padding-top: 80px;
-}
 
-.secondBlock__header {
-  font-size: 54px;
-  line-height: 1.55;
-  font-weight: 400;
-  color: #fff;
-}
-
-.secondBlock__title {
-  margin-top: 23px;
-  color: #ffffff;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 31px;
-}
-
-.secondBlock__title span {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 31px;
-  color: #e29a01;
-  display: block;
-  margin: 40px 0;
-}
-
-.secondBlock__list {
-  margin-top: 72px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-}
-
-.secondBlock__item {
-  display: flex;
-  column-gap: 15px;
-}
-
-.secondBlock__item-number {
-  color: #fff;
-  align-self: start;
-  opacity: 0.4;
-  padding-top: 5px;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
-}
-
-.secondBlock__item-title {
-  color: #ffffff;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 400;
-  align-self: center;
-  width: 250px;
-}
-.secondBlock__item-title2 {
-  color: #ffffff;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 400;
-  align-self: center;
-  width: 250px;
-}
-
-.secondBlock__secondList {
-  margin-top: 60px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-}
-
-.secondBlock__secondListItem {
-  display: flex;
-  column-gap: 25px;
-}
-
-.secondBlock__secondItem-number {
-  color: rgb(226, 154, 1);
-  font-size: 40px;
-  line-height: 1.55;
-  font-weight: 400;
-  min-width: 113px;
-  margin-right: 20px;
-}
 
 .fourthAndThirdBlockTogether__header {
   color: #31373e;
@@ -1111,21 +910,9 @@ body {
     width: 460px;
   }
 
-  .secondBlock__slides {
-    width: 460px;
-  }
 
-  .secondBlock__slide {
-    width: 460px;
-  }
 
-  .secondBlock__field {
-    width: 1840px;
-  }
 
-  .secondBlock__sliderButtons {
-    right: 0;
-  }
 
   .nav {
     height: 93px;
@@ -1165,35 +952,11 @@ body {
     margin-top: 70px;
   }
 
-  .secondBlock {
-    height: 3180px;
-  }
 
-  .secondBlock__item {
-    width: 300px;
-    height: 163px;
-    border: 1px solid rgba(256, 256, 256, 0.25);
-    flex-direction: column;
-    column-gap: 0;
-    row-gap: 40px;
-    padding: 10px;
-  }
 
-  .secondBlock__item-title {
-    align-self: normal;
-  }
 
-  .secondBlock__list {
-    align-items: center;
-  }
 
-  .secondBlock__secondList {
-    align-items: center;
-  }
 
-  .secondBlock__secondListItem {
-    width: 300px;
-  }
 
   .thirdBlock {
     display: none;
@@ -1416,18 +1179,6 @@ body {
     width: 620px;
   }
 
-  .secondBlock__slides {
-    width: 620px;
-  }
-
-  .secondBlock__slide {
-    width: 620px;
-  }
-
-  .secondBlock__field {
-    width: 2480px;
-  }
-
   .firstByBlock {
     height: 510px;
   }
@@ -1470,21 +1221,6 @@ body {
     display: block;
     position: absolute;
     top: 100px;
-  }
-
-  .secondBlock {
-    height: 2500px;
-  }
-
-  .secondBlock__list {
-    flex-direction: row;
-    row-gap: 20px;
-    flex-wrap: wrap;
-    column-gap: 20px;
-  }
-
-  .secondBlock__secondListItem {
-    width: 640px;
   }
 
   .fourthAndThirdBlockTogether__tile {
@@ -1561,59 +1297,12 @@ body {
     opacity: 1;
   }
 
-
-  .secondBlock__secondListItem {
-    width: 380px;
-  }
-
   .firstBlock__header span {
     width: 98%;
   }
 
-  .secondBlock {
-    position: relative;
-    height: 1540px;
-  }
 
-  .secondBlock__list {
-    column-gap: 20px;
-  }
 
-  .secondBlock__title {
-    width: 520px;
-  }
-
-  .secondBlock__secondList {
-    position: absolute;
-    top: 500px;
-    right: 20px;
-  }
-
-  .secondBlock__slider {
-    flex-direction: row;
-  }
-
-  .secondBlock__slide {
-    width: 100%;
-    height: 350px;
-  }
-
-  .secondBlock__field {
-    transition: opacity 0.6s linear, transform 0.6s;
-    display: flex;
-    width: 2080px;
-  }
-
-  .secondBlock__slides {
-    width: 520px;
-    height: 350px;
-    overflow: hidden;
-  }
-
-  .secondBlock__sliderButtons {
-    right: -10px;
-    bottom: 0px;
-  }
 
   .fourthAndThirdBlockTogether__inner {
     column-gap: 20px;
@@ -1714,22 +1403,10 @@ body {
   .mob {
     display: none;
   }
-
-  .secondFeedBack__modal {
-    width: 350px;
-  }
-
-  .secondFeedBack__wrapper {
-    left: 7%;
-  }
 }
 
 @media (min-width: 1200px) {
-  .secondBlock__secondList {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
+  
   .container {
     width: 1160px;
   }
@@ -1775,28 +1452,6 @@ body {
     opacity: 1;
   }
 
-  .secondBlock__secondList {
-    right: 0px;
-  }
-
-  .secondBlock__secondListItem {
-    width: 360px;
-  }
-
-  .secondBlock__title {
-    width: 660px;
-  }
-
-  .secondBlock__item {
-    width: 360px;
-  }
-
-  .secondBlock__list {
-    column-gap: 40px;
-    justify-content: center;
-    row-gap: 40px;
-  }
-
   .fourthAndThirdBlockTogether__menuWrapper {
     display: flex;
   }
@@ -1839,10 +1494,6 @@ body {
     justify-content: center;
   }
 
-  .secondBlock {
-    height: 1600px;
-  }
-
   .eightBlock__header {
     font-size: 74px;
   }
@@ -1863,13 +1514,9 @@ body {
     font-size: 74px;
   }
 
-  .secondBlock__header {
-    font-size: 74px;
-  }
 
-  .secondBlock__wrapper {
-    position: relative;
-  }
+
+
 
   .modalImgSlider__field img {
     width: 896px;
@@ -1903,125 +1550,6 @@ body {
 
   .map > .container > iframe {
     height: 720px;
-  }
-
-  .secondBlock__slide {
-    width: 100%;
-    height: 440px;
-  }
-
-  .secondBlock__slider {
-    display: flex;
-    gap: 30px;
-    position: relative;
-  }
-
-
-
-  .secondBlock__slides {
-    width: 650px;
-    height: 440px;
-    overflow: hidden;
-  }
-
-  .secondBlock__sliderButtons {
-    position: absolute;
-    bottom: 0px;
-    right: -20px;
-    display: flex;
-  }
-
-  .secondBlock__sliderButtons_leftLineUp {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    position: absolute;
-    top: 35%;
-    left: 30%;
-    transition: all 0.3s;
-    transform: rotate(-45deg);
-  }
-  .secondBlock__sliderButtons_leftLineDown {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    position: absolute;
-    top: 63%;
-    left: 30%;
-    transform: rotate(45deg);
-    transition: all 0.3s;
-  }
-  .secondBlock__sliderButtons_rightLineUp {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    position: absolute;
-    top: 35%;
-    left: 30%;
-    transition: all 0.3s;
-    transform: rotate(45deg);
-  }
-  .secondBlock__sliderButtons_rightLineDown {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    position: absolute;
-    top: 63%;
-    left: 30%;
-    transform: rotate(-45deg);
-    transition: all 0.3s;
-  }
-
-  .secondBlock__field {
-    transition: opacity 0.6s linear, transform 0.6s;
-    display: flex;
-    width: 2600px;
-  }
-
-  .secondBlock__sliderButtons > button > img {
-    width: 100%;
-  }
-
-  .secondBlock__sliderButtons > button {
-    width: 50px;
-    height: 47px;
-    position: relative;
-    border: none;
-  }
-
-
-
-  .secondBlock__formHeader {
-    font-size: 30px;
-  }
-
-  .secondFeedBack__modal {
-    padding: 40px 40px 50px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.6);
-    cursor: default;
-    width: 450px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-  }
-
-  .secondFeedBack__wrapper {
-    background-color: #fff;
-    padding: 40px 40px 50px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    cursor: default;
-    width: 360px;
-    height: 185px;
-    position: absolute;
-    top: 30%;
-    left: 10%;
   }
 }
 

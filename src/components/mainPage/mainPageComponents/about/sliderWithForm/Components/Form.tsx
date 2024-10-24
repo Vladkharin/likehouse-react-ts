@@ -3,6 +3,7 @@ import { typeInputsError } from "../../../../../typesAndIntefaces";
 import React, { useState } from "react";
 import { FORM_STATUS_MESSAGE } from "../../data";
 import styles from "./Form.module.css";
+import { sendShare } from "../../../../../../API/routes";
 
 const maskGenerator = createDefaultMaskGenerator("+7 (999) 999-99-99");
 
@@ -16,12 +17,10 @@ export function Form({ slide }: { slide: number }) {
 
   return (
     <div className={styles.form}>
-      <div className="secondBlock__formHeader">Оставьте заявку</div>
-      <form
-        action="sendPromotion.php"
-        onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus, slide, setInputPhoneValue)}
-      >
+      <div className={styles.header}>Оставьте заявку</div>
+      <form onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus, slide, setInputPhoneValue)}>
         <input
+          className={`${styles.required} ${inputsError.inputName != "" ? styles.error : ""}`}
           name="user_name"
           type="text"
           placeholder="Ваше имя"
@@ -35,6 +34,7 @@ export function Form({ slide }: { slide: number }) {
         />
         <MaskedInput
           maskGenerator={maskGenerator}
+          className={`${styles.required} ${inputsError.inputPhone != "" ? styles.error : ""}`}
           value={inputPhoneValue}
           type="tel"
           name="user_phone"
@@ -49,36 +49,48 @@ export function Form({ slide }: { slide: number }) {
           }}
         />
         <button type="submit">
-          <div className={fetchStatus === "Загрузка..." ? "loader block" : "loader none"}></div>
-          <div className={fetchStatus === "Загрузка..." ? "feedBack__form-submitText none" : "feedBack__form-submitText block"}>
-            Оставить заявку
-          </div>
+          <div className={fetchStatus === "Загрузка..." ? `${styles.loader} ${styles.block}` : ` ${styles.loader}${styles.none}`}></div>
+          <div className={fetchStatus === "Загрузка..." ? styles.none : styles.block}>Оставить заявку</div>
         </button>
         <p>Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности</p>
-        <div className={inputsError.inputName == "Обязательное поле" ? "error tl15585 show" : "error tl15585 notVisible"}>
+        <div
+          className={`${styles.error_text} ${styles.position_error_first_input} ${
+            inputsError.inputName == "Обязательное поле" ? styles.show : styles.hide
+          }`}
+        >
           Обязательное поле
         </div>
-        <div className={inputsError.inputName == "Слишком длинное значение" ? "errorBig tl15585 show" : "errorBig tl15585 notVisible"}>
+        <div
+          className={`${styles.error_text} ${styles.position_error_first_input} ${
+            inputsError.inputName == "Слишком длинное значение" ? styles.show : styles.hide
+          }`}
+        >
           Слишком длинное значение
         </div>
-        <div className={inputsError.inputPhone == "Обязательное поле" ? "error tl23085 show" : "error tl23085 notVisible"}>
+        <div
+          className={`${styles.error_text} ${styles.position_error_second_input} ${
+            inputsError.inputPhone == "Обязательное поле" ? styles.show : styles.hide
+          }`}
+        >
           Обязательное поле
         </div>
-        <div className={inputsError.inputPhone == "Слишком короткое значение" ? "errorTel tl23085 show" : "errorTel tl23085 notVisible"}>
+        <div
+          className={`${styles.error_text} ${styles.position_error_second_input} ${
+            inputsError.inputPhone == "Слишком короткое значение" ? styles.show : styles.hide
+          }`}
+        >
           Слишком короткое значение
         </div>
       </form>
       <div
-        className={
-          fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..."
-            ? "secondFeedBack__modal"
-            : "secondFeedBack__modal none"
-        }
+        className={` ${styles.modal}
+          ${fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..." ? "" : styles.none}
+        `}
       >
-        <div className="secondFeedBack__wrapper">
-          <img src="./icons/crestikBlack.svg" alt="" className="crestikBlack" onClick={() => setFetchStatus("")} />
-          <div className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"}></div>
-          <div className="feedBackModal__text">{fetchStatus}</div>
+        <div className={styles.modal_wrapper}>
+          <img src="./icons/crestikBlack.svg" alt="" className={styles.modal_btn_close} onClick={() => setFetchStatus("")} />
+          <div className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? styles.complete : styles.failure}></div>
+          <div className={styles.modal_text}>{fetchStatus}</div>
         </div>
       </div>
     </div>
@@ -119,25 +131,20 @@ async function postData(
 
     formData.set("choice", choice);
 
-    const response = await fetch("sendPromotion.php", {
-      method: "POST",
-      body: formData,
-    });
+    const user_name = formData.get("user_name") as string;
 
-    // const user_name = formData.get("user_name") as string;
+    const object = {
+      first_name: user_name,
+      choice: choice,
+      telephone: formData.get("user_phone"),
+    };
 
-    // const object = {
-    //   first_name: user_name,
-    //   telephoneCode: indexNumber,
-    //   telephone: inputTel,
-    // };
-
-    // const response = await sendEmail(JSON.stringify(object));
+    const response = await sendShare(JSON.stringify(object));
 
     form.reset();
     setInputPhoneValue("");
 
-    if (response.status === 200) {
+    if (response.success) {
       setFetchStatus(FORM_STATUS_MESSAGE.success);
     } else {
       setFetchStatus(FORM_STATUS_MESSAGE.failure);
