@@ -5,7 +5,7 @@ import { Technology } from "./mainPageComponents/technology/Technology";
 import { AdditionalServices } from "./mainPageComponents/additionalServices/AdditionalServices";
 import { Map } from "./mainPageComponents/map/Map";
 // import { SeventhBlock } from "./mainPageComponents/SeventhBlock";
-import { EightBlock } from "./mainPageComponents/EightBlock";
+import { Feedback } from "./mainPageComponents/feedback/Feedback";
 import React, { SetStateAction, useEffect } from "react";
 
 type MainPageProps = {
@@ -28,7 +28,7 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
       <AdditionalServices />
       <Map />
       {/* <SeventhBlock /> */}
-      <EightBlock />
+      <Feedback />
     </>
   );
 }

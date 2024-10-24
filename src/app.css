@@ -228,27 +228,6 @@ body {
   font-weight: 400;
 }
 
-.eightBlock {
-  height: 750px;
-  background-color: #f7f7f7;
-  padding-top: 80px;
-}
-
-.eightBlock__header {
-  color: #31373e;
-  font-size: 54px;
-  line-height: 1.55;
-  font-weight: 400;
-}
-
-.eightBlock iframe {
-  width: 100%;
-  /* min-width: 300px;
-  max-width: 760px; */
-  height: 500px;
-  margin-top: 20px;
-}
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
@@ -438,16 +417,6 @@ body {
     width: 98%;
   }
 
-  .eightBlock__wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .eightBlock iframe {
-    width: 556px;
-    align-self: center;
-  }
-
   .img {
     background: url("../img/flags5.png");
     width: 18px;
@@ -509,10 +478,6 @@ body {
     column-gap: 40px;
     align-items: center;
     justify-content: center;
-  }
-
-  .eightBlock__header {
-    font-size: 74px;
   }
 
   .seventhBlock__header {
