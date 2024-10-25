@@ -10,7 +10,7 @@ import {
   typeActiveAdditionalService,
 } from "../typesAndIntefaces.tsx";
 
-import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
+import { ModalWithForm } from "./housePageComponents/modalWithForm/ModalWithForm.tsx";
 
 import {
   choiceAdditionalServices,
@@ -21,19 +21,9 @@ import {
   basicConfigurationCloverCottageHouse,
   itemsHouse,
 } from "../../houses.ts";
-import { typeInputsError } from "../typesAndIntefaces";
 
-import { AdditionalServiceItems } from "./housePageComponents/AdditionalServiceItems.tsx";
-import { sendOrder } from "../../API/routes.ts";
+import { AdditionalServiceItems } from "./housePageComponents/additionalServiceItems/AdditionalServiceItems.tsx";
 import { VideoComponent } from "./housePageComponents/VideoComponent/VideoComponent.tsx";
-
-const FORM_STATUS_MESSAGE = {
-  loading: "Загрузка...",
-  success: "Спасибо! Скоро мы с вами свяжемся",
-  failure: "Что-то пошло не так...",
-};
-
-const maskGenerator = createDefaultMaskGenerator("+7 999 999 99 99");
 
 export function HousePage() {
   const locationPage = useLocation();
@@ -46,13 +36,8 @@ export function HousePage() {
   const [activeImgIndex, setActiveImgIndex] = useState<number>(0);
   const [stateModalImg, setStateModalImg] = useState<boolean>(false);
   const [stateModalForm, setStateModalForm] = useState<boolean>(false);
-  const [fetchStatus, setFetchStatus] = useState<string>("");
+
   const [positionY, setPositionY] = useState<number>(0);
-  const [inputsError, setInputsError] = useState<typeInputsError>({
-    inputName: "",
-    inputPhone: "",
-  });
-  const [inputPhoneValue, setInputPhoneValue] = useState<string>("");
 
   const [imitationOfTimber, setImitationOfTimber] = useState<typeActiveAdditionalService>({
     name: "",
@@ -187,7 +172,6 @@ export function HousePage() {
   }, []);
 
   useEffect(() => {
-    console.log(house?.houseName);
     document.title = house?.houseName as string;
 
     if (myRef.current) {
@@ -281,48 +265,21 @@ export function HousePage() {
       <div id="id" className="stylePagenone">
         {house?.code}
       </div>
-      {house && coustHouse
-        ? modalForm(
-            stateModalForm,
-            setStateModalForm,
-            listActiveAdditionalServices,
-            coustHouse,
-            priceAdditionalServices,
-            setInputsError,
-            inputsError,
-            setFetchStatus,
-            inputPhoneValue,
-            setInputPhoneValue,
-            fetchStatus,
-            house
-          )
-        : false}
+      {house && coustHouse ? (
+        <ModalWithForm
+          stateModalForm={stateModalForm}
+          setStateModalForm={setStateModalForm}
+          listActiveAdditionalServices={listActiveAdditionalServices}
+          coustHouse={coustHouse}
+          priceAdditionalServices={priceAdditionalServices}
+          house={house}
+        />
+      ) : (
+        false
+      )}
       {house ? modalImg(stateModalImg, house, setStateModalImg, activeImgIndex, setActiveImgIndex) : false}
     </React.Fragment>
   );
-}
-
-async function checkingTheNumberForWhatsApp(inputTel: string) {
-  const body = {
-    phoneNumber: inputTel.slice(1).split(" ").join(""),
-  };
-
-  const url =
-    import.meta.env.VITE_API_URL +
-    "/waInstance" +
-    import.meta.env.VITE_ID_INSTANCE +
-    "/checkWhatsapp/" +
-    import.meta.env.VITE_API_TOKEN_INSTANCE;
-
-  const responseFetchPhone = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: { "Content-Type": "application/json" },
-  });
-
-  const data = await responseFetchPhone.json();
-
-  return data;
 }
 
 function stringConversion(task: string | undefined, priceAdditionalServices: number) {
@@ -340,258 +297,6 @@ function stringConversion(task: string | undefined, priceAdditionalServices: num
   });
 
   return array.join("");
-}
-
-async function postData(
-  event: React.FormEvent<HTMLFormElement>,
-  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
-  inputsError: typeInputsError,
-  setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
-  listActiveAdditionalServices: typeListActiveAdditionalServices,
-  coustHouse: string,
-  priceAdditionalServices: number,
-  house: typeItemHouse
-) {
-  event.preventDefault();
-
-  const form = event.nativeEvent.target as HTMLFormElement;
-
-  const inputTel = (form.childNodes[2].childNodes[2] as HTMLInputElement).value;
-
-  const error = await formValidate(form, setInputsError, inputsError, setFetchStatus, inputTel);
-
-  setFetchStatus(FORM_STATUS_MESSAGE.loading);
-
-  if (error === 0) {
-    setFetchStatus("");
-    const formData = new FormData(form);
-
-    const userName = formData.get("user_name");
-
-    const jsonObject = {
-      houseName: house.houseName,
-      houseCode: house.code,
-      name: userName,
-      phone: inputTel,
-      basicEquipment: Number(coustHouse),
-      services: listActiveAdditionalServices,
-      totalCoust: Number(coustHouse) + priceAdditionalServices,
-    };
-
-    const response = await sendOrder(JSON.stringify(jsonObject));
-
-    if (response.success) {
-      setFetchStatus(FORM_STATUS_MESSAGE.success);
-      form.reset();
-    } else {
-      setFetchStatus(FORM_STATUS_MESSAGE.failure);
-      form.reset();
-    }
-  } else {
-    setFetchStatus("");
-    form.reset();
-  }
-}
-
-async function formValidate(
-  form: HTMLFormElement,
-  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
-  inputsError: typeInputsError,
-  setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
-  inputTel: string
-) {
-  let error = 0;
-
-  const formReq = [form.childNodes[1].childNodes[2], form.childNodes[2].childNodes[2]];
-
-  formRemoveError(form.childNodes[1].childNodes[2] as HTMLInputElement, setInputsError, inputsError);
-  formRemoveError(form.childNodes[2].childNodes[2] as HTMLInputElement, setInputsError, inputsError);
-
-  const errorChecking = await checkingTheNumberForWhatsApp(inputTel);
-
-  if (!errorChecking.existsWhatsapp) {
-    error++;
-  }
-
-  let obj: typeInputsError = {
-    inputName: "",
-    inputPhone: errorChecking.existsWhatsapp ? "" : "Такого номера в Whatsapp нету",
-  };
-  for (let index = 0; index < formReq.length; index++) {
-    const input = formReq[index] as HTMLInputElement;
-
-    if (input.name === "user_name") {
-      if (input.value.length > 25) {
-        obj = { ...obj, inputName: "Слишком длинное значение" };
-        error++;
-      }
-
-      if (input.value.trim() === "") {
-        obj = { ...obj, inputName: "Обязательное поле" };
-        error++;
-      }
-    }
-
-    if (input.name === "user_phone") {
-      if (input.value === "") {
-        obj = { ...obj, inputPhone: "Обязательное поле" };
-        error++;
-      }
-
-      if (input.value.length < 15 && input.value.length > 0) {
-        obj = { ...obj, inputPhone: "Слишком короткое значение" };
-        error++;
-      }
-    }
-  }
-  setFetchStatus("");
-  setInputsError(obj);
-
-  return error;
-}
-
-function formRemoveError(
-  input: HTMLInputElement,
-  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
-  inputsError: typeInputsError
-) {
-  if (input.name === "user_phone") {
-    setInputsError({ ...inputsError, inputPhone: "" });
-  } else if (input.name === "user_name") {
-    setInputsError({ ...inputsError, inputName: "" });
-  }
-}
-
-function modalForm(
-  stateModalForm: boolean,
-  setStateModalForm: React.Dispatch<React.SetStateAction<boolean>>,
-  listActiveAdditionalServices: typeListActiveAdditionalServices,
-  coustHouse: string,
-  priceAdditionalServices: number,
-  setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
-  inputsError: typeInputsError,
-  setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
-  inputPhoneValue: string,
-  setInputPhoneValue: React.Dispatch<React.SetStateAction<string>>,
-  fetchStatus: string,
-  house: typeItemHouse
-) {
-  return (
-    <div className={stateModalForm ? "stylePageorderModal stylePagevisible" : "stylePageorderModal notVisible"}>
-      <div className="stylePageorderModal__wrapper">
-        <form
-          className="stylePageorderModal__form"
-          method="post"
-          onSubmit={(event) =>
-            postData(
-              event,
-              setInputsError,
-              inputsError,
-              setFetchStatus,
-              listActiveAdditionalServices,
-              coustHouse,
-              priceAdditionalServices,
-              house
-            )
-          }
-        >
-          <label>
-            <div>Получить предложение</div>
-          </label>
-          <label>
-            <p>Введите имя</p>{" "}
-            <input
-              type="text"
-              name="user_name"
-              className={inputsError.inputName != "" ? "_req _error" : "_req"}
-              onChange={() => {
-                setInputPhoneValue;
-                setInputsError({
-                  inputName: "",
-                  inputPhone: "",
-                });
-                setFetchStatus("");
-              }}
-            />
-          </label>
-          <label>
-            <p>Введите номер WhatsApp</p>{" "}
-            <MaskedInput
-              maskGenerator={maskGenerator}
-              className={inputsError.inputPhone != "" ? "_req _error" : "_req"}
-              style={{
-                paddingLeft: "70px",
-              }}
-              name="user_phone"
-              type="tel"
-              placeholder="+7 999 999 99 99"
-              value={inputPhoneValue}
-              onChange={() => {
-                setInputPhoneValue;
-                setInputsError({
-                  inputName: "",
-                  inputPhone: "",
-                });
-                setFetchStatus("");
-              }}
-              data-phonemask={"+7"}
-            />
-          </label>
-
-          <button type="submit">Потдвердить</button>
-          <div
-            className={
-              inputsError.inputName == "Обязательное поле" || inputsError.inputName == "Слишком длинное значение"
-                ? "errorBig tl17585 show"
-                : "errorBig tl17585 notVisible"
-            }
-          >
-            {inputsError.inputName}
-          </div>
-          <div
-            className={
-              inputsError.inputPhone == "Такого номера в Whatsapp нету" ||
-              inputsError.inputPhone == "Слишком короткое значение" ||
-              inputsError.inputPhone == "Обязательное поле"
-                ? "errorBig tl24085 show"
-                : "errorBig tl24085 notVisible"
-            }
-          >
-            {inputsError.inputPhone}
-          </div>
-        </form>
-        <div className="stylePageorders">
-          <p>Вы выбрали:</p>
-          <div className="stylePageorderWrapper">
-            {listActiveAdditionalServices.map((item, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <div className="stylePageorderItem">
-                    {index + 1}. {item.name} - {item.count}
-                  </div>
-                </React.Fragment>
-              );
-            })}
-          </div>
-          <p className="stylePagetotal">{"Итого: " + `${stringConversion(coustHouse, priceAdditionalServices)} руб.`}</p>
-        </div>
-        <button className="stylePageorderModal__close" onClick={() => setStateModalForm(false)} />
-      </div>
-      <div
-        className={
-          fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..."
-            ? "feedBackModal smallFeedBackModal"
-            : "feedBackModal smallFeedBackModal none"
-        }
-      >
-        <div className="feedBackModal__wrapper">
-          <img src="../icons/crestikBlack.svg" alt="" className="crestikBlack" onClick={() => setFetchStatus("")} />
-          <div className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"}></div>
-          <div className="feedBackModal__text">{fetchStatus}</div>
-        </div>
-      </div>
-    </div>
-  );
 }
 
 function houseInformation(

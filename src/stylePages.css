@@ -143,7 +143,7 @@ input[type="number"] {
   text-decoration: none;
   margin: 0;
   z-index: 3;
-  font-family: 'FuturaPTWebBold';
+  font-family: "FuturaPTWebBold";
 }
 
 .feedBackModal__wrapper {
@@ -167,18 +167,17 @@ input[type="number"] {
 
 .stylePageorderModal__wrapper {
   display: flex;
-  width:300px;
+  width: 300px;
   height: 500px;
   background-color: white;
   border-radius: 5px;
   justify-content: center;
 }
 
-.stylePageorders{
+.stylePageorders {
   display: none;
 }
 
-  
 .stylePageorderModal__wrapper > form {
   display: flex;
   flex-direction: column;
@@ -197,12 +196,12 @@ input[type="number"] {
   font-weight: 400;
   margin-top: 20px;
   cursor: pointer;
-  font-family: 'FuturaPTWebBold';
+  font-family: "FuturaPTWebBold";
   font-size: 20px;
 }
 
 .stylePageorderModal__wrapper > form > button:active {
-  background-color: #D57500;
+  background-color: #d57500;
 }
 
 .stylePageorderModal__close {
@@ -622,47 +621,6 @@ input[type="number"]::-webkit-inner-spin-button {
   font-weight: 400;
 }
 
-.stylePagesecondBlock__service {
-  position: relative;
-  margin: 10px 0;
-}
-
-.stylePagesecondBlock__service-button {
-  position: absolute;
-  height: 26px;
-  width: 52px;
-  background-color: #f0f0f0;
-  box-shadow: 0px 0px 4px 0px rgba(201, 201, 201, 1);
-  border-radius: 13px;
-  cursor: pointer;
-  opacity: 0.6;
-  border-width: 0;
-  margin-right: 15px;
-  transition: all 0.2s;
-}
-
-.stylePageinactiveBtn {
-  content: "";
-  height: 26px;
-  width: 26px;
-  box-shadow: inset 0px 0 13px 0px #7d7d7d;
-  position: absolute;
-  border-radius: 13px;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  border: none;
-}
-
-.stylePagesecondBlock__service-text {
-  font-size: 19px;
-  font-weight: 400;
-  color: rgb(0, 0, 0);
-  text-indent: 65px;
-  line-height: 1.55;
-  text-decoration: none;
-}
 .stylePagesecondBlock__service-span {
   color: #ff8562;
   border-bottom-width: 2px;
@@ -673,14 +631,6 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 19px;
   font-weight: 400;
   cursor: pointer;
-}
-
-.stylePagesecondBlock__services-header {
-  margin-top: 30px;
-  color: rgb(0, 0, 0);
-  padding-bottom: 5px;
-  font-size: 29px;
-  font-weight: 400;
 }
 
 .stylePagesecondBlock__services-subtitle {
@@ -763,19 +713,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .stylePagesecondBlockMenu__text:hover {
   background: #777;
-}
-
-.stylePagesecondBlock__service-input {
-  width: 40px;
-  height: 28px;
-  padding: 8px 10px;
-  margin-left: 10px;
-  border-radius: 3px;
-  font-size: 12px;
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.4);
-  background-color: #fff;
-  text-align: center;
-  border: none;
 }
 
 .stylePagesecondBlock__service-numberStart {
@@ -1070,7 +1007,7 @@ input[type="number"]::-webkit-inner-spin-button {
   text-align: center;
   text-decoration: none;
   z-index: 1;
-  font-family: 'FuturaPTWebBold';
+  font-family: "FuturaPTWebBold";
 }
 
 .stylePagenav__item-linkWithOutdecoration {
@@ -1118,7 +1055,6 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: orange;
   color: white;
   border: none;
-
 }
 
 @media (min-width: 481px) {
@@ -1126,11 +1062,11 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 451px;
   }
 
-  .feedBackModal__wrapper{
+  .feedBackModal__wrapper {
     left: 21.1%;
   }
 
-  .stylePageorderModal__wrapper{
+  .stylePageorderModal__wrapper {
     width: 400px;
   }
 
@@ -1224,7 +1160,7 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 620px;
   }
 
-  .feedBackModal__wrapper{
+  .feedBackModal__wrapper {
     left: 28.1%;
   }
 
@@ -1253,7 +1189,6 @@ input[type="number"]::-webkit-inner-spin-button {
   .stylePagenav__item-title {
     display: block;
   }
-
 
   .stylePagefirstBlock__carousel-item {
     width: 620px;
@@ -1355,8 +1290,7 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 940px;
   }
 
-
-  .feedBackModal__wrapper{
+  .feedBackModal__wrapper {
     width: 320px;
   }
 
@@ -1380,7 +1314,7 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 5px;
     position: relative;
   }
-  
+
   .stylePageorderModal__wrapper > form {
     width: 50%;
     display: flex;
@@ -1389,7 +1323,7 @@ input[type="number"]::-webkit-inner-spin-button {
     margin-top: 50px;
     position: relative;
   }
-  
+
   .stylePageorderModal__wrapper > form > button {
     width: 300px;
     height: 70px;
@@ -1403,12 +1337,12 @@ input[type="number"]::-webkit-inner-spin-button {
     font-size: 22px;
     margin-bottom: 0;
   }
-  
+
   .stylePageorderModal__wrapper > form > label > div {
     font-size: 34px;
     font-weight: bold;
   }
-  
+
   .stylePageorderModal__wrapper > form > label > input {
     width: 300px;
     height: 50px;
@@ -1417,19 +1351,19 @@ input[type="number"]::-webkit-inner-spin-button {
     font-weight: 400;
     padding: 0 20px;
   }
-  
+
   .stylePageorders {
     width: 50%;
     margin: 50px 0;
     display: block;
   }
-  
+
   .stylePageorderWrapper {
     overflow: hidden;
     overflow-y: scroll;
     height: 260px;
   }
-  
+
   .stylePageorders > p {
     font-size: 34px;
     font-weight: 400;
@@ -1439,7 +1373,7 @@ input[type="number"]::-webkit-inner-spin-button {
     text-align: center;
     margin-top: 0;
   }
-  
+
   .stylePageorderItem {
     font-size: 19px;
     font-weight: 400;
@@ -1447,10 +1381,10 @@ input[type="number"]::-webkit-inner-spin-button {
     line-height: 1.55;
     text-decoration: none;
   }
-  
+
   .stylePageorderModal__close {
     position: absolute;
-    top:-30px;
+    top: -30px;
     right: -25px;
     width: 24px;
     height: 24px;
@@ -1459,7 +1393,7 @@ input[type="number"]::-webkit-inner-spin-button {
     border: none;
     z-index: 1;
   }
-  
+
   .stylePageorderModal__close::before,
   .stylePageorderModal__close::after {
     content: "";
@@ -1470,15 +1404,15 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 2px;
     background: #fff;
   }
-  
+
   .stylePageorderModal__close::before {
     transform: rotate(45deg);
   }
-  
+
   .stylePageorderModal__close::after {
     transform: rotate(-45deg);
   }
-  
+
   .stylePagetotal {
     margin-top: 30px;
   }
@@ -1786,20 +1720,6 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 750px;
     width: 1000px;
   }
-}
-
-.stylePageactiveBtn {
-  left: 25px;
-  box-shadow: inset 0px 0 17px 0px #e29a01;
-  content: "";
-  height: 26px;
-  width: 26px;
-  position: absolute;
-  border-radius: 13px;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  top: 0;
-  border: none;
 }
 
 .stylePageactive {
