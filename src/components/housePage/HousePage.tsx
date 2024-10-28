@@ -23,7 +23,7 @@ import {
 } from "../../houses.ts";
 
 import { AdditionalServiceItems } from "./housePageComponents/additionalServiceItems/AdditionalServiceItems.tsx";
-import { VideoComponent } from "./housePageComponents/VideoComponent/VideoComponent.tsx";
+import { VideoComponent } from "./housePageComponents/videoComponent/VideoComponent.tsx";
 
 export function HousePage() {
   const locationPage = useLocation();
@@ -251,7 +251,7 @@ export function HousePage() {
           {viewAddtionalServicesBlock()}
         </div>
       </div>
-      {house?.videos?.length != 0 ? VideoComponent(myRef, house) : ""}
+      {house?.videos?.length != 0 ? <VideoComponent myRef={myRef} house={house} /> : ""}
 
       <div className="stylePagecost">
         Стоимость
@@ -259,7 +259,7 @@ export function HousePage() {
           {coustHouse == "Скоро будет доступна" ? ": Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
         </span>
       </div>
-      <button className="stylePageorder" style={{ display: "none" }} onClick={() => setStateModalForm(true)}>
+      <button className="stylePageorder" style={{ display: "block" }} onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
       </button>
       <div id="id" className="stylePagenone">

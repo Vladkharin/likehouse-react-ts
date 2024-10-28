@@ -1,6 +1,7 @@
 import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
 import { typeInputsError, typeListActiveAdditionalServices, typeItemHouse } from "../../../typesAndIntefaces";
 import React, { useState } from "react";
+import styles from "./ModalWithForm.module.css";
 
 import { stringConversion } from "../../function.ts";
 import { postData } from "./function.ts";
@@ -30,10 +31,9 @@ export function ModalWithForm({
   });
 
   return (
-    <div className={stateModalForm ? "stylePageorderModal stylePagevisible" : "stylePageorderModal notVisible"}>
-      <div className="stylePageorderModal__wrapper">
+    <div className={`${styles.modal} ${stateModalForm ? styles.visible : styles.invisible}`}>
+      <div className={styles.wrapper}>
         <form
-          className="stylePageorderModal__form"
           method="post"
           onSubmit={(event) =>
             postData(
@@ -56,7 +56,7 @@ export function ModalWithForm({
             <input
               type="text"
               name="user_name"
-              className={inputsError.inputName != "" ? "_req _error" : "_req"}
+              className={`${styles.required} ${inputsError.inputName != "" ? styles.error : ""}`}
               onChange={() => {
                 setInputPhoneValue;
                 setInputsError({
@@ -71,7 +71,7 @@ export function ModalWithForm({
             <p>Введите номер WhatsApp</p>{" "}
             <MaskedInput
               maskGenerator={maskGenerator}
-              className={inputsError.inputPhone != "" ? "_req _error" : "_req"}
+              className={`${styles.required} ${inputsError.inputPhone != "" ? styles.error : ""}`}
               style={{
                 paddingLeft: "70px",
               }}
@@ -134,7 +134,7 @@ export function ModalWithForm({
         className={
           fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..."
             ? "feedBackModal smallFeedBackModal"
-            : "feedBackModal smallFeedBackModal none"
+            : "feedBackModal smallFeedBackModal " + styles.none
         }
       >
         <div className="feedBackModal__wrapper">

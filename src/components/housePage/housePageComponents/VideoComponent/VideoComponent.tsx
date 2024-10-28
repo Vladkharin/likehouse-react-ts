@@ -2,9 +2,9 @@ import styles from "./VideoComponent.module.css";
 
 import { typeItemHouse } from "../../../typesAndIntefaces";
 
-export function VideoComponent(ref: React.RefObject<HTMLElement>, house: typeItemHouse | undefined) {
+export function VideoComponent({ myRef, house }: { myRef: React.RefObject<HTMLElement>; house: typeItemHouse | undefined }) {
   return (
-    <section ref={ref} className={styles.videos}>
+    <section ref={myRef} className={styles.videos}>
       <div className="container">
         <div className="stylePagesecondBlock__header">Видеообзор построенных домов</div>
         <div className={styles.wrapper}>

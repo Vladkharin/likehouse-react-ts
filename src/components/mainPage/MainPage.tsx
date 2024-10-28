@@ -4,7 +4,7 @@ import { Catalog } from "./mainPageComponents/catalog/Catalog";
 import { Technology } from "./mainPageComponents/technology/Technology";
 import { AdditionalServices } from "./mainPageComponents/additionalServices/AdditionalServices";
 import { Map } from "./mainPageComponents/map/Map";
-import { Team } from "./mainPageComponents/team/Team";
+// import { Team } from "./mainPageComponents/team/Team";
 import { Feedback } from "./mainPageComponents/feedback/Feedback";
 import React, { SetStateAction, useEffect } from "react";
 
@@ -27,7 +27,7 @@ export function MainPage({ setBodyStyle }: MainPageProps) {
       <Technology />
       <AdditionalServices />
       <Map />
-      <Team />
+      {/* <Team /> */}
       <Feedback />
     </>
   );

@@ -195,17 +195,12 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 16 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/6x6Images/02.jpg",
-      "../pages/6x6Images/01.jpg",
-      "../pages/6x6Images/03.jpg",
-      "../pages/6x6Images/04.jpg",
-    ],
-    videos : [
+    imgs: ["../pages/6x6Images/02.jpg", "../pages/6x6Images/01.jpg", "../pages/6x6Images/03.jpg", "../pages/6x6Images/04.jpg"],
+    videos: [
       {
-        id: '456239458',
-        oid: '209572384'
-      }
+        id: "456239458",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
@@ -228,12 +223,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 22 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/7x7Images/01.jpg",
-      "../pages/7x7Images/02.jpg",
-      "../pages/7x7Images/03.jpg",
-      "../pages/7x7Images/04.jpg",
-    ],
+    imgs: ["../pages/7x7Images/01.jpg", "../pages/7x7Images/02.jpg", "../pages/7x7Images/03.jpg", "../pages/7x7Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -284,12 +274,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 19 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/6x7Images/01.jpg",
-      "../pages/6x7Images/02.jpg",
-      "../pages/6x7Images/03.jpg",
-      "../pages/6x7Images/04.jpg",
-    ],
+    imgs: ["../pages/6x7Images/01.jpg", "../pages/6x7Images/02.jpg", "../pages/6x7Images/03.jpg", "../pages/6x7Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -313,17 +298,12 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 6.24 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8x11Images/01.jpg",
-      "../pages/8x11Images/02.jpg",
-      "../pages/8x11Images/03.jpg",
-      "../pages/8x11Images/04.jpg",
-    ],
+    imgs: ["../pages/8x11Images/01.jpg", "../pages/8x11Images/02.jpg", "../pages/8x11Images/03.jpg", "../pages/8x11Images/04.jpg"],
     videos: [
       {
-        id: '456239457',
-        oid: '209572384'
-      }
+        id: "456239457",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
@@ -347,12 +327,7 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 6.16 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8x11.8Images/01.jpg",
-      "../pages/8x11.8Images/02.jpg",
-      "../pages/8x11.8Images/03.jpg",
-      "../pages/8x11.8Images/04.jpg",
-    ],
+    imgs: ["../pages/8x11.8Images/01.jpg", "../pages/8x11.8Images/02.jpg", "../pages/8x11.8Images/03.jpg", "../pages/8x11.8Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -377,12 +352,7 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 8.73 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/7.5x10Images/01.png",
-      "../pages/7.5x10Images/02.jpg",
-      "../pages/7.5x10Images/03.jpg",
-      "../pages/7.5x10Images/04.jpg",
-    ],
+    imgs: ["../pages/7.5x10Images/01.png", "../pages/7.5x10Images/02.jpg", "../pages/7.5x10Images/03.jpg", "../pages/7.5x10Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -407,12 +377,7 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 6.12 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8.5х11Images/01.jpg",
-      "../pages/8.5х11Images/02.jpg",
-      "../pages/8.5х11Images/03.jpg",
-      "../pages/8.5х11Images/04.jpg",
-    ],
+    imgs: ["../pages/8.5х11Images/01.jpg", "../pages/8.5х11Images/02.jpg", "../pages/8.5х11Images/03.jpg", "../pages/8.5х11Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -437,12 +402,7 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 6.17 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/9.5x10Images/01.jpg",
-      "../pages/9.5x10Images/02.jpg",
-      "../pages/9.5x10Images/03.jpg",
-      "../pages/9.5x10Images/04.jpg",
-    ],
+    imgs: ["../pages/9.5x10Images/01.jpg", "../pages/9.5x10Images/02.jpg", "../pages/9.5x10Images/03.jpg", "../pages/9.5x10Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -467,12 +427,7 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 6.12 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/9.5x12Images/01.jpg",
-      "../pages/9.5x12Images/02.jpg",
-      "../pages/9.5x12Images/03.jpg",
-      "../pages/9.5x12Images/04.jpg",
-    ],
+    imgs: ["../pages/9.5x12Images/01.jpg", "../pages/9.5x12Images/02.jpg", "../pages/9.5x12Images/03.jpg", "../pages/9.5x12Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -520,18 +475,17 @@ export const itemsHouse: typeItemsHouse = [
     imgs: ["../pages/8x10Images/01.jpg", "../pages/8x10Images/02.jpg", "../pages/8x10Images/03.jpg"],
     videos: [
       {
-        id: '456239429',
-        oid: '209572384'
+        id: "456239429",
+        oid: "209572384",
       },
       {
-        id: '456239455',
-        oid: '209572384'
+        id: "456239455",
+        oid: "209572384",
       },
       {
-        id: '456239461',
-        oid: '209572384'
+        id: "456239461",
+        oid: "209572384",
       },
-       
     ],
     coust: "0",
     mortgage: "0",
@@ -557,9 +511,9 @@ export const itemsHouse: typeItemsHouse = [
     imgs: ["../pages/8х10_2BedroomsImages/01.jpg", "../pages/8х10_2BedroomsImages/02.jpg", "../pages/8х10_2BedroomsImages/03.jpg"],
     videos: [
       {
-        id: '456239451',
-        oid: '209572384'
-      }
+        id: "456239451",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
@@ -585,9 +539,9 @@ export const itemsHouse: typeItemsHouse = [
     imgs: ["../pages/8x12Images/01.jpg", "../pages/8x12Images/02.jpg", "../pages/8x12Images/03.jpg"],
     videos: [
       {
-        id: '456239450',
-        oid: '209572384'
-      }
+        id: "456239450",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
@@ -610,11 +564,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 30.09 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8x13_countryImages/01.jpg",
-      "../pages/8x13_countryImages/02.jpg",
-      "../pages/8x13_countryImages/03.jpg",
-    ],
+    imgs: ["../pages/8x13_countryImages/01.jpg", "../pages/8x13_countryImages/02.jpg", "../pages/8x13_countryImages/03.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -637,11 +587,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 31.58 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8x13_country_2Images/01.jpg",
-      "../pages/8x13_country_2Images/02.jpg",
-      "../pages/8x13_country_2Images/03.jpg",
-    ],
+    imgs: ["../pages/8x13_country_2Images/01.jpg", "../pages/8x13_country_2Images/02.jpg", "../pages/8x13_country_2Images/03.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -665,12 +611,7 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 6 м2 (ГОСТ)",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/7x8Images/01.jpg",
-      "../pages/7x8Images/02.jpg",
-      "../pages/7x8Images/03.jpg",
-      "../pages/7x8Images/04.jpg",
-    ],
+    imgs: ["../pages/7x8Images/01.jpg", "../pages/7x8Images/02.jpg", "../pages/7x8Images/03.jpg", "../pages/7x8Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -703,9 +644,9 @@ export const itemsHouse: typeItemsHouse = [
     ],
     videos: [
       {
-        id: '456239454',
-        oid: '209572384'
-      }
+        id: "456239454",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
@@ -728,12 +669,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 24 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8x8Images/01.jpg",
-      "../pages/8x8Images/02.jpg",
-      "../pages/8x8Images/03.jpg",
-      "../pages/8x8Images/04.jpg",
-    ],
+    imgs: ["../pages/8x8Images/01.jpg", "../pages/8x8Images/02.jpg", "../pages/8x8Images/03.jpg", "../pages/8x8Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -757,12 +693,7 @@ export const itemsHouse: typeItemsHouse = [
       "Котельная: 6 м2 (ГОСТ)",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8x9Images/01.jpg",
-      "../pages/8x9Images/02.jpg",
-      "../pages/8x9Images/03.jpg",
-      "../pages/8x9Images/04.jpg",
-    ],
+    imgs: ["../pages/8x9Images/01.jpg", "../pages/8x9Images/02.jpg", "../pages/8x9Images/03.jpg", "../pages/8x9Images/04.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -785,17 +716,12 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 43 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/9.5x14Images/01.jpg",
-      "../pages/9.5x14Images/02.jpg",
-      "../pages/9.5x14Images/03.jpg",
-      "../pages/9.5x14Images/04.jpg",
-    ],
+    imgs: ["../pages/9.5x14Images/01.jpg", "../pages/9.5x14Images/02.jpg", "../pages/9.5x14Images/03.jpg"],
     videos: [
       {
-        id: '456239456',
-        oid: '209572384'
-      }
+        id: "456239456",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
@@ -818,12 +744,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 38.11 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/9.5x13Images/01.jpg",
-      "../pages/9.5x13Images/02.jpg",
-      "../pages/9.5x13Images/03.jpg",
-      "../pages/9.5x13Images/04.jpg",
-    ],
+    imgs: ["../pages/9.5x13Images/01.jpg", "../pages/9.5x13Images/02.jpg", "../pages/9.5x13Images/03.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -846,12 +767,7 @@ export const itemsHouse: typeItemsHouse = [
       "Кухня - гостиная: 28.75 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/8.5x12Images/01.jpg",
-      "../pages/8.5x12Images/02.jpg",
-      "../pages/8.5x12Images/03.jpg",
-      "../pages/8.5x12Images/04.jpg",
-    ],
+    imgs: ["../pages/8.5x12Images/01.jpg", "../pages/8.5x12Images/02.jpg", "../pages/8.5x12Images/03.jpg"],
     videos: [],
     coust: "0",
     mortgage: "0",
@@ -948,11 +864,7 @@ export const itemsHouse: typeItemsHouse = [
       "Комната отдыха: 15 м2",
       "Сроки строительства: 60 дней",
     ],
-    imgs: [
-      "../pages/5x6BathImage/07.jpg",
-      "../pages/5x6BathImage/05.jpg",
-      "../pages/5x6BathImage/06.jpg",
-    ],
+    imgs: ["../pages/5x6BathImage/07.jpg", "../pages/5x6BathImage/05.jpg", "../pages/5x6BathImage/06.jpg"],
     videos: [],
     coust: "0",
     type: "bathhouse",

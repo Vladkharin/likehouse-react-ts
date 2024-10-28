@@ -152,19 +152,6 @@ input[type="number"] {
   left: 6.1%;
 }
 
-.stylePageorderModal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  z-index: 3;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  overflow: hidden;
-  top: 0;
-}
-
 .stylePageorderModal__wrapper {
   display: flex;
   width: 300px;
@@ -1066,10 +1053,6 @@ input[type="number"]::-webkit-inner-spin-button {
     left: 21.1%;
   }
 
-  .stylePageorderModal__wrapper {
-    width: 400px;
-  }
-
   .stylePageorderModal__wrapper > form {
     width: 340px;
   }
@@ -1292,27 +1275,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
   .feedBackModal__wrapper {
     width: 320px;
-  }
-
-  .stylePageorderModal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    overflow: hidden;
-    top: 0;
-  }
-  .stylePageorderModal__wrapper {
-    display: flex;
-    width: 800px;
-    height: 500px;
-    background-color: white;
-    border-radius: 5px;
-    position: relative;
   }
 
   .stylePageorderModal__wrapper > form {
@@ -1731,11 +1693,6 @@ input[type="number"]::-webkit-inner-spin-button {
 .stylePagenotVisible {
   opacity: 0;
   visibility: hidden;
-}
-
-.stylePagevisible {
-  opacity: 1;
-  visibility: visible;
 }
 
 .stylePagenone {
