@@ -43,8 +43,8 @@ export function PaymentPage() {
                 04 ЭТАП <span>10%</span>
               </div>
               <div className="stylePagepayment__item-descr">
-                Оставшаяся часть оплаты производится после выполнения всех работ согласно договору строительства,проверки
-                домаотделом контроля качества по чек листам и подписания акта выполненных работ.
+                Оставшаяся часть оплаты производится после выполнения всех работ согласно договору строительства,проверки домаотделом
+                контроля качества по чек листам и подписания акта выполненных работ.
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@ export function PaymentPage() {
               </div>
               <div className="stylePageline2"></div>
               <div className="stylePagehelp__item">
-                Ипотека с гос. поддержкой <span>8%</span> на строительство
+                Комбо-ипотека с лимитом до <span> 30 млн рублей </span>
               </div>
             </div>
           </div>
@@ -86,9 +86,7 @@ export function PaymentPage() {
       <div className="stylePagematernalCapital">
         <div className="stylePagecontainer">
           <div className="stylePagepayment__header">Материнский капитал</div>
-          <div className="stylePagepayment__subtitle">
-            ДЛЯ ИСПОЛЬЗОВАНИЯ МАТЕРИНСКОГО КАПИТАЛА НА СТРОИТЕЛЬСТВО ДОМА ВАМ НЕОБХОДИМО:
-          </div>
+          <div className="stylePagepayment__subtitle">ДЛЯ ИСПОЛЬЗОВАНИЯ МАТЕРИНСКОГО КАПИТАЛА НА СТРОИТЕЛЬСТВО ДОМА ВАМ НЕОБХОДИМО:</div>
           <div className="stylePagematernalCapital__items">
             <div className="stylePagematernalCapital__item">
               <div className="stylePagematernalCapital__item-number">01</div>
@@ -99,21 +97,18 @@ export function PaymentPage() {
             <div className="stylePagematernalCapital__item">
               <div className="stylePagematernalCapital__item-number">02</div>
               <div className="stylePagematernalCapital__item-text">
-                Заключить договор на строительство дома (при себе иметь паспорт РФ, сертификат на Материнский капитал или его
-                копию)
+                Заключить договор на строительство дома (при себе иметь паспорт РФ, сертификат на Материнский капитал или его копию)
               </div>
             </div>
             <div className="stylePagematernalCapital__item">
               <div className="stylePagematernalCapital__item-number">03</div>
-              <div className="stylePagematernalCapital__item-text">
-                Обратиться в Пенсионный фонд с договором на строительство дома
-              </div>
+              <div className="stylePagematernalCapital__item-text">Обратиться в Пенсионный фонд с договором на строительство дома</div>
             </div>
             <div className="stylePagematernalCapital__item">
               <div className="stylePagematernalCapital__item-number">04</div>
               <div className="stylePagematernalCapital__item-text">
-                После перечисления Пенсионным фондом денежных средств материнского капитала на расчетный счет Компании, доплатить
-                оставшуюся сумму по договору на строительство дома
+                После перечисления Пенсионным фондом денежных средств материнского капитала на расчетный счет Компании, доплатить оставшуюся
+                сумму по договору на строительство дома
               </div>
             </div>
           </div>

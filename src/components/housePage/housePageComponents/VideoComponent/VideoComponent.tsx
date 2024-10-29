@@ -6,7 +6,7 @@ export function VideoComponent({ myRef, house }: { myRef: React.RefObject<HTMLEl
   return (
     <section ref={myRef} className={styles.videos}>
       <div className="container">
-        <div className="stylePagesecondBlock__header">Видеообзор построенных домов</div>
+        <div className={styles.header}>Видеообзор построенных домов</div>
         <div className={styles.wrapper}>
           {house?.videos?.map((item, index) => {
             return (

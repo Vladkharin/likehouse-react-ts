@@ -91,56 +91,57 @@ export function ModalWithForm({
             />
           </label>
 
-          <button type="submit">Потдвердить</button>
+          <button type="submit">
+            <div className={fetchStatus === "Загрузка..." ? `${styles.loader} ${styles.block}` : ` ${styles.loader} ${styles.none}`}></div>
+            <div className={fetchStatus === "Загрузка..." ? styles.none : styles.block}>Потдвердить</div>
+          </button>
           <div
-            className={
+            className={`${styles.error_text} ${styles.position_error_first_input} ${
               inputsError.inputName == "Обязательное поле" || inputsError.inputName == "Слишком длинное значение"
-                ? "errorBig tl17585 show"
-                : "errorBig tl17585 notVisible"
-            }
+                ? styles.visible
+                : styles.invisible
+            }`}
           >
             {inputsError.inputName}
           </div>
           <div
-            className={
+            className={`${styles.error_text} ${styles.position_error_second_input} ${
               inputsError.inputPhone == "Такого номера в Whatsapp нету" ||
               inputsError.inputPhone == "Слишком короткое значение" ||
               inputsError.inputPhone == "Обязательное поле"
-                ? "errorBig tl24085 show"
-                : "errorBig tl24085 notVisible"
-            }
+                ? styles.visible
+                : styles.invisible
+            }`}
           >
             {inputsError.inputPhone}
           </div>
         </form>
-        <div className="stylePageorders">
+        <div className={styles.orders}>
           <p>Вы выбрали:</p>
-          <div className="stylePageorderWrapper">
+          <div className={styles.orders_wrapper}>
             {listActiveAdditionalServices.map((item, index) => {
               return (
                 <React.Fragment key={index}>
-                  <div className="stylePageorderItem">
+                  <div className={styles.orders_item}>
                     {index + 1}. {item.name} - {item.count}
                   </div>
                 </React.Fragment>
               );
             })}
           </div>
-          <p className="stylePagetotal">{"Итого: " + `${stringConversion(coustHouse, priceAdditionalServices)} руб.`}</p>
+          <p>{"Итого: " + `${stringConversion(coustHouse, priceAdditionalServices)} руб.`}</p>
         </div>
-        <button className="stylePageorderModal__close" onClick={() => setStateModalForm(false)} />
+        <button className={styles.button_close} onClick={() => setStateModalForm(false)} />
       </div>
       <div
-        className={
-          fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..."
-            ? "feedBackModal smallFeedBackModal"
-            : "feedBackModal smallFeedBackModal " + styles.none
-        }
+        className={` ${styles.modal}
+          ${fetchStatus === "Спасибо! Скоро мы с вами свяжемся" || fetchStatus === "Что-то пошло не так..." ? "" : styles.none}
+        `}
       >
-        <div className="feedBackModal__wrapper">
-          <img src="../icons/crestikBlack.svg" alt="" className="crestikBlack" onClick={() => setFetchStatus("")} />
-          <div className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? "feedBackModal__complete" : "feedBackModal__failure"}></div>
-          <div className="feedBackModal__text">{fetchStatus}</div>
+        <div className={styles.modal_wrapper}>
+          <img src="./icons/crestikBlack.svg" alt="" className={styles.modal_btn_close} onClick={() => setFetchStatus("")} />
+          <div className={fetchStatus === "Спасибо! Скоро мы с вами свяжемся" ? styles.complete : styles.failure}></div>
+          <div className={styles.modal_text}>{fetchStatus}</div>
         </div>
       </div>
     </div>

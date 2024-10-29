@@ -499,7 +499,7 @@ export const itemsHouse: typeItemsHouse = [
     img: "./img/Видовой_кадр_01_8x10_(2_спальни).jpg",
     alt: "firstTile",
     information: [
-      "Размер: 8x10",
+      "Размер: 8x10 с двумя спальнями",
       "Площадь: 73 м2",
       "Размер террасы: 8x2.5",
       "Площадь террасы: 20 м2",
@@ -521,7 +521,7 @@ export const itemsHouse: typeItemsHouse = [
     link: "country-8x10_2_bedrooms",
     typeHouse: "Кантри",
     code: "000000041",
-    houseName: "Кантри 8х10 (2 спальни)",
+    houseName: "Кантри 8x10 с двумя спальнями",
   },
   {
     img: "./img/Видовой_кадр_01_8x12.jpg",
@@ -578,7 +578,7 @@ export const itemsHouse: typeItemsHouse = [
     img: "./img/Видовой_кадр_01_8x13_country2.jpg",
     alt: "firstTile",
     information: [
-      "Размер: 8x13",
+      "Размер: 8x13 с боковой верандой",
       "Площадь: 93 м2",
       "Размер террасы: 8x2.5",
       "Площадь террасы: 15 м2",
@@ -595,7 +595,7 @@ export const itemsHouse: typeItemsHouse = [
     link: "country-8x13-2",
     typeHouse: "Кантри",
     code: "000000042",
-    houseName: "Кантри 8x13",
+    houseName: "Кантри 8x13 с боковой верандой",
   },
   {
     img: "./img/Видовой_кадр_01_7x8.jpg",

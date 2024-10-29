@@ -2,18 +2,8 @@
   box-sizing: border-box;
 }
 
-.stylePagetl17585 {
-  top: 175px;
-  left: 85px;
-}
-
 input[type="number"] {
   -moz-appearance: textfield;
-}
-
-.stylePagetl24085 {
-  top: 240px;
-  left: 85px;
 }
 
 .stylePageerror {
@@ -35,13 +25,6 @@ input[type="number"] {
 }
 .stylePage_req.stylePage_error {
   border: 1px solid red;
-}
-
-.stylePagefirstblock__btnWrapper {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .stylePagefeedBackModal {
@@ -129,127 +112,11 @@ input[type="number"] {
   padding-top: 20px;
   font-family: "FuturaPTWebLight";
 }
-.stylePageorder {
-  width: 100%;
-  height: 41px;
-  position: fixed;
-  bottom: 42px;
-  background-color: #074097;
-  border: none;
-  font-size: 14px;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: center;
-  text-decoration: none;
-  margin: 0;
-  z-index: 3;
-  font-family: "FuturaPTWebBold";
-}
 
 .feedBackModal__wrapper {
   width: 280px;
   top: 37%;
   left: 6.1%;
-}
-
-.stylePageorderModal__wrapper {
-  display: flex;
-  width: 300px;
-  height: 500px;
-  background-color: white;
-  border-radius: 5px;
-  justify-content: center;
-}
-
-.stylePageorders {
-  display: none;
-}
-
-.stylePageorderModal__wrapper > form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-  position: relative;
-}
-
-.stylePageorderModal__wrapper > form > button {
-  width: 280px;
-  background-color: orange;
-  height: 70px;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 20px;
-  cursor: pointer;
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-}
-
-.stylePageorderModal__wrapper > form > button:active {
-  background-color: #d57500;
-}
-
-.stylePageorderModal__close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0);
-  border: none;
-  z-index: 1;
-}
-
-.stylePageorderModal__close::before,
-.stylePageorderModal__close::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #fff;
-}
-
-.stylePageorderModal__close::before {
-  transform: rotate(45deg);
-}
-
-.stylePageorderModal__close::after {
-  transform: rotate(-45deg);
-}
-
-.stylePageorderModal__wrapper > form > label > p {
-  font-size: 22px;
-  margin-bottom: 0;
-}
-
-.stylePageorderModal__wrapper > form > label > div {
-  font-size: 34px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.stylePageorderModal__wrapper > form > label > input {
-  width: 280px;
-  height: 50px;
-  border: 1px solid #000;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 0 20px;
-}
-
-.tl17585 {
-  top: 180px;
-  left: 50px;
-}
-
-.tl24085 {
-  top: 280px;
-  left: 50px;
 }
 
 body {
@@ -428,126 +295,6 @@ input[type="number"]::-webkit-inner-spin-button {
   row-gap: 40px;
 }
 
-.stylePagefirstBlock {
-  min-height: 1000px;
-  padding-top: 160px;
-}
-
-.stylePagefirstBlock__header {
-  color: #31373e;
-  font-size: 54px;
-  line-height: 1stylePage55;
-  font-weight: 400;
-}
-
-.stylePagefirstBlock__carousel {
-  position: relative;
-}
-
-.stylePagefirstBlock__carousel-item {
-  width: 300px;
-  height: 225px;
-  cursor: zoom-in;
-}
-
-.stylePagefirstBlock__carousel-right {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  right: 10px;
-  top: 50%;
-  transform: translate(0, -50%);
-  padding-top: 3px;
-  border: none;
-}
-
-.stylePagefirstBlock__carousel-right img {
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 8px;
-  left: 8px;
-}
-
-.stylePagefirstBlock__carousel-left img {
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 8px;
-  right: 8px;
-}
-
-.stylePagefirstBlock__wrapper-field {
-  overflow: hidden;
-  width: 290px;
-  margin-left: 10px;
-  position: absolute;
-  bottom: -150px;
-}
-
-.stylePagefirstBlock__carousel-left {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  left: 10px;
-  top: 50%;
-  transform: translate(0, -50%);
-  padding-top: 3px;
-  border: none;
-}
-
-.stylePagefirstBlock__field {
-  display: flex;
-  width: 100%;
-  transition: all 0.5s;
-  margin: 0 auto;
-}
-
-.stylePagefirstBlock__field-img {
-  min-height: 75px;
-  max-width: 95px;
-  max-height: 75px;
-  min-width: 95px;
-  transform: scale(0.9);
-  filter: grayscale(1);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.stylePagefirstBlock__information {
-  margin-top: 100px;
-}
-
-.stylePagefirstBlock__button {
-  width: 300px;
-  height: 60px;
-  border-width: 2px;
-  background-position: center center;
-  border-color: #31373e;
-  border-style: solid;
-  color: #31373e;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "FuturaPTWebBold";
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: 500;
-  font-style: normal;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.stylePagefirstBlock__information-text {
-  color: #31373e;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 40px;
-}
-
 .stylePagefirstBlock__gridBlock {
   margin-top: 40px;
 }
@@ -564,24 +311,6 @@ input[type="number"]::-webkit-inner-spin-button {
   font-weight: 600;
 }
 
-.stylePagesecondBlock {
-  margin-top: 75px;
-  margin-bottom: 75px;
-}
-
-.stylePagesecondBlock__header {
-  color: #31373e;
-  font-size: 40px;
-  line-height: 46px;
-  font-weight: 400;
-}
-
-.stylePagesecondBlock__items {
-  margin-top: 30px;
-  margin-bottom: 97px;
-  display: flex;
-  flex-direction: column;
-}
 .stylePageline {
   height: 1px;
   width: 304px;
@@ -861,19 +590,8 @@ input[type="number"]::-webkit-inner-spin-button {
   align-items: center;
   height: 100%;
 }
-.stylePagemodalMain__wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
 .stylePagemodal__img {
-  width: 170px;
-  height: 200px;
-  cursor: zoom-in;
-}
-.stylePagemodalMain__img {
   width: 170px;
   height: 200px;
   cursor: zoom-in;
@@ -909,93 +627,6 @@ input[type="number"]::-webkit-inner-spin-button {
 .stylePagemodal__close::after {
   transform: rotate(-45deg);
 }
-.stylePagemodal__closeBlack {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0);
-  border: none;
-  z-index: 1;
-}
-
-.stylePagemodal__closeBlack::before,
-.stylePagemodal__closeBlack::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #000;
-}
-
-.stylePagemodal__closeBlack::before {
-  transform: rotate(45deg);
-}
-
-.stylePagemodal__closeBlack::after {
-  transform: rotate(-45deg);
-}
-
-.stylePagemodal__right {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  right: 2%;
-  top: 50%;
-  transform: translate(0, -50%);
-  padding-top: 3px;
-  border: none;
-}
-
-.stylePagemodal__left {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  left: 2%;
-  top: 50%;
-  transform: translate(0, -50%);
-  padding-top: 3px;
-  border: none;
-}
-
-.stylePagemodal__right img {
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  top: 8px;
-  left: 8px;
-}
-
-.stylePagemodal__left img {
-  width: 15px;
-  height: 15px;
-}
-
-.stylePageslider {
-  width: 290px;
-}
-
-.stylePagecost {
-  width: 100%;
-  height: 41px;
-  position: fixed;
-  bottom: 0;
-  background-color: #074097;
-  padding: 0.5em 0em;
-  font-size: 19px;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: center;
-  text-decoration: none;
-  z-index: 1;
-  font-family: "FuturaPTWebBold";
-}
 
 .stylePagenav__item-linkWithOutdecoration {
   color: rgb(49, 55, 62);
@@ -1008,10 +639,6 @@ input[type="number"]::-webkit-inner-spin-button {
   border-bottom: none;
   box-shadow: none;
   text-decoration: none;
-}
-
-.stylePagefirstBlock__wrapper-field {
-  bottom: -85px;
 }
 
 .stylePagebig {
@@ -1032,18 +659,6 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 180px;
 }
 
-.blue {
-  background-color: #074097;
-  color: white;
-  border: none;
-}
-
-.orange {
-  background-color: orange;
-  color: white;
-  border: none;
-}
-
 @media (min-width: 481px) {
   .stylePagecontainer {
     width: 451px;
@@ -1051,20 +666,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
   .feedBackModal__wrapper {
     left: 21.1%;
-  }
-
-  .stylePageorderModal__wrapper > form {
-    width: 340px;
-  }
-
-  .tl17585 {
-    top: 160px;
-    left: 90px;
-  }
-
-  .tl24085 {
-    top: 230px;
-    left: 90px;
   }
 
   .stylePagehelp img {
@@ -1082,17 +683,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
   .stylePagematernalCapital__items {
     align-items: center;
-  }
-
-  .stylePagefirstBlock__wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stylePagesecondBlock__item-name {
-    max-width: 160px;
-    min-width: 160px;
   }
 
   .stylePageline {
@@ -1125,10 +715,6 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 310px;
   }
 
-  .stylePageslider {
-    width: 451px;
-  }
-
   .stylePagesquare {
     width: 310px;
   }
@@ -1151,10 +737,6 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 620px;
   }
 
-  .stylePagefirstBlock {
-    min-height: 1200px;
-  }
-
   .stylePagemortgage iframe {
     width: 620px;
   }
@@ -1171,11 +753,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
   .stylePagenav__item-title {
     display: block;
-  }
-
-  .stylePagefirstBlock__carousel-item {
-    width: 620px;
-    height: 465px;
   }
 
   .stylePageline {
@@ -1223,14 +800,6 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 410px;
     scale: 1;
   }
-  .stylePagemodalMain__img {
-    width: 300px;
-    height: 410px;
-  }
-
-  .stylePageslider {
-    width: 620px;
-  }
 
   .stylePagesquare {
     width: 410px;
@@ -1246,20 +815,6 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 @media (min-width: 815px) {
-  .stylePagecost {
-    width: 270px;
-    height: 42px;
-    bottom: 65px;
-    right: 0px;
-  }
-
-  .stylePageorder {
-    width: 270px;
-    height: 42px;
-    bottom: 20px;
-    right: 0px;
-  }
-
   .stylePagelinkVideos {
     width: 270px;
     height: 42px;
@@ -1275,132 +830,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
   .feedBackModal__wrapper {
     width: 320px;
-  }
-
-  .stylePageorderModal__wrapper > form {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    position: relative;
-  }
-
-  .stylePageorderModal__wrapper > form > button {
-    width: 300px;
-    height: 70px;
-    border: none;
-    font-weight: 400;
-    background-color: orange;
-    margin-top: 20px;
-    cursor: pointer;
-  }
-  .stylePageorderModal__wrapper > form > label > p {
-    font-size: 22px;
-    margin-bottom: 0;
-  }
-
-  .stylePageorderModal__wrapper > form > label > div {
-    font-size: 34px;
-    font-weight: bold;
-  }
-
-  .stylePageorderModal__wrapper > form > label > input {
-    width: 300px;
-    height: 50px;
-    border: 1px solid #000;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 0 20px;
-  }
-
-  .stylePageorders {
-    width: 50%;
-    margin: 50px 0;
-    display: block;
-  }
-
-  .stylePageorderWrapper {
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 260px;
-  }
-
-  .stylePageorders > p {
-    font-size: 34px;
-    font-weight: 400;
-    color: rgb(0, 0, 0);
-    line-height: 1.55;
-    text-decoration: none;
-    text-align: center;
-    margin-top: 0;
-  }
-
-  .stylePageorderItem {
-    font-size: 19px;
-    font-weight: 400;
-    color: rgb(0, 0, 0);
-    line-height: 1.55;
-    text-decoration: none;
-  }
-
-  .stylePageorderModal__close {
-    position: absolute;
-    top: -30px;
-    right: -25px;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0);
-    border: none;
-    z-index: 1;
-  }
-
-  .stylePageorderModal__close::before,
-  .stylePageorderModal__close::after {
-    content: "";
-    position: absolute;
-    top: 10px;
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: #fff;
-  }
-
-  .stylePageorderModal__close::before {
-    transform: rotate(45deg);
-  }
-
-  .stylePageorderModal__close::after {
-    transform: rotate(-45deg);
-  }
-
-  .stylePagetotal {
-    margin-top: 30px;
-  }
-
-  .stylePagemodal__right {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    right: 10%;
-    top: 50%;
-    transform: translate(0, -50%);
-    padding-top: 3px;
-    border: none;
-  }
-
-  .stylePagemodal__left {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    left: 10%;
-    top: 50%;
-    transform: translate(0, -50%);
-    padding-top: 3px;
-    border: none;
   }
 
   .stylePagepayment__item-text {
@@ -1501,36 +930,13 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 70%;
   }
 
-  .stylePagefirstBlock__carousel-item {
-    width: 560px;
-    height: 420px;
-  }
-
-  .stylePagefirstBlock__field-img {
-    min-width: 180px;
-    min-height: 135px;
-    max-width: 180px;
-    max-height: 135px;
-  }
-
   .stylePagefirstBlock__wrapper-field {
     width: 530px;
     margin-top: 10px;
     left: 0;
     bottom: -150px;
   }
-  .stylePagefirstBlock__wrapper {
-    display: grid;
-    grid-template-columns: 560px 480px;
-    grid-template-rows: 550px;
-    column-gap: 40px;
-    align-items: start;
-  }
 
-  .stylePagemodalBig {
-    height: 85%;
-    width: 720px;
-  }
   .stylePagemodalSmall {
     width: 600px;
     height: 450px;
@@ -1546,31 +952,6 @@ input[type="number"]::-webkit-inner-spin-button {
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 2;
-  }
-
-  .stylePagefirstBlock__information {
-    margin-top: 0;
-    width: 300px;
-  }
-
-  .stylePagefirstBlock__button {
-    margin-top: 0px;
-  }
-
-  .stylePagefirstBlock {
-    min-height: 860px;
-  }
-
-  .stylePagesecondBlock__item {
-    width: 620px;
-  }
-  .stylePagesecondBlock__items {
-    align-items: center;
-  }
-
-  .stylePagesecondBlock__item-name {
-    min-width: 179px;
-    max-width: 179px;
   }
 
   .stylePagesecondBlockMenu__button {
@@ -1628,18 +1009,8 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 560px;
     height: 192px;
   }
-  .stylePagesecondBlock__item-name {
-    min-width: 340px;
-    max-width: 340px;
-  }
-  .stylePagefirstBlock__header {
-    font-size: 74px;
-  }
 
   .stylePageline {
-    width: 1160px;
-  }
-  .stylePagesecondBlock__item {
     width: 1160px;
   }
 
@@ -1666,21 +1037,12 @@ input[type="number"]::-webkit-inner-spin-button {
     padding-left: 0;
   }
 
-  .stylePagefirstBlock__wrapper {
-    column-gap: 146px;
-  }
-
   .stylePagebig {
     height: 1250px;
   }
 
   .stylePagebath-grid {
     grid-template-rows: minmax(auto, auto);
-  }
-
-  .stylePagemodalBig {
-    height: 750px;
-    width: 1000px;
   }
 }
 

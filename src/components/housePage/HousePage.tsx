@@ -11,6 +11,8 @@ import {
 } from "../typesAndIntefaces.tsx";
 
 import { ModalWithForm } from "./housePageComponents/modalWithForm/ModalWithForm.tsx";
+import { ModalWithSlider } from "./housePageComponents/modalWithSlider/ModalWithSlider.tsx";
+import styles from "./HousePage.module.css";
 
 import {
   choiceAdditionalServices,
@@ -23,7 +25,7 @@ import {
 } from "../../houses.ts";
 
 import { AdditionalServiceItems } from "./housePageComponents/additionalServiceItems/AdditionalServiceItems.tsx";
-import { VideoComponent } from "./housePageComponents/videoComponent/VideoComponent.tsx";
+import { VideoComponent } from "./housePageComponents/VideoComponent/VideoComponent.tsx";
 
 export function HousePage() {
   const locationPage = useLocation();
@@ -187,7 +189,7 @@ export function HousePage() {
     }
     return (
       <>
-        <div className="stylePagesecondBlock__header">Дополнительные услуги</div>
+        <div className={styles.header}>Дополнительные услуги</div>
         {additionalService && coustHouse ? (
           AdditionalServiceItems(
             additionalService,
@@ -210,25 +212,25 @@ export function HousePage() {
 
   return (
     <React.Fragment>
-      <div className="stylePagefirstBlock bath">
-        <div className="stylePagecontainer">
-          <div className="stylePagefirstBlock__header">{house ? house["houseName"] : "Загружается!"}</div>
-          <div className="stylePagefirstBlock__wrapper">
-            <div className="stylePagefirstBlock__carousel">
+      <div className={styles.information}>
+        <div className="container">
+          <div className={styles.information_header}>{house ? house["houseName"] : "Загружается!"}</div>
+          <div className={styles.information_wrapper}>
+            <div className={styles.information_carousel}>
               <img
                 src={house?.imgs ? house.imgs[activeImgIndex] : ""}
-                className="stylePagefirstBlock__carousel-item"
+                className={styles.information_carousel_item}
                 data-modal="imgs"
                 onClick={() => setStateModalImg(true)}
               />
               <button
-                className="stylePagefirstBlock__carousel-right"
+                className={styles.information_carousel_right}
                 onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "plus") : false)}
               >
                 <img src="../icons/NextArrow.png" alt="next" />
               </button>
               <button
-                className="stylePagefirstBlock__carousel-left"
+                className={styles.information_carousel_left}
                 onClick={() => (house ? mainSlider(activeImgIndex, setActiveImgIndex, house, "minus") : false)}
               >
                 <img src="../icons/PrevArrow.png" alt="prev" />
@@ -243,9 +245,9 @@ export function HousePage() {
           </div>
         </div>
       </div>
-      <div className="stylePagesecondBlock">
-        <div className="stylePagecontainer">
-          <div className="stylePagesecondBlock__header">Базовая комплектация проекта</div>
+      <div className={styles.basicConf}>
+        <div className="container">
+          <div className={styles.header}>Базовая комплектация проекта</div>
           {house ? basicConfiguration(house) : false}
 
           {viewAddtionalServicesBlock()}
@@ -253,16 +255,16 @@ export function HousePage() {
       </div>
       {house?.videos?.length != 0 ? <VideoComponent myRef={myRef} house={house} /> : ""}
 
-      <div className="stylePagecost">
+      <div className={styles.coust}>
         Стоимость
-        <span className="stylePagecost__span">
+        <span>
           {coustHouse == "Скоро будет доступна" ? ": Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
         </span>
       </div>
-      <button className="stylePageorder" style={{ display: "block" }} onClick={() => setStateModalForm(true)}>
+      <button className={styles.order} style={{ display: "none" }} onClick={() => setStateModalForm(true)}>
         Получить коммерческое предложение
       </button>
-      <div id="id" className="stylePagenone">
+      <div id="id" className={styles.none}>
         {house?.code}
       </div>
       {house && coustHouse ? (
@@ -277,7 +279,17 @@ export function HousePage() {
       ) : (
         false
       )}
-      {house ? modalImg(stateModalImg, house, setStateModalImg, activeImgIndex, setActiveImgIndex) : false}
+      {house ? (
+        <ModalWithSlider
+          stateModalImg={stateModalImg}
+          house={house}
+          setStateModalImg={setStateModalImg}
+          activeImgIndex={activeImgIndex}
+          setActiveImgIndex={setActiveImgIndex}
+        />
+      ) : (
+        false
+      )}
     </React.Fragment>
   );
 }
@@ -308,7 +320,7 @@ function houseInformation(
   setStateModalForm: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   return (
-    <div className="stylePagefirstBlock__information">
+    <div className={styles.information_texts}>
       {house.information
         ? house.information.map((item, index) => {
             index = 10140 + index;
@@ -329,21 +341,21 @@ function houseInformation(
             }
 
             return (
-              <div key={index} className="stylePagefirstBlock__information-text">
+              <div key={index} className={styles.information_text}>
                 {item}
               </div>
             );
           })
         : false}
-      <div className="stylePagefirstblock__btnWrapper">
-        <div className="stylePagefirstBlock__button">
+      <div className={styles.buttons_wrapper}>
+        <div className={styles.button}>
           Стоимость
           <span>
             {coustHouse == "Скоро будет доступна" ? ": Скоро будет" : `: ${stringConversion(coustHouse, priceAdditionalServices)} руб.`}
           </span>
         </div>
         <div
-          className={`stylePagefirstBlock__button blue`}
+          className={`${styles.button} ${styles.blue}`}
           style={{ display: house.videos?.length != 0 ? "" : "none" }}
           onClick={() => {
             heightFromTopVideosBlock ? window.scroll(0, positionY) : false;
@@ -351,7 +363,7 @@ function houseInformation(
         >
           Посмотреть видео
         </div>
-        <div className="stylePagefirstBlock__button orange" style={{ display: "none" }} onClick={() => setStateModalForm(true)}>
+        <div className={`${styles.button} ${styles.orange}`} style={{ display: "none" }} onClick={() => setStateModalForm(true)}>
           Получить коммерческое предложение
         </div>
       </div>
@@ -371,21 +383,26 @@ function houseImgs(
   } else if (house.imgs && activeImgIndex == house.imgs.length - 1) {
     translate = -180 * (activeImgIndex - 2);
   }
+
+  if (window.innerWidth < 960) {
+    translate = translate / 2;
+  }
+
   return (
-    <div className="stylePagefirstBlock__wrapper-field">
-      <div className="stylePagefirstBlock__field" style={{ transform: `translateX(${translate}px)` }}>
+    <div className={styles.information_carousel_wrapper_field}>
+      <div className={styles.information_carousel_field} style={{ transform: `translateX(${translate}px)` }}>
         {house.imgs
           ? house.imgs.map((item, index) => {
               let activeClass = "";
               if (index == activeImgIndex) {
-                activeClass = "stylePageactive";
+                activeClass = styles.active;
               }
 
               index = 10201 + index;
               return (
                 <img
                   key={index}
-                  className={`stylePagefirstBlock__field-img ` + activeClass}
+                  className={`${styles.information_carousel_field_img}  ${activeClass}`}
                   src={item}
                   alt=""
                   onClick={() => {
@@ -399,27 +416,6 @@ function houseImgs(
       </div>
     </div>
   );
-}
-
-function mainSlider(
-  activeImgIndex: number,
-  setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>,
-  house: typeItemHouse,
-  action: string
-) {
-  let number = 0;
-  if (action == "plus") {
-    number = activeImgIndex + 1;
-  } else {
-    number = activeImgIndex - 1;
-  }
-
-  if (house.imgs && number >= house.imgs.length) {
-    number = 0;
-  } else if (house.imgs && number < 0) {
-    number = house.imgs.length - 1;
-  }
-  setActiveImgIndex(number);
 }
 
 function basicConfiguration(house: typeItemHouse) {
@@ -448,90 +444,42 @@ function basicConfiguration(house: typeItemHouse) {
   }
 
   return (
-    <div className="stylePagesecondBlock__items">
+    <div className={styles.basicConf_items}>
       {arrayConf.map((item, index) => {
         index = 200212 + index;
         const itemArray = item.split(" ? ");
         return (
           <React.Fragment key={index}>
-            <div className="stylePageline"></div>
-            <div className="stylePagesecondBlock__item">
-              <div className="stylePagesecondBlock__item-name">{itemArray[0]}</div>
-              <div className="stylePagesecondBlock__item-key">{itemArray[1]}</div>
+            <div className={styles.line}></div>
+            <div className={styles.basicConf_item}>
+              <div className={styles.basicConf_item_name}>{itemArray[0]}</div>
+              <div className={styles.basicConf_item_key}>{itemArray[1]}</div>
             </div>
           </React.Fragment>
         );
       })}
-      <div className="stylePageline"></div>
+      <div className={styles.line}></div>
     </div>
   );
 }
 
-function modalImg(
-  stateModalImg: boolean,
-  house: typeItemHouse,
-  setStateModalImg: React.Dispatch<React.SetStateAction<boolean>>,
+function mainSlider(
   activeImgIndex: number,
-  setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>
+  setActiveImgIndex: React.Dispatch<React.SetStateAction<number>>,
+  house: typeItemHouse,
+  action: string
 ) {
-  let activeStyleWrapper = "stylePagenotVisible";
-
-  if (stateModalImg) {
-    activeStyleWrapper = "";
+  let number = 0;
+  if (action == "plus") {
+    number = activeImgIndex + 1;
+  } else {
+    number = activeImgIndex - 1;
   }
 
-  return (
-    <div className={"stylePagemodalMain stylePagebgwhite " + activeStyleWrapper}>
-      <div className="stylePagemodalMain__wrapper">
-        <button className="stylePagemodal__closeBlack" onClick={() => setStateModalImg(false)}>
-          {" "}
-        </button>
-        {house.imgs
-          ? house.imgs.map((img, index) => {
-              index += 123234432;
-
-              let activeClassSlide = "stylePagenone";
-
-              if (house.imgs && house.imgs[activeImgIndex] == img) {
-                activeClassSlide = "stylePageBlock";
-              }
-              return (
-                <img
-                  key={index}
-                  className={"stylePagemodalMain__img stylePageslider stylePagemodalBig " + activeClassSlide}
-                  src={img}
-                  alt=""
-                />
-              );
-            })
-          : false}
-        <button
-          className="stylePagemodal__right"
-          onClick={() => {
-            const number = activeImgIndex + 1;
-            if (house.imgs && number >= house.imgs.length) {
-              setActiveImgIndex(0);
-            } else {
-              setActiveImgIndex(number);
-            }
-          }}
-        >
-          <img src="../icons/NextArrow.png" alt="next" />
-        </button>
-        <button
-          className="stylePagemodal__left"
-          onClick={() => {
-            const number = activeImgIndex - 1;
-            if (house.imgs && number < 0) {
-              setActiveImgIndex(house.imgs.length - 1);
-            } else {
-              setActiveImgIndex(number);
-            }
-          }}
-        >
-          <img src="../icons/PrevArrow.png" alt="prev" />
-        </button>
-      </div>
-    </div>
-  );
+  if (house.imgs && number >= house.imgs.length) {
+    number = 0;
+  } else if (house.imgs && number < 0) {
+    number = house.imgs.length - 1;
+  }
+  setActiveImgIndex(number);
 }
