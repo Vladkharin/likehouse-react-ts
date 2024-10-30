@@ -146,54 +146,6 @@ input[type="number"]::-webkit-inner-spin-button {
   color: rgb(49, 55, 62);
 }
 
-.stylePagepayment {
-  padding-top: 150px;
-}
-
-.stylePagepayment__header {
-  color: #31373e;
-  font-size: 54px;
-  line-height: 62px;
-  font-weight: 400;
-}
-
-.stylePagepayment__subtitle {
-  margin-top: 20px;
-  color: #31373e;
-  font-size: 20px;
-  line-height: 31px;
-  font-weight: 400;
-}
-
-.stylePagepayment__item {
-  margin-top: 40px;
-}
-
-.stylePagepayment__item-text {
-  color: #31373e;
-  font-size: 20px;
-  line-height: 31px;
-  font-weight: 400;
-  display: flex;
-  column-gap: 75px;
-  align-items: center;
-  border-bottom: 1px solid #e29a01;
-}
-.stylePagepayment__item-text span {
-  color: #e29a01;
-  font-size: 30px;
-  line-height: 47px;
-  font-weight: 400;
-}
-
-.stylePagepayment__item-descr {
-  margin-top: 10px;
-  color: #31373e;
-  font-size: 20px;
-  line-height: 31px;
-  font-weight: 400;
-  padding-left: 10px;
-}
 
 .stylePagehelp {
   margin-top: 100px;
@@ -832,16 +784,7 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 320px;
   }
 
-  .stylePagepayment__item-text {
-    min-width: 300px;
-    border-bottom: none;
-  }
-  .stylePagepayment__item {
-    display: flex;
-    column-gap: 110px;
-    border-bottom: 1px solid #e29a01;
-    padding-bottom: 30px;
-  }
+
 
   .stylePagemodal__img {
     scale: 1stylePage5;

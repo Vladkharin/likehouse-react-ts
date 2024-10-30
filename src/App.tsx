@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/footer/Footer";
-import { PaymentPage } from "./components/paymentPage/paymentPage";
+import { PaymentPage } from "./components/paymentPage/PaymentPage";
 import { HousePage } from "./components/housePage/HousePage";
 
 function App() {

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import styles from "./PaymentPage.module.css";
+
 export function PaymentPage() {
   useEffect(() => {
     const y = window.scrollY;
@@ -7,42 +9,42 @@ export function PaymentPage() {
   }, []);
   return (
     <>
-      <div className="stylePagepayment">
-        <div className="stylePagecontainer">
-          <div className="stylePagepayment__header">Оплата домов и бань</div>
-          <div className="stylePagepayment__subtitle">
+      <div className={styles.payment}>
+        <div className="container">
+          <div className={styles.payment_header}>Оплата домов и бань</div>
+          <div className={styles.payment_subtitle}>
             ДЛЯ ВАШЕГО УДОБСТВА И УВЕРЕННОСТИ В КАЧЕСТВЕ НАШИХ РАБОТ ВСЕ ОПЛАТЫ ЗА УСЛУГИ РАЗДЕЛЕНЫ НА 4 ЭТАПА
           </div>
-          <div className="stylePagepayment__items">
-            <div className="stylePagepayment__item">
-              <div className="stylePagepayment__item-text">
+          <div>
+            <div className={styles.payment_item}>
+              <div className={styles.payment_item_text}>
                 01 ЭТАП <span>30 000 руб.</span>
               </div>
-              <div className="stylePagepayment__item-descr">
+              <div className={styles.payment_item_descr}>
                 Первоначальная сумма предоплаты производится при заключении договора строительства
               </div>
             </div>
-            <div className="stylePagepayment__item">
-              <div className="stylePagepayment__item-text">
+            <div className={styles.payment_item}>
+              <div className={styles.payment_item_text}>
                 02 ЭТАП <span>45%</span>
               </div>
-              <div className="stylePagepayment__item-descr">
+              <div className={styles.payment_item_descr}>
                 Вторая часть предоплаты производится после установки фундамента и завоза материала на ваш участок
               </div>
             </div>
-            <div className="stylePagepayment__item">
-              <div className="stylePagepayment__item-text">
+            <div className={styles.payment_item}>
+              <div className={styles.payment_item_text}>
                 03 ЭТАП <span>45%</span>
               </div>
-              <div className="stylePagepayment__item-descr">
+              <div className={styles.payment_item_descr}>
                 Третья часть предоплаты производится после сборки каркаса и завоза оставшихся материала на ваш участок
               </div>
             </div>
-            <div className="stylePagepayment__item">
-              <div className="stylePagepayment__item-text">
+            <div className={styles.payment_item}>
+              <div className={styles.payment_item_text}>
                 04 ЭТАП <span>10%</span>
               </div>
-              <div className="stylePagepayment__item-descr">
+              <div className={styles.payment_item_descr}>
                 Оставшаяся часть оплаты производится после выполнения всех работ согласно договору строительства,проверки домаотделом
                 контроля качества по чек листам и подписания акта выполненных работ.
               </div>

@@ -25,7 +25,7 @@ import {
 } from "../../houses.ts";
 
 import { AdditionalServiceItems } from "./housePageComponents/additionalServiceItems/AdditionalServiceItems.tsx";
-import { VideoComponent } from "./housePageComponents/VideoComponent/VideoComponent.tsx";
+import { VideoComponent } from "./housePageComponents/videoComponent/VideoComponent.tsx";
 
 export function HousePage() {
   const locationPage = useLocation();
