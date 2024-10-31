@@ -486,6 +486,10 @@ export const itemsHouse: typeItemsHouse = [
         id: "456239461",
         oid: "209572384",
       },
+      {
+        id: "456239468",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
@@ -694,7 +698,12 @@ export const itemsHouse: typeItemsHouse = [
       "Сроки строительства: 60 дней",
     ],
     imgs: ["../pages/8x9Images/01.jpg", "../pages/8x9Images/02.jpg", "../pages/8x9Images/03.jpg", "../pages/8x9Images/04.jpg"],
-    videos: [],
+    videos: [
+      {
+        id: "456239473",
+        oid: "209572384",
+      },
+    ],
     coust: "0",
     mortgage: "0",
     type: "two-storey house",
