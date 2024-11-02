@@ -136,6 +136,7 @@ async function postData(
       first_name: user_name,
       choice: choice,
       telephone: formData.get("user_phone"),
+      country: "ru",
     };
 
     const response = await sendShare(JSON.stringify(object));

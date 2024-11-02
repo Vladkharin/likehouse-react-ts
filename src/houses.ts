@@ -546,6 +546,10 @@ export const itemsHouse: typeItemsHouse = [
         id: "456239450",
         oid: "209572384",
       },
+      {
+        id: "456239465",
+        oid: "209572384",
+      },
     ],
     coust: "0",
     mortgage: "0",
