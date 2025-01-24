@@ -1,5 +1,5 @@
 import { MaskedInput, createDefaultMaskGenerator } from "react-hook-mask";
-import { typeInputsError, typeListActiveAdditionalServices, typeItemHouse } from "../../../typesAndIntefaces";
+import { typeInputsError, typeListActiveAdditionalServices } from "../../../typesAndIntefaces";
 import React, { useState } from "react";
 import styles from "./ModalWithForm.module.css";
 
@@ -14,14 +14,12 @@ export function ModalWithForm({
   listActiveAdditionalServices,
   coustHouse,
   priceAdditionalServices,
-  house,
 }: {
   stateModalForm: boolean;
   setStateModalForm: React.Dispatch<React.SetStateAction<boolean>>;
   listActiveAdditionalServices: typeListActiveAdditionalServices;
   coustHouse: string;
   priceAdditionalServices: number;
-  house: typeItemHouse;
 }) {
   const [fetchStatus, setFetchStatus] = useState<string>("");
   const [inputPhoneValue, setInputPhoneValue] = useState<string>("");
@@ -33,21 +31,7 @@ export function ModalWithForm({
   return (
     <div className={`${styles.modal} ${stateModalForm ? styles.visible : styles.invisible}`}>
       <div className={styles.wrapper}>
-        <form
-          method="post"
-          onSubmit={(event) =>
-            postData(
-              event,
-              setInputsError,
-              inputsError,
-              setFetchStatus,
-              listActiveAdditionalServices,
-              coustHouse,
-              priceAdditionalServices,
-              house
-            )
-          }
-        >
+        <form method="post" onSubmit={(event) => postData(event, setInputsError, inputsError, setFetchStatus)}>
           <label>
             <div>Получить предложение</div>
           </label>

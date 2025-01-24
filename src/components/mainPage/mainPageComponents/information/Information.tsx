@@ -13,9 +13,9 @@ export function Information({ setBodyStyle }: Props) {
     <>
       <div className={styles.information}>
         <div className="container">{FirstBlock(setStateModal)}</div>
-        <div className={styles.animation}>
+        {/* <div className={styles.animation}>
           <img src="./icons/partner.svg?ver=1" alt="partner" className={styles.spin} />
-        </div>
+        </div> */}
       </div>
       {FormModal(stateModal, setStateModal, setBodyStyle)}
     </>
@@ -40,11 +40,11 @@ function FirstBlock(setStateModal: React.Dispatch<React.SetStateAction<boolean>>
           <p className={styles.text_small}>эксклюзивное предложение для наших клиентов</p>
           <img className={styles.img} src="./icons/эскроу-десктоп.svg" alt="" />
         </div>
-        <img className={styles.logo} src="./icons/лого.svg" alt="logo" />
+        {/* <img className={styles.logo} src="./icons/лого.svg" alt="logo" /> */}
       </div>
       <div className={styles.buttons}>
         <div className={styles.button_mob}>
-          <a href="tel:+74951277452">
+          <a href="tel:+79197843396">
             <button>Позвонить</button>
           </a>
         </div>

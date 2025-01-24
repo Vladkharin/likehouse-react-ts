@@ -1,6 +1,6 @@
-import { typeInputsError, typeListActiveAdditionalServices, typeItemHouse } from "../../../typesAndIntefaces";
+import { typeInputsError } from "../../../typesAndIntefaces";
 
-import { sendOrder } from "../../../../API/routes.ts";
+// import { sendOrder } from "../../../../API/routes.ts";
 
 const FORM_STATUS_MESSAGE = {
   loading: "Загрузка...",
@@ -16,11 +16,7 @@ export async function postData(
   event: React.FormEvent<HTMLFormElement>,
   setInputsError: React.Dispatch<React.SetStateAction<typeInputsError>>,
   inputsError: typeInputsError,
-  setFetchStatus: React.Dispatch<React.SetStateAction<string>>,
-  listActiveAdditionalServices: typeListActiveAdditionalServices,
-  coustHouse: string,
-  priceAdditionalServices: number,
-  house: typeItemHouse
+  setFetchStatus: React.Dispatch<React.SetStateAction<string>>
 ) {
   event.preventDefault();
 
@@ -32,54 +28,85 @@ export async function postData(
 
   setFetchStatus(FORM_STATUS_MESSAGE.loading);
 
+  console.log();
+
+  if (await checkingTheNumberForWhatsApp(inputTel)) {
+    console.log(await sendMessageInWA(inputTel));
+  }
+
   if (error === 0) {
     setFetchStatus("");
-    const formData = new FormData(form);
+    // const formData = new FormData(form);
 
-    const userName = formData.get("user_name");
+    // const userName = formData.get("user_name");
 
-    const jsonObject = {
-      houseName: house.houseName,
-      houseCode: house.code,
-      name: userName,
-      phone: inputTel,
-      basicEquipment: Number(coustHouse),
-      services: listActiveAdditionalServices,
-      totalCoust: Number(coustHouse) + priceAdditionalServices,
-    };
+    // const jsonObject = {
+    //   houseName: house.houseName,
+    //   houseCode: house.code,
+    //   name: userName,
+    //   phone: inputTel,
+    //   basicEquipment: Number(coustHouse),
+    //   services: listActiveAdditionalServices,
+    //   totalCoust: Number(coustHouse) + priceAdditionalServices,
+    // };
 
-    const response = await sendOrder(JSON.stringify(jsonObject));
+    // const response = await sendOrder(JSON.stringify(jsonObject));
 
-    if (response.success) {
-      setFetchStatus(FORM_STATUS_MESSAGE.success);
-      form.reset();
-    } else {
-      setFetchStatus(FORM_STATUS_MESSAGE.failure);
-      form.reset();
-    }
+    // if (response.success) {
+    setFetchStatus(FORM_STATUS_MESSAGE.success);
+    // form.reset();
+    // } else {
+    // setFetchStatus(FORM_STATUS_MESSAGE.failure);
+    form.reset();
+    // }
   } else {
     setFetchStatus("");
     form.reset();
   }
 }
 
-// async function checkingTheNumberForWhatsApp(inputTel: string) {
-//   const body = {
-//     phoneNumber: inputTel.slice(1).split(" ").join(""),
-//   };
+async function sendMessageInWA(inputTel: string) {
+  const VITE_API_URL = "https://api.green-api.com";
+  const VITE_ID_INSTANCE = "1101773268";
+  const VITE_API_TOKEN_INSTANCE = "b0e2453f8a344435ad674f4fa5b2b1fbf340229d23674e45a7";
 
-//   const url = VITE_API_URL + "/waInstance" + VITE_ID_INSTANCE + "/checkWhatsapp/" + VITE_API_TOKEN_INSTANCE;
+  const body = {
+    chatId: `${inputTel.slice(1).split(" ").join("")}@c.us`,
+    message: "ку",
+  };
 
-//   const responseFetchPhone = await fetch(url, {
-//     method: "POST",
-//     body: JSON.stringify(body),
-//     headers: { "Content-Type": "application/json" },
-//   });
+  const url = VITE_API_URL + "/waInstance" + VITE_ID_INSTANCE + "/sendMessage/" + VITE_API_TOKEN_INSTANCE;
 
-//   const data = await responseFetchPhone.json();
+  const responseFetchPhone = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+  });
 
-//   return data;
-// }
+  return await responseFetchPhone.json();
+}
+
+async function checkingTheNumberForWhatsApp(inputTel: string) {
+  const VITE_API_URL = "https://api.green-api.com";
+  const VITE_ID_INSTANCE = "1101773268";
+  const VITE_API_TOKEN_INSTANCE = "b0e2453f8a344435ad674f4fa5b2b1fbf340229d23674e45a7";
+
+  const body = {
+    phoneNumber: inputTel.slice(1).split(" ").join(""),
+  };
+
+  const url = VITE_API_URL + "/waInstance" + VITE_ID_INSTANCE + "/checkWhatsapp/" + VITE_API_TOKEN_INSTANCE;
+
+  const responseFetchPhone = await fetch(url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  const data = await responseFetchPhone.json();
+
+  return data;
+}
 
 async function formValidate(
   form: HTMLFormElement,

@@ -46,7 +46,7 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
                 {MenuLinkRu()}
               </div>
             </div>
-            {MenuIconsRu()}
+            {/* {MenuIconsRu()} */}
             {MenuTelehoneRu()}
           </div>
         </div>
@@ -63,7 +63,7 @@ export function Header({ scroll, mainPage, setBodyStyle }: typeHeaderProps) {
                 На главную
               </Link>
             </div>
-            {MenuGreyIconsRu()}
+            {/* {MenuGreyIconsRu()} */}
           </div>
         </div>
       </nav>
@@ -167,65 +167,61 @@ function MenuLinkRu() {
   );
 }
 
-function MenuGreyIconsRu() {
-  return (
-    <div className={styles.page_icons}>
-      <a href="https://teleg.run/Like_House_org" className={styles.page_icon}>
-        <img src="../icons/TelegramGreyIcon.svg" alt="" />
-      </a>
-      <a href="https://wa.clck.bar/79251047452" className={styles.page_icon}>
-        <img src="../icons/WhatsappGreyIcon.svg" alt="" />
-      </a>
-      <a id="phone" href="tel:+74951277452" className={`${styles.page_icon} ${styles.phone}`}>
-        <img src="../icons/PhoneGreyIcon.svg" alt="" />
-      </a>
-      <a href="https://www.youtube.com/@likehouse_org" className={styles.page_icon}>
-        <img src="../icons/YouTubeGreyIcon.svg" alt="" />
-      </a>
-      <a href="mailto:info@likehouse.org" className={styles.page_icon}>
-        <img src="../icons/EmailGreyIcon.svg" alt="" />
-      </a>
-      <a href="https://vk.com/like_house" className={styles.page_icon}>
-        <img src="../icons/VKGreyIcon.svg" alt="" />
-      </a>
-    </div>
-  );
-}
+// function MenuGreyIconsRu() {
+//   return (
+//     <div className={styles.page_icons}>
+//       <a href="https://teleg.run/Like_House_org" className={styles.page_icon}>
+//         <img src="../icons/TelegramGreyIcon.svg" alt="" />
+//       </a>
+//       <a href="https://wa.clck.bar/79251047452" className={styles.page_icon}>
+//         <img src="../icons/WhatsappGreyIcon.svg" alt="" />
+//       </a>
+//       <a id="phone" href="tel:+74951277452" className={`${styles.page_icon} ${styles.phone}`}>
+//         <img src="../icons/PhoneGreyIcon.svg" alt="" />
+//       </a>
+//       <a href="https://www.youtube.com/@likehouse_org" className={styles.page_icon}>
+//         <img src="../icons/YouTubeGreyIcon.svg" alt="" />
+//       </a>
+//       <a href="mailto:info@likehouse.org" className={styles.page_icon}>
+//         <img src="../icons/EmailGreyIcon.svg" alt="" />
+//       </a>
+//       <a href="https://vk.com/like_house" className={styles.page_icon}>
+//         <img src="../icons/VKGreyIcon.svg" alt="" />
+//       </a>
+//     </div>
+//   );
+// }
 
-function MenuIconsRu() {
-  return (
-    <div className={styles.icons}>
-      <a target="_blank" href="https://teleg.run/Like_House_org" className={styles.icon}>
-        <img src="./icons/TelegramIcon.svg" alt="" />
-      </a>
-      <a target="_blank" href="https://wa.clck.bar/79251047452" className={styles.icon}>
-        <img src="./icons/WhatsappIcon.svg" alt="" />
-      </a>
-      <a id="phone" href="tel:+74951277452" className={`${styles.icon} ${styles.phone}`}>
-        <img src="./icons/PhoneIcon.svg" alt="" />
-      </a>
-      <a target="_blank" href="https://www.youtube.com/@likehouse_org" className={styles.icon}>
-        <img src="./icons/YouTubeIcon.svg" alt="" />
-      </a>
-      <a href="mailto:info@likehouse.org" className={styles.icon}>
-        <img src="./icons/EmailIcon.svg" alt="" />
-      </a>
-      <a target="_blank" href="https://vk.com/like_house" className={styles.icon}>
-        <img src="./icons/VKIcon.svg" alt="" />
-      </a>
-    </div>
-  );
-}
+// function MenuIconsRu() {
+//   return (
+//     <div className={styles.icons}>
+//       <a target="_blank" href="https://teleg.run/Like_House_org" className={styles.icon}>
+//         <img src="./icons/TelegramIcon.svg" alt="" />
+//       </a>
+//       <a target="_blank" href="https://wa.clck.bar/79251047452" className={styles.icon}>
+//         <img src="./icons/WhatsappIcon.svg" alt="" />
+//       </a>
+//       <a id="phone" href="tel:+74951277452" className={`${styles.icon} ${styles.phone}`}>
+//         <img src="./icons/PhoneIcon.svg" alt="" />
+//       </a>
+//       <a target="_blank" href="https://www.youtube.com/@likehouse_org" className={styles.icon}>
+//         <img src="./icons/YouTubeIcon.svg" alt="" />
+//       </a>
+//       <a href="mailto:info@likehouse.org" className={styles.icon}>
+//         <img src="./icons/EmailIcon.svg" alt="" />
+//       </a>
+//       <a target="_blank" href="https://vk.com/like_house" className={styles.icon}>
+//         <img src="./icons/VKIcon.svg" alt="" />
+//       </a>
+//     </div>
+//   );
+// }
 
 function MenuTelehoneRu() {
   return (
     <div className={styles.item_title}>
-      <a className={styles.item_link} href="tel:+79251047452">
-        +7 (925) 104-74-52
-      </a>{" "}
-      <br />
-      <a className={styles.item_link} href="tel:+74951277452">
-        +7 (495) 127-74-52
+      <a className={styles.item_link} href="tel:+79197843396">
+        +7 919 784 3396
       </a>{" "}
       <br />
       <span>(WhatsApp)</span>
