@@ -114,6 +114,8 @@ function onBtn(
     coust: coust,
   };
 
+  console.log(coust);
+
   s.push(object);
 
   const price = s.reduce((acc, item) => acc + item.coust * item.count, 0);

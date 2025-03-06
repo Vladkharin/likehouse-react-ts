@@ -210,6 +210,8 @@ export function HousePage() {
     );
   }
 
+  console.log(listActiveAdditionalServices);
+
   return (
     <React.Fragment>
       <div className={styles.information}>
@@ -274,7 +276,6 @@ export function HousePage() {
           listActiveAdditionalServices={listActiveAdditionalServices}
           coustHouse={coustHouse}
           priceAdditionalServices={priceAdditionalServices}
-          house={house}
         />
       ) : (
         false
