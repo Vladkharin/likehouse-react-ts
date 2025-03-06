@@ -21,11 +21,13 @@ export function ModalSlider(
   } else if (activeSlide < 0) {
     activeSlide = imgs.length - 1;
   }
+
+  console.log(activeSlide);
   return (
     <div className={styles.slider + " " + activeClass} style={{ visibility: activeStyle }}>
       <div className={styles.field}>
         {imgs.map((img, index) => {
-          let activeClassImg = "none";
+          let activeClassImg = styles.none;
           if (index == activeSlide) {
             activeClassImg = "";
           }

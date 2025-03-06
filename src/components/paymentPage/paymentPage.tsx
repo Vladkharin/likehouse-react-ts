@@ -116,7 +116,7 @@ export function PaymentPage() {
           </div>
         </div>
       </div>
-      <div className="stylePagerequisites">
+      {/* <div className="stylePagerequisites">
         <div className="stylePagecontainer">
           <div className="stylePagepayment__header">Реквизиты</div>
           <div className="stylePagerequisites__items">
@@ -134,7 +134,7 @@ export function PaymentPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

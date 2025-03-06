@@ -25,7 +25,7 @@ import {
 } from "../../houses.ts";
 
 import { AdditionalServiceItems } from "./housePageComponents/additionalServiceItems/AdditionalServiceItems.tsx";
-import { VideoComponent } from "./housePageComponents/VideoComponent/VideoComponent.tsx";
+// import { VideoComponent } from "./housePageComponents/VideoComponent/VideoComponent.tsx";
 
 export function HousePage() {
   const locationPage = useLocation();
@@ -255,7 +255,7 @@ export function HousePage() {
           {viewAddtionalServicesBlock()}
         </div>
       </div>
-      {house?.videos?.length != 0 ? <VideoComponent myRef={myRef} house={house} /> : ""}
+      {/* {house?.videos?.length != 0 ? <VideoComponent myRef={myRef} house={house} /> : ""} */}
 
       <div className={styles.coust}>
         Стоимость
